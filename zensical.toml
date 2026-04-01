@@ -13,7 +13,6 @@ nav = [
     { "Changelog" = "changelog.md" },
     { "License" = "license.md" },
   ] },
-  { "API Reference" = "api.md" },
   { "Development" = [
     { "Contributing" = "contributing.md" },
     { "Maintaining" = "maintaining.md" },
@@ -106,23 +105,3 @@ alternate_style = true
 
 [project.markdown_extensions.pymdownx.tasklist]
 custom_checkbox = true
-
-# ----------------------------------------------------------------------------
-# Plugins
-# ----------------------------------------------------------------------------
-[project.plugins.mkdocstrings.handlers.python]
-paths = ["."]
-inventories = ["https://docs.python.org/3/objects.inv"]
-
-[project.plugins.mkdocstrings.handlers.python.options]
-docstring_section_style = "list"
-filters = "public"
-heading_level = 1
-merge_init_into_class = true
-separate_signature = true
-show_root_heading = true
-show_root_full_path = false
-show_signature_annotations = true
-show_source = true
-show_symbol_type_heading = true
-show_symbol_type_toc = true

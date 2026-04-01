@@ -28,4 +28,4 @@ def test_license(
     copyright_license: str,
 ) -> None:
     rendered = render_template(copyright_license=copyright_license)
-    assert (rendered / "README.md").read_text() == snapshot
+    assert (rendered / "LICENSE").read_text() == snapshot

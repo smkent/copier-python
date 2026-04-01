@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.2] - 2026-03-31
+
 ### Fixed
 
 * Add repository checkout action to GitHub release creation job
@@ -25,5 +27,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Initial release
 
 [Unreleased]: https://github.com/smkent/copier-python/compare/0.1.0...main/
+[0.1.2]: https://github.com/smkent/copier-python/compare/0.1.1...0.1.2
 [0.1.1]: https://github.com/smkent/copier-python/compare/0.1.0...0.1.1
 [0.1.0]: https://github.com/smkent/copier-python/releases/tag/0.1.0

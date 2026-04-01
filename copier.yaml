@@ -1,0 +1,178 @@
+_min_copier_version: '9'
+_preserve_symlinks: true
+_skip_if_exists:
+  - CHANGELOG.md
+_subdirectory: template
+
+_message_after_copy: |
+  {{ _copier_conf.dst_path }} is ready! Next steps:
+
+  1. Create GitHub repository:
+       https://github.com/new?owner={{ github_user }}&name={{ project_name }}
+
+  2. Initialize git and environment:
+       uv run poe init
+
+  3. Push:
+  {%- if project_visibility == 'private' %}
+       git remote add origin <repo-url>
+  {%- endif %}
+       git push -u origin main
+  {%- if project_visibility == 'public' %}
+
+  See MAINTAINING.md for GitHub repository configuration
+  and additional features setup
+  {%- endif %}
+
+_message_after_update: |
+  Template update applied. Before committing:
+
+    git diff         # review all changes
+    uv run poe lint  # verify code quality
+    uv run poe test  # verify tests pass
+
+project_name:
+  type: str
+  qmark: 📝
+  help: Project (repository) name
+  default: '{{ _folder_name }}'
+  validator: |
+    {%- if not project_name -%}
+      Required
+    {%- elif project_name | lower | regex_replace('^([a-z0-9]|[a-z0-9][a-z0-9._-]*[a-z0-9])$','') != '' -%}
+      Python package distribution name must only contain letters, numbers, or . - _
+    {%- endif -%}
+
+project_slug:
+  type: str
+  qmark: 🐍
+  default: "{{ project_name | title | lower | regex_replace('[^a-za-z0-9]','_') | regex_replace('_{2,}', '_') | trim('_') }}"
+  help: Python module import name (slug)
+  validator: |
+    {%- if not project_slug -%}
+      Required
+    {%- elif project_slug | lower | regex_replace('^[a-z_][a-z0-9_]*$','') != '' -%}
+      Python package import name must only contain letters, numbers, or underscores
+    {%- endif -%}
+
+project_description:
+  type: str
+  qmark: 💬
+  help: One-line project summary
+  validator: '{% if not project_description %}Required{% endif %}'
+
+project_type:
+  type: str
+  qmark: 🏗️
+  help: Project type
+  default: library
+  choices:
+    - application
+    - library
+
+project_visibility:
+  type: str
+  qmark: 🔒
+  help: Project visibility
+  default: public
+  choices:
+    - public
+    - private
+
+python_version_minimum:
+  type: str
+  qmark: 🐍
+  help: Minimum Python version
+  default: '3.10'
+  choices:
+    - '3.10'
+    - '3.11'
+    - '3.12'
+    - '3.13'
+    - '3.14'
+
+enable_coverage:
+  type: bool
+  qmark: 📊
+  help: Enable coverage.io reports?
+  default: "{{ project_visibility == 'public' }}"
+  when: "{{ project_visibility == 'public' }}"
+
+enable_pypi:
+  type: bool
+  qmark: 🚀
+  help: Enable package publishing to PyPI?
+  default: "{{ project_type == 'library' and project_visibility == 'public' }}"
+  when: "{{ project_visibility == 'public' }}"
+
+enable_container:
+  type: bool
+  qmark: 📦
+  help: Enable Docker container build and publishing to ghcr.io?
+  default: "{{ project_type == 'application' }}"
+
+enable_docs:
+  type: bool
+  qmark: 📕
+  help: Enable documentation site (Zensical with deployment to GitHub Pages)?
+  default: no
+
+user_name:
+  type: str
+  qmark: 🧑
+  help: Author's full name
+  default: '{{ user_name }}'
+  validator: '{% if not user_name %}Required{% endif %}'
+
+user_email:
+  type: str
+  qmark: ✉️
+  help: Author's email address
+  default: '{{ user_email }}'
+  validator: '{% if not user_email %}Required{% endif %}'
+
+github_user:
+  type: str
+  qmark: 👾
+  help: GitHub user or organization name
+  validator: '{% if not github_user %}Required{% endif %}'
+
+copyright_holder:
+  type: str
+  qmark: ©️
+  help: Copyright holder's full name
+  default: '{{ user_name }}'
+
+copyright_holder_email:
+  type: str
+  qmark: ✉️
+  help: Copyright holder's email address
+  default: '{{ user_email }}'
+
+copyright_year:
+  type: str
+  qmark: 📅
+  help: The copyright year (e.g. 2026)
+  validator: |
+    {%- if not copyright_year -%}
+      Required
+    {%- elif copyright_year | regex_replace('^[0-9]{4}$','') != '' -%}
+      Invalid year
+    {%- endif -%}
+
+copyright_license:
+  type: str
+  qmark: ⚖️
+  help: Project license
+  default: GPL-3.0
+  choices:
+    Apache License 2.0: Apache-2.0
+    BSD 3-Clause "New" or "Revised" License: BSD-3-Clause
+    Creative Commons Attribution 4.0 International: CC-BY-4.0
+    Creative Commons Attribution Share Alike 4.0 International: CC-BY-SA-4.0
+    Creative Commons Zero v1.0 Universal: CC0-1.0
+    GNU Affero General Public License v3.0: AGPL-3.0
+    GNU General Public License v3.0 only: GPL-3.0
+    GNU Lesser General Public License v3.0 only: LGPL-3.0
+    ISC License: ISC
+    MIT License: MIT

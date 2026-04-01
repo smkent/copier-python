@@ -1,0 +1,68 @@
+# serializer version: 1
+# name: test_maintaining_features[docs]
+  '''
+  # Contributing to PKFire
+  
+  ## Development setup
+  
+  ### Prerequisites
+  
+  - [Astral's **uv** Python project manager][uv]
+  - [`poethepoet`][poe] task runner: `uv tool install poethepoet`
+  
+  ### Project setup
+  
+  ```sh
+  git clone https://github.com/ness/PKFire
+  cd PKFire
+  uv sync
+  uv run poe setup  # Enables pre-commit hooks
+  ```
+  
+  ## Common tasks
+  
+  | Command | Description |
+  |---|---|
+  | `poe docs` | Run documentation server locally |
+  | `poe lint` | Run all formatters and static checks |
+  | `poe lt` | Run all formatters, static checks and tests (`lint` and `test`) |
+  | `poe test` | Run tests |
+  
+  [poe]: https://poethepoet.naln1.net/
+  [uv]: https://docs.astral.sh/uv/
+  
+  '''
+# ---
+# name: test_maintaining_features[no_docs]
+  '''
+  # Contributing to PKFire
+  
+  ## Development setup
+  
+  ### Prerequisites
+  
+  - [Astral's **uv** Python project manager][uv]
+  - [`poethepoet`][poe] task runner: `uv tool install poethepoet`
+  
+  ### Project setup
+  
+  ```sh
+  git clone https://github.com/ness/PKFire
+  cd PKFire
+  uv sync
+  uv run poe setup  # Enables pre-commit hooks
+  ```
+  
+  ## Common tasks
+  
+  | Command | Description |
+  |---|---|
+  | `poe lint` | Run all formatters and static checks |
+  | `poe lt` | Run all formatters, static checks and tests (`lint` and `test`) |
+  | `poe test` | Run tests |
+  
+  [poe]: https://poethepoet.naln1.net/
+  [uv]: https://docs.astral.sh/uv/
+  
+  '''
+# ---

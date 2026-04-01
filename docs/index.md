@@ -1,0 +1,5 @@
+---
+icon: lucide/book-open
+---
+
+--8<-- "README.md"

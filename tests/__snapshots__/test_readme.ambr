@@ -1,0 +1,137 @@
+# serializer version: 1
+# name: test_readme_features[no_pypi-coverage]
+  '''
+  # PKFire
+  
+  Onett Little League
+  
+  [![License](https://img.shields.io/github/license/ness/PKFire)](LICENSE)
+  [![CI](https://github.com/ness/PKFire/actions/workflows/ci.yml/badge.svg)](https://github.com/ness/PKFire/actions/workflows/ci.yml)
+  [![Coverage](https://codecov.io/gh/ness/PKFire/branch/main/graph/badge.svg)](https://codecov.io/gh/ness/PKFire)
+  [![Renovate](https://img.shields.io/badge/renovate-enabled-brightgreen?logo=renovatebot)](https://renovatebot.com)
+  [![GitHub stars](https://img.shields.io/github/stars/ness/PKFire?style=social)](https://github.com/ness/PKFire)
+  
+  '''
+# ---
+# name: test_readme_features[no_pypi-no_coverage]
+  '''
+  # PKFire
+  
+  Onett Little League
+  
+  [![License](https://img.shields.io/github/license/ness/PKFire)](LICENSE)
+  [![CI](https://github.com/ness/PKFire/actions/workflows/ci.yml/badge.svg)](https://github.com/ness/PKFire/actions/workflows/ci.yml)
+  [![Renovate](https://img.shields.io/badge/renovate-enabled-brightgreen?logo=renovatebot)](https://renovatebot.com)
+  [![GitHub stars](https://img.shields.io/github/stars/ness/PKFire?style=social)](https://github.com/ness/PKFire)
+  
+  '''
+# ---
+# name: test_readme_features[pypi-coverage]
+  '''
+  # PKFire
+  
+  Onett Little League
+  
+  [![License](https://img.shields.io/github/license/ness/PKFire)](LICENSE)
+  [![PyPI](https://img.shields.io/pypi/v/PKFire)](https://pypi.org/project/PKFire/)
+  [![Python](https://img.shields.io/pypi/pyversions/PKFire)](https://pypi.org/project/PKFire/)
+  [![CI](https://github.com/ness/PKFire/actions/workflows/ci.yml/badge.svg)](https://github.com/ness/PKFire/actions/workflows/ci.yml)
+  [![Coverage](https://codecov.io/gh/ness/PKFire/branch/main/graph/badge.svg)](https://codecov.io/gh/ness/PKFire)
+  [![Renovate](https://img.shields.io/badge/renovate-enabled-brightgreen?logo=renovatebot)](https://renovatebot.com)
+  [![GitHub stars](https://img.shields.io/github/stars/ness/PKFire?style=social)](https://github.com/ness/PKFire)
+  
+  ## Installation
+  
+  ```sh
+  pip install PKFire
+  ```
+  
+  '''
+# ---
+# name: test_readme_features[pypi-no_coverage]
+  '''
+  # PKFire
+  
+  Onett Little League
+  
+  [![License](https://img.shields.io/github/license/ness/PKFire)](LICENSE)
+  [![PyPI](https://img.shields.io/pypi/v/PKFire)](https://pypi.org/project/PKFire/)
+  [![Python](https://img.shields.io/pypi/pyversions/PKFire)](https://pypi.org/project/PKFire/)
+  [![CI](https://github.com/ness/PKFire/actions/workflows/ci.yml/badge.svg)](https://github.com/ness/PKFire/actions/workflows/ci.yml)
+  [![Renovate](https://img.shields.io/badge/renovate-enabled-brightgreen?logo=renovatebot)](https://renovatebot.com)
+  [![GitHub stars](https://img.shields.io/github/stars/ness/PKFire?style=social)](https://github.com/ness/PKFire)
+  
+  ## Installation
+  
+  ```sh
+  pip install PKFire
+  ```
+  
+  '''
+# ---
+# name: test_readme_project_type[application]
+  '''
+  # PKFire
+  
+  Onett Little League
+  
+  [![License](https://img.shields.io/github/license/ness/PKFire)](LICENSE)
+  [![CI](https://github.com/ness/PKFire/actions/workflows/ci.yml/badge.svg)](https://github.com/ness/PKFire/actions/workflows/ci.yml)
+  [![Coverage](https://codecov.io/gh/ness/PKFire/branch/main/graph/badge.svg)](https://codecov.io/gh/ness/PKFire)
+  [![Renovate](https://img.shields.io/badge/renovate-enabled-brightgreen?logo=renovatebot)](https://renovatebot.com)
+  [![GitHub stars](https://img.shields.io/github/stars/ness/PKFire?style=social)](https://github.com/ness/PKFire)
+  
+  '''
+# ---
+# name: test_readme_project_type[library]
+  '''
+  # PKFire
+  
+  Onett Little League
+  
+  [![License](https://img.shields.io/github/license/ness/PKFire)](LICENSE)
+  [![PyPI](https://img.shields.io/pypi/v/PKFire)](https://pypi.org/project/PKFire/)
+  [![Python](https://img.shields.io/pypi/pyversions/PKFire)](https://pypi.org/project/PKFire/)
+  [![CI](https://github.com/ness/PKFire/actions/workflows/ci.yml/badge.svg)](https://github.com/ness/PKFire/actions/workflows/ci.yml)
+  [![Coverage](https://codecov.io/gh/ness/PKFire/branch/main/graph/badge.svg)](https://codecov.io/gh/ness/PKFire)
+  [![Renovate](https://img.shields.io/badge/renovate-enabled-brightgreen?logo=renovatebot)](https://renovatebot.com)
+  [![GitHub stars](https://img.shields.io/github/stars/ness/PKFire?style=social)](https://github.com/ness/PKFire)
+  
+  ## Installation
+  
+  ```sh
+  pip install PKFire
+  ```
+  
+  '''
+# ---
+# name: test_readme_project_visibility[private]
+  '''
+  # PKFire
+  
+  Onett Little League
+  
+  '''
+# ---
+# name: test_readme_project_visibility[public]
+  '''
+  # PKFire
+  
+  Onett Little League
+  
+  [![License](https://img.shields.io/github/license/ness/PKFire)](LICENSE)
+  [![PyPI](https://img.shields.io/pypi/v/PKFire)](https://pypi.org/project/PKFire/)
+  [![Python](https://img.shields.io/pypi/pyversions/PKFire)](https://pypi.org/project/PKFire/)
+  [![CI](https://github.com/ness/PKFire/actions/workflows/ci.yml/badge.svg)](https://github.com/ness/PKFire/actions/workflows/ci.yml)
+  [![Coverage](https://codecov.io/gh/ness/PKFire/branch/main/graph/badge.svg)](https://codecov.io/gh/ness/PKFire)
+  [![Renovate](https://img.shields.io/badge/renovate-enabled-brightgreen?logo=renovatebot)](https://renovatebot.com)
+  [![GitHub stars](https://img.shields.io/github/stars/ness/PKFire?style=social)](https://github.com/ness/PKFire)
+  
+  ## Installation
+  
+  ```sh
+  pip install PKFire
+  ```
+  
+  '''
+# ---

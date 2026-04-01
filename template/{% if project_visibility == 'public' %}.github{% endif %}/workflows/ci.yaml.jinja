@@ -1,0 +1,98 @@
+{%- import "includes/python.jinja" as py with context -%}
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+concurrency:
+  group: {% raw %}${{ github.workflow }}-${{ github.ref }}{% endraw %}
+  cancel-in-progress: {% raw %}${{ github.event_name == 'pull_request' }}{% endraw %}
+
+jobs:
+  ci:
+    name: {% raw %}Test (Python ${{ matrix.python-version }}){% endraw %}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version:
+{%- call(loop, v) py.for_each_version() %}
+          - '{{ v }}'
+{%- endcall %}
+    steps:
+      - name: 💾 Check out repository
+        uses: actions/checkout@v4
+
+      - name: 🪪 Configure git identity for tests
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: 🦀 Set up Python project with uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+          python-version: {% raw %}${{ matrix.python-version }}{% endraw %}
+
+      - name: 🐍 Install dependencies
+        run: uv sync
+
+      - name: 📐 Lint
+        run: uv run poe lint
+
+      - name: 🔥 Test
+        run: uv run poe test
+{%- if enable_coverage %}
+
+      - name: 🔍 Collect coverage results
+        run: uv run coverage xml
+        if: {% raw %}${{ matrix.python-version == '{% endraw %}{{ py.latest() }}{% raw %}' }}{% endraw %}
+
+      - name: 📊 Upload coverage to Codecov
+        uses: codecov/codecov-action@v6
+        if: {% raw %}${{ matrix.python-version == '{% endraw %}{{ py.latest() }}{% raw %}' }}{% endraw %}
+        with:
+          fail_ci_if_error: true
+{%- endif %}
+{% if enable_docs %}
+  docs:
+    name: Documentation
+    runs-on: ubuntu-latest
+    steps:
+      - name: 💾 Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🦀 Set up Python project with uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+          python-version: '{{ py.latest() }}'
+
+      - name: 🐍 Install dependencies
+        run: uv sync
+
+      - name: 📖 Build documentation
+        run: uv run poe docs-build
+{%- endif %}
+
+  gitleaks:
+    name: Secret scan
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: 💾 Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🔍 Check for secrets
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}
+{#- vim: set ft=yaml: #}

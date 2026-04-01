@@ -51,5 +51,5 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: 🚀 Deploy site
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
         id: deployment

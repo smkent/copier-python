@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/github/license/smkent/copier-python)](LICENSE)
 [![PyPI](https://img.shields.io/pypi/v/copier-python)](https://pypi.org/project/copier-python/)
 [![Python](https://img.shields.io/pypi/pyversions/copier-python)](https://pypi.org/project/copier-python/)
-[![CI](https://github.com/smkent/copier-python/actions/workflows/ci.yml/badge.svg)](https://github.com/smkent/copier-python/actions/workflows/ci.yml)
+[![CI](https://github.com/smkent/copier-python/actions/workflows/ci.yaml/badge.svg)](https://github.com/smkent/copier-python/actions/workflows/ci.yaml)
 [![Coverage](https://codecov.io/gh/smkent/copier-python/branch/main/graph/badge.svg)](https://codecov.io/gh/smkent/copier-python)
 [![Renovate](https://img.shields.io/badge/renovate-enabled-brightgreen?logo=renovatebot)](https://renovatebot.com)
 [![GitHub stars](https://img.shields.io/github/stars/smkent/copier-python?style=social)](https://github.com/smkent/copier-python)

@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+* Move GitHub release creation to a separate job for build artifact availability
+
 ## [0.1.0] - 2026-03-31
 
 ### Added

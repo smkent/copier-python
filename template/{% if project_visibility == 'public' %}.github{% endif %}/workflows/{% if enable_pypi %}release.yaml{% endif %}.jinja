@@ -41,7 +41,6 @@ jobs:
     permissions:
       id-token: write
       attestations: write
-      contents: write
     steps:
       - name: 🔽 Download artifact
         uses: actions/download-artifact@v4
@@ -54,8 +53,21 @@ jobs:
         with:
           attestations: true
 
+  release:
+    name: Create GitHub release
+    needs: publish
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: 🔽 Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
       - name: 🏷️ Create GitHub release
-        run: gh release create ${{ '{{' }} github.ref_name {{ '}}' }} dist/* --generate-notes
+        run: gh release create {% raw %}${{ github.ref_name }}{% endraw %} dist/* --generate-notes
         env:
-          GH_TOKEN: ${{ '{{' }} secrets.GITHUB_TOKEN {{ '}}' }}
+          GH_TOKEN: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}
 {#- vim: set ft=yaml: #}

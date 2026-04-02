@@ -115,7 +115,7 @@ enable_docs:
   type: bool
   qmark: 📕
   help: Enable documentation site (Zensical with deployment to GitHub Pages)?
-  default: no
+  default: yes
 
 user_name:
   type: str

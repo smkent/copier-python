@@ -214,5 +214,5 @@ output-format = "concise"
 default-groups = ["dev", "docs"]
 
 [tool.uv-dynamic-versioning]
-pattern = "default-unprefixed"
+pattern = "default"
 fallback-version = "0.0.0"

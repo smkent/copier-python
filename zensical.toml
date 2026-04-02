@@ -10,7 +10,6 @@ copyright = "&copy; 2026 Stephen Kent"
 nav = [
   { "Home" = [
     { "Overview" = "index.md" },
-    { "Changelog" = "changelog.md" },
     { "License" = "license.md" },
   ] },
   { "Development" = [

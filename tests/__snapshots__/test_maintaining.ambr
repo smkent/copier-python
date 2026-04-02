@@ -41,15 +41,15 @@
   
   ## Releasing
   
-  1. Update `CHANGELOG.md`: move items from `[Unreleased]` into a new version
-     section and update the comparison link at the bottom
-  2. Commit and tag:
-     ```sh
-     git tag X.Y.Z
-     git push --tags
-     ```
+  Create and push a tag:
+  
+  ```sh
+  git tag vX.Y.Z
+  git push --tags
+  ```
   
   [renovate]: https://github.com/apps/renovate
+  [repo-releases]: https://github.com/ness/PKFire/releases
   [repo-settings]: https://github.com/ness/PKFire/settings
   [repo-settings-actions-general]: https://github.com/ness/PKFire/settings/actions
   [repo-settings-branches]: https://github.com/ness/PKFire/settings/branches
@@ -102,7 +102,7 @@
      [Settings → Environments][repo-settings-envs] → New environment → `pypi`
   3. Publish a release by pushing a tag:
      ```sh
-     git tag 0.1.0  # or your desired first version number
+     git tag v0.1.0  # or your desired first version number
      git push --tags
      ```
   
@@ -119,17 +119,17 @@
   
   ## Releasing
   
-  1. Update `CHANGELOG.md`: move items from `[Unreleased]` into a new version
-     section and update the comparison link at the bottom
-  2. Commit and tag:
-     ```sh
-     git tag X.Y.Z
-     git push --tags
-     ```
+  Create and push a tag:
+  
+  ```sh
+  git tag vX.Y.Z
+  git push --tags
+  ```
   
   [pypi-publishing-settings]: https://pypi.org/manage/account/publishing/
   [pypi-trusted-publishing]: https://docs.pypi.org/trusted-publishers/
   [renovate]: https://github.com/apps/renovate
+  [repo-releases]: https://github.com/ness/PKFire/releases
   [repo-settings]: https://github.com/ness/PKFire/settings
   [repo-settings-actions-general]: https://github.com/ness/PKFire/settings/actions
   [repo-settings-envs]: https://github.com/ness/PKFire/settings/environments
@@ -173,15 +173,15 @@
   
   ## Releasing
   
-  1. Update `CHANGELOG.md`: move items from `[Unreleased]` into a new version
-     section and update the comparison link at the bottom
-  2. Commit and tag:
-     ```sh
-     git tag X.Y.Z
-     git push --tags
-     ```
+  Create and push a tag:
+  
+  ```sh
+  git tag vX.Y.Z
+  git push --tags
+  ```
   
   [renovate]: https://github.com/apps/renovate
+  [repo-releases]: https://github.com/ness/PKFire/releases
   [repo-settings]: https://github.com/ness/PKFire/settings
   [repo-settings-branches]: https://github.com/ness/PKFire/settings/branches
   [repo-settings-pages]: https://github.com/ness/PKFire/settings/pages
@@ -233,7 +233,7 @@
      [Settings → Environments][repo-settings-envs] → New environment → `pypi`
   3. Publish a release by pushing a tag:
      ```sh
-     git tag 0.1.0  # or your desired first version number
+     git tag v0.1.0  # or your desired first version number
      git push --tags
      ```
   
@@ -243,17 +243,17 @@
   
   ## Releasing
   
-  1. Update `CHANGELOG.md`: move items from `[Unreleased]` into a new version
-     section and update the comparison link at the bottom
-  2. Commit and tag:
-     ```sh
-     git tag X.Y.Z
-     git push --tags
-     ```
+  Create and push a tag:
+  
+  ```sh
+  git tag vX.Y.Z
+  git push --tags
+  ```
   
   [pypi-publishing-settings]: https://pypi.org/manage/account/publishing/
   [pypi-trusted-publishing]: https://docs.pypi.org/trusted-publishers/
   [renovate]: https://github.com/apps/renovate
+  [repo-releases]: https://github.com/ness/PKFire/releases
   [repo-settings]: https://github.com/ness/PKFire/settings
   [repo-settings-envs]: https://github.com/ness/PKFire/settings/environments
   [repo-settings-branches]: https://github.com/ness/PKFire/settings/branches
@@ -299,15 +299,15 @@
   
   ## Releasing
   
-  1. Update `CHANGELOG.md`: move items from `[Unreleased]` into a new version
-     section and update the comparison link at the bottom
-  2. Commit and tag:
-     ```sh
-     git tag X.Y.Z
-     git push --tags
-     ```
+  Create and push a tag:
+  
+  ```sh
+  git tag vX.Y.Z
+  git push --tags
+  ```
   
   [renovate]: https://github.com/apps/renovate
+  [repo-releases]: https://github.com/ness/PKFire/releases
   [repo-settings]: https://github.com/ness/PKFire/settings
   [repo-settings-actions-general]: https://github.com/ness/PKFire/settings/actions
   [repo-settings-branches]: https://github.com/ness/PKFire/settings/branches
@@ -359,7 +359,7 @@
      [Settings → Environments][repo-settings-envs] → New environment → `pypi`
   3. Publish a release by pushing a tag:
      ```sh
-     git tag 0.1.0  # or your desired first version number
+     git tag v0.1.0  # or your desired first version number
      git push --tags
      ```
   
@@ -372,17 +372,17 @@
   
   ## Releasing
   
-  1. Update `CHANGELOG.md`: move items from `[Unreleased]` into a new version
-     section and update the comparison link at the bottom
-  2. Commit and tag:
-     ```sh
-     git tag X.Y.Z
-     git push --tags
-     ```
+  Create and push a tag:
+  
+  ```sh
+  git tag vX.Y.Z
+  git push --tags
+  ```
   
   [pypi-publishing-settings]: https://pypi.org/manage/account/publishing/
   [pypi-trusted-publishing]: https://docs.pypi.org/trusted-publishers/
   [renovate]: https://github.com/apps/renovate
+  [repo-releases]: https://github.com/ness/PKFire/releases
   [repo-settings]: https://github.com/ness/PKFire/settings
   [repo-settings-actions-general]: https://github.com/ness/PKFire/settings/actions
   [repo-settings-envs]: https://github.com/ness/PKFire/settings/environments
@@ -421,15 +421,15 @@
   
   ## Releasing
   
-  1. Update `CHANGELOG.md`: move items from `[Unreleased]` into a new version
-     section and update the comparison link at the bottom
-  2. Commit and tag:
-     ```sh
-     git tag X.Y.Z
-     git push --tags
-     ```
+  Create and push a tag:
+  
+  ```sh
+  git tag vX.Y.Z
+  git push --tags
+  ```
   
   [renovate]: https://github.com/apps/renovate
+  [repo-releases]: https://github.com/ness/PKFire/releases
   [repo-settings]: https://github.com/ness/PKFire/settings
   [repo-settings-branches]: https://github.com/ness/PKFire/settings/branches
   
@@ -480,23 +480,23 @@
      [Settings → Environments][repo-settings-envs] → New environment → `pypi`
   3. Publish a release by pushing a tag:
      ```sh
-     git tag 0.1.0  # or your desired first version number
+     git tag v0.1.0  # or your desired first version number
      git push --tags
      ```
   
   ## Releasing
   
-  1. Update `CHANGELOG.md`: move items from `[Unreleased]` into a new version
-     section and update the comparison link at the bottom
-  2. Commit and tag:
-     ```sh
-     git tag X.Y.Z
-     git push --tags
-     ```
+  Create and push a tag:
+  
+  ```sh
+  git tag vX.Y.Z
+  git push --tags
+  ```
   
   [pypi-publishing-settings]: https://pypi.org/manage/account/publishing/
   [pypi-trusted-publishing]: https://docs.pypi.org/trusted-publishers/
   [renovate]: https://github.com/apps/renovate
+  [repo-releases]: https://github.com/ness/PKFire/releases
   [repo-settings]: https://github.com/ness/PKFire/settings
   [repo-settings-envs]: https://github.com/ness/PKFire/settings/environments
   [repo-settings-branches]: https://github.com/ness/PKFire/settings/branches

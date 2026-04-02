@@ -51,17 +51,17 @@ need to be stored as secrets.
 
 ## Releasing
 
-1. Update `CHANGELOG.md`: move items from `[Unreleased]` into a new version
-   section and update the comparison link at the bottom
-2. Commit and tag:
-   ```sh
-   git tag X.Y.Z
-   git push --tags
-   ```
+Create and push a tag:
+
+```sh
+git tag X.Y.Z
+git push --tags
+```
 
 [pypi-publishing-settings]: https://pypi.org/manage/account/publishing/
 [pypi-trusted-publishing]: https://docs.pypi.org/trusted-publishers/
 [renovate]: https://github.com/apps/renovate
+[repo-releases]: https://github.com/smkent/copier-python/releases
 [repo-settings]: https://github.com/smkent/copier-python/settings
 [repo-settings-envs]: https://github.com/smkent/copier-python/settings/environments
 [repo-settings-branches]: https://github.com/smkent/copier-python/settings/branches

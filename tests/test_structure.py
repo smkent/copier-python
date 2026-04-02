@@ -18,7 +18,6 @@ import pytest
                 "zensical.toml",
                 "README.md",
                 "CONTRIBUTING.md",
-                "CHANGELOG.md",
                 "LICENSE",
                 ".gitignore",
                 ".pre-commit-config.yaml",

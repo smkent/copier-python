@@ -102,7 +102,7 @@ enable_pypi:
   type: bool
   qmark: 🚀
   help: Enable package publishing to PyPI?
-  default: "{{ project_type == 'library' and project_visibility == 'public' }}"
+  default: "{{ project_visibility == 'public' }}"
   when: "{{ project_visibility == 'public' }}"
 
 enable_container:

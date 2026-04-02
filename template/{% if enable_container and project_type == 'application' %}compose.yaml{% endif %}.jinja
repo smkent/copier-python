@@ -1,5 +1,9 @@
 services:
   {{ project_name }}:
+{%- if project_visibility == 'public' %}
     image: ghcr.io/{{ github_user }}/{{ project_name }}:latest
+{%- else %}
+    build: .
+{%- endif %}
     restart: unless-stopped
 {#- vim: set ft=yaml: #}

@@ -2,9 +2,11 @@
 site_name = "{{ project_name }}"
 site_description = "{{ project_description }}"
 site_author = "{{ user_name }}"
+{%- if project_visibility == 'public' %}
 site_url = "https://{{ github_user }}.github.io/{{ project_name }}"
 repo_url = "https://github.com/{{ github_user }}/{{ project_name }}"
 repo_name = "{{ github_user }}/{{ project_name }}"
+{%- endif %}
 copyright = "&copy; {{ copyright_year }} {{ copyright_holder }}"
 
 nav = [
@@ -63,6 +65,7 @@ primary = "black"
 accent = "lime"
 toggle.icon = "material/weather-night"
 toggle.name = "Switch to system preference"
+{%- if project_visibility == 'public' %}
 
 [[project.extra.social]]
 icon = "fontawesome/brands/github"
@@ -72,6 +75,7 @@ link = "https://github.com/{{ github_user }}"
 [[project.extra.social]]
 icon = "fontawesome/brands/python"
 link = "https://pypi.org/project/{{ project_name }}/"
+{%- endif %}
 {%- endif %}
 
 # ----------------------------------------------------------------------------

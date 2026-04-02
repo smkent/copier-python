@@ -108,13 +108,13 @@ enable_pypi:
 enable_container:
   type: bool
   qmark: 📦
-  help: Enable Docker container build and publishing to ghcr.io?
+  help: Enable Docker container{% if project_visibility == 'public' %} build and publishing to ghcr.io{% endif %}?
   default: "{{ project_type == 'application' }}"
 
 enable_docs:
   type: bool
   qmark: 📕
-  help: Enable documentation site (Zensical with deployment to GitHub Pages)?
+  help: Enable documentation site (Zensical{% if project_visibility == 'public' %} with deployment to GitHub Pages{% endif %})?
   default: yes
 
 user_name:
@@ -133,6 +133,7 @@ github_user:
   type: str
   qmark: 👾
   help: GitHub user or organization name
+  when: "{{ project_visibility == 'public' }}"
   validator: '{% if not github_user %}Required{% endif %}'
 
 copyright_holder:

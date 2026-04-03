@@ -12,8 +12,7 @@
 ```sh
 git clone https://github.com/smkent/copier-python
 cd copier-python
-uv sync
-uv run poe setup  # Enables pre-commit hooks
+uv run poe setup  # Enables git hooks
 ```
 
 ## Common tasks

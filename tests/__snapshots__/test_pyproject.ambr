@@ -36,7 +36,6 @@
   
   [dependency-groups]
   dev = [
-      "copier>=9",
       "poethepoet>=0.42",
       "prek>=0.3",
       "pytest>=9.0",
@@ -250,7 +249,6 @@
   
   [dependency-groups]
   dev = [
-      "copier>=9",
       "poethepoet>=0.42",
       "prek>=0.3",
       "pysentry-rs>=0.4",
@@ -462,7 +460,6 @@
   
   [dependency-groups]
   dev = [
-      "copier>=9",
       "poethepoet>=0.42",
       "prek>=0.3",
       "pytest>=9.0",
@@ -652,7 +649,6 @@
   
   [dependency-groups]
   dev = [
-      "copier>=9",
       "poethepoet>=0.42",
       "prek>=0.3",
       "pysentry-rs>=0.4",
@@ -848,7 +844,6 @@
   
   [dependency-groups]
   dev = [
-      "copier>=9",
       "poethepoet>=0.42",
       "prek>=0.3",
       "pytest>=9.0",
@@ -1037,7 +1032,6 @@
   
   [dependency-groups]
   dev = [
-      "copier>=9",
       "poethepoet>=0.42",
       "prek>=0.3",
       "pysentry-rs>=0.4",
@@ -1224,7 +1218,6 @@
   
   [dependency-groups]
   dev = [
-      "copier>=9",
       "poethepoet>=0.42",
       "prek>=0.3",
       "pytest>=9.0",
@@ -1389,7 +1382,6 @@
   
   [dependency-groups]
   dev = [
-      "copier>=9",
       "poethepoet>=0.42",
       "prek>=0.3",
       "pysentry-rs>=0.4",

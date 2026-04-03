@@ -32,7 +32,11 @@ dependencies = []
 {%- if project_visibility == 'public' %}
 
 [project.urls]
+{%- if enable_docs %}
+Homepage = "https://{{ github_user }}.github.io/{{ project_name }}"
+{%- else %}
 Homepage = "https://github.com/{{ github_user }}/{{ project_name }}"
+{%- endif %}
 Repository = "https://github.com/{{ github_user }}/{{ project_name }}"
 Issues = "https://github.com/{{ github_user }}/{{ project_name }}/issues"
 {%- endif %}

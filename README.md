@@ -2,29 +2,77 @@
 
 [Copier][copier] template for Python projects with modern tooling
 
-[![Copier](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/copier-org/copier/master/img/badge/badge-grayscale-inverted-border-purple.json)][copier]
-[![License](https://img.shields.io/github/license/smkent/copier-python)](LICENSE)
+[![Copier][copier-badge]][copier]
+[![License](https://img.shields.io/github/license/smkent/copier-python)](https://github.com/smkent/copier-python/blob/main/LICENSE)
 [![PyPI](https://img.shields.io/pypi/v/copier-python)](https://pypi.org/project/copier-python/)
 [![Python](https://img.shields.io/pypi/pyversions/copier-python)](https://pypi.org/project/copier-python/)
 [![GitHub stars](https://img.shields.io/github/stars/smkent/copier-python?style=social)](https://github.com/smkent/copier-python)
 
-## Prerequisites
+## Quick start
 
-- [Astral's **uv** Python project manager][uv]
-- [Copier][copier]: `uv tool install copier`
-
-## Usage
+With [Astral's **uv**][uv] and [**Copier**][copier] (`uv tool install copier`)
+installed:
 
 ```sh
 copier copy "gh:smkent/copier-python" /new/project/path
 ```
+
+**[For more details, see the documentation!][docs-usage]**
+
+## Features
+
+* [Astral][astral] toolset: [**uv**][uv], [**ruff**][ruff], and [**ty**][ty]
+
+    [![uv][uv-badge]][uv]
+    [![ruff][ruff-badge]][ruff]
+    [![ty][ty-badge]][ty]
+
+* [**prek**][prek] for [pre-commit][pre-commit] compatible git hooks
+
+    [![prek][prek-badge]][prek]
+
+* Update automation with [**Renovate**][renovate] and
+  [**`copier update`**][copier-update]
+
+    [![Copier][copier-badge]][copier-update]
+    [![renovate][renovate-badge]][renovate]
+
+* [**PyPI package**][pypi] and [**container image**][ghcr-docs] release
+  automation via [**GitHub Actions**][github-actions]
+* [**pytest**][pytest] test framework with [**codecov.io**][codecovio] support
+* [**Zensical**][zensical] project documentation with automatic deployment to
+  [**GitHub Pages**][github-pages]
+* [**Poe the Poet**][poethepoet] for task shortcuts such as
+   `poe lint`, `poe test`
 
 ## Credits
 
 This template was inspired by [pawamoy/copier-uv][copier-uv] and
 [ritwiktiwari/copier-astral][copier-astral] -- Thanks!
 
+[astral]: https://astral.sh
+[codecovio]: https://codecov.io
+[copier-astral]: https://ritwiktiwari.github.io/copier-astral/
+[copier-badge]: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/copier-org/copier/master/img/badge/badge-grayscale-inverted-border-purple.json
+[copier-update]: https://copier.readthedocs.io/en/stable/updating/
+[copier-uv]: https://pawamoy.github.io/copier-uv/
 [copier]: https://copier.readthedocs.io
-[copier-uv]: https://github.com/pawamoy/copier-uv
-[copier-astral]: https://github.com/ritwiktiwari/copier-astral
+[docs-usage]: https://smkent.github.io/copier-python/prerequisites/
+[ghcr-docs]: https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry
+[github-actions]: https://github.com/features/actions
+[github-pages]: https://pages.github.com
+[poethepoet]: https://poethepoet.natn.io/
+[pre-commit]: https://pre-commit.com/
+[prek-badge]: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/j178/prek/master/docs/assets/badge-v0.json
+[prek]: https://prek.j178.dev/
+[pypi]: https://pypi.org
+[pytest]: https://docs.pytest.org
+[renovate-badge]: https://img.shields.io/badge/renovate-enabled-brightgreen.svg?logo=renovatebot
+[renovate]: https://docs.renovatebot.com/
+[ruff-badge]: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json
+[ruff]: https://docs.astral.sh/ruff/
+[ty-badge]: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ty/main/assets/badge/v0.json
+[ty]: https://docs.astral.sh/ty/
+[uv-badge]: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json
 [uv]: https://docs.astral.sh/uv/
+[zensical]: https://zensical.org/

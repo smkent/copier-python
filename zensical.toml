@@ -8,9 +8,16 @@ repo_name = "smkent/copier-python"
 copyright = "&copy; 2026 Stephen Kent"
 
 nav = [
-  { "Home" = [
+  { "About" = [
     { "Overview" = "index.md" },
     { "License" = "license.md" },
+    { "Usage" = [
+      { "Prerequisites" = "prerequisites.md" },
+      { "Creating a project" = "project-creation.md" },
+      { "Preparing features" = "project-features.md" },
+      { "Development workflow" = "project-development.md" },
+      { "Template updates" = "project-updates.md" },
+    ] },
   ] },
   { "Development" = [
     { "Contributing" = "contributing.md" },
@@ -65,7 +72,7 @@ toggle.name = "Switch to system preference"
 
 [[project.extra.social]]
 icon = "fontawesome/brands/github"
-link = "https://github.com/smkent"
+link = "https://github.com/smkent/copier-python"
 
 [[project.extra.social]]
 icon = "fontawesome/brands/python"

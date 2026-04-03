@@ -20,8 +20,12 @@ _message_after_copy: |
        git push -u origin main
   {%- if project_visibility == 'public' %}
 
-  See MAINTAINING.md for GitHub repository configuration
-  and additional features setup
+  For GitHub repository configuration and additional features setup,
+  either see MAINTAINING.md, or run the documentation site locally:
+
+       uv run poe docs
+
+  Then, see First Time Setup at: http://localhost:8000/{{ project_name }}/maintaining/
   {%- endif %}
 
 _message_after_update: |

@@ -32,7 +32,7 @@ keywords = []
 dependencies = []
 
 [project.urls]
-Homepage = "https://github.com/smkent/copier-python"
+Homepage = "https://smkent.github.io/copier-python"
 Repository = "https://github.com/smkent/copier-python"
 Issues = "https://github.com/smkent/copier-python/issues"
 

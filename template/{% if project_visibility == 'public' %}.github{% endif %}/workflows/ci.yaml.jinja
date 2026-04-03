@@ -8,7 +8,7 @@ on:
   pull_request:
 
 concurrency:
-  group: {% raw %}${{ github.workflow }}-${{ github.ref }}{% endraw %}
+  group: {% raw %}${{ github.workflow }}-${{ github.head_ref || github.ref }}{% endraw %}
   cancel-in-progress: {% raw %}${{ github.event_name == 'pull_request' }}{% endraw %}
 
 jobs:

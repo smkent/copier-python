@@ -11,8 +11,7 @@ Run `poe setup` in new repository clones to enable git hooks:
 ```sh
 git clone https://github.com/<github_user>/<project_name>
 cd project_name
-uv sync
-uv run poe setup  # Enables pre-commit hooks
+uv run poe setup  # Enables git hooks
 ```
 
 ## Common tasks

@@ -15,8 +15,7 @@
   ```sh
   git clone https://github.com/ness/PKFire
   cd PKFire
-  uv sync
-  uv run poe setup  # Enables pre-commit hooks
+  uv run poe setup  # Enables git hooks
   ```
   
   ## Common tasks
@@ -49,8 +48,7 @@
   ```sh
   git clone https://github.com/ness/PKFire
   cd PKFire
-  uv sync
-  uv run poe setup  # Enables pre-commit hooks
+  uv run poe setup  # Enables git hooks
   ```
   
   ## Common tasks

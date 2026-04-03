@@ -242,7 +242,7 @@
   dependencies = []
   
   [project.urls]
-  Homepage = "https://github.com/ness/PKFire"
+  Homepage = "https://ness.github.io/PKFire"
   Repository = "https://github.com/ness/PKFire"
   Issues = "https://github.com/ness/PKFire/issues"
   
@@ -640,7 +640,7 @@
   dependencies = []
   
   [project.urls]
-  Homepage = "https://github.com/ness/PKFire"
+  Homepage = "https://ness.github.io/PKFire"
   Repository = "https://github.com/ness/PKFire"
   Issues = "https://github.com/ness/PKFire/issues"
   

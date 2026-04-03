@@ -4,7 +4,7 @@
 
 These steps only need to be completed once after the project is first created.
 
-### GitHub Repository
+### GitHub repository
 
 [Settings → General][repo-settings]:
 

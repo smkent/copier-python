@@ -1,8 +1,9 @@
 """Copier template for Python projects with modern tooling."""
 
-from importlib.metadata import PackageNotFoundError, version
+from importlib.metadata import PackageNotFoundError
+from importlib.metadata import version as import_version
 
 try:
-    __version__ = version(__name__)
+    version = import_version(__name__)
 except PackageNotFoundError:  # pragma: no cover
-    __version__ = "0.0.0"
+    version = "0.0.0"

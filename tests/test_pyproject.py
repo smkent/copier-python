@@ -1,4 +1,4 @@
-"""Snapshot tests for project.toml template."""
+"""Snapshot tests for pyproject.toml template."""
 
 from collections.abc import Callable
 from pathlib import Path

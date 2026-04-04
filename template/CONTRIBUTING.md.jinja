@@ -1,31 +1,27 @@
+{%- import "includes/docs.jinja" as docs with context -%}
+{%- set repo_url = "https://github.com/" + github_user + "/" + project_name -%}
+{%- set docs_url = "https://" + github_user + ".github.io/" + project_name -%}
 # Contributing to {{ project_name }}
 
-## Development setup
+**Contributions are welcome!**
 
-### Prerequisites
+Thank you for your time and interest in improving
+**{{ project_name }}**!
 
-- [Astral's **uv** Python project manager][uv]
-- [`poethepoet`][poe] task runner: `uv tool install poethepoet`
+## Project resources
 
-### Project setup
+{% if enable_docs -%}
+* **Web site**: **<{{ docs_url }}>**
+  for general project information, usage, and development documentation
+{% endif -%}
+* **Repository**: <{{ repo_url }}>
+  for submitting pull requests
+* **Issue tracker**: <{{ repo_url }}/issues>
+  for questions or bug reports
+{%- if not enable_docs %}
 
-```sh
-git clone https://github.com/{{ github_user }}/{{ project_name }}
-cd {{ project_name }}
-uv run poe setup  # Enables git hooks
-```
+## Development documentation
 
-## Common tasks
-
-| Command | Description |
-|---|---|
-{%- if enable_docs %}
-| `poe docs` | Run documentation server locally |
-{%- endif %}
-| `poe lint` | Run all formatters and static checks |
-| `poe lt` | Run all formatters, static checks and tests (`lint` and `test`) |
-| `poe test` | Run tests |
-
-[poe]: https://poethepoet.naln1.net/
-[uv]: https://docs.astral.sh/uv/
+{{ docs.contributing() }}
+{%- endif -%}
 {#- vim: set ft=markdown: #}

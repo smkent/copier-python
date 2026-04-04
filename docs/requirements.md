@@ -1,18 +1,16 @@
 ---
+title: Required software
 icon: lucide/bookmark-check
 ---
 
-# Prerequisites
+# Required software
 
 - [x] A [supported version][python-versions] of [**Python**][python]
 - [x] [**git** for verson control][git]
 - [x] [Astral's **uv** Python project manager][uv]: `pip install uv` or
   [other supported method][uv-installation]
 - [x] [**Copier**][copier]: `uv tool install copier`
-
-## Optional, but recommended
-
-- [x] [Poe the Poet][poethepoet]: `uv tool install poethepoet`
+- [x] [Poe the Poet][poethepoet] (recommended): `uv tool install poethepoet`
 
     This provides `poe` without the `uv run` prefix,
     e.g. `poe test` instead of `uv run poe test`

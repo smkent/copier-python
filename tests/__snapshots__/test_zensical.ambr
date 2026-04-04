@@ -8,15 +8,17 @@
   copyright = "&copy; 1995 Ness"
   
   nav = [
-    { "Home" = [
-      { "Overview" = "index.md" },
-      { "License" = "license.md" },
+    { "About" = [
+      "index.md",
+      "license.md",
+      "contributing.md",
+      { "Development" = [
+        "development/requirements.md",
+        "development/workflow.md",
+        "development/updates.md",
+      ] },
     ] },
     { "API Reference" = "api.md" },
-    { "Development" = [
-      { "Contributing" = "contributing.md" },
-      { "Maintaining" = "maintaining.md" },
-    ] },
   ]
   
   # ----------------------------------------------------------------------------
@@ -132,15 +134,21 @@
   copyright = "&copy; 1995 Ness"
   
   nav = [
-    { "Home" = [
-      { "Overview" = "index.md" },
-      { "License" = "license.md" },
+    { "About" = [
+      "index.md",
+      "license.md",
+      "contributing.md",
+      { "Development" = [
+        "development/requirements.md",
+        "development/workflow.md",
+        "development/updates.md",
+      ] },
+      { "Project Operations" = [
+        "setup.md",
+        "releasing.md",
+      ] },
     ] },
     { "API Reference" = "api.md" },
-    { "Development" = [
-      { "Contributing" = "contributing.md" },
-      { "Maintaining" = "maintaining.md" },
-    ] },
   ]
   
   # ----------------------------------------------------------------------------
@@ -257,15 +265,17 @@
   copyright = "&copy; 1995 Ness"
   
   nav = [
-    { "Home" = [
-      { "Overview" = "index.md" },
-      { "License" = "license.md" },
+    { "About" = [
+      "index.md",
+      "license.md",
+      "contributing.md",
+      { "Development" = [
+        "development/requirements.md",
+        "development/workflow.md",
+        "development/updates.md",
+      ] },
     ] },
     { "API Reference" = "api.md" },
-    { "Development" = [
-      { "Contributing" = "contributing.md" },
-      { "Maintaining" = "maintaining.md" },
-    ] },
   ]
   
   # ----------------------------------------------------------------------------
@@ -381,15 +391,21 @@
   copyright = "&copy; 1995 Ness"
   
   nav = [
-    { "Home" = [
-      { "Overview" = "index.md" },
-      { "License" = "license.md" },
+    { "About" = [
+      "index.md",
+      "license.md",
+      "contributing.md",
+      { "Development" = [
+        "development/requirements.md",
+        "development/workflow.md",
+        "development/updates.md",
+      ] },
+      { "Project Operations" = [
+        "setup.md",
+        "releasing.md",
+      ] },
     ] },
     { "API Reference" = "api.md" },
-    { "Development" = [
-      { "Contributing" = "contributing.md" },
-      { "Maintaining" = "maintaining.md" },
-    ] },
   ]
   
   # ----------------------------------------------------------------------------

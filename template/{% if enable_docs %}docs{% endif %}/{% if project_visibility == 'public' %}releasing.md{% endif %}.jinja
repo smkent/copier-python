@@ -1,0 +1,41 @@
+{%- set repo_url = "https://github.com/" + github_user + "/" + project_name -%}
+---
+title: Releasing a new version
+icon: lucide/rocket
+---
+
+# Releasing a new version
+
+Release version numbers should follow [Semantic Versioning][semver].
+
+To create a new release, simply create and push a tag with the new release
+version number:
+
+```sh
+git tag vX.Y.Z  # for example, v1.2.3
+git push --tags
+```
+
+* A corresponding [GitHub release][github-releases]
+  will be created automatically.
+
+    [![GitHub Release][github-release-badge]][github-release-latest]
+{%- if enable_pypi %}
+
+* A release package will be built and [uploaded to PyPI][pypi-project].
+
+    [![PyPI][pypi-badge]][pypi-project]
+{%- endif %}
+{%- if enable_container %}
+
+* A container image will be built and published to
+  the [GitHub Container Registry (GHCR)][ghcr-docs].
+{%- endif %}
+
+[ghcr-project]: {{ repo_url }}/pkgs/container/{{ project_name }}
+[github-release-badge]: https://img.shields.io/github/v/release/{{ github_user }}/{{ project_name }}
+[github-release-latest]: {{ repo_url }}/releases/latest
+[github-releases]: {{ repo_url }}/releases
+[pypi-badge]: https://img.shields.io/pypi/v/{{ project_name }}
+[pypi-project]: https://pypi.org/project/{{ project_name }}/
+{#- vim: set ft=markdown: #}

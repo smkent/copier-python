@@ -1,29 +1,15 @@
 # Contributing to copier-python
 
-## Development setup
+**Contributions are welcome!**
 
-### Prerequisites
+Thank you for your time and interest in improving
+**copier-python**!
 
-- [Astral's **uv** Python project manager][uv]
-- [`poethepoet`][poe] task runner: `uv tool install poethepoet`
+## Contribution resources
 
-### Project setup
-
-```sh
-git clone https://github.com/smkent/copier-python
-cd copier-python
-uv run poe setup  # Enables git hooks
-```
-
-## Common tasks
-
-| Command | Description |
-|---|---|
-| `poe docs` | Run documentation server locally |
-| `poe lint` | Run all formatters and static checks |
-| `poe lt` | Run all formatters, static checks and tests (`lint` and `test`) |
-| `poe snapup` | Update test snapshots |
-| `poe test` | Run tests |
-
-[poe]: https://poethepoet.naln1.net/
-[uv]: https://docs.astral.sh/uv/
+* **Web site**: **<https://smkent.github.io/copier-python>**
+  for general project information, usage, and development documentation
+* **Repository**: <https://github.com/smkent/copier-python>
+  for submitting pull requests
+* **Issue tracker**: <https://github.com/smkent/copier-python/issues>
+  for questions or bug reports

@@ -11,26 +11,30 @@ import pytest
     ("extra_data", "expected_present", "expected_absent"),
     [
         pytest.param(
-            {"enable_coverage": False, "enable_pypi": False},
+            {
+                "project_type": "library",
+                "enable_coverage": False,
+                "enable_pypi": False,
+                "enable_docs": False,
+            },
             [
-                "docs",
                 "pyproject.toml",
-                "zensical.toml",
                 "README.md",
                 "CONTRIBUTING.md",
                 "LICENSE",
                 ".gitignore",
                 ".pre-commit-config.yaml",
                 "renovate.json",
-                "MAINTAINING.md",
                 ".github/workflows/ci.yaml",
-                ".github/workflows/docs.yaml",
                 ".github/workflows/audit.yaml",
             ],
             [
+                "docs",
                 "Dockerfile",
                 ".dockerignore",
                 "compose.yaml",
+                "zensical.toml",
+                ".github/workflows/docs.yaml",
                 ".github/workflows/release.yaml",
                 ".github/workflows/container.yaml",
                 ".github/workflows/ghcr.yaml",
@@ -40,7 +44,7 @@ import pytest
         pytest.param(
             {"project_visibility": "private"},
             [],
-            [".github", "MAINTAINING.md"],
+            [".github"],
             id="private",
         ),
         pytest.param(
@@ -50,7 +54,7 @@ import pytest
             id="pypi",
         ),
         pytest.param(
-            {"enable_container": True},
+            {"enable_container": True, "project_type": "library"},
             [
                 "Dockerfile",
                 ".dockerignore",
@@ -67,10 +71,26 @@ import pytest
             id="container_application",
         ),
         pytest.param(
-            {"enable_docs": True},
-            ["docs", "zensical.toml", ".github/workflows/docs.yaml"],
+            {
+                "project_visibility": "public",
+                "project_type": "application",
+                "enable_docs": True,
+                "enable_pypi": True,
+                "enable_container": True,
+                "enable_coverage": True,
+            },
+            [
+                "docs",
+                "docs/setup.md",
+                "docs/releasing.md",
+                "docs/development/requirements.md",
+                "docs/development/workflow.md",
+                "docs/development/updates.md",
+                "zensical.toml",
+                ".github/workflows/docs.yaml",
+            ],
             [],
-            id="docs",
+            id="docs_application",
         ),
     ],
 )

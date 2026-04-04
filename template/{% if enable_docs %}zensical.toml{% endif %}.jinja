@@ -10,15 +10,23 @@ repo_name = "{{ github_user }}/{{ project_name }}"
 copyright = "&copy; {{ copyright_year }} {{ copyright_holder }}"
 
 nav = [
-  { "Home" = [
-    { "Overview" = "index.md" },
-    { "License" = "license.md" },
+  { "About" = [
+    "index.md",
+    "license.md",
+    "contributing.md",
+    { "Development" = [
+      "development/requirements.md",
+      "development/workflow.md",
+      "development/updates.md",
+    ] },
+{%- if project_visibility == 'public' %}
+    { "Project Operations" = [
+      "setup.md",
+      "releasing.md",
+    ] },
+{%- endif %}
   ] },
   { "API Reference" = "api.md" },
-  { "Development" = [
-    { "Contributing" = "contributing.md" },
-    { "Maintaining" = "maintaining.md" },
-  ] },
 ]
 
 # ----------------------------------------------------------------------------

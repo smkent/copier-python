@@ -1,10 +1,15 @@
-# Maintaining copier-python
+---
+title: One time setup
+icon: lucide/package-plus
+---
 
-## First time setup
+# One time setup
 
-These steps only need to be completed once after the project is first created.
+!!! info
+    These steps only need to be completed once after the project is
+    first created.
 
-### GitHub repository
+## GitHub repository
 
 [Settings → General][repo-settings]:
 
@@ -20,12 +25,12 @@ for the Default branch (`main`):
 - [x] Require a pull request before merging
 - [x] Block force pushes
 
-### Renovate
+## Renovate
 
 Ensure the [Renovate app][renovate] is installed on your account, then
 enable it for `smkent/copier-python`.
 
-### PyPI publishing
+## PyPI publishing
 
 This project uses [trusted publishing][pypi-trusted-publishing] so no API tokens
 need to be stored as secrets.
@@ -45,18 +50,9 @@ need to be stored as secrets.
    git push --tags
    ```
 
-### GitHub Pages
+## GitHub Pages
 
 [Settings → Pages][repo-settings-pages] → Source → GitHub Actions
-
-## Releasing
-
-Create and push a tag:
-
-```sh
-git tag vX.Y.Z
-git push --tags
-```
 
 [pypi-publishing-settings]: https://pypi.org/manage/account/publishing/
 [pypi-trusted-publishing]: https://docs.pypi.org/trusted-publishers/

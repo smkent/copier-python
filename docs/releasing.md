@@ -29,3 +29,4 @@ git push --tags
 [github-release-badge]: https://img.shields.io/github/v/release/smkent/copier-python
 [pypi-badge]: https://img.shields.io/pypi/v/copier-python
 [pypi-project]: https://pypi.org/project/copier-python/
+[semver]: https://semver.org/

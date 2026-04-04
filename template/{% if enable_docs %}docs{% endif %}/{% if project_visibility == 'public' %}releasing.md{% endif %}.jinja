@@ -32,10 +32,14 @@ git push --tags
   the [GitHub Container Registry (GHCR)][ghcr-docs].
 {%- endif %}
 
+{%- if enable_container %}
 [ghcr-project]: {{ repo_url }}/pkgs/container/{{ project_name }}
+{%- endif %}
 [github-release-badge]: https://img.shields.io/github/v/release/{{ github_user }}/{{ project_name }}
 [github-release-latest]: {{ repo_url }}/releases/latest
 [github-releases]: {{ repo_url }}/releases
+{%- if enable_pypi %}
 [pypi-badge]: https://img.shields.io/pypi/v/{{ project_name }}
 [pypi-project]: https://pypi.org/project/{{ project_name }}/
+{%- endif %}
 {#- vim: set ft=markdown: #}

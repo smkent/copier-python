@@ -24,10 +24,6 @@ git push --tags
 
     [![PyPI][pypi-badge]][pypi-project]
 
-* A container image will be built and published to
-  the [GitHub Container Registry (GHCR)][ghcr-project].
-
-[ghcr-project]: https://github.com/smkent/copier-python/pkgs/container/copier-python
 [github-release-latest]: https://github.com/smkent/copier-python/releases/latest
 [github-releases]: https://github.com/smkent/copier-python/releases
 [github-release-badge]: https://img.shields.io/github/v/release/smkent/copier-python

@@ -57,7 +57,7 @@ This template was inspired by [pawamoy/copier-uv][copier-uv] and
 [copier-update]: https://copier.readthedocs.io/en/stable/updating/
 [copier-uv]: https://pawamoy.github.io/copier-uv/
 [copier]: https://copier.readthedocs.io
-[docs-usage]: https://smkent.github.io/copier-python/prerequisites/
+[docs-usage]: https://smkent.github.io/copier-python/requirements/
 [ghcr-docs]: https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry
 [github-actions]: https://github.com/features/actions
 [github-pages]: https://pages.github.com

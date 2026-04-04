@@ -10,8 +10,8 @@ icon: lucide/braces
 Run `poe setup` in new repository clones to enable git hooks:
 
 ```sh
-git clone https://github.com/<github_user>/<project_name>
-cd project_name
+git clone https://github.com/smkent/copier-python
+cd copier-python
 poe setup  # Enables git hooks
 ```
 
@@ -24,6 +24,16 @@ The `lint` and `test` tasks can also be run as a single combined command with:
 
 ```sh
 poe lt
+```
+
+### Test snapshots
+
+Many copier-python tests compare template-rendered files with saved snapshots.
+When templates are modified, the snapshots need to be updated. Update test
+snapshots by running:
+
+```sh
+poe snapup
 ```
 
 ## Documentation server

@@ -9,19 +9,26 @@ copyright = "&copy; 2026 Stephen Kent"
 
 nav = [
   { "About" = [
-    { "Overview" = "index.md" },
-    { "License" = "license.md" },
+    "index.md",
+    "license.md",
+    "contributing.md",
     { "Usage" = [
-      { "Prerequisites" = "prerequisites.md" },
-      { "Creating a project" = "project-creation.md" },
-      { "Preparing features" = "project-features.md" },
-      { "Development workflow" = "project-development.md" },
-      { "Template updates" = "project-updates.md" },
+      "requirements.md",
+      "project-creation.md",
+      "project-setup.md",
+      "project-development.md",
+      "project-updates.md",
+      "project-release.md",
     ] },
-  ] },
-  { "Development" = [
-    { "Contributing" = "contributing.md" },
-    { "Maintaining" = "maintaining.md" },
+    { "Development" = [
+      "development/requirements.md",
+      "development/workflow.md",
+      "development/updates.md",
+    ] },
+    { "Project Operations" = [
+      "setup.md",
+      "releasing.md",
+    ] },
   ] },
 ]
 

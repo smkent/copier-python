@@ -1,66 +1,116 @@
 # serializer version: 1
-# name: test_maintaining_features[docs]
+# name: test_contributing_features[docs]
   '''
   # Contributing to PKFire
   
-  ## Development setup
+  **Contributions are welcome!**
   
-  ### Prerequisites
+  Thank you for your time and interest in improving
+  **PKFire**!
   
-  - [Astral's **uv** Python project manager][uv]
-  - [`poethepoet`][poe] task runner: `uv tool install poethepoet`
+  ## Project resources
   
-  ### Project setup
-  
-  ```sh
-  git clone https://github.com/ness/PKFire
-  cd PKFire
-  uv run poe setup  # Enables git hooks
-  ```
-  
-  ## Common tasks
-  
-  | Command | Description |
-  |---|---|
-  | `poe docs` | Run documentation server locally |
-  | `poe lint` | Run all formatters and static checks |
-  | `poe lt` | Run all formatters, static checks and tests (`lint` and `test`) |
-  | `poe test` | Run tests |
-  
-  [poe]: https://poethepoet.naln1.net/
-  [uv]: https://docs.astral.sh/uv/
+  * **Web site**: **<https://ness.github.io/PKFire>**
+    for general project information, usage, and development documentation
+  * **Repository**: <https://github.com/ness/PKFire>
+    for submitting pull requests
+  * **Issue tracker**: <https://github.com/ness/PKFire/issues>
+    for questions or bug reports
   
   '''
 # ---
-# name: test_maintaining_features[no_docs]
+# name: test_contributing_features[no_docs]
   '''
   # Contributing to PKFire
   
-  ## Development setup
+  **Contributions are welcome!**
+  
+  Thank you for your time and interest in improving
+  **PKFire**!
+  
+  ## Project resources
+  
+  * **Repository**: <https://github.com/ness/PKFire>
+    for submitting pull requests
+  * **Issue tracker**: <https://github.com/ness/PKFire/issues>
+    for questions or bug reports
+  
+  ## Development documentation
   
   ### Prerequisites
   
-  - [Astral's **uv** Python project manager][uv]
-  - [`poethepoet`][poe] task runner: `uv tool install poethepoet`
+  - [x] A [supported version][python-versions] of [**Python**][python]
+  - [x] [**git** for verson control][git]
+  - [x] [Astral's **uv** Python project manager][uv]: `pip install uv` or
+    [other supported method][uv-installation]
+  - [x] [**Copier**][copier]: `uv tool install copier`
+  - [x] [Poe the Poet][poethepoet] (recommended): `uv tool install poethepoet`
   
-  ### Project setup
+      This provides `poe` without the `uv run` prefix,
+      e.g. `poe test` instead of `uv run poe test`
+  
+  [copier]: https://copier.readthedocs.io
+  [git]: https://git-scm.com
+  [poethepoet]: https://poethepoet.natn.io/
+  [python-versions]: https://devguide.python.org/versions/
+  [python]: https://python.org
+  [uv-installation]: https://docs.astral.sh/uv/getting-started/installation/
+  [uv]: https://docs.astral.sh/uv/
+  
+  ### Project development workflow
+  
+  #### Cloning the repository
   
   ```sh
   git clone https://github.com/ness/PKFire
   cd PKFire
-  uv run poe setup  # Enables git hooks
   ```
   
-  ## Common tasks
+  Run `poe setup` in new repository clones to enable git hooks:
   
-  | Command | Description |
-  |---|---|
-  | `poe lint` | Run all formatters and static checks |
-  | `poe lt` | Run all formatters, static checks and tests (`lint` and `test`) |
-  | `poe test` | Run tests |
+  ```sh
+  poe setup  # Enables git hooks
+  ```
   
-  [poe]: https://poethepoet.naln1.net/
-  [uv]: https://docs.astral.sh/uv/
+  #### Development tools
+  
+  * `poe lint`: Run formatters and static checks
+  * `poe test`: Run tests
+  
+  The `lint` and `test` tasks can also be run as a single combined command with:
+  
+  ```sh
+  poe lt
+  ```
+  
+  ### Applying copier-python template updates
+  
+  Copier can update your project with template changes that have occurred since
+  the project was created.
+  
+  To apply updates, simply run in your project directory:
+  
+  ```sh
+  copier update
+  ```
+  
+  This will repeat the setup prompts, in case any prompts have been added or
+  changed.
+  
+  !!! tip
+      To change template-provided features in your project, simply change your
+      answers in the update prompts.
+  
+  To apply updates without being prompted (reusing all previous answers), run:
+  
+  ```sh
+  copier update -l
+  ```
+  
+  When `copier update` is finished, view changes with `git status` and `git diff`.
+  Resolve any conflicts, and then commit the result.
+  
+  [copier-update]: https://copier.readthedocs.io/en/stable/updating/
   
   '''
 # ---

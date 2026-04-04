@@ -1,4 +1,5 @@
 ---
+title: Creating a project
 icon: lucide/wand-sparkles
 ---
 

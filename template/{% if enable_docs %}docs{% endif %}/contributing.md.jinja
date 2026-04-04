@@ -1,4 +1,5 @@
 ---
+title: Contributing
 icon: lucide/code
 ---
 

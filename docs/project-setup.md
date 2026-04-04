@@ -1,20 +1,20 @@
 ---
+title: Completing setup
 icon: lucide/settings
 ---
 
-# Preparing project features
+# Completing project setup
 
 !!! tip
-    These instructions are also present in your new project, with links directly
-    to your project's specific settings pages! To view these instructions in
-    your project:
+    If you selected **Enable documentation site** during project creation,
+    these instructions are also present in your new project along with links
+    directly to your project's specific settings pages! To view:
 
     1. Start the local documentation server: `poe docs`
     2. In your browser:
 
         1. Open **<http://localhost:8000>**
-        2. Click the **Development** tab
-        3. Click **Maintaining** in the left nav bar
+        2. Navigate to **Project Operations** → **One time setup**
 
 
 ## GitHub repository

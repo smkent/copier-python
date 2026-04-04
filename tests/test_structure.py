@@ -27,6 +27,7 @@ import pytest
                 "renovate.json",
                 ".github/workflows/ci.yaml",
                 ".github/workflows/audit.yaml",
+                ".github/workflows/release.yaml",
             ],
             [
                 "docs",
@@ -35,7 +36,6 @@ import pytest
                 "compose.yaml",
                 "zensical.toml",
                 ".github/workflows/docs.yaml",
-                ".github/workflows/release.yaml",
                 ".github/workflows/container.yaml",
                 ".github/workflows/ghcr.yaml",
             ],

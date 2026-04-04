@@ -513,12 +513,9 @@
   
       [![GitHub Release][github-release-badge]][github-release-latest]
   
-  [ghcr-project]: https://github.com/ness/PKFire/pkgs/container/PKFire
   [github-release-badge]: https://img.shields.io/github/v/release/ness/PKFire
   [github-release-latest]: https://github.com/ness/PKFire/releases/latest
   [github-releases]: https://github.com/ness/PKFire/releases
-  [pypi-badge]: https://img.shields.io/pypi/v/PKFire
-  [pypi-project]: https://pypi.org/project/PKFire/
   
   '''
 # ---
@@ -617,7 +614,6 @@
   
       [![PyPI][pypi-badge]][pypi-project]
   
-  [ghcr-project]: https://github.com/ness/PKFire/pkgs/container/PKFire
   [github-release-badge]: https://img.shields.io/github/v/release/ness/PKFire
   [github-release-latest]: https://github.com/ness/PKFire/releases/latest
   [github-releases]: https://github.com/ness/PKFire/releases

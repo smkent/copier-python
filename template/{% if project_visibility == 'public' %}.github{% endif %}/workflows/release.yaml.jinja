@@ -31,28 +31,6 @@ jobs:
           name: dist
           path: dist/
 
-  publish:
-    name: Publish to PyPI
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: pypi
-      url: https://pypi.org/project/{{ project_name }}/
-    permissions:
-      id-token: write
-      attestations: write
-    steps:
-      - name: 🔽 Download artifact
-        uses: actions/download-artifact@v8
-        with:
-          name: dist
-          path: dist/
-
-      - name: ☢️ Publish to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          attestations: true
-
   release:
     name: Create GitHub release
     needs: build
@@ -75,4 +53,28 @@ jobs:
         run: gh release create {% raw %}${{ github.ref_name }}{% endraw %} dist/* --generate-notes
         env:
           GH_TOKEN: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}
+
+{%- if enable_pypi %}
+  publish:
+    name: Publish to PyPI
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/project/{{ project_name }}/
+    permissions:
+      id-token: write
+      attestations: write
+    steps:
+      - name: 🔽 Download artifact
+        uses: actions/download-artifact@v8
+        with:
+          name: dist
+          path: dist/
+
+      - name: ☢️ Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          attestations: true
+{%- endif %}
 {#- vim: set ft=yaml: #}

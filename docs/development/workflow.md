@@ -3,7 +3,7 @@ title: Development workflow
 icon: lucide/braces
 ---
 
-# Project development workflow
+# copier-python development workflow
 
 ## Cloning the repository
 
@@ -14,6 +14,19 @@ git clone https://github.com/smkent/copier-python
 cd copier-python
 poe setup  # Enables git hooks
 ```
+
+## Local template usage
+
+While making development changes to copier-python, the local template can be
+used to create projects. To do so, run `copier copy` with the `-r`/`--vcs-ref`
+argument:
+
+```sh
+copier copy -r HEAD path/to/copier-python/clone/ path/to/new/project/
+```
+
+This will render the new project from the current template state including
+uncommitted changes.
 
 ## Development tools
 

@@ -26,12 +26,12 @@ import pytest
                 ".github/workflows/ci.yaml",
                 ".github/workflows/docs.yaml",
                 ".github/workflows/audit.yaml",
+                ".github/workflows/release.yaml",
             ],
             [
                 "Dockerfile",
                 ".dockerignore",
                 "compose.yaml",
-                ".github/workflows/release.yaml",
                 ".github/workflows/container.yaml",
                 ".github/workflows/ghcr.yaml",
             ],

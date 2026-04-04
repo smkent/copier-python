@@ -31,6 +31,30 @@ jobs:
           name: dist
           path: dist/
 
+  release:
+    name: Create GitHub release
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: 💾 Check out repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: 🔽 Download artifact
+        uses: actions/download-artifact@v8
+        with:
+          name: dist
+          path: dist/
+
+      - name: 🏷️ Create GitHub release
+        run: gh release create {% raw %}${{ github.ref_name }}{% endraw %} dist/* --generate-notes
+        env:
+          GH_TOKEN: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}
+{%- if enable_pypi %}
+
   publish:
     name: Publish to PyPI
     needs: build
@@ -52,27 +76,5 @@ jobs:
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           attestations: true
-
-  release:
-    name: Create GitHub release
-    needs: publish
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - name: 💾 Check out repository
-        uses: actions/checkout@v6
-        with:
-          fetch-depth: 0
-
-      - name: 🔽 Download artifact
-        uses: actions/download-artifact@v8
-        with:
-          name: dist
-          path: dist/
-
-      - name: 🏷️ Create GitHub release
-        run: gh release create {% raw %}${{ github.ref_name }}{% endraw %} dist/* --generate-notes
-        env:
-          GH_TOKEN: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}
+{%- endif %}
 {#- vim: set ft=yaml: #}

@@ -30,11 +30,6 @@
         - name: 💾 Check out repository
           uses: actions/checkout@v6
   
-        - name: 🪪 Configure git identity for tests
-          run: |
-            git config --global user.name "github-actions[bot]"
-            git config --global user.email "github-actions[bot]@users.noreply.github.com"
-  
         - name: 🦀 Set up Python project with uv
           uses: astral-sh/setup-uv@v7
           with:
@@ -130,11 +125,6 @@
         - name: 💾 Check out repository
           uses: actions/checkout@v6
   
-        - name: 🪪 Configure git identity for tests
-          run: |
-            git config --global user.name "github-actions[bot]"
-            git config --global user.email "github-actions[bot]@users.noreply.github.com"
-  
         - name: 🦀 Set up Python project with uv
           uses: astral-sh/setup-uv@v7
           with:
@@ -220,11 +210,6 @@
         - name: 💾 Check out repository
           uses: actions/checkout@v6
   
-        - name: 🪪 Configure git identity for tests
-          run: |
-            git config --global user.name "github-actions[bot]"
-            git config --global user.email "github-actions[bot]@users.noreply.github.com"
-  
         - name: 🦀 Set up Python project with uv
           uses: astral-sh/setup-uv@v7
           with:
@@ -299,11 +284,6 @@
       steps:
         - name: 💾 Check out repository
           uses: actions/checkout@v6
-  
-        - name: 🪪 Configure git identity for tests
-          run: |
-            git config --global user.name "github-actions[bot]"
-            git config --global user.email "github-actions[bot]@users.noreply.github.com"
   
         - name: 🦀 Set up Python project with uv
           uses: astral-sh/setup-uv@v7

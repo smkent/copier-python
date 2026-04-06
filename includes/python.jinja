@@ -1,11 +1,27 @@
 {%- set all_versions = ["3.10", "3.11", "3.12", "3.13", "3.14"] -%}
 {%- set min_minor = python_version_minimum.split(".")[1] | int -%}
+{%- set max_minor = (
+    python_version_maximum.split(".")[1] | int
+    if python_version_maximum != 'No maximum' else
+    (all_versions|last).split(".")[1] | int
+) -%}
 {%- macro for_each_version() -%}
-{%- for v in all_versions if v.split(".")[1] | int >= min_minor -%}
+{%- for v in all_versions if (
+    v.split(".")[1] | int >= min_minor and v.split(".")[1] | int <= max_minor
+) -%}
 {{ caller(loop, v) }}
 {%- endfor -%}
 {%- endmacro -%}
 
 {%- macro latest() -%}
-{{- all_versions|last -}}
+{%- for v in all_versions if v.split(".")[1] | int <= max_minor -%}
+{{ v if loop.last }}
+{%- endfor -%}
+{%- endmacro -%}
+
+{%- macro requires_python() -%}
+>={{ python_version_minimum }}
+{%- if python_version_maximum != 'No maximum' -%}
+,<3.{{ max_minor + 1 }}
+{%- endif %}
 {%- endmacro -%}

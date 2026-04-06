@@ -27,3 +27,21 @@ def test_pyproject_features(
         enable_docs=enable_docs,
     )
     assert (rendered / "pyproject.toml").read_text() == snapshot
+
+
+@pytest.mark.parametrize("python_version_minimum", ["3.10", "3.12"])
+@pytest.mark.parametrize(
+    "python_version_maximum", ["3.12", "3.14", "No maximum"]
+)
+def test_pyproject_versions(
+    render_template: Callable[..., Path],
+    snapshot: SnapshotAssertion,
+    *,
+    python_version_minimum: str,
+    python_version_maximum: str,
+) -> None:
+    rendered = render_template(
+        python_version_minimum=python_version_minimum,
+        python_version_maximum=python_version_maximum,
+    )
+    assert (rendered / "pyproject.toml").read_text() == snapshot

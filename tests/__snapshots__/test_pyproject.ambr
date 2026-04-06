@@ -1,5 +1,5 @@
 # serializer version: 1
-# name: test_maintaining_features[docs-3.10-private]
+# name: test_pyproject_features[docs-3.10-private]
   '''
   [build-system]
   requires = ["hatchling", "uv-dynamic-versioning"]
@@ -207,7 +207,7 @@
   
   '''
 # ---
-# name: test_maintaining_features[docs-3.10-public]
+# name: test_pyproject_features[docs-3.10-public]
   '''
   [build-system]
   requires = ["hatchling", "uv-dynamic-versioning"]
@@ -427,7 +427,7 @@
   
   '''
 # ---
-# name: test_maintaining_features[docs-3.14-private]
+# name: test_pyproject_features[docs-3.14-private]
   '''
   [build-system]
   requires = ["hatchling", "uv-dynamic-versioning"]
@@ -611,7 +611,7 @@
   
   '''
 # ---
-# name: test_maintaining_features[docs-3.14-public]
+# name: test_pyproject_features[docs-3.14-public]
   '''
   [build-system]
   requires = ["hatchling", "uv-dynamic-versioning"]
@@ -807,7 +807,7 @@
   
   '''
 # ---
-# name: test_maintaining_features[no_docs-3.10-private]
+# name: test_pyproject_features[no_docs-3.10-private]
   '''
   [build-system]
   requires = ["hatchling", "uv-dynamic-versioning"]
@@ -990,7 +990,7 @@
   
   '''
 # ---
-# name: test_maintaining_features[no_docs-3.10-public]
+# name: test_pyproject_features[no_docs-3.10-public]
   '''
   [build-system]
   requires = ["hatchling", "uv-dynamic-versioning"]
@@ -1185,7 +1185,7 @@
   
   '''
 # ---
-# name: test_maintaining_features[no_docs-3.14-private]
+# name: test_pyproject_features[no_docs-3.14-private]
   '''
   [build-system]
   requires = ["hatchling", "uv-dynamic-versioning"]
@@ -1344,7 +1344,7 @@
   
   '''
 # ---
-# name: test_maintaining_features[no_docs-3.14-public]
+# name: test_pyproject_features[no_docs-3.14-public]
   '''
   [build-system]
   requires = ["hatchling", "uv-dynamic-versioning"]

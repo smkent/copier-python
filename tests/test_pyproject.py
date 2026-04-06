@@ -13,7 +13,7 @@ from syrupy.assertion import SnapshotAssertion
     "enable_docs",
     [pytest.param(True, id="docs"), pytest.param(False, id="no_docs")],
 )
-def test_maintaining_features(
+def test_pyproject_features(
     render_template: Callable[..., Path],
     snapshot: SnapshotAssertion,
     *,

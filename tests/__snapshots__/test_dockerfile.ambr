@@ -1,0 +1,139 @@
+# serializer version: 1
+# name: test_workflows_container[3.12-3.10]
+  '''
+  FROM ghcr.io/astral-sh/uv:python3.12-bookworm-slim
+  
+  WORKDIR /app
+  
+  # Install dependencies first (cached layer, only invalidated by pyproject.toml changes)
+  COPY pyproject.toml ./
+  RUN --mount=type=cache,target=/root/.cache/uv \
+      uv sync --no-dev --no-install-project
+  
+  # Copy source and install project
+  COPY pkfire/ ./pkfire/
+  RUN --mount=type=cache,target=/root/.cache/uv \
+      uv sync --no-dev
+  
+  RUN useradd --no-create-home --shell /bin/false app
+  USER app
+  
+  CMD ["uv", "run", "python", "-m", "pkfire"]
+  
+  '''
+# ---
+# name: test_workflows_container[3.12-3.12]
+  '''
+  FROM ghcr.io/astral-sh/uv:python3.12-bookworm-slim
+  
+  WORKDIR /app
+  
+  # Install dependencies first (cached layer, only invalidated by pyproject.toml changes)
+  COPY pyproject.toml ./
+  RUN --mount=type=cache,target=/root/.cache/uv \
+      uv sync --no-dev --no-install-project
+  
+  # Copy source and install project
+  COPY pkfire/ ./pkfire/
+  RUN --mount=type=cache,target=/root/.cache/uv \
+      uv sync --no-dev
+  
+  RUN useradd --no-create-home --shell /bin/false app
+  USER app
+  
+  CMD ["uv", "run", "python", "-m", "pkfire"]
+  
+  '''
+# ---
+# name: test_workflows_container[3.14-3.10]
+  '''
+  FROM ghcr.io/astral-sh/uv:python3.14-bookworm-slim
+  
+  WORKDIR /app
+  
+  # Install dependencies first (cached layer, only invalidated by pyproject.toml changes)
+  COPY pyproject.toml ./
+  RUN --mount=type=cache,target=/root/.cache/uv \
+      uv sync --no-dev --no-install-project
+  
+  # Copy source and install project
+  COPY pkfire/ ./pkfire/
+  RUN --mount=type=cache,target=/root/.cache/uv \
+      uv sync --no-dev
+  
+  RUN useradd --no-create-home --shell /bin/false app
+  USER app
+  
+  CMD ["uv", "run", "python", "-m", "pkfire"]
+  
+  '''
+# ---
+# name: test_workflows_container[3.14-3.12]
+  '''
+  FROM ghcr.io/astral-sh/uv:python3.14-bookworm-slim
+  
+  WORKDIR /app
+  
+  # Install dependencies first (cached layer, only invalidated by pyproject.toml changes)
+  COPY pyproject.toml ./
+  RUN --mount=type=cache,target=/root/.cache/uv \
+      uv sync --no-dev --no-install-project
+  
+  # Copy source and install project
+  COPY pkfire/ ./pkfire/
+  RUN --mount=type=cache,target=/root/.cache/uv \
+      uv sync --no-dev
+  
+  RUN useradd --no-create-home --shell /bin/false app
+  USER app
+  
+  CMD ["uv", "run", "python", "-m", "pkfire"]
+  
+  '''
+# ---
+# name: test_workflows_container[No maximum-3.10]
+  '''
+  FROM ghcr.io/astral-sh/uv:python3.14-bookworm-slim
+  
+  WORKDIR /app
+  
+  # Install dependencies first (cached layer, only invalidated by pyproject.toml changes)
+  COPY pyproject.toml ./
+  RUN --mount=type=cache,target=/root/.cache/uv \
+      uv sync --no-dev --no-install-project
+  
+  # Copy source and install project
+  COPY pkfire/ ./pkfire/
+  RUN --mount=type=cache,target=/root/.cache/uv \
+      uv sync --no-dev
+  
+  RUN useradd --no-create-home --shell /bin/false app
+  USER app
+  
+  CMD ["uv", "run", "python", "-m", "pkfire"]
+  
+  '''
+# ---
+# name: test_workflows_container[No maximum-3.12]
+  '''
+  FROM ghcr.io/astral-sh/uv:python3.14-bookworm-slim
+  
+  WORKDIR /app
+  
+  # Install dependencies first (cached layer, only invalidated by pyproject.toml changes)
+  COPY pyproject.toml ./
+  RUN --mount=type=cache,target=/root/.cache/uv \
+      uv sync --no-dev --no-install-project
+  
+  # Copy source and install project
+  COPY pkfire/ ./pkfire/
+  RUN --mount=type=cache,target=/root/.cache/uv \
+      uv sync --no-dev
+  
+  RUN useradd --no-create-home --shell /bin/false app
+  USER app
+  
+  CMD ["uv", "run", "python", "-m", "pkfire"]
+  
+  '''
+# ---

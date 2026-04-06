@@ -99,6 +99,18 @@ python_version_minimum:
     - '3.13'
     - '3.14'
 
+python_version_maximum:
+  type: str
+  qmark: 🐍
+  help: Maximum Python version
+  default: No maximum
+  choices: |
+    - 'No maximum'
+    {%- set min_minor = python_version_minimum.split(".")[1] | int -%}
+    {%- for minor in range(min_minor, 15) %}
+    - '3.{{ minor }}'
+    {%- endfor %}
+
 enable_coverage:
   type: bool
   qmark: 📊

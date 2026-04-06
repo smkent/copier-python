@@ -10,7 +10,7 @@ description = "{{ project_description }}"
 readme = "README.md"
 license = "{{ copyright_license }}"
 license-files = ["LICENSE"]
-requires-python = ">={{ python_version_minimum }}"
+requires-python = "{{ py.requires_python() }}"
 authors = [
     { name = "{{ user_name }}", email = "{{ user_email }}" },
 ]

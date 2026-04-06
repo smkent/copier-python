@@ -183,7 +183,7 @@ copyright_license:
   type: str
   qmark: ⚖️
   help: Project license
-  default: GPL-3.0
+  default: "{% if project_type == 'library' %}L{% endif %}GPL-3.0"
   choices:
     Apache License 2.0: Apache-2.0
     BSD 3-Clause "New" or "Revised" License: BSD-3-Clause

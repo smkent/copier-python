@@ -15,15 +15,25 @@ from syrupy.assertion import SnapshotAssertion
     "enable_pypi",
     [pytest.param(True, id="pypi"), pytest.param(False, id="no_pypi")],
 )
+@pytest.mark.parametrize(
+    "template_attribution",
+    [
+        pytest.param(True, id="attribution"),
+        pytest.param(False, id="no_attribution"),
+    ],
+)
 def test_readme_features(
     render_template: Callable[..., Path],
     snapshot: SnapshotAssertion,
     *,
     enable_coverage: bool,
     enable_pypi: bool,
+    template_attribution: bool,
 ) -> None:
     rendered = render_template(
-        enable_coverage=enable_coverage, enable_pypi=enable_pypi
+        enable_coverage=enable_coverage,
+        enable_pypi=enable_pypi,
+        template_attribution=template_attribution,
     )
     assert (rendered / "README.md").read_text() == snapshot
 

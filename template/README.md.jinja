@@ -23,4 +23,12 @@
 pip install {{ project_name }}
 ```
 {%- endif %}
+{%- if template_attribution %}
+
+## Project template
+
+This project is generated and maintained with [copier-python][copier-python].
+
+[copier-python]: https://smkent.github.io/copier-python
+{%- endif %}
 {#- vim: set ft=markdown: #}

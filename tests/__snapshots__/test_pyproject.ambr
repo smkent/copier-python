@@ -38,15 +38,15 @@
   dev = [
       "poethepoet>=0.42",
       "prek>=0.3",
-      "pytest>=9.0",
-      "pytest-cov>=7.0",
-      "pytest-sugar>=1.0",
+      "pytest>=9",
+      "pytest-cov>=7",
+      "pytest-sugar>=1",
       "ruff>=0.15",
-      "ty>=0.0.26",
+      "ty>=0.0.29",
   ]
   docs = [
       "mkdocstrings[python]>=1",
-      "zensical>=0.0.30",
+      "zensical>=0.0.32",
   ]
   
   [tool.hatch.build.targets.sdist]
@@ -252,15 +252,15 @@
       "poethepoet>=0.42",
       "prek>=0.3",
       "pysentry-rs>=0.4",
-      "pytest>=9.0",
-      "pytest-cov>=7.0",
-      "pytest-sugar>=1.0",
+      "pytest>=9",
+      "pytest-cov>=7",
+      "pytest-sugar>=1",
       "ruff>=0.15",
-      "ty>=0.0.26",
+      "ty>=0.0.29",
   ]
   docs = [
       "mkdocstrings[python]>=1",
-      "zensical>=0.0.30",
+      "zensical>=0.0.32",
   ]
   
   [tool.hatch.build.targets.sdist]
@@ -462,15 +462,15 @@
   dev = [
       "poethepoet>=0.42",
       "prek>=0.3",
-      "pytest>=9.0",
-      "pytest-cov>=7.0",
-      "pytest-sugar>=1.0",
+      "pytest>=9",
+      "pytest-cov>=7",
+      "pytest-sugar>=1",
       "ruff>=0.15",
-      "ty>=0.0.26",
+      "ty>=0.0.29",
   ]
   docs = [
       "mkdocstrings[python]>=1",
-      "zensical>=0.0.30",
+      "zensical>=0.0.32",
   ]
   
   [tool.hatch.build.targets.sdist]
@@ -652,15 +652,15 @@
       "poethepoet>=0.42",
       "prek>=0.3",
       "pysentry-rs>=0.4",
-      "pytest>=9.0",
-      "pytest-cov>=7.0",
-      "pytest-sugar>=1.0",
+      "pytest>=9",
+      "pytest-cov>=7",
+      "pytest-sugar>=1",
       "ruff>=0.15",
-      "ty>=0.0.26",
+      "ty>=0.0.29",
   ]
   docs = [
       "mkdocstrings[python]>=1",
-      "zensical>=0.0.30",
+      "zensical>=0.0.32",
   ]
   
   [tool.hatch.build.targets.sdist]
@@ -846,11 +846,11 @@
   dev = [
       "poethepoet>=0.42",
       "prek>=0.3",
-      "pytest>=9.0",
-      "pytest-cov>=7.0",
-      "pytest-sugar>=1.0",
+      "pytest>=9",
+      "pytest-cov>=7",
+      "pytest-sugar>=1",
       "ruff>=0.15",
-      "ty>=0.0.26",
+      "ty>=0.0.29",
   ]
   
   [tool.hatch.build.targets.sdist]
@@ -1035,11 +1035,11 @@
       "poethepoet>=0.42",
       "prek>=0.3",
       "pysentry-rs>=0.4",
-      "pytest>=9.0",
-      "pytest-cov>=7.0",
-      "pytest-sugar>=1.0",
+      "pytest>=9",
+      "pytest-cov>=7",
+      "pytest-sugar>=1",
       "ruff>=0.15",
-      "ty>=0.0.26",
+      "ty>=0.0.29",
   ]
   
   [tool.hatch.build.targets.sdist]
@@ -1220,11 +1220,11 @@
   dev = [
       "poethepoet>=0.42",
       "prek>=0.3",
-      "pytest>=9.0",
-      "pytest-cov>=7.0",
-      "pytest-sugar>=1.0",
+      "pytest>=9",
+      "pytest-cov>=7",
+      "pytest-sugar>=1",
       "ruff>=0.15",
-      "ty>=0.0.26",
+      "ty>=0.0.29",
   ]
   
   [tool.hatch.build.targets.sdist]
@@ -1385,11 +1385,11 @@
       "poethepoet>=0.42",
       "prek>=0.3",
       "pysentry-rs>=0.4",
-      "pytest>=9.0",
-      "pytest-cov>=7.0",
-      "pytest-sugar>=1.0",
+      "pytest>=9",
+      "pytest-cov>=7",
+      "pytest-sugar>=1",
       "ruff>=0.15",
-      "ty>=0.0.26",
+      "ty>=0.0.29",
   ]
   
   [tool.hatch.build.targets.sdist]
@@ -1558,15 +1558,15 @@
       "poethepoet>=0.42",
       "prek>=0.3",
       "pysentry-rs>=0.4",
-      "pytest>=9.0",
-      "pytest-cov>=7.0",
-      "pytest-sugar>=1.0",
+      "pytest>=9",
+      "pytest-cov>=7",
+      "pytest-sugar>=1",
       "ruff>=0.15",
-      "ty>=0.0.26",
+      "ty>=0.0.29",
   ]
   docs = [
       "mkdocstrings[python]>=1",
-      "zensical>=0.0.30",
+      "zensical>=0.0.32",
   ]
   
   [tool.hatch.build.targets.sdist]
@@ -1764,15 +1764,15 @@
       "poethepoet>=0.42",
       "prek>=0.3",
       "pysentry-rs>=0.4",
-      "pytest>=9.0",
-      "pytest-cov>=7.0",
-      "pytest-sugar>=1.0",
+      "pytest>=9",
+      "pytest-cov>=7",
+      "pytest-sugar>=1",
       "ruff>=0.15",
-      "ty>=0.0.26",
+      "ty>=0.0.29",
   ]
   docs = [
       "mkdocstrings[python]>=1",
-      "zensical>=0.0.30",
+      "zensical>=0.0.32",
   ]
   
   [tool.hatch.build.targets.sdist]
@@ -1964,15 +1964,15 @@
       "poethepoet>=0.42",
       "prek>=0.3",
       "pysentry-rs>=0.4",
-      "pytest>=9.0",
-      "pytest-cov>=7.0",
-      "pytest-sugar>=1.0",
+      "pytest>=9",
+      "pytest-cov>=7",
+      "pytest-sugar>=1",
       "ruff>=0.15",
-      "ty>=0.0.26",
+      "ty>=0.0.29",
   ]
   docs = [
       "mkdocstrings[python]>=1",
-      "zensical>=0.0.30",
+      "zensical>=0.0.32",
   ]
   
   [tool.hatch.build.targets.sdist]
@@ -2182,15 +2182,15 @@
       "poethepoet>=0.42",
       "prek>=0.3",
       "pysentry-rs>=0.4",
-      "pytest>=9.0",
-      "pytest-cov>=7.0",
-      "pytest-sugar>=1.0",
+      "pytest>=9",
+      "pytest-cov>=7",
+      "pytest-sugar>=1",
       "ruff>=0.15",
-      "ty>=0.0.26",
+      "ty>=0.0.29",
   ]
   docs = [
       "mkdocstrings[python]>=1",
-      "zensical>=0.0.30",
+      "zensical>=0.0.32",
   ]
   
   [tool.hatch.build.targets.sdist]
@@ -2392,15 +2392,15 @@
       "poethepoet>=0.42",
       "prek>=0.3",
       "pysentry-rs>=0.4",
-      "pytest>=9.0",
-      "pytest-cov>=7.0",
-      "pytest-sugar>=1.0",
+      "pytest>=9",
+      "pytest-cov>=7",
+      "pytest-sugar>=1",
       "ruff>=0.15",
-      "ty>=0.0.26",
+      "ty>=0.0.29",
   ]
   docs = [
       "mkdocstrings[python]>=1",
-      "zensical>=0.0.30",
+      "zensical>=0.0.32",
   ]
   
   [tool.hatch.build.targets.sdist]
@@ -2610,15 +2610,15 @@
       "poethepoet>=0.42",
       "prek>=0.3",
       "pysentry-rs>=0.4",
-      "pytest>=9.0",
-      "pytest-cov>=7.0",
-      "pytest-sugar>=1.0",
+      "pytest>=9",
+      "pytest-cov>=7",
+      "pytest-sugar>=1",
       "ruff>=0.15",
-      "ty>=0.0.26",
+      "ty>=0.0.29",
   ]
   docs = [
       "mkdocstrings[python]>=1",
-      "zensical>=0.0.30",
+      "zensical>=0.0.32",
   ]
   
   [tool.hatch.build.targets.sdist]

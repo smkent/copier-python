@@ -195,3 +195,9 @@ copyright_license:
     GNU Lesser General Public License v3.0 only: LGPL-3.0
     ISC License: ISC
     MIT License: MIT
+
+template_attribution:
+  type: bool
+  qmark: 🪧
+  help: Add copier-python attribution to README.md?
+  default: no

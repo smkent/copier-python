@@ -1,5 +1,99 @@
 # serializer version: 1
-# name: test_readme_features[no_pypi-coverage]
+# name: test_readme_features[attribution-no_pypi-coverage]
+  '''
+  # PKFire
+  
+  Onett Little League
+  
+  [![License](https://img.shields.io/github/license/ness/PKFire)](https://github.com/ness/PKFire/blob/main/LICENSE)
+  [![CI](https://github.com/ness/PKFire/actions/workflows/ci.yaml/badge.svg)](https://github.com/ness/PKFire/actions/workflows/ci.yaml)
+  [![Coverage](https://codecov.io/gh/ness/PKFire/branch/main/graph/badge.svg)](https://codecov.io/gh/ness/PKFire)
+  [![Renovate](https://img.shields.io/badge/renovate-enabled-brightgreen?logo=renovatebot)](https://renovatebot.com)
+  [![GitHub stars](https://img.shields.io/github/stars/ness/PKFire?style=social)](https://github.com/ness/PKFire)
+  
+  ## Project template
+  
+  This project is generated and maintained with [copier-python][copier-python].
+  
+  [copier-python]: https://smkent.github.io/copier-python
+  
+  '''
+# ---
+# name: test_readme_features[attribution-no_pypi-no_coverage]
+  '''
+  # PKFire
+  
+  Onett Little League
+  
+  [![License](https://img.shields.io/github/license/ness/PKFire)](https://github.com/ness/PKFire/blob/main/LICENSE)
+  [![CI](https://github.com/ness/PKFire/actions/workflows/ci.yaml/badge.svg)](https://github.com/ness/PKFire/actions/workflows/ci.yaml)
+  [![Renovate](https://img.shields.io/badge/renovate-enabled-brightgreen?logo=renovatebot)](https://renovatebot.com)
+  [![GitHub stars](https://img.shields.io/github/stars/ness/PKFire?style=social)](https://github.com/ness/PKFire)
+  
+  ## Project template
+  
+  This project is generated and maintained with [copier-python][copier-python].
+  
+  [copier-python]: https://smkent.github.io/copier-python
+  
+  '''
+# ---
+# name: test_readme_features[attribution-pypi-coverage]
+  '''
+  # PKFire
+  
+  Onett Little League
+  
+  [![License](https://img.shields.io/github/license/ness/PKFire)](https://github.com/ness/PKFire/blob/main/LICENSE)
+  [![PyPI](https://img.shields.io/pypi/v/PKFire)](https://pypi.org/project/PKFire/)
+  [![Python](https://img.shields.io/pypi/pyversions/PKFire)](https://pypi.org/project/PKFire/)
+  [![CI](https://github.com/ness/PKFire/actions/workflows/ci.yaml/badge.svg)](https://github.com/ness/PKFire/actions/workflows/ci.yaml)
+  [![Coverage](https://codecov.io/gh/ness/PKFire/branch/main/graph/badge.svg)](https://codecov.io/gh/ness/PKFire)
+  [![Renovate](https://img.shields.io/badge/renovate-enabled-brightgreen?logo=renovatebot)](https://renovatebot.com)
+  [![GitHub stars](https://img.shields.io/github/stars/ness/PKFire?style=social)](https://github.com/ness/PKFire)
+  
+  ## Installation
+  
+  ```sh
+  pip install PKFire
+  ```
+  
+  ## Project template
+  
+  This project is generated and maintained with [copier-python][copier-python].
+  
+  [copier-python]: https://smkent.github.io/copier-python
+  
+  '''
+# ---
+# name: test_readme_features[attribution-pypi-no_coverage]
+  '''
+  # PKFire
+  
+  Onett Little League
+  
+  [![License](https://img.shields.io/github/license/ness/PKFire)](https://github.com/ness/PKFire/blob/main/LICENSE)
+  [![PyPI](https://img.shields.io/pypi/v/PKFire)](https://pypi.org/project/PKFire/)
+  [![Python](https://img.shields.io/pypi/pyversions/PKFire)](https://pypi.org/project/PKFire/)
+  [![CI](https://github.com/ness/PKFire/actions/workflows/ci.yaml/badge.svg)](https://github.com/ness/PKFire/actions/workflows/ci.yaml)
+  [![Renovate](https://img.shields.io/badge/renovate-enabled-brightgreen?logo=renovatebot)](https://renovatebot.com)
+  [![GitHub stars](https://img.shields.io/github/stars/ness/PKFire?style=social)](https://github.com/ness/PKFire)
+  
+  ## Installation
+  
+  ```sh
+  pip install PKFire
+  ```
+  
+  ## Project template
+  
+  This project is generated and maintained with [copier-python][copier-python].
+  
+  [copier-python]: https://smkent.github.io/copier-python
+  
+  '''
+# ---
+# name: test_readme_features[no_attribution-no_pypi-coverage]
   '''
   # PKFire
   
@@ -13,7 +107,7 @@
   
   '''
 # ---
-# name: test_readme_features[no_pypi-no_coverage]
+# name: test_readme_features[no_attribution-no_pypi-no_coverage]
   '''
   # PKFire
   
@@ -26,7 +120,7 @@
   
   '''
 # ---
-# name: test_readme_features[pypi-coverage]
+# name: test_readme_features[no_attribution-pypi-coverage]
   '''
   # PKFire
   
@@ -48,7 +142,7 @@
   
   '''
 # ---
-# name: test_readme_features[pypi-no_coverage]
+# name: test_readme_features[no_attribution-pypi-no_coverage]
   '''
   # PKFire
   

@@ -48,16 +48,16 @@ dev = [
 {%- if project_visibility == 'public' %}
     "pysentry-rs>=0.4",
 {%- endif %}
-    "pytest>=9.0",
-    "pytest-cov>=7.0",
-    "pytest-sugar>=1.0",
+    "pytest>=9",
+    "pytest-cov>=7",
+    "pytest-sugar>=1",
     "ruff>=0.15",
-    "ty>=0.0.26",
+    "ty>=0.0.29",
 ]
 {%- if enable_docs %}
 docs = [
     "mkdocstrings[python]>=1",
-    "zensical>=0.0.30",
+    "zensical>=0.0.32",
 ]
 {%- endif %}
 

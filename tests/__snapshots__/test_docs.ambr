@@ -445,7 +445,228 @@
   
   '''
 # ---
-# name: test_docs_features[no_pypi]
+# name: test_docs_features[container-no_pypi]
+  '''
+  ---
+  title: One time setup
+  icon: lucide/package-plus
+  ---
+  
+  # One time setup
+  
+  These steps only need to be completed once after the project is first created.
+  
+  ## GitHub repository
+  
+  [Settings → General][repo-settings]:
+  
+  - [x] Allow merge commits
+  - [ ] Allow squash merging
+  - [ ] Allow rebase merging
+  - [x] Automatically delete head branches
+  
+  [Settings → Branches][repo-settings-branches] → Add branch protection rule
+  for the Default branch (`main`):
+  
+  - [x] Restrict deletions
+  - [x] Require a pull request before merging
+  - [x] Block force pushes
+  
+  ## Renovate
+  
+  Ensure the [Renovate app][renovate] is installed on your account, then
+  enable it for `ness/PKFire`.
+  
+  ## Container registry (ghcr.io)
+  
+  Enable write access for Actions:
+  
+  [Settings → Actions → General][repo-settings-actions-general]
+  → Workflow permissions → Read and write permissions
+  
+  ## GitHub Pages
+  
+  [Settings → Pages][repo-settings-pages] → Source → GitHub Actions
+  
+  [renovate]: https://github.com/apps/renovate
+  [repo-releases]: https://github.com/ness/PKFire/releases
+  [repo-settings]: https://github.com/ness/PKFire/settings
+  [repo-settings-actions-general]: https://github.com/ness/PKFire/settings/actions
+  [repo-settings-branches]: https://github.com/ness/PKFire/settings/branches
+  [repo-settings-pages]: https://github.com/ness/PKFire/settings/pages
+  
+  '''
+# ---
+# name: test_docs_features[container-no_pypi].1
+  '''
+  ---
+  title: Releasing a new version
+  icon: lucide/rocket
+  ---
+  
+  # Releasing a new version
+  
+  Release version numbers should follow [Semantic Versioning][semver].
+  
+  To create a release, run `poe release` with one of `patch`, `minor`, or `major`
+  corresponding to the version number component to update:
+  
+  ```sh
+  poe release patch|minor|major
+  ```
+  
+  A new tag with the new release version number will be created automatically
+  using [bump-my-version][bump-my-version] (for example, `v1.2.3`).
+  
+  Afterward, push the new release tag:
+  
+  ```sh
+  git push --tags
+  ```
+  
+  * A corresponding [GitHub release][github-releases]
+    will be created automatically.
+  
+      [![GitHub Release][github-release-badge]][github-release-latest]
+  
+  * A container image will be built and published to
+    the [GitHub Container Registry (GHCR)][ghcr-docs].
+  
+  [bump-my-version]: https://callowayproject.github.io/bump-my-version/
+  [ghcr-project]: https://github.com/ness/PKFire/pkgs/container/PKFire
+  [github-release-badge]: https://img.shields.io/github/v/release/ness/PKFire
+  [github-release-latest]: https://github.com/ness/PKFire/releases/latest
+  [github-releases]: https://github.com/ness/PKFire/releases
+  [semver]: https://semver.org/
+  
+  '''
+# ---
+# name: test_docs_features[container-pypi]
+  '''
+  ---
+  title: One time setup
+  icon: lucide/package-plus
+  ---
+  
+  # One time setup
+  
+  These steps only need to be completed once after the project is first created.
+  
+  ## GitHub repository
+  
+  [Settings → General][repo-settings]:
+  
+  - [x] Allow merge commits
+  - [ ] Allow squash merging
+  - [ ] Allow rebase merging
+  - [x] Automatically delete head branches
+  
+  [Settings → Branches][repo-settings-branches] → Add branch protection rule
+  for the Default branch (`main`):
+  
+  - [x] Restrict deletions
+  - [x] Require a pull request before merging
+  - [x] Block force pushes
+  
+  ## Renovate
+  
+  Ensure the [Renovate app][renovate] is installed on your account, then
+  enable it for `ness/PKFire`.
+  
+  ## PyPI publishing
+  
+  This project uses [trusted publishing][pypi-trusted-publishing] so no API tokens
+  need to be stored as secrets.
+  
+  1. On PyPI, add a (pending) trusted publisher in your
+     [Trusted Publisher Management][pypi-publishing-settings] settings:
+       - Publisher: GitHub Actions
+       - Owner: `ness`
+       - Repository: `PKFire`
+       - Workflow: `release.yaml`
+       - Environment: `pypi`
+  2. Create the `pypi` environment in the GitHub repository:
+     [Settings → Environments][repo-settings-envs] → New environment → `pypi`
+  3. Publish a release by pushing a tag:
+     ```sh
+     git tag v0.1.0  # or your desired first version number
+     git push --tags
+     ```
+  
+  ## Container registry (ghcr.io)
+  
+  Enable write access for Actions:
+  
+  [Settings → Actions → General][repo-settings-actions-general]
+  → Workflow permissions → Read and write permissions
+  
+  ## GitHub Pages
+  
+  [Settings → Pages][repo-settings-pages] → Source → GitHub Actions
+  
+  [pypi-publishing-settings]: https://pypi.org/manage/account/publishing/
+  [pypi-trusted-publishing]: https://docs.pypi.org/trusted-publishers/
+  [renovate]: https://github.com/apps/renovate
+  [repo-releases]: https://github.com/ness/PKFire/releases
+  [repo-settings]: https://github.com/ness/PKFire/settings
+  [repo-settings-actions-general]: https://github.com/ness/PKFire/settings/actions
+  [repo-settings-envs]: https://github.com/ness/PKFire/settings/environments
+  [repo-settings-branches]: https://github.com/ness/PKFire/settings/branches
+  [repo-settings-pages]: https://github.com/ness/PKFire/settings/pages
+  
+  '''
+# ---
+# name: test_docs_features[container-pypi].1
+  '''
+  ---
+  title: Releasing a new version
+  icon: lucide/rocket
+  ---
+  
+  # Releasing a new version
+  
+  Release version numbers should follow [Semantic Versioning][semver].
+  
+  To create a release, run `poe release` with one of `patch`, `minor`, or `major`
+  corresponding to the version number component to update:
+  
+  ```sh
+  poe release patch|minor|major
+  ```
+  
+  A new tag with the new release version number will be created automatically
+  using [bump-my-version][bump-my-version] (for example, `v1.2.3`).
+  
+  Afterward, push the new release tag:
+  
+  ```sh
+  git push --tags
+  ```
+  
+  * A corresponding [GitHub release][github-releases]
+    will be created automatically.
+  
+      [![GitHub Release][github-release-badge]][github-release-latest]
+  
+  * A release package will be built and [uploaded to PyPI][pypi-project].
+  
+      [![PyPI][pypi-badge]][pypi-project]
+  
+  * A container image will be built and published to
+    the [GitHub Container Registry (GHCR)][ghcr-docs].
+  
+  [bump-my-version]: https://callowayproject.github.io/bump-my-version/
+  [ghcr-project]: https://github.com/ness/PKFire/pkgs/container/PKFire
+  [github-release-badge]: https://img.shields.io/github/v/release/ness/PKFire
+  [github-release-latest]: https://github.com/ness/PKFire/releases/latest
+  [github-releases]: https://github.com/ness/PKFire/releases
+  [pypi-badge]: https://img.shields.io/pypi/v/PKFire
+  [pypi-project]: https://pypi.org/project/PKFire/
+  [semver]: https://semver.org/
+  
+  '''
+# ---
+# name: test_docs_features[no_container-no_pypi]
   '''
   ---
   title: One time setup
@@ -489,7 +710,7 @@
   
   '''
 # ---
-# name: test_docs_features[no_pypi].1
+# name: test_docs_features[no_container-no_pypi].1
   '''
   ---
   title: Releasing a new version
@@ -500,11 +721,19 @@
   
   Release version numbers should follow [Semantic Versioning][semver].
   
-  To create a new release, simply create and push a tag with the new release
-  version number:
+  To create a release, run `poe release` with one of `patch`, `minor`, or `major`
+  corresponding to the version number component to update:
   
   ```sh
-  git tag vX.Y.Z  # for example, v1.2.3
+  poe release patch|minor|major
+  ```
+  
+  A new tag with the new release version number will be created automatically
+  using [bump-my-version][bump-my-version] (for example, `v1.2.3`).
+  
+  Afterward, push the new release tag:
+  
+  ```sh
   git push --tags
   ```
   
@@ -513,6 +742,7 @@
   
       [![GitHub Release][github-release-badge]][github-release-latest]
   
+  [bump-my-version]: https://callowayproject.github.io/bump-my-version/
   [github-release-badge]: https://img.shields.io/github/v/release/ness/PKFire
   [github-release-latest]: https://github.com/ness/PKFire/releases/latest
   [github-releases]: https://github.com/ness/PKFire/releases
@@ -520,7 +750,7 @@
   
   '''
 # ---
-# name: test_docs_features[pypi]
+# name: test_docs_features[no_container-pypi]
   '''
   ---
   title: One time setup
@@ -587,7 +817,7 @@
   
   '''
 # ---
-# name: test_docs_features[pypi].1
+# name: test_docs_features[no_container-pypi].1
   '''
   ---
   title: Releasing a new version
@@ -598,11 +828,19 @@
   
   Release version numbers should follow [Semantic Versioning][semver].
   
-  To create a new release, simply create and push a tag with the new release
-  version number:
+  To create a release, run `poe release` with one of `patch`, `minor`, or `major`
+  corresponding to the version number component to update:
   
   ```sh
-  git tag vX.Y.Z  # for example, v1.2.3
+  poe release patch|minor|major
+  ```
+  
+  A new tag with the new release version number will be created automatically
+  using [bump-my-version][bump-my-version] (for example, `v1.2.3`).
+  
+  Afterward, push the new release tag:
+  
+  ```sh
   git push --tags
   ```
   
@@ -615,6 +853,7 @@
   
       [![PyPI][pypi-badge]][pypi-project]
   
+  [bump-my-version]: https://callowayproject.github.io/bump-my-version/
   [github-release-badge]: https://img.shields.io/github/v/release/ness/PKFire
   [github-release-latest]: https://github.com/ness/PKFire/releases/latest
   [github-releases]: https://github.com/ness/PKFire/releases

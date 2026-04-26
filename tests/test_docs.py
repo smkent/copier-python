@@ -11,14 +11,23 @@ from syrupy.assertion import SnapshotAssertion
     "enable_pypi",
     [pytest.param(True, id="pypi"), pytest.param(False, id="no_pypi")],
 )
+@pytest.mark.parametrize(
+    "enable_container",
+    [
+        pytest.param(True, id="container"),
+        pytest.param(False, id="no_container"),
+    ],
+)
 def test_docs_features(
     render_template: Callable[..., Path],
     snapshot: SnapshotAssertion,
     *,
+    enable_container: bool,
     enable_pypi: bool,
 ) -> None:
     rendered = render_template(
         project_visibility="public",
+        enable_container=enable_container,
         enable_pypi=enable_pypi,
         enable_docs=True,
     )

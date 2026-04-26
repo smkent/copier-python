@@ -38,6 +38,7 @@ Issues = "https://github.com/smkent/copier-python/issues"
 
 [dependency-groups]
 dev = [
+    "bump-my-version>=1.3.0",
     "copier>=9",
     "poethepoet>=0.42",
     "prek>=0.3",
@@ -52,6 +53,13 @@ dev = [
 docs = [
     "zensical>=0.0.33",
 ]
+
+[tool.bumpversion]
+commit = false
+tag = true
+tag_name = "v{new_version}"
+tag_message = ""
+push = true
 
 [tool.hatch.build.targets.sdist]
 include = ["/copier_python", "/tests", "*.md", "LICENSE"]
@@ -106,6 +114,10 @@ help = "Initialize git repository once on project creation"
 [tool.poe.tasks.lint]
 cmd = "prek run --all-files"
 help = "Run all formatters and static checks"
+
+[tool.poe.tasks.release]
+cmd = "bump-my-version bump -v"
+help = "Create and push a release tag (patch/minor/major)"
 
 [tool.poe.tasks.lt]
 sequence = [{ref = "lint"}, {ref = "test"}]

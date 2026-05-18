@@ -42,6 +42,7 @@
       "pytest>=9",
       "pytest-cov>=7",
       "pytest-sugar>=1",
+      "pytest-xdist>=3",
       "ruff>=0.15",
       "ty>=0.0.31",
   ]
@@ -159,6 +160,8 @@
       "--cov",
       "--strict-config",
       "--strict-markers",
+      "-n",
+      "auto",
   ]
   testpaths = ["tests"]
   
@@ -268,6 +271,7 @@
       "pytest>=9",
       "pytest-cov>=7",
       "pytest-sugar>=1",
+      "pytest-xdist>=3",
       "ruff>=0.15",
       "ty>=0.0.31",
   ]
@@ -391,6 +395,8 @@
       "--cov",
       "--strict-config",
       "--strict-markers",
+      "-n",
+      "auto",
   ]
   testpaths = ["tests"]
   
@@ -490,6 +496,7 @@
       "pytest>=9",
       "pytest-cov>=7",
       "pytest-sugar>=1",
+      "pytest-xdist>=3",
       "ruff>=0.15",
       "ty>=0.0.31",
   ]
@@ -587,6 +594,8 @@
       "--cov",
       "--strict-config",
       "--strict-markers",
+      "-n",
+      "auto",
   ]
   testpaths = ["tests"]
   
@@ -692,6 +701,7 @@
       "pytest>=9",
       "pytest-cov>=7",
       "pytest-sugar>=1",
+      "pytest-xdist>=3",
       "ruff>=0.15",
       "ty>=0.0.31",
   ]
@@ -795,6 +805,8 @@
       "--cov",
       "--strict-config",
       "--strict-markers",
+      "-n",
+      "auto",
   ]
   testpaths = ["tests"]
   
@@ -898,6 +910,7 @@
       "pytest>=9",
       "pytest-cov>=7",
       "pytest-sugar>=1",
+      "pytest-xdist>=3",
       "ruff>=0.15",
       "ty>=0.0.31",
   ]
@@ -990,6 +1003,8 @@
       "--cov",
       "--strict-config",
       "--strict-markers",
+      "-n",
+      "auto",
   ]
   testpaths = ["tests"]
   
@@ -1099,6 +1114,7 @@
       "pytest>=9",
       "pytest-cov>=7",
       "pytest-sugar>=1",
+      "pytest-xdist>=3",
       "ruff>=0.15",
       "ty>=0.0.31",
   ]
@@ -1197,6 +1213,8 @@
       "--cov",
       "--strict-config",
       "--strict-markers",
+      "-n",
+      "auto",
   ]
   testpaths = ["tests"]
   
@@ -1296,6 +1314,7 @@
       "pytest>=9",
       "pytest-cov>=7",
       "pytest-sugar>=1",
+      "pytest-xdist>=3",
       "ruff>=0.15",
       "ty>=0.0.31",
   ]
@@ -1368,6 +1387,8 @@
       "--cov",
       "--strict-config",
       "--strict-markers",
+      "-n",
+      "auto",
   ]
   testpaths = ["tests"]
   
@@ -1473,6 +1494,7 @@
       "pytest>=9",
       "pytest-cov>=7",
       "pytest-sugar>=1",
+      "pytest-xdist>=3",
       "ruff>=0.15",
       "ty>=0.0.31",
   ]
@@ -1551,6 +1573,8 @@
       "--cov",
       "--strict-config",
       "--strict-markers",
+      "-n",
+      "auto",
   ]
   testpaths = ["tests"]
   
@@ -1658,6 +1682,7 @@
       "pytest>=9",
       "pytest-cov>=7",
       "pytest-sugar>=1",
+      "pytest-xdist>=3",
       "ruff>=0.15",
       "ty>=0.0.31",
   ]
@@ -1771,6 +1796,8 @@
       "--cov",
       "--strict-config",
       "--strict-markers",
+      "-n",
+      "auto",
   ]
   testpaths = ["tests"]
   
@@ -1876,6 +1903,7 @@
       "pytest>=9",
       "pytest-cov>=7",
       "pytest-sugar>=1",
+      "pytest-xdist>=3",
       "ruff>=0.15",
       "ty>=0.0.31",
   ]
@@ -1979,6 +2007,8 @@
       "--cov",
       "--strict-config",
       "--strict-markers",
+      "-n",
+      "auto",
   ]
   testpaths = ["tests"]
   
@@ -2088,6 +2118,7 @@
       "pytest>=9",
       "pytest-cov>=7",
       "pytest-sugar>=1",
+      "pytest-xdist>=3",
       "ruff>=0.15",
       "ty>=0.0.31",
   ]
@@ -2211,6 +2242,8 @@
       "--cov",
       "--strict-config",
       "--strict-markers",
+      "-n",
+      "auto",
   ]
   testpaths = ["tests"]
   
@@ -2318,6 +2351,7 @@
       "pytest>=9",
       "pytest-cov>=7",
       "pytest-sugar>=1",
+      "pytest-xdist>=3",
       "ruff>=0.15",
       "ty>=0.0.31",
   ]
@@ -2431,6 +2465,8 @@
       "--cov",
       "--strict-config",
       "--strict-markers",
+      "-n",
+      "auto",
   ]
   testpaths = ["tests"]
   
@@ -2540,6 +2576,7 @@
       "pytest>=9",
       "pytest-cov>=7",
       "pytest-sugar>=1",
+      "pytest-xdist>=3",
       "ruff>=0.15",
       "ty>=0.0.31",
   ]
@@ -2663,6 +2700,8 @@
       "--cov",
       "--strict-config",
       "--strict-markers",
+      "-n",
+      "auto",
   ]
   testpaths = ["tests"]
   
@@ -2770,6 +2809,7 @@
       "pytest>=9",
       "pytest-cov>=7",
       "pytest-sugar>=1",
+      "pytest-xdist>=3",
       "ruff>=0.15",
       "ty>=0.0.31",
   ]
@@ -2883,6 +2923,8 @@
       "--cov",
       "--strict-config",
       "--strict-markers",
+      "-n",
+      "auto",
   ]
   testpaths = ["tests"]
   

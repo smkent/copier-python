@@ -75,13 +75,7 @@ Repository Settings → Actions → General → Workflow permissions
 
 Repository Settings → Pages → Source → GitHub Actions
 
-[copier]: https://copier.readthedocs.io
-[github-new]: https://github.com/new
 [github-settings-docs]: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features
 [pypi-publishing-settings]: https://pypi.org/manage/account/publishing/
 [pypi-trusted-publishing]: https://docs.pypi.org/trusted-publishers/
-[pypi]: https://pypi.org
-[pypi-login]: https://pypi.org/account/login/
-[pyproject-name]: https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#name
 [renovate]: https://github.com/apps/renovate
-[uv]: https://docs.astral.sh/uv/

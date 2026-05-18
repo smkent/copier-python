@@ -101,8 +101,8 @@
   copier update -l
   ```
   
-  When `copier update` is finished, view changes with `git status` and `git diff`.
-  Resolve any conflicts, and then commit the result.
+  When [`copier update`][copier-update] is finished, view changes with
+  `git status` and `git diff`. Resolve any conflicts, and then commit the result.
   
   [copier-update]: https://copier.readthedocs.io/en/stable/updating/
   
@@ -215,8 +215,8 @@
   copier update -l
   ```
   
-  When `copier update` is finished, view changes with `git status` and `git diff`.
-  Resolve any conflicts, and then commit the result.
+  When [`copier update`][copier-update] is finished, view changes with
+  `git status` and `git diff`. Resolve any conflicts, and then commit the result.
   
   [copier-update]: https://copier.readthedocs.io/en/stable/updating/
   
@@ -324,8 +324,8 @@
   copier update -l
   ```
   
-  When `copier update` is finished, view changes with `git status` and `git diff`.
-  Resolve any conflicts, and then commit the result.
+  When [`copier update`][copier-update] is finished, view changes with
+  `git status` and `git diff`. Resolve any conflicts, and then commit the result.
   
   [copier-update]: https://copier.readthedocs.io/en/stable/updating/
   
@@ -438,8 +438,8 @@
   copier update -l
   ```
   
-  When `copier update` is finished, view changes with `git status` and `git diff`.
-  Resolve any conflicts, and then commit the result.
+  When [`copier update`][copier-update] is finished, view changes with
+  `git status` and `git diff`. Resolve any conflicts, and then commit the result.
   
   [copier-update]: https://copier.readthedocs.io/en/stable/updating/
   
@@ -489,7 +489,6 @@
   [Settings → Pages][repo-settings-pages] → Source → GitHub Actions
   
   [renovate]: https://github.com/apps/renovate
-  [repo-releases]: https://github.com/ness/PKFire/releases
   [repo-settings]: https://github.com/ness/PKFire/settings
   [repo-settings-actions-general]: https://github.com/ness/PKFire/settings/actions
   [repo-settings-branches]: https://github.com/ness/PKFire/settings/branches
@@ -607,7 +606,6 @@
   [pypi-publishing-settings]: https://pypi.org/manage/account/publishing/
   [pypi-trusted-publishing]: https://docs.pypi.org/trusted-publishers/
   [renovate]: https://github.com/apps/renovate
-  [repo-releases]: https://github.com/ness/PKFire/releases
   [repo-settings]: https://github.com/ness/PKFire/settings
   [repo-settings-actions-general]: https://github.com/ness/PKFire/settings/actions
   [repo-settings-envs]: https://github.com/ness/PKFire/settings/environments
@@ -703,7 +701,6 @@
   [Settings → Pages][repo-settings-pages] → Source → GitHub Actions
   
   [renovate]: https://github.com/apps/renovate
-  [repo-releases]: https://github.com/ness/PKFire/releases
   [repo-settings]: https://github.com/ness/PKFire/settings
   [repo-settings-branches]: https://github.com/ness/PKFire/settings/branches
   [repo-settings-pages]: https://github.com/ness/PKFire/settings/pages
@@ -809,7 +806,6 @@
   [pypi-publishing-settings]: https://pypi.org/manage/account/publishing/
   [pypi-trusted-publishing]: https://docs.pypi.org/trusted-publishers/
   [renovate]: https://github.com/apps/renovate
-  [repo-releases]: https://github.com/ness/PKFire/releases
   [repo-settings]: https://github.com/ness/PKFire/settings
   [repo-settings-envs]: https://github.com/ness/PKFire/settings/environments
   [repo-settings-branches]: https://github.com/ness/PKFire/settings/branches

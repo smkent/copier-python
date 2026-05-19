@@ -168,6 +168,10 @@ cmd = "pytest"
 executor = {isolated = true, python = "3.14"}
 help = "Run tests using Python 3.14"
 
+[tool.poe.tasks.ti]
+cmd = "pytest -n 0 --no-cov -v"
+help = "Run tests with debug friendly options"
+
 [tool.pytest]
 addopts = [
     "-ra",

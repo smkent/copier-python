@@ -154,6 +154,10 @@
   executor = {isolated = true, python = "3.14"}
   help = "Run tests using Python 3.14"
   
+  [tool.poe.tasks.ti]
+  cmd = "pytest -n 0 --no-cov -v"
+  help = "Run tests with debug friendly options"
+  
   [tool.pytest]
   addopts = [
       "-ra",
@@ -389,6 +393,10 @@
   executor = {isolated = true, python = "3.14"}
   help = "Run tests using Python 3.14"
   
+  [tool.poe.tasks.ti]
+  cmd = "pytest -n 0 --no-cov -v"
+  help = "Run tests with debug friendly options"
+  
   [tool.pytest]
   addopts = [
       "-ra",
@@ -587,6 +595,10 @@
   cmd = "pytest"
   executor = {isolated = true, python = "3.14"}
   help = "Run tests using Python 3.14"
+  
+  [tool.poe.tasks.ti]
+  cmd = "pytest -n 0 --no-cov -v"
+  help = "Run tests with debug friendly options"
   
   [tool.pytest]
   addopts = [
@@ -799,6 +811,10 @@
   executor = {isolated = true, python = "3.14"}
   help = "Run tests using Python 3.14"
   
+  [tool.poe.tasks.ti]
+  cmd = "pytest -n 0 --no-cov -v"
+  help = "Run tests with debug friendly options"
+  
   [tool.pytest]
   addopts = [
       "-ra",
@@ -996,6 +1012,10 @@
   cmd = "pytest"
   executor = {isolated = true, python = "3.14"}
   help = "Run tests using Python 3.14"
+  
+  [tool.poe.tasks.ti]
+  cmd = "pytest -n 0 --no-cov -v"
+  help = "Run tests with debug friendly options"
   
   [tool.pytest]
   addopts = [
@@ -1207,6 +1227,10 @@
   executor = {isolated = true, python = "3.14"}
   help = "Run tests using Python 3.14"
   
+  [tool.poe.tasks.ti]
+  cmd = "pytest -n 0 --no-cov -v"
+  help = "Run tests with debug friendly options"
+  
   [tool.pytest]
   addopts = [
       "-ra",
@@ -1380,6 +1404,10 @@
   cmd = "pytest"
   executor = {isolated = true, python = "3.14"}
   help = "Run tests using Python 3.14"
+  
+  [tool.poe.tasks.ti]
+  cmd = "pytest -n 0 --no-cov -v"
+  help = "Run tests with debug friendly options"
   
   [tool.pytest]
   addopts = [
@@ -1566,6 +1594,10 @@
   cmd = "pytest"
   executor = {isolated = true, python = "3.14"}
   help = "Run tests using Python 3.14"
+  
+  [tool.poe.tasks.ti]
+  cmd = "pytest -n 0 --no-cov -v"
+  help = "Run tests with debug friendly options"
   
   [tool.pytest]
   addopts = [
@@ -1790,6 +1822,10 @@
   executor = {isolated = true, python = "3.12"}
   help = "Run tests using Python 3.12"
   
+  [tool.poe.tasks.ti]
+  cmd = "pytest -n 0 --no-cov -v"
+  help = "Run tests with debug friendly options"
+  
   [tool.pytest]
   addopts = [
       "-ra",
@@ -2000,6 +2036,10 @@
   cmd = "pytest"
   executor = {isolated = true, python = "3.12"}
   help = "Run tests using Python 3.12"
+  
+  [tool.poe.tasks.ti]
+  cmd = "pytest -n 0 --no-cov -v"
+  help = "Run tests with debug friendly options"
   
   [tool.pytest]
   addopts = [
@@ -2236,6 +2276,10 @@
   executor = {isolated = true, python = "3.14"}
   help = "Run tests using Python 3.14"
   
+  [tool.poe.tasks.ti]
+  cmd = "pytest -n 0 --no-cov -v"
+  help = "Run tests with debug friendly options"
+  
   [tool.pytest]
   addopts = [
       "-ra",
@@ -2458,6 +2502,10 @@
   cmd = "pytest"
   executor = {isolated = true, python = "3.14"}
   help = "Run tests using Python 3.14"
+  
+  [tool.poe.tasks.ti]
+  cmd = "pytest -n 0 --no-cov -v"
+  help = "Run tests with debug friendly options"
   
   [tool.pytest]
   addopts = [
@@ -2694,6 +2742,10 @@
   executor = {isolated = true, python = "3.14"}
   help = "Run tests using Python 3.14"
   
+  [tool.poe.tasks.ti]
+  cmd = "pytest -n 0 --no-cov -v"
+  help = "Run tests with debug friendly options"
+  
   [tool.pytest]
   addopts = [
       "-ra",
@@ -2916,6 +2968,10 @@
   cmd = "pytest"
   executor = {isolated = true, python = "3.14"}
   help = "Run tests using Python 3.14"
+  
+  [tool.poe.tasks.ti]
+  cmd = "pytest -n 0 --no-cov -v"
+  help = "Run tests with debug friendly options"
   
   [tool.pytest]
   addopts = [

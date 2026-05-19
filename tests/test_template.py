@@ -16,7 +16,4 @@ def test_template_render_lint_test(
         enable_pypi=True,
     )
     subprocess.run(["uv", "run", "poe", "init"], cwd=rendered, check=True)
-    subprocess.run(
-        ["uv", "run", "prek", "run", "--all-files"], cwd=rendered, check=True
-    )
-    subprocess.run(["uv", "run", "pytest"], cwd=rendered, check=True)
+    subprocess.run(["uv", "run", "poe", "lt"], cwd=rendered, check=True)

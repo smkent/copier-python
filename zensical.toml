@@ -20,6 +20,8 @@ nav = [
       "project-updates.md",
       "project-release.md",
     ] },
+  ] },
+  { "Development" = [
     { "Development" = [
       "development/requirements.md",
       "development/workflow.md",

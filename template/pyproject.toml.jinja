@@ -165,7 +165,7 @@ help = "Run tests using Python {{ v }}"
 [tool.pytest]
 addopts = [
     "-ra",
-    "--cov",
+    "--cov={{ project_slug }}",
     "--strict-config",
     "--strict-markers",
     "-n",

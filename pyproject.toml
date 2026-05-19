@@ -49,10 +49,10 @@ dev = [
     "pytest-xdist>=3",
     "syrupy>=5",
     "ruff>=0.15",
-    "ty>=0.0.31",
+    "ty>=0.0.37",
 ]
 docs = [
-    "zensical>=0.0.33",
+    "zensical>=0.0.42",
 ]
 
 [tool.bumpversion]

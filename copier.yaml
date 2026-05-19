@@ -137,6 +137,16 @@ enable_docs:
   help: Enable documentation site (Zensical{% if project_visibility == 'public' %} with deployment to GitHub Pages{% endif %})?
   default: yes
 
+enable_features:
+  type: str
+  qmark: 🧩
+  help: Enable miscellaneous features?
+  multiselect: true
+  choices:
+    pytest-syrupy for snapshots: syrupy
+    pytest-xdist for multiprocessing: xdist
+  default: '["syrupy", "xdist"]'
+
 user_name:
   type: str
   qmark: 🧑

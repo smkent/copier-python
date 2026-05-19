@@ -1,5 +1,3333 @@
 # serializer version: 1
-# name: test_pyproject_features[docs-3.10-private]
+# name: test_pyproject_features[no_xdist-no_syrupy-docs-3.10-private]
+  '''
+  [build-system]
+  requires = ["hatchling", "uv-dynamic-versioning"]
+  build-backend = "hatchling.build"
+  
+  [project]
+  name = "PKFire"
+  dynamic = ["version"]
+  description = "Onett Little League"
+  readme = "README.md"
+  license = "MIT"
+  license-files = ["LICENSE"]
+  requires-python = ">=3.10"
+  authors = [
+      { name = "Ness", email = "ness@onett.example.com" },
+  ]
+  classifiers = [
+      "Development Status :: 3 - Alpha",
+      "Intended Audience :: Developers",
+      "Programming Language :: Python :: 3",
+      "Programming Language :: Python :: 3 :: Only",
+      "Programming Language :: Python :: 3.10",
+      "Programming Language :: Python :: 3.11",
+      "Programming Language :: Python :: 3.12",
+      "Programming Language :: Python :: 3.13",
+      "Programming Language :: Python :: 3.14",
+      "Topic :: Documentation",
+      "Topic :: Software Development",
+      "Topic :: Utilities",
+      "Typing :: Typed",
+  ]
+  keywords = []
+  dependencies = []
+  
+  [dependency-groups]
+  dev = [
+      "bump-my-version>=1.3.0",
+      "poethepoet>=0.42",
+      "prek>=0.3",
+      "pytest>=9",
+      "pytest-cov>=7",
+      "pytest-sugar>=1",
+      "ruff>=0.15",
+      "ty>=0.0.37",
+  ]
+  docs = [
+      "mkdocstrings[python]>=1",
+      "zensical>=0.0.42",
+  ]
+  
+  [tool.bumpversion]
+  commit = false
+  tag = true
+  tag_name = "v{new_version}"
+  tag_message = ""
+  push = true
+  
+  [tool.hatch.build.targets.sdist]
+  include = ["/pkfire", "/tests", "*.md", "LICENSE"]
+  
+  [tool.hatch.version]
+  source = "uv-dynamic-versioning"
+  
+  [tool.poe.executor]
+  type = "uv"
+  
+  [tool.poe.tasks.build]
+  cmd = "uv build"
+  help = "Build distribution package"
+  
+  [tool.poe.tasks.docs-build]
+  cmd = "zensical build -c"
+  help = "Build documentation site"
+  
+  [tool.poe.tasks.docs]
+  sequence = [
+      {ref = "docs-build"},
+      {cmd = "zensical serve -a \"${host}:${port}\""},
+  ]
+  help = "Run documentation site locally"
+  
+  [tool.poe.tasks.docs.args.host]
+  options = ['--host', '-h']
+  help = "Bind IP"
+  default = "localhost"
+  
+  [tool.poe.tasks.docs.args.port]
+  positional = true
+  help = "Bind Port"
+  default = "8000"
+  
+  [tool.poe.tasks.init]
+  sequence = [
+      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
+      {cmd = "git init"},
+      {ref = "setup"},
+      {cmd = "git add ."},
+      {cmd = "git commit -m 'Create project from template'"},
+  ]
+  help = "Initialize git repository once on project creation"
+  
+  [tool.poe.tasks.lint]
+  cmd = "prek run --all-files"
+  help = "Run all formatters and static checks"
+  
+  [tool.poe.tasks.lt]
+  sequence = [{ref = "lint"}, {ref = "test"}]
+  help = "Run all formatters, static checks and tests"
+  
+  [tool.poe.tasks.release]
+  cmd = "bump-my-version bump -v"
+  help = "Create and push a release tag (patch/minor/major)"
+  
+  [tool.poe.tasks.setup]
+  sequence = [
+      {cmd = "uv sync"},
+      {cmd = "prek install"},
+  ]
+  help = "Install project dependencies and git hooks"
+  
+  [tool.poe.tasks.test]
+  cmd = "pytest"
+  help = "Run tests"
+  
+  [tool.poe.tasks.test-versions]
+  sequence = ["test-py310", "test-py311", "test-py312", "test-py313", "test-py314"]
+  help = "Run tests across all Python versions"
+  
+  [tool.poe.tasks.test-py310]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.10"}
+  help = "Run tests using Python 3.10"
+  
+  [tool.poe.tasks.test-py311]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.11"}
+  help = "Run tests using Python 3.11"
+  
+  [tool.poe.tasks.test-py312]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.12"}
+  help = "Run tests using Python 3.12"
+  
+  [tool.poe.tasks.test-py313]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.13"}
+  help = "Run tests using Python 3.13"
+  
+  [tool.poe.tasks.test-py314]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.14"}
+  help = "Run tests using Python 3.14"
+  
+  [tool.poe.tasks.ti]
+  cmd = "pytest --numprocesses 0 --no-cov -v"
+  help = "Run tests with debug friendly options"
+  
+  [tool.pytest]
+  addopts = [
+      "-ra",
+      "--cov=pkfire",
+      "--strict-config",
+      "--strict-markers",
+  ]
+  testpaths = ["tests"]
+  
+  [tool.coverage.run]
+  source = ["pkfire"]
+  branch = true
+  
+  [tool.coverage.report]
+  show_missing = true
+  skip_covered = true
+  exclude_lines = [
+      "pragma: no cover",
+      "if TYPE_CHECKING:",
+      "@abstractmethod",
+  ]
+  
+  [tool.ruff]
+  line-length = 79
+  output-format = "concise"
+  target-version = "py310"
+  
+  [tool.ruff.lint]
+  select = ["ALL"]
+  ignore = [
+      "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
+      "COM812",  # Trailing comma missing
+      "D1",  # Missing docstring presence rules
+      "EM",  # flake8-errmsg
+      "G004",  # Logging statement uses f-string
+      "PLR",  # pylint Refactor
+      "S607",  # Starting a process with a partial executable path
+      "TD",  # flake8-todos
+      "TRY003", # Avoid specifying long messages outside the exception class
+  ]
+  
+  [tool.ruff.lint.isort]
+  known-first-party = ["pkfire"]
+  
+  [tool.ruff.lint.per-file-ignores]
+  "tests/**/*.py" = [
+      "ARG",  # flake8-unused-arguments
+      "S101",  # Use of assert detected
+  ]
+  
+  [tool.ruff.lint.pydocstyle]
+  convention = "google"
+  
+  [tool.ty.terminal]
+  error-on-warning = true
+  output-format = "concise"
+  
+  [tool.uv]
+  default-groups = ["dev", "docs"]
+  
+  [tool.uv-dynamic-versioning]
+  pattern = "default-unprefixed"
+  fallback-version = "0.0.0"
+  
+  '''
+# ---
+# name: test_pyproject_features[no_xdist-no_syrupy-docs-3.10-public]
+  '''
+  [build-system]
+  requires = ["hatchling", "uv-dynamic-versioning"]
+  build-backend = "hatchling.build"
+  
+  [project]
+  name = "PKFire"
+  dynamic = ["version"]
+  description = "Onett Little League"
+  readme = "README.md"
+  license = "MIT"
+  license-files = ["LICENSE"]
+  requires-python = ">=3.10"
+  authors = [
+      { name = "Ness", email = "ness@onett.example.com" },
+  ]
+  classifiers = [
+      "Development Status :: 3 - Alpha",
+      "Intended Audience :: Developers",
+      "Programming Language :: Python :: 3",
+      "Programming Language :: Python :: 3 :: Only",
+      "Programming Language :: Python :: 3.10",
+      "Programming Language :: Python :: 3.11",
+      "Programming Language :: Python :: 3.12",
+      "Programming Language :: Python :: 3.13",
+      "Programming Language :: Python :: 3.14",
+      "Topic :: Documentation",
+      "Topic :: Software Development",
+      "Topic :: Utilities",
+      "Typing :: Typed",
+  ]
+  keywords = []
+  dependencies = []
+  
+  [project.urls]
+  Homepage = "https://ness.github.io/PKFire"
+  Repository = "https://github.com/ness/PKFire"
+  Issues = "https://github.com/ness/PKFire/issues"
+  
+  [dependency-groups]
+  dev = [
+      "bump-my-version>=1.3.0",
+      "poethepoet>=0.42",
+      "prek>=0.3",
+      "pysentry-rs>=0.4",
+      "pytest>=9",
+      "pytest-cov>=7",
+      "pytest-sugar>=1",
+      "ruff>=0.15",
+      "ty>=0.0.37",
+  ]
+  docs = [
+      "mkdocstrings[python]>=1",
+      "zensical>=0.0.42",
+  ]
+  
+  [tool.bumpversion]
+  commit = false
+  tag = true
+  tag_name = "v{new_version}"
+  tag_message = ""
+  push = true
+  
+  [tool.hatch.build.targets.sdist]
+  include = ["/pkfire", "/tests", "*.md", "LICENSE"]
+  
+  [tool.hatch.version]
+  source = "uv-dynamic-versioning"
+  
+  [tool.poe.executor]
+  type = "uv"
+  
+  [tool.poe.tasks.audit]
+  cmd = "pysentry-rs"
+  help = "Run dependencies security audit"
+  
+  [tool.poe.tasks.build]
+  cmd = "uv build"
+  help = "Build distribution package"
+  
+  [tool.poe.tasks.docs-build]
+  cmd = "zensical build -c"
+  help = "Build documentation site"
+  
+  [tool.poe.tasks.docs]
+  sequence = [
+      {ref = "docs-build"},
+      {cmd = "zensical serve -a \"${host}:${port}\""},
+  ]
+  help = "Run documentation site locally"
+  
+  [tool.poe.tasks.docs.args.host]
+  options = ['--host', '-h']
+  help = "Bind IP"
+  default = "localhost"
+  
+  [tool.poe.tasks.docs.args.port]
+  positional = true
+  help = "Bind Port"
+  default = "8000"
+  
+  [tool.poe.tasks.init]
+  sequence = [
+      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
+      {cmd = "git init"},
+      {ref = "setup"},
+      {cmd = "git remote add origin https://github.com/ness/PKFire"},
+      {cmd = "git config --local remote.origin.pushurl git@github.com:ness/PKFire.git"},
+      {cmd = "git add ."},
+      {cmd = "git commit -m 'Create project from template'"},
+  ]
+  help = "Initialize git repository once on project creation"
+  
+  [tool.poe.tasks.lint]
+  cmd = "prek run --all-files"
+  help = "Run all formatters and static checks"
+  
+  [tool.poe.tasks.lt]
+  sequence = [{ref = "lint"}, {ref = "test"}]
+  help = "Run all formatters, static checks and tests"
+  
+  [tool.poe.tasks.release]
+  cmd = "bump-my-version bump -v"
+  help = "Create and push a release tag (patch/minor/major)"
+  
+  [tool.poe.tasks.setup]
+  sequence = [
+      {cmd = "uv sync"},
+      {cmd = "prek install"},
+  ]
+  help = "Install project dependencies and git hooks"
+  
+  [tool.poe.tasks.test]
+  cmd = "pytest"
+  help = "Run tests"
+  
+  [tool.poe.tasks.test-versions]
+  sequence = ["test-py310", "test-py311", "test-py312", "test-py313", "test-py314"]
+  help = "Run tests across all Python versions"
+  
+  [tool.poe.tasks.test-py310]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.10"}
+  help = "Run tests using Python 3.10"
+  
+  [tool.poe.tasks.test-py311]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.11"}
+  help = "Run tests using Python 3.11"
+  
+  [tool.poe.tasks.test-py312]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.12"}
+  help = "Run tests using Python 3.12"
+  
+  [tool.poe.tasks.test-py313]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.13"}
+  help = "Run tests using Python 3.13"
+  
+  [tool.poe.tasks.test-py314]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.14"}
+  help = "Run tests using Python 3.14"
+  
+  [tool.poe.tasks.ti]
+  cmd = "pytest --numprocesses 0 --no-cov -v"
+  help = "Run tests with debug friendly options"
+  
+  [tool.pytest]
+  addopts = [
+      "-ra",
+      "--cov=pkfire",
+      "--strict-config",
+      "--strict-markers",
+  ]
+  testpaths = ["tests"]
+  
+  [tool.coverage.run]
+  source = ["pkfire"]
+  branch = true
+  
+  [tool.coverage.report]
+  show_missing = true
+  skip_covered = true
+  exclude_lines = [
+      "pragma: no cover",
+      "if TYPE_CHECKING:",
+      "@abstractmethod",
+  ]
+  
+  [tool.ruff]
+  line-length = 79
+  output-format = "concise"
+  target-version = "py310"
+  
+  [tool.ruff.lint]
+  select = ["ALL"]
+  ignore = [
+      "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
+      "COM812",  # Trailing comma missing
+      "D1",  # Missing docstring presence rules
+      "EM",  # flake8-errmsg
+      "G004",  # Logging statement uses f-string
+      "PLR",  # pylint Refactor
+      "S607",  # Starting a process with a partial executable path
+      "TD",  # flake8-todos
+      "TRY003", # Avoid specifying long messages outside the exception class
+  ]
+  
+  [tool.ruff.lint.isort]
+  known-first-party = ["pkfire"]
+  
+  [tool.ruff.lint.per-file-ignores]
+  "tests/**/*.py" = [
+      "ARG",  # flake8-unused-arguments
+      "S101",  # Use of assert detected
+  ]
+  
+  [tool.ruff.lint.pydocstyle]
+  convention = "google"
+  
+  [tool.ty.terminal]
+  error-on-warning = true
+  output-format = "concise"
+  
+  [tool.uv]
+  default-groups = ["dev", "docs"]
+  
+  [tool.uv-dynamic-versioning]
+  pattern = "default-unprefixed"
+  fallback-version = "0.0.0"
+  
+  '''
+# ---
+# name: test_pyproject_features[no_xdist-no_syrupy-docs-3.14-private]
+  '''
+  [build-system]
+  requires = ["hatchling", "uv-dynamic-versioning"]
+  build-backend = "hatchling.build"
+  
+  [project]
+  name = "PKFire"
+  dynamic = ["version"]
+  description = "Onett Little League"
+  readme = "README.md"
+  license = "MIT"
+  license-files = ["LICENSE"]
+  requires-python = ">=3.14"
+  authors = [
+      { name = "Ness", email = "ness@onett.example.com" },
+  ]
+  classifiers = [
+      "Development Status :: 3 - Alpha",
+      "Intended Audience :: Developers",
+      "Programming Language :: Python :: 3",
+      "Programming Language :: Python :: 3 :: Only",
+      "Programming Language :: Python :: 3.14",
+      "Topic :: Documentation",
+      "Topic :: Software Development",
+      "Topic :: Utilities",
+      "Typing :: Typed",
+  ]
+  keywords = []
+  dependencies = []
+  
+  [dependency-groups]
+  dev = [
+      "bump-my-version>=1.3.0",
+      "poethepoet>=0.42",
+      "prek>=0.3",
+      "pytest>=9",
+      "pytest-cov>=7",
+      "pytest-sugar>=1",
+      "ruff>=0.15",
+      "ty>=0.0.37",
+  ]
+  docs = [
+      "mkdocstrings[python]>=1",
+      "zensical>=0.0.42",
+  ]
+  
+  [tool.bumpversion]
+  commit = false
+  tag = true
+  tag_name = "v{new_version}"
+  tag_message = ""
+  push = true
+  
+  [tool.hatch.build.targets.sdist]
+  include = ["/pkfire", "/tests", "*.md", "LICENSE"]
+  
+  [tool.hatch.version]
+  source = "uv-dynamic-versioning"
+  
+  [tool.poe.executor]
+  type = "uv"
+  
+  [tool.poe.tasks.build]
+  cmd = "uv build"
+  help = "Build distribution package"
+  
+  [tool.poe.tasks.docs-build]
+  cmd = "zensical build -c"
+  help = "Build documentation site"
+  
+  [tool.poe.tasks.docs]
+  sequence = [
+      {ref = "docs-build"},
+      {cmd = "zensical serve -a \"${host}:${port}\""},
+  ]
+  help = "Run documentation site locally"
+  
+  [tool.poe.tasks.docs.args.host]
+  options = ['--host', '-h']
+  help = "Bind IP"
+  default = "localhost"
+  
+  [tool.poe.tasks.docs.args.port]
+  positional = true
+  help = "Bind Port"
+  default = "8000"
+  
+  [tool.poe.tasks.init]
+  sequence = [
+      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
+      {cmd = "git init"},
+      {ref = "setup"},
+      {cmd = "git add ."},
+      {cmd = "git commit -m 'Create project from template'"},
+  ]
+  help = "Initialize git repository once on project creation"
+  
+  [tool.poe.tasks.lint]
+  cmd = "prek run --all-files"
+  help = "Run all formatters and static checks"
+  
+  [tool.poe.tasks.lt]
+  sequence = [{ref = "lint"}, {ref = "test"}]
+  help = "Run all formatters, static checks and tests"
+  
+  [tool.poe.tasks.release]
+  cmd = "bump-my-version bump -v"
+  help = "Create and push a release tag (patch/minor/major)"
+  
+  [tool.poe.tasks.setup]
+  sequence = [
+      {cmd = "uv sync"},
+      {cmd = "prek install"},
+  ]
+  help = "Install project dependencies and git hooks"
+  
+  [tool.poe.tasks.test]
+  cmd = "pytest"
+  help = "Run tests"
+  
+  [tool.poe.tasks.test-versions]
+  sequence = ["test-py314"]
+  help = "Run tests across all Python versions"
+  
+  [tool.poe.tasks.test-py314]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.14"}
+  help = "Run tests using Python 3.14"
+  
+  [tool.poe.tasks.ti]
+  cmd = "pytest --numprocesses 0 --no-cov -v"
+  help = "Run tests with debug friendly options"
+  
+  [tool.pytest]
+  addopts = [
+      "-ra",
+      "--cov=pkfire",
+      "--strict-config",
+      "--strict-markers",
+  ]
+  testpaths = ["tests"]
+  
+  [tool.coverage.run]
+  source = ["pkfire"]
+  branch = true
+  
+  [tool.coverage.report]
+  show_missing = true
+  skip_covered = true
+  exclude_lines = [
+      "pragma: no cover",
+      "if TYPE_CHECKING:",
+      "@abstractmethod",
+  ]
+  
+  [tool.ruff]
+  line-length = 79
+  output-format = "concise"
+  target-version = "py314"
+  
+  [tool.ruff.lint]
+  select = ["ALL"]
+  ignore = [
+      "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
+      "COM812",  # Trailing comma missing
+      "D1",  # Missing docstring presence rules
+      "EM",  # flake8-errmsg
+      "G004",  # Logging statement uses f-string
+      "PLR",  # pylint Refactor
+      "S607",  # Starting a process with a partial executable path
+      "TD",  # flake8-todos
+      "TRY003", # Avoid specifying long messages outside the exception class
+  ]
+  
+  [tool.ruff.lint.isort]
+  known-first-party = ["pkfire"]
+  
+  [tool.ruff.lint.per-file-ignores]
+  "tests/**/*.py" = [
+      "ARG",  # flake8-unused-arguments
+      "S101",  # Use of assert detected
+  ]
+  
+  [tool.ruff.lint.pydocstyle]
+  convention = "google"
+  
+  [tool.ty.terminal]
+  error-on-warning = true
+  output-format = "concise"
+  
+  [tool.uv]
+  default-groups = ["dev", "docs"]
+  
+  [tool.uv-dynamic-versioning]
+  pattern = "default-unprefixed"
+  fallback-version = "0.0.0"
+  
+  '''
+# ---
+# name: test_pyproject_features[no_xdist-no_syrupy-docs-3.14-public]
+  '''
+  [build-system]
+  requires = ["hatchling", "uv-dynamic-versioning"]
+  build-backend = "hatchling.build"
+  
+  [project]
+  name = "PKFire"
+  dynamic = ["version"]
+  description = "Onett Little League"
+  readme = "README.md"
+  license = "MIT"
+  license-files = ["LICENSE"]
+  requires-python = ">=3.14"
+  authors = [
+      { name = "Ness", email = "ness@onett.example.com" },
+  ]
+  classifiers = [
+      "Development Status :: 3 - Alpha",
+      "Intended Audience :: Developers",
+      "Programming Language :: Python :: 3",
+      "Programming Language :: Python :: 3 :: Only",
+      "Programming Language :: Python :: 3.14",
+      "Topic :: Documentation",
+      "Topic :: Software Development",
+      "Topic :: Utilities",
+      "Typing :: Typed",
+  ]
+  keywords = []
+  dependencies = []
+  
+  [project.urls]
+  Homepage = "https://ness.github.io/PKFire"
+  Repository = "https://github.com/ness/PKFire"
+  Issues = "https://github.com/ness/PKFire/issues"
+  
+  [dependency-groups]
+  dev = [
+      "bump-my-version>=1.3.0",
+      "poethepoet>=0.42",
+      "prek>=0.3",
+      "pysentry-rs>=0.4",
+      "pytest>=9",
+      "pytest-cov>=7",
+      "pytest-sugar>=1",
+      "ruff>=0.15",
+      "ty>=0.0.37",
+  ]
+  docs = [
+      "mkdocstrings[python]>=1",
+      "zensical>=0.0.42",
+  ]
+  
+  [tool.bumpversion]
+  commit = false
+  tag = true
+  tag_name = "v{new_version}"
+  tag_message = ""
+  push = true
+  
+  [tool.hatch.build.targets.sdist]
+  include = ["/pkfire", "/tests", "*.md", "LICENSE"]
+  
+  [tool.hatch.version]
+  source = "uv-dynamic-versioning"
+  
+  [tool.poe.executor]
+  type = "uv"
+  
+  [tool.poe.tasks.audit]
+  cmd = "pysentry-rs"
+  help = "Run dependencies security audit"
+  
+  [tool.poe.tasks.build]
+  cmd = "uv build"
+  help = "Build distribution package"
+  
+  [tool.poe.tasks.docs-build]
+  cmd = "zensical build -c"
+  help = "Build documentation site"
+  
+  [tool.poe.tasks.docs]
+  sequence = [
+      {ref = "docs-build"},
+      {cmd = "zensical serve -a \"${host}:${port}\""},
+  ]
+  help = "Run documentation site locally"
+  
+  [tool.poe.tasks.docs.args.host]
+  options = ['--host', '-h']
+  help = "Bind IP"
+  default = "localhost"
+  
+  [tool.poe.tasks.docs.args.port]
+  positional = true
+  help = "Bind Port"
+  default = "8000"
+  
+  [tool.poe.tasks.init]
+  sequence = [
+      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
+      {cmd = "git init"},
+      {ref = "setup"},
+      {cmd = "git remote add origin https://github.com/ness/PKFire"},
+      {cmd = "git config --local remote.origin.pushurl git@github.com:ness/PKFire.git"},
+      {cmd = "git add ."},
+      {cmd = "git commit -m 'Create project from template'"},
+  ]
+  help = "Initialize git repository once on project creation"
+  
+  [tool.poe.tasks.lint]
+  cmd = "prek run --all-files"
+  help = "Run all formatters and static checks"
+  
+  [tool.poe.tasks.lt]
+  sequence = [{ref = "lint"}, {ref = "test"}]
+  help = "Run all formatters, static checks and tests"
+  
+  [tool.poe.tasks.release]
+  cmd = "bump-my-version bump -v"
+  help = "Create and push a release tag (patch/minor/major)"
+  
+  [tool.poe.tasks.setup]
+  sequence = [
+      {cmd = "uv sync"},
+      {cmd = "prek install"},
+  ]
+  help = "Install project dependencies and git hooks"
+  
+  [tool.poe.tasks.test]
+  cmd = "pytest"
+  help = "Run tests"
+  
+  [tool.poe.tasks.test-versions]
+  sequence = ["test-py314"]
+  help = "Run tests across all Python versions"
+  
+  [tool.poe.tasks.test-py314]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.14"}
+  help = "Run tests using Python 3.14"
+  
+  [tool.poe.tasks.ti]
+  cmd = "pytest --numprocesses 0 --no-cov -v"
+  help = "Run tests with debug friendly options"
+  
+  [tool.pytest]
+  addopts = [
+      "-ra",
+      "--cov=pkfire",
+      "--strict-config",
+      "--strict-markers",
+  ]
+  testpaths = ["tests"]
+  
+  [tool.coverage.run]
+  source = ["pkfire"]
+  branch = true
+  
+  [tool.coverage.report]
+  show_missing = true
+  skip_covered = true
+  exclude_lines = [
+      "pragma: no cover",
+      "if TYPE_CHECKING:",
+      "@abstractmethod",
+  ]
+  
+  [tool.ruff]
+  line-length = 79
+  output-format = "concise"
+  target-version = "py314"
+  
+  [tool.ruff.lint]
+  select = ["ALL"]
+  ignore = [
+      "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
+      "COM812",  # Trailing comma missing
+      "D1",  # Missing docstring presence rules
+      "EM",  # flake8-errmsg
+      "G004",  # Logging statement uses f-string
+      "PLR",  # pylint Refactor
+      "S607",  # Starting a process with a partial executable path
+      "TD",  # flake8-todos
+      "TRY003", # Avoid specifying long messages outside the exception class
+  ]
+  
+  [tool.ruff.lint.isort]
+  known-first-party = ["pkfire"]
+  
+  [tool.ruff.lint.per-file-ignores]
+  "tests/**/*.py" = [
+      "ARG",  # flake8-unused-arguments
+      "S101",  # Use of assert detected
+  ]
+  
+  [tool.ruff.lint.pydocstyle]
+  convention = "google"
+  
+  [tool.ty.terminal]
+  error-on-warning = true
+  output-format = "concise"
+  
+  [tool.uv]
+  default-groups = ["dev", "docs"]
+  
+  [tool.uv-dynamic-versioning]
+  pattern = "default-unprefixed"
+  fallback-version = "0.0.0"
+  
+  '''
+# ---
+# name: test_pyproject_features[no_xdist-no_syrupy-no_docs-3.10-private]
+  '''
+  [build-system]
+  requires = ["hatchling", "uv-dynamic-versioning"]
+  build-backend = "hatchling.build"
+  
+  [project]
+  name = "PKFire"
+  dynamic = ["version"]
+  description = "Onett Little League"
+  readme = "README.md"
+  license = "MIT"
+  license-files = ["LICENSE"]
+  requires-python = ">=3.10"
+  authors = [
+      { name = "Ness", email = "ness@onett.example.com" },
+  ]
+  classifiers = [
+      "Development Status :: 3 - Alpha",
+      "Intended Audience :: Developers",
+      "Programming Language :: Python :: 3",
+      "Programming Language :: Python :: 3 :: Only",
+      "Programming Language :: Python :: 3.10",
+      "Programming Language :: Python :: 3.11",
+      "Programming Language :: Python :: 3.12",
+      "Programming Language :: Python :: 3.13",
+      "Programming Language :: Python :: 3.14",
+      "Topic :: Documentation",
+      "Topic :: Software Development",
+      "Topic :: Utilities",
+      "Typing :: Typed",
+  ]
+  keywords = []
+  dependencies = []
+  
+  [dependency-groups]
+  dev = [
+      "bump-my-version>=1.3.0",
+      "poethepoet>=0.42",
+      "prek>=0.3",
+      "pytest>=9",
+      "pytest-cov>=7",
+      "pytest-sugar>=1",
+      "ruff>=0.15",
+      "ty>=0.0.37",
+  ]
+  
+  [tool.bumpversion]
+  commit = false
+  tag = true
+  tag_name = "v{new_version}"
+  tag_message = ""
+  push = true
+  
+  [tool.hatch.build.targets.sdist]
+  include = ["/pkfire", "/tests", "*.md", "LICENSE"]
+  
+  [tool.hatch.version]
+  source = "uv-dynamic-versioning"
+  
+  [tool.poe.executor]
+  type = "uv"
+  
+  [tool.poe.tasks.build]
+  cmd = "uv build"
+  help = "Build distribution package"
+  
+  [tool.poe.tasks.init]
+  sequence = [
+      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
+      {cmd = "git init"},
+      {ref = "setup"},
+      {cmd = "git add ."},
+      {cmd = "git commit -m 'Create project from template'"},
+  ]
+  help = "Initialize git repository once on project creation"
+  
+  [tool.poe.tasks.lint]
+  cmd = "prek run --all-files"
+  help = "Run all formatters and static checks"
+  
+  [tool.poe.tasks.lt]
+  sequence = [{ref = "lint"}, {ref = "test"}]
+  help = "Run all formatters, static checks and tests"
+  
+  [tool.poe.tasks.release]
+  cmd = "bump-my-version bump -v"
+  help = "Create and push a release tag (patch/minor/major)"
+  
+  [tool.poe.tasks.setup]
+  sequence = [
+      {cmd = "uv sync"},
+      {cmd = "prek install"},
+  ]
+  help = "Install project dependencies and git hooks"
+  
+  [tool.poe.tasks.test]
+  cmd = "pytest"
+  help = "Run tests"
+  
+  [tool.poe.tasks.test-versions]
+  sequence = ["test-py310", "test-py311", "test-py312", "test-py313", "test-py314"]
+  help = "Run tests across all Python versions"
+  
+  [tool.poe.tasks.test-py310]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.10"}
+  help = "Run tests using Python 3.10"
+  
+  [tool.poe.tasks.test-py311]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.11"}
+  help = "Run tests using Python 3.11"
+  
+  [tool.poe.tasks.test-py312]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.12"}
+  help = "Run tests using Python 3.12"
+  
+  [tool.poe.tasks.test-py313]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.13"}
+  help = "Run tests using Python 3.13"
+  
+  [tool.poe.tasks.test-py314]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.14"}
+  help = "Run tests using Python 3.14"
+  
+  [tool.poe.tasks.ti]
+  cmd = "pytest --numprocesses 0 --no-cov -v"
+  help = "Run tests with debug friendly options"
+  
+  [tool.pytest]
+  addopts = [
+      "-ra",
+      "--cov=pkfire",
+      "--strict-config",
+      "--strict-markers",
+  ]
+  testpaths = ["tests"]
+  
+  [tool.coverage.run]
+  source = ["pkfire"]
+  branch = true
+  
+  [tool.coverage.report]
+  show_missing = true
+  skip_covered = true
+  exclude_lines = [
+      "pragma: no cover",
+      "if TYPE_CHECKING:",
+      "@abstractmethod",
+  ]
+  
+  [tool.ruff]
+  line-length = 79
+  output-format = "concise"
+  target-version = "py310"
+  
+  [tool.ruff.lint]
+  select = ["ALL"]
+  ignore = [
+      "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
+      "COM812",  # Trailing comma missing
+      "D1",  # Missing docstring presence rules
+      "EM",  # flake8-errmsg
+      "G004",  # Logging statement uses f-string
+      "PLR",  # pylint Refactor
+      "S607",  # Starting a process with a partial executable path
+      "TD",  # flake8-todos
+      "TRY003", # Avoid specifying long messages outside the exception class
+  ]
+  
+  [tool.ruff.lint.isort]
+  known-first-party = ["pkfire"]
+  
+  [tool.ruff.lint.per-file-ignores]
+  "tests/**/*.py" = [
+      "ARG",  # flake8-unused-arguments
+      "S101",  # Use of assert detected
+  ]
+  
+  [tool.ruff.lint.pydocstyle]
+  convention = "google"
+  
+  [tool.ty.terminal]
+  error-on-warning = true
+  output-format = "concise"
+  
+  [tool.uv]
+  default-groups = ["dev"]
+  
+  [tool.uv-dynamic-versioning]
+  pattern = "default-unprefixed"
+  fallback-version = "0.0.0"
+  
+  '''
+# ---
+# name: test_pyproject_features[no_xdist-no_syrupy-no_docs-3.10-public]
+  '''
+  [build-system]
+  requires = ["hatchling", "uv-dynamic-versioning"]
+  build-backend = "hatchling.build"
+  
+  [project]
+  name = "PKFire"
+  dynamic = ["version"]
+  description = "Onett Little League"
+  readme = "README.md"
+  license = "MIT"
+  license-files = ["LICENSE"]
+  requires-python = ">=3.10"
+  authors = [
+      { name = "Ness", email = "ness@onett.example.com" },
+  ]
+  classifiers = [
+      "Development Status :: 3 - Alpha",
+      "Intended Audience :: Developers",
+      "Programming Language :: Python :: 3",
+      "Programming Language :: Python :: 3 :: Only",
+      "Programming Language :: Python :: 3.10",
+      "Programming Language :: Python :: 3.11",
+      "Programming Language :: Python :: 3.12",
+      "Programming Language :: Python :: 3.13",
+      "Programming Language :: Python :: 3.14",
+      "Topic :: Documentation",
+      "Topic :: Software Development",
+      "Topic :: Utilities",
+      "Typing :: Typed",
+  ]
+  keywords = []
+  dependencies = []
+  
+  [project.urls]
+  Homepage = "https://github.com/ness/PKFire"
+  Repository = "https://github.com/ness/PKFire"
+  Issues = "https://github.com/ness/PKFire/issues"
+  
+  [dependency-groups]
+  dev = [
+      "bump-my-version>=1.3.0",
+      "poethepoet>=0.42",
+      "prek>=0.3",
+      "pysentry-rs>=0.4",
+      "pytest>=9",
+      "pytest-cov>=7",
+      "pytest-sugar>=1",
+      "ruff>=0.15",
+      "ty>=0.0.37",
+  ]
+  
+  [tool.bumpversion]
+  commit = false
+  tag = true
+  tag_name = "v{new_version}"
+  tag_message = ""
+  push = true
+  
+  [tool.hatch.build.targets.sdist]
+  include = ["/pkfire", "/tests", "*.md", "LICENSE"]
+  
+  [tool.hatch.version]
+  source = "uv-dynamic-versioning"
+  
+  [tool.poe.executor]
+  type = "uv"
+  
+  [tool.poe.tasks.audit]
+  cmd = "pysentry-rs"
+  help = "Run dependencies security audit"
+  
+  [tool.poe.tasks.build]
+  cmd = "uv build"
+  help = "Build distribution package"
+  
+  [tool.poe.tasks.init]
+  sequence = [
+      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
+      {cmd = "git init"},
+      {ref = "setup"},
+      {cmd = "git remote add origin https://github.com/ness/PKFire"},
+      {cmd = "git config --local remote.origin.pushurl git@github.com:ness/PKFire.git"},
+      {cmd = "git add ."},
+      {cmd = "git commit -m 'Create project from template'"},
+  ]
+  help = "Initialize git repository once on project creation"
+  
+  [tool.poe.tasks.lint]
+  cmd = "prek run --all-files"
+  help = "Run all formatters and static checks"
+  
+  [tool.poe.tasks.lt]
+  sequence = [{ref = "lint"}, {ref = "test"}]
+  help = "Run all formatters, static checks and tests"
+  
+  [tool.poe.tasks.release]
+  cmd = "bump-my-version bump -v"
+  help = "Create and push a release tag (patch/minor/major)"
+  
+  [tool.poe.tasks.setup]
+  sequence = [
+      {cmd = "uv sync"},
+      {cmd = "prek install"},
+  ]
+  help = "Install project dependencies and git hooks"
+  
+  [tool.poe.tasks.test]
+  cmd = "pytest"
+  help = "Run tests"
+  
+  [tool.poe.tasks.test-versions]
+  sequence = ["test-py310", "test-py311", "test-py312", "test-py313", "test-py314"]
+  help = "Run tests across all Python versions"
+  
+  [tool.poe.tasks.test-py310]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.10"}
+  help = "Run tests using Python 3.10"
+  
+  [tool.poe.tasks.test-py311]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.11"}
+  help = "Run tests using Python 3.11"
+  
+  [tool.poe.tasks.test-py312]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.12"}
+  help = "Run tests using Python 3.12"
+  
+  [tool.poe.tasks.test-py313]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.13"}
+  help = "Run tests using Python 3.13"
+  
+  [tool.poe.tasks.test-py314]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.14"}
+  help = "Run tests using Python 3.14"
+  
+  [tool.poe.tasks.ti]
+  cmd = "pytest --numprocesses 0 --no-cov -v"
+  help = "Run tests with debug friendly options"
+  
+  [tool.pytest]
+  addopts = [
+      "-ra",
+      "--cov=pkfire",
+      "--strict-config",
+      "--strict-markers",
+  ]
+  testpaths = ["tests"]
+  
+  [tool.coverage.run]
+  source = ["pkfire"]
+  branch = true
+  
+  [tool.coverage.report]
+  show_missing = true
+  skip_covered = true
+  exclude_lines = [
+      "pragma: no cover",
+      "if TYPE_CHECKING:",
+      "@abstractmethod",
+  ]
+  
+  [tool.ruff]
+  line-length = 79
+  output-format = "concise"
+  target-version = "py310"
+  
+  [tool.ruff.lint]
+  select = ["ALL"]
+  ignore = [
+      "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
+      "COM812",  # Trailing comma missing
+      "D1",  # Missing docstring presence rules
+      "EM",  # flake8-errmsg
+      "G004",  # Logging statement uses f-string
+      "PLR",  # pylint Refactor
+      "S607",  # Starting a process with a partial executable path
+      "TD",  # flake8-todos
+      "TRY003", # Avoid specifying long messages outside the exception class
+  ]
+  
+  [tool.ruff.lint.isort]
+  known-first-party = ["pkfire"]
+  
+  [tool.ruff.lint.per-file-ignores]
+  "tests/**/*.py" = [
+      "ARG",  # flake8-unused-arguments
+      "S101",  # Use of assert detected
+  ]
+  
+  [tool.ruff.lint.pydocstyle]
+  convention = "google"
+  
+  [tool.ty.terminal]
+  error-on-warning = true
+  output-format = "concise"
+  
+  [tool.uv]
+  default-groups = ["dev"]
+  
+  [tool.uv-dynamic-versioning]
+  pattern = "default-unprefixed"
+  fallback-version = "0.0.0"
+  
+  '''
+# ---
+# name: test_pyproject_features[no_xdist-no_syrupy-no_docs-3.14-private]
+  '''
+  [build-system]
+  requires = ["hatchling", "uv-dynamic-versioning"]
+  build-backend = "hatchling.build"
+  
+  [project]
+  name = "PKFire"
+  dynamic = ["version"]
+  description = "Onett Little League"
+  readme = "README.md"
+  license = "MIT"
+  license-files = ["LICENSE"]
+  requires-python = ">=3.14"
+  authors = [
+      { name = "Ness", email = "ness@onett.example.com" },
+  ]
+  classifiers = [
+      "Development Status :: 3 - Alpha",
+      "Intended Audience :: Developers",
+      "Programming Language :: Python :: 3",
+      "Programming Language :: Python :: 3 :: Only",
+      "Programming Language :: Python :: 3.14",
+      "Topic :: Documentation",
+      "Topic :: Software Development",
+      "Topic :: Utilities",
+      "Typing :: Typed",
+  ]
+  keywords = []
+  dependencies = []
+  
+  [dependency-groups]
+  dev = [
+      "bump-my-version>=1.3.0",
+      "poethepoet>=0.42",
+      "prek>=0.3",
+      "pytest>=9",
+      "pytest-cov>=7",
+      "pytest-sugar>=1",
+      "ruff>=0.15",
+      "ty>=0.0.37",
+  ]
+  
+  [tool.bumpversion]
+  commit = false
+  tag = true
+  tag_name = "v{new_version}"
+  tag_message = ""
+  push = true
+  
+  [tool.hatch.build.targets.sdist]
+  include = ["/pkfire", "/tests", "*.md", "LICENSE"]
+  
+  [tool.hatch.version]
+  source = "uv-dynamic-versioning"
+  
+  [tool.poe.executor]
+  type = "uv"
+  
+  [tool.poe.tasks.build]
+  cmd = "uv build"
+  help = "Build distribution package"
+  
+  [tool.poe.tasks.init]
+  sequence = [
+      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
+      {cmd = "git init"},
+      {ref = "setup"},
+      {cmd = "git add ."},
+      {cmd = "git commit -m 'Create project from template'"},
+  ]
+  help = "Initialize git repository once on project creation"
+  
+  [tool.poe.tasks.lint]
+  cmd = "prek run --all-files"
+  help = "Run all formatters and static checks"
+  
+  [tool.poe.tasks.lt]
+  sequence = [{ref = "lint"}, {ref = "test"}]
+  help = "Run all formatters, static checks and tests"
+  
+  [tool.poe.tasks.release]
+  cmd = "bump-my-version bump -v"
+  help = "Create and push a release tag (patch/minor/major)"
+  
+  [tool.poe.tasks.setup]
+  sequence = [
+      {cmd = "uv sync"},
+      {cmd = "prek install"},
+  ]
+  help = "Install project dependencies and git hooks"
+  
+  [tool.poe.tasks.test]
+  cmd = "pytest"
+  help = "Run tests"
+  
+  [tool.poe.tasks.test-versions]
+  sequence = ["test-py314"]
+  help = "Run tests across all Python versions"
+  
+  [tool.poe.tasks.test-py314]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.14"}
+  help = "Run tests using Python 3.14"
+  
+  [tool.poe.tasks.ti]
+  cmd = "pytest --numprocesses 0 --no-cov -v"
+  help = "Run tests with debug friendly options"
+  
+  [tool.pytest]
+  addopts = [
+      "-ra",
+      "--cov=pkfire",
+      "--strict-config",
+      "--strict-markers",
+  ]
+  testpaths = ["tests"]
+  
+  [tool.coverage.run]
+  source = ["pkfire"]
+  branch = true
+  
+  [tool.coverage.report]
+  show_missing = true
+  skip_covered = true
+  exclude_lines = [
+      "pragma: no cover",
+      "if TYPE_CHECKING:",
+      "@abstractmethod",
+  ]
+  
+  [tool.ruff]
+  line-length = 79
+  output-format = "concise"
+  target-version = "py314"
+  
+  [tool.ruff.lint]
+  select = ["ALL"]
+  ignore = [
+      "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
+      "COM812",  # Trailing comma missing
+      "D1",  # Missing docstring presence rules
+      "EM",  # flake8-errmsg
+      "G004",  # Logging statement uses f-string
+      "PLR",  # pylint Refactor
+      "S607",  # Starting a process with a partial executable path
+      "TD",  # flake8-todos
+      "TRY003", # Avoid specifying long messages outside the exception class
+  ]
+  
+  [tool.ruff.lint.isort]
+  known-first-party = ["pkfire"]
+  
+  [tool.ruff.lint.per-file-ignores]
+  "tests/**/*.py" = [
+      "ARG",  # flake8-unused-arguments
+      "S101",  # Use of assert detected
+  ]
+  
+  [tool.ruff.lint.pydocstyle]
+  convention = "google"
+  
+  [tool.ty.terminal]
+  error-on-warning = true
+  output-format = "concise"
+  
+  [tool.uv]
+  default-groups = ["dev"]
+  
+  [tool.uv-dynamic-versioning]
+  pattern = "default-unprefixed"
+  fallback-version = "0.0.0"
+  
+  '''
+# ---
+# name: test_pyproject_features[no_xdist-no_syrupy-no_docs-3.14-public]
+  '''
+  [build-system]
+  requires = ["hatchling", "uv-dynamic-versioning"]
+  build-backend = "hatchling.build"
+  
+  [project]
+  name = "PKFire"
+  dynamic = ["version"]
+  description = "Onett Little League"
+  readme = "README.md"
+  license = "MIT"
+  license-files = ["LICENSE"]
+  requires-python = ">=3.14"
+  authors = [
+      { name = "Ness", email = "ness@onett.example.com" },
+  ]
+  classifiers = [
+      "Development Status :: 3 - Alpha",
+      "Intended Audience :: Developers",
+      "Programming Language :: Python :: 3",
+      "Programming Language :: Python :: 3 :: Only",
+      "Programming Language :: Python :: 3.14",
+      "Topic :: Documentation",
+      "Topic :: Software Development",
+      "Topic :: Utilities",
+      "Typing :: Typed",
+  ]
+  keywords = []
+  dependencies = []
+  
+  [project.urls]
+  Homepage = "https://github.com/ness/PKFire"
+  Repository = "https://github.com/ness/PKFire"
+  Issues = "https://github.com/ness/PKFire/issues"
+  
+  [dependency-groups]
+  dev = [
+      "bump-my-version>=1.3.0",
+      "poethepoet>=0.42",
+      "prek>=0.3",
+      "pysentry-rs>=0.4",
+      "pytest>=9",
+      "pytest-cov>=7",
+      "pytest-sugar>=1",
+      "ruff>=0.15",
+      "ty>=0.0.37",
+  ]
+  
+  [tool.bumpversion]
+  commit = false
+  tag = true
+  tag_name = "v{new_version}"
+  tag_message = ""
+  push = true
+  
+  [tool.hatch.build.targets.sdist]
+  include = ["/pkfire", "/tests", "*.md", "LICENSE"]
+  
+  [tool.hatch.version]
+  source = "uv-dynamic-versioning"
+  
+  [tool.poe.executor]
+  type = "uv"
+  
+  [tool.poe.tasks.audit]
+  cmd = "pysentry-rs"
+  help = "Run dependencies security audit"
+  
+  [tool.poe.tasks.build]
+  cmd = "uv build"
+  help = "Build distribution package"
+  
+  [tool.poe.tasks.init]
+  sequence = [
+      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
+      {cmd = "git init"},
+      {ref = "setup"},
+      {cmd = "git remote add origin https://github.com/ness/PKFire"},
+      {cmd = "git config --local remote.origin.pushurl git@github.com:ness/PKFire.git"},
+      {cmd = "git add ."},
+      {cmd = "git commit -m 'Create project from template'"},
+  ]
+  help = "Initialize git repository once on project creation"
+  
+  [tool.poe.tasks.lint]
+  cmd = "prek run --all-files"
+  help = "Run all formatters and static checks"
+  
+  [tool.poe.tasks.lt]
+  sequence = [{ref = "lint"}, {ref = "test"}]
+  help = "Run all formatters, static checks and tests"
+  
+  [tool.poe.tasks.release]
+  cmd = "bump-my-version bump -v"
+  help = "Create and push a release tag (patch/minor/major)"
+  
+  [tool.poe.tasks.setup]
+  sequence = [
+      {cmd = "uv sync"},
+      {cmd = "prek install"},
+  ]
+  help = "Install project dependencies and git hooks"
+  
+  [tool.poe.tasks.test]
+  cmd = "pytest"
+  help = "Run tests"
+  
+  [tool.poe.tasks.test-versions]
+  sequence = ["test-py314"]
+  help = "Run tests across all Python versions"
+  
+  [tool.poe.tasks.test-py314]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.14"}
+  help = "Run tests using Python 3.14"
+  
+  [tool.poe.tasks.ti]
+  cmd = "pytest --numprocesses 0 --no-cov -v"
+  help = "Run tests with debug friendly options"
+  
+  [tool.pytest]
+  addopts = [
+      "-ra",
+      "--cov=pkfire",
+      "--strict-config",
+      "--strict-markers",
+  ]
+  testpaths = ["tests"]
+  
+  [tool.coverage.run]
+  source = ["pkfire"]
+  branch = true
+  
+  [tool.coverage.report]
+  show_missing = true
+  skip_covered = true
+  exclude_lines = [
+      "pragma: no cover",
+      "if TYPE_CHECKING:",
+      "@abstractmethod",
+  ]
+  
+  [tool.ruff]
+  line-length = 79
+  output-format = "concise"
+  target-version = "py314"
+  
+  [tool.ruff.lint]
+  select = ["ALL"]
+  ignore = [
+      "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
+      "COM812",  # Trailing comma missing
+      "D1",  # Missing docstring presence rules
+      "EM",  # flake8-errmsg
+      "G004",  # Logging statement uses f-string
+      "PLR",  # pylint Refactor
+      "S607",  # Starting a process with a partial executable path
+      "TD",  # flake8-todos
+      "TRY003", # Avoid specifying long messages outside the exception class
+  ]
+  
+  [tool.ruff.lint.isort]
+  known-first-party = ["pkfire"]
+  
+  [tool.ruff.lint.per-file-ignores]
+  "tests/**/*.py" = [
+      "ARG",  # flake8-unused-arguments
+      "S101",  # Use of assert detected
+  ]
+  
+  [tool.ruff.lint.pydocstyle]
+  convention = "google"
+  
+  [tool.ty.terminal]
+  error-on-warning = true
+  output-format = "concise"
+  
+  [tool.uv]
+  default-groups = ["dev"]
+  
+  [tool.uv-dynamic-versioning]
+  pattern = "default-unprefixed"
+  fallback-version = "0.0.0"
+  
+  '''
+# ---
+# name: test_pyproject_features[no_xdist-syrupy-docs-3.10-private]
+  '''
+  [build-system]
+  requires = ["hatchling", "uv-dynamic-versioning"]
+  build-backend = "hatchling.build"
+  
+  [project]
+  name = "PKFire"
+  dynamic = ["version"]
+  description = "Onett Little League"
+  readme = "README.md"
+  license = "MIT"
+  license-files = ["LICENSE"]
+  requires-python = ">=3.10"
+  authors = [
+      { name = "Ness", email = "ness@onett.example.com" },
+  ]
+  classifiers = [
+      "Development Status :: 3 - Alpha",
+      "Intended Audience :: Developers",
+      "Programming Language :: Python :: 3",
+      "Programming Language :: Python :: 3 :: Only",
+      "Programming Language :: Python :: 3.10",
+      "Programming Language :: Python :: 3.11",
+      "Programming Language :: Python :: 3.12",
+      "Programming Language :: Python :: 3.13",
+      "Programming Language :: Python :: 3.14",
+      "Topic :: Documentation",
+      "Topic :: Software Development",
+      "Topic :: Utilities",
+      "Typing :: Typed",
+  ]
+  keywords = []
+  dependencies = []
+  
+  [dependency-groups]
+  dev = [
+      "bump-my-version>=1.3.0",
+      "poethepoet>=0.42",
+      "prek>=0.3",
+      "pytest>=9",
+      "pytest-cov>=7",
+      "pytest-sugar>=1",
+      "ruff>=0.15",
+      "syrupy>=5",
+      "ty>=0.0.37",
+  ]
+  docs = [
+      "mkdocstrings[python]>=1",
+      "zensical>=0.0.42",
+  ]
+  
+  [tool.bumpversion]
+  commit = false
+  tag = true
+  tag_name = "v{new_version}"
+  tag_message = ""
+  push = true
+  
+  [tool.hatch.build.targets.sdist]
+  include = ["/pkfire", "/tests", "*.md", "LICENSE"]
+  
+  [tool.hatch.version]
+  source = "uv-dynamic-versioning"
+  
+  [tool.poe.executor]
+  type = "uv"
+  
+  [tool.poe.tasks.build]
+  cmd = "uv build"
+  help = "Build distribution package"
+  
+  [tool.poe.tasks.docs-build]
+  cmd = "zensical build -c"
+  help = "Build documentation site"
+  
+  [tool.poe.tasks.docs]
+  sequence = [
+      {ref = "docs-build"},
+      {cmd = "zensical serve -a \"${host}:${port}\""},
+  ]
+  help = "Run documentation site locally"
+  
+  [tool.poe.tasks.docs.args.host]
+  options = ['--host', '-h']
+  help = "Bind IP"
+  default = "localhost"
+  
+  [tool.poe.tasks.docs.args.port]
+  positional = true
+  help = "Bind Port"
+  default = "8000"
+  
+  [tool.poe.tasks.init]
+  sequence = [
+      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
+      {cmd = "git init"},
+      {ref = "setup"},
+      {cmd = "git add ."},
+      {cmd = "git commit -m 'Create project from template'"},
+  ]
+  help = "Initialize git repository once on project creation"
+  
+  [tool.poe.tasks.lint]
+  cmd = "prek run --all-files"
+  help = "Run all formatters and static checks"
+  
+  [tool.poe.tasks.lt]
+  sequence = [{ref = "lint"}, {ref = "test"}]
+  help = "Run all formatters, static checks and tests"
+  
+  [tool.poe.tasks.release]
+  cmd = "bump-my-version bump -v"
+  help = "Create and push a release tag (patch/minor/major)"
+  
+  [tool.poe.tasks.setup]
+  sequence = [
+      {cmd = "uv sync"},
+      {cmd = "prek install"},
+  ]
+  help = "Install project dependencies and git hooks"
+  
+  [tool.poe.tasks.snapup]
+  cmd = "pytest --snapshot-update"
+  help = "Update test snapshots"
+  
+  [tool.poe.tasks.test]
+  cmd = "pytest"
+  help = "Run tests"
+  
+  [tool.poe.tasks.test-versions]
+  sequence = ["test-py310", "test-py311", "test-py312", "test-py313", "test-py314"]
+  help = "Run tests across all Python versions"
+  
+  [tool.poe.tasks.test-py310]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.10"}
+  help = "Run tests using Python 3.10"
+  
+  [tool.poe.tasks.test-py311]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.11"}
+  help = "Run tests using Python 3.11"
+  
+  [tool.poe.tasks.test-py312]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.12"}
+  help = "Run tests using Python 3.12"
+  
+  [tool.poe.tasks.test-py313]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.13"}
+  help = "Run tests using Python 3.13"
+  
+  [tool.poe.tasks.test-py314]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.14"}
+  help = "Run tests using Python 3.14"
+  
+  [tool.poe.tasks.ti]
+  cmd = "pytest --numprocesses 0 --no-cov -v"
+  help = "Run tests with debug friendly options"
+  
+  [tool.pytest]
+  addopts = [
+      "-ra",
+      "--cov=pkfire",
+      "--strict-config",
+      "--strict-markers",
+  ]
+  testpaths = ["tests"]
+  
+  [tool.coverage.run]
+  source = ["pkfire"]
+  branch = true
+  
+  [tool.coverage.report]
+  show_missing = true
+  skip_covered = true
+  exclude_lines = [
+      "pragma: no cover",
+      "if TYPE_CHECKING:",
+      "@abstractmethod",
+  ]
+  
+  [tool.ruff]
+  line-length = 79
+  output-format = "concise"
+  target-version = "py310"
+  
+  [tool.ruff.lint]
+  select = ["ALL"]
+  ignore = [
+      "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
+      "COM812",  # Trailing comma missing
+      "D1",  # Missing docstring presence rules
+      "EM",  # flake8-errmsg
+      "G004",  # Logging statement uses f-string
+      "PLR",  # pylint Refactor
+      "S607",  # Starting a process with a partial executable path
+      "TD",  # flake8-todos
+      "TRY003", # Avoid specifying long messages outside the exception class
+  ]
+  
+  [tool.ruff.lint.isort]
+  known-first-party = ["pkfire"]
+  
+  [tool.ruff.lint.per-file-ignores]
+  "tests/**/*.py" = [
+      "ARG",  # flake8-unused-arguments
+      "S101",  # Use of assert detected
+  ]
+  
+  [tool.ruff.lint.pydocstyle]
+  convention = "google"
+  
+  [tool.ty.terminal]
+  error-on-warning = true
+  output-format = "concise"
+  
+  [tool.uv]
+  default-groups = ["dev", "docs"]
+  
+  [tool.uv-dynamic-versioning]
+  pattern = "default-unprefixed"
+  fallback-version = "0.0.0"
+  
+  '''
+# ---
+# name: test_pyproject_features[no_xdist-syrupy-docs-3.10-public]
+  '''
+  [build-system]
+  requires = ["hatchling", "uv-dynamic-versioning"]
+  build-backend = "hatchling.build"
+  
+  [project]
+  name = "PKFire"
+  dynamic = ["version"]
+  description = "Onett Little League"
+  readme = "README.md"
+  license = "MIT"
+  license-files = ["LICENSE"]
+  requires-python = ">=3.10"
+  authors = [
+      { name = "Ness", email = "ness@onett.example.com" },
+  ]
+  classifiers = [
+      "Development Status :: 3 - Alpha",
+      "Intended Audience :: Developers",
+      "Programming Language :: Python :: 3",
+      "Programming Language :: Python :: 3 :: Only",
+      "Programming Language :: Python :: 3.10",
+      "Programming Language :: Python :: 3.11",
+      "Programming Language :: Python :: 3.12",
+      "Programming Language :: Python :: 3.13",
+      "Programming Language :: Python :: 3.14",
+      "Topic :: Documentation",
+      "Topic :: Software Development",
+      "Topic :: Utilities",
+      "Typing :: Typed",
+  ]
+  keywords = []
+  dependencies = []
+  
+  [project.urls]
+  Homepage = "https://ness.github.io/PKFire"
+  Repository = "https://github.com/ness/PKFire"
+  Issues = "https://github.com/ness/PKFire/issues"
+  
+  [dependency-groups]
+  dev = [
+      "bump-my-version>=1.3.0",
+      "poethepoet>=0.42",
+      "prek>=0.3",
+      "pysentry-rs>=0.4",
+      "pytest>=9",
+      "pytest-cov>=7",
+      "pytest-sugar>=1",
+      "ruff>=0.15",
+      "syrupy>=5",
+      "ty>=0.0.37",
+  ]
+  docs = [
+      "mkdocstrings[python]>=1",
+      "zensical>=0.0.42",
+  ]
+  
+  [tool.bumpversion]
+  commit = false
+  tag = true
+  tag_name = "v{new_version}"
+  tag_message = ""
+  push = true
+  
+  [tool.hatch.build.targets.sdist]
+  include = ["/pkfire", "/tests", "*.md", "LICENSE"]
+  
+  [tool.hatch.version]
+  source = "uv-dynamic-versioning"
+  
+  [tool.poe.executor]
+  type = "uv"
+  
+  [tool.poe.tasks.audit]
+  cmd = "pysentry-rs"
+  help = "Run dependencies security audit"
+  
+  [tool.poe.tasks.build]
+  cmd = "uv build"
+  help = "Build distribution package"
+  
+  [tool.poe.tasks.docs-build]
+  cmd = "zensical build -c"
+  help = "Build documentation site"
+  
+  [tool.poe.tasks.docs]
+  sequence = [
+      {ref = "docs-build"},
+      {cmd = "zensical serve -a \"${host}:${port}\""},
+  ]
+  help = "Run documentation site locally"
+  
+  [tool.poe.tasks.docs.args.host]
+  options = ['--host', '-h']
+  help = "Bind IP"
+  default = "localhost"
+  
+  [tool.poe.tasks.docs.args.port]
+  positional = true
+  help = "Bind Port"
+  default = "8000"
+  
+  [tool.poe.tasks.init]
+  sequence = [
+      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
+      {cmd = "git init"},
+      {ref = "setup"},
+      {cmd = "git remote add origin https://github.com/ness/PKFire"},
+      {cmd = "git config --local remote.origin.pushurl git@github.com:ness/PKFire.git"},
+      {cmd = "git add ."},
+      {cmd = "git commit -m 'Create project from template'"},
+  ]
+  help = "Initialize git repository once on project creation"
+  
+  [tool.poe.tasks.lint]
+  cmd = "prek run --all-files"
+  help = "Run all formatters and static checks"
+  
+  [tool.poe.tasks.lt]
+  sequence = [{ref = "lint"}, {ref = "test"}]
+  help = "Run all formatters, static checks and tests"
+  
+  [tool.poe.tasks.release]
+  cmd = "bump-my-version bump -v"
+  help = "Create and push a release tag (patch/minor/major)"
+  
+  [tool.poe.tasks.setup]
+  sequence = [
+      {cmd = "uv sync"},
+      {cmd = "prek install"},
+  ]
+  help = "Install project dependencies and git hooks"
+  
+  [tool.poe.tasks.snapup]
+  cmd = "pytest --snapshot-update"
+  help = "Update test snapshots"
+  
+  [tool.poe.tasks.test]
+  cmd = "pytest"
+  help = "Run tests"
+  
+  [tool.poe.tasks.test-versions]
+  sequence = ["test-py310", "test-py311", "test-py312", "test-py313", "test-py314"]
+  help = "Run tests across all Python versions"
+  
+  [tool.poe.tasks.test-py310]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.10"}
+  help = "Run tests using Python 3.10"
+  
+  [tool.poe.tasks.test-py311]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.11"}
+  help = "Run tests using Python 3.11"
+  
+  [tool.poe.tasks.test-py312]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.12"}
+  help = "Run tests using Python 3.12"
+  
+  [tool.poe.tasks.test-py313]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.13"}
+  help = "Run tests using Python 3.13"
+  
+  [tool.poe.tasks.test-py314]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.14"}
+  help = "Run tests using Python 3.14"
+  
+  [tool.poe.tasks.ti]
+  cmd = "pytest --numprocesses 0 --no-cov -v"
+  help = "Run tests with debug friendly options"
+  
+  [tool.pytest]
+  addopts = [
+      "-ra",
+      "--cov=pkfire",
+      "--strict-config",
+      "--strict-markers",
+  ]
+  testpaths = ["tests"]
+  
+  [tool.coverage.run]
+  source = ["pkfire"]
+  branch = true
+  
+  [tool.coverage.report]
+  show_missing = true
+  skip_covered = true
+  exclude_lines = [
+      "pragma: no cover",
+      "if TYPE_CHECKING:",
+      "@abstractmethod",
+  ]
+  
+  [tool.ruff]
+  line-length = 79
+  output-format = "concise"
+  target-version = "py310"
+  
+  [tool.ruff.lint]
+  select = ["ALL"]
+  ignore = [
+      "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
+      "COM812",  # Trailing comma missing
+      "D1",  # Missing docstring presence rules
+      "EM",  # flake8-errmsg
+      "G004",  # Logging statement uses f-string
+      "PLR",  # pylint Refactor
+      "S607",  # Starting a process with a partial executable path
+      "TD",  # flake8-todos
+      "TRY003", # Avoid specifying long messages outside the exception class
+  ]
+  
+  [tool.ruff.lint.isort]
+  known-first-party = ["pkfire"]
+  
+  [tool.ruff.lint.per-file-ignores]
+  "tests/**/*.py" = [
+      "ARG",  # flake8-unused-arguments
+      "S101",  # Use of assert detected
+  ]
+  
+  [tool.ruff.lint.pydocstyle]
+  convention = "google"
+  
+  [tool.ty.terminal]
+  error-on-warning = true
+  output-format = "concise"
+  
+  [tool.uv]
+  default-groups = ["dev", "docs"]
+  
+  [tool.uv-dynamic-versioning]
+  pattern = "default-unprefixed"
+  fallback-version = "0.0.0"
+  
+  '''
+# ---
+# name: test_pyproject_features[no_xdist-syrupy-docs-3.14-private]
+  '''
+  [build-system]
+  requires = ["hatchling", "uv-dynamic-versioning"]
+  build-backend = "hatchling.build"
+  
+  [project]
+  name = "PKFire"
+  dynamic = ["version"]
+  description = "Onett Little League"
+  readme = "README.md"
+  license = "MIT"
+  license-files = ["LICENSE"]
+  requires-python = ">=3.14"
+  authors = [
+      { name = "Ness", email = "ness@onett.example.com" },
+  ]
+  classifiers = [
+      "Development Status :: 3 - Alpha",
+      "Intended Audience :: Developers",
+      "Programming Language :: Python :: 3",
+      "Programming Language :: Python :: 3 :: Only",
+      "Programming Language :: Python :: 3.14",
+      "Topic :: Documentation",
+      "Topic :: Software Development",
+      "Topic :: Utilities",
+      "Typing :: Typed",
+  ]
+  keywords = []
+  dependencies = []
+  
+  [dependency-groups]
+  dev = [
+      "bump-my-version>=1.3.0",
+      "poethepoet>=0.42",
+      "prek>=0.3",
+      "pytest>=9",
+      "pytest-cov>=7",
+      "pytest-sugar>=1",
+      "ruff>=0.15",
+      "syrupy>=5",
+      "ty>=0.0.37",
+  ]
+  docs = [
+      "mkdocstrings[python]>=1",
+      "zensical>=0.0.42",
+  ]
+  
+  [tool.bumpversion]
+  commit = false
+  tag = true
+  tag_name = "v{new_version}"
+  tag_message = ""
+  push = true
+  
+  [tool.hatch.build.targets.sdist]
+  include = ["/pkfire", "/tests", "*.md", "LICENSE"]
+  
+  [tool.hatch.version]
+  source = "uv-dynamic-versioning"
+  
+  [tool.poe.executor]
+  type = "uv"
+  
+  [tool.poe.tasks.build]
+  cmd = "uv build"
+  help = "Build distribution package"
+  
+  [tool.poe.tasks.docs-build]
+  cmd = "zensical build -c"
+  help = "Build documentation site"
+  
+  [tool.poe.tasks.docs]
+  sequence = [
+      {ref = "docs-build"},
+      {cmd = "zensical serve -a \"${host}:${port}\""},
+  ]
+  help = "Run documentation site locally"
+  
+  [tool.poe.tasks.docs.args.host]
+  options = ['--host', '-h']
+  help = "Bind IP"
+  default = "localhost"
+  
+  [tool.poe.tasks.docs.args.port]
+  positional = true
+  help = "Bind Port"
+  default = "8000"
+  
+  [tool.poe.tasks.init]
+  sequence = [
+      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
+      {cmd = "git init"},
+      {ref = "setup"},
+      {cmd = "git add ."},
+      {cmd = "git commit -m 'Create project from template'"},
+  ]
+  help = "Initialize git repository once on project creation"
+  
+  [tool.poe.tasks.lint]
+  cmd = "prek run --all-files"
+  help = "Run all formatters and static checks"
+  
+  [tool.poe.tasks.lt]
+  sequence = [{ref = "lint"}, {ref = "test"}]
+  help = "Run all formatters, static checks and tests"
+  
+  [tool.poe.tasks.release]
+  cmd = "bump-my-version bump -v"
+  help = "Create and push a release tag (patch/minor/major)"
+  
+  [tool.poe.tasks.setup]
+  sequence = [
+      {cmd = "uv sync"},
+      {cmd = "prek install"},
+  ]
+  help = "Install project dependencies and git hooks"
+  
+  [tool.poe.tasks.snapup]
+  cmd = "pytest --snapshot-update"
+  help = "Update test snapshots"
+  
+  [tool.poe.tasks.test]
+  cmd = "pytest"
+  help = "Run tests"
+  
+  [tool.poe.tasks.test-versions]
+  sequence = ["test-py314"]
+  help = "Run tests across all Python versions"
+  
+  [tool.poe.tasks.test-py314]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.14"}
+  help = "Run tests using Python 3.14"
+  
+  [tool.poe.tasks.ti]
+  cmd = "pytest --numprocesses 0 --no-cov -v"
+  help = "Run tests with debug friendly options"
+  
+  [tool.pytest]
+  addopts = [
+      "-ra",
+      "--cov=pkfire",
+      "--strict-config",
+      "--strict-markers",
+  ]
+  testpaths = ["tests"]
+  
+  [tool.coverage.run]
+  source = ["pkfire"]
+  branch = true
+  
+  [tool.coverage.report]
+  show_missing = true
+  skip_covered = true
+  exclude_lines = [
+      "pragma: no cover",
+      "if TYPE_CHECKING:",
+      "@abstractmethod",
+  ]
+  
+  [tool.ruff]
+  line-length = 79
+  output-format = "concise"
+  target-version = "py314"
+  
+  [tool.ruff.lint]
+  select = ["ALL"]
+  ignore = [
+      "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
+      "COM812",  # Trailing comma missing
+      "D1",  # Missing docstring presence rules
+      "EM",  # flake8-errmsg
+      "G004",  # Logging statement uses f-string
+      "PLR",  # pylint Refactor
+      "S607",  # Starting a process with a partial executable path
+      "TD",  # flake8-todos
+      "TRY003", # Avoid specifying long messages outside the exception class
+  ]
+  
+  [tool.ruff.lint.isort]
+  known-first-party = ["pkfire"]
+  
+  [tool.ruff.lint.per-file-ignores]
+  "tests/**/*.py" = [
+      "ARG",  # flake8-unused-arguments
+      "S101",  # Use of assert detected
+  ]
+  
+  [tool.ruff.lint.pydocstyle]
+  convention = "google"
+  
+  [tool.ty.terminal]
+  error-on-warning = true
+  output-format = "concise"
+  
+  [tool.uv]
+  default-groups = ["dev", "docs"]
+  
+  [tool.uv-dynamic-versioning]
+  pattern = "default-unprefixed"
+  fallback-version = "0.0.0"
+  
+  '''
+# ---
+# name: test_pyproject_features[no_xdist-syrupy-docs-3.14-public]
+  '''
+  [build-system]
+  requires = ["hatchling", "uv-dynamic-versioning"]
+  build-backend = "hatchling.build"
+  
+  [project]
+  name = "PKFire"
+  dynamic = ["version"]
+  description = "Onett Little League"
+  readme = "README.md"
+  license = "MIT"
+  license-files = ["LICENSE"]
+  requires-python = ">=3.14"
+  authors = [
+      { name = "Ness", email = "ness@onett.example.com" },
+  ]
+  classifiers = [
+      "Development Status :: 3 - Alpha",
+      "Intended Audience :: Developers",
+      "Programming Language :: Python :: 3",
+      "Programming Language :: Python :: 3 :: Only",
+      "Programming Language :: Python :: 3.14",
+      "Topic :: Documentation",
+      "Topic :: Software Development",
+      "Topic :: Utilities",
+      "Typing :: Typed",
+  ]
+  keywords = []
+  dependencies = []
+  
+  [project.urls]
+  Homepage = "https://ness.github.io/PKFire"
+  Repository = "https://github.com/ness/PKFire"
+  Issues = "https://github.com/ness/PKFire/issues"
+  
+  [dependency-groups]
+  dev = [
+      "bump-my-version>=1.3.0",
+      "poethepoet>=0.42",
+      "prek>=0.3",
+      "pysentry-rs>=0.4",
+      "pytest>=9",
+      "pytest-cov>=7",
+      "pytest-sugar>=1",
+      "ruff>=0.15",
+      "syrupy>=5",
+      "ty>=0.0.37",
+  ]
+  docs = [
+      "mkdocstrings[python]>=1",
+      "zensical>=0.0.42",
+  ]
+  
+  [tool.bumpversion]
+  commit = false
+  tag = true
+  tag_name = "v{new_version}"
+  tag_message = ""
+  push = true
+  
+  [tool.hatch.build.targets.sdist]
+  include = ["/pkfire", "/tests", "*.md", "LICENSE"]
+  
+  [tool.hatch.version]
+  source = "uv-dynamic-versioning"
+  
+  [tool.poe.executor]
+  type = "uv"
+  
+  [tool.poe.tasks.audit]
+  cmd = "pysentry-rs"
+  help = "Run dependencies security audit"
+  
+  [tool.poe.tasks.build]
+  cmd = "uv build"
+  help = "Build distribution package"
+  
+  [tool.poe.tasks.docs-build]
+  cmd = "zensical build -c"
+  help = "Build documentation site"
+  
+  [tool.poe.tasks.docs]
+  sequence = [
+      {ref = "docs-build"},
+      {cmd = "zensical serve -a \"${host}:${port}\""},
+  ]
+  help = "Run documentation site locally"
+  
+  [tool.poe.tasks.docs.args.host]
+  options = ['--host', '-h']
+  help = "Bind IP"
+  default = "localhost"
+  
+  [tool.poe.tasks.docs.args.port]
+  positional = true
+  help = "Bind Port"
+  default = "8000"
+  
+  [tool.poe.tasks.init]
+  sequence = [
+      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
+      {cmd = "git init"},
+      {ref = "setup"},
+      {cmd = "git remote add origin https://github.com/ness/PKFire"},
+      {cmd = "git config --local remote.origin.pushurl git@github.com:ness/PKFire.git"},
+      {cmd = "git add ."},
+      {cmd = "git commit -m 'Create project from template'"},
+  ]
+  help = "Initialize git repository once on project creation"
+  
+  [tool.poe.tasks.lint]
+  cmd = "prek run --all-files"
+  help = "Run all formatters and static checks"
+  
+  [tool.poe.tasks.lt]
+  sequence = [{ref = "lint"}, {ref = "test"}]
+  help = "Run all formatters, static checks and tests"
+  
+  [tool.poe.tasks.release]
+  cmd = "bump-my-version bump -v"
+  help = "Create and push a release tag (patch/minor/major)"
+  
+  [tool.poe.tasks.setup]
+  sequence = [
+      {cmd = "uv sync"},
+      {cmd = "prek install"},
+  ]
+  help = "Install project dependencies and git hooks"
+  
+  [tool.poe.tasks.snapup]
+  cmd = "pytest --snapshot-update"
+  help = "Update test snapshots"
+  
+  [tool.poe.tasks.test]
+  cmd = "pytest"
+  help = "Run tests"
+  
+  [tool.poe.tasks.test-versions]
+  sequence = ["test-py314"]
+  help = "Run tests across all Python versions"
+  
+  [tool.poe.tasks.test-py314]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.14"}
+  help = "Run tests using Python 3.14"
+  
+  [tool.poe.tasks.ti]
+  cmd = "pytest --numprocesses 0 --no-cov -v"
+  help = "Run tests with debug friendly options"
+  
+  [tool.pytest]
+  addopts = [
+      "-ra",
+      "--cov=pkfire",
+      "--strict-config",
+      "--strict-markers",
+  ]
+  testpaths = ["tests"]
+  
+  [tool.coverage.run]
+  source = ["pkfire"]
+  branch = true
+  
+  [tool.coverage.report]
+  show_missing = true
+  skip_covered = true
+  exclude_lines = [
+      "pragma: no cover",
+      "if TYPE_CHECKING:",
+      "@abstractmethod",
+  ]
+  
+  [tool.ruff]
+  line-length = 79
+  output-format = "concise"
+  target-version = "py314"
+  
+  [tool.ruff.lint]
+  select = ["ALL"]
+  ignore = [
+      "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
+      "COM812",  # Trailing comma missing
+      "D1",  # Missing docstring presence rules
+      "EM",  # flake8-errmsg
+      "G004",  # Logging statement uses f-string
+      "PLR",  # pylint Refactor
+      "S607",  # Starting a process with a partial executable path
+      "TD",  # flake8-todos
+      "TRY003", # Avoid specifying long messages outside the exception class
+  ]
+  
+  [tool.ruff.lint.isort]
+  known-first-party = ["pkfire"]
+  
+  [tool.ruff.lint.per-file-ignores]
+  "tests/**/*.py" = [
+      "ARG",  # flake8-unused-arguments
+      "S101",  # Use of assert detected
+  ]
+  
+  [tool.ruff.lint.pydocstyle]
+  convention = "google"
+  
+  [tool.ty.terminal]
+  error-on-warning = true
+  output-format = "concise"
+  
+  [tool.uv]
+  default-groups = ["dev", "docs"]
+  
+  [tool.uv-dynamic-versioning]
+  pattern = "default-unprefixed"
+  fallback-version = "0.0.0"
+  
+  '''
+# ---
+# name: test_pyproject_features[no_xdist-syrupy-no_docs-3.10-private]
+  '''
+  [build-system]
+  requires = ["hatchling", "uv-dynamic-versioning"]
+  build-backend = "hatchling.build"
+  
+  [project]
+  name = "PKFire"
+  dynamic = ["version"]
+  description = "Onett Little League"
+  readme = "README.md"
+  license = "MIT"
+  license-files = ["LICENSE"]
+  requires-python = ">=3.10"
+  authors = [
+      { name = "Ness", email = "ness@onett.example.com" },
+  ]
+  classifiers = [
+      "Development Status :: 3 - Alpha",
+      "Intended Audience :: Developers",
+      "Programming Language :: Python :: 3",
+      "Programming Language :: Python :: 3 :: Only",
+      "Programming Language :: Python :: 3.10",
+      "Programming Language :: Python :: 3.11",
+      "Programming Language :: Python :: 3.12",
+      "Programming Language :: Python :: 3.13",
+      "Programming Language :: Python :: 3.14",
+      "Topic :: Documentation",
+      "Topic :: Software Development",
+      "Topic :: Utilities",
+      "Typing :: Typed",
+  ]
+  keywords = []
+  dependencies = []
+  
+  [dependency-groups]
+  dev = [
+      "bump-my-version>=1.3.0",
+      "poethepoet>=0.42",
+      "prek>=0.3",
+      "pytest>=9",
+      "pytest-cov>=7",
+      "pytest-sugar>=1",
+      "ruff>=0.15",
+      "syrupy>=5",
+      "ty>=0.0.37",
+  ]
+  
+  [tool.bumpversion]
+  commit = false
+  tag = true
+  tag_name = "v{new_version}"
+  tag_message = ""
+  push = true
+  
+  [tool.hatch.build.targets.sdist]
+  include = ["/pkfire", "/tests", "*.md", "LICENSE"]
+  
+  [tool.hatch.version]
+  source = "uv-dynamic-versioning"
+  
+  [tool.poe.executor]
+  type = "uv"
+  
+  [tool.poe.tasks.build]
+  cmd = "uv build"
+  help = "Build distribution package"
+  
+  [tool.poe.tasks.init]
+  sequence = [
+      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
+      {cmd = "git init"},
+      {ref = "setup"},
+      {cmd = "git add ."},
+      {cmd = "git commit -m 'Create project from template'"},
+  ]
+  help = "Initialize git repository once on project creation"
+  
+  [tool.poe.tasks.lint]
+  cmd = "prek run --all-files"
+  help = "Run all formatters and static checks"
+  
+  [tool.poe.tasks.lt]
+  sequence = [{ref = "lint"}, {ref = "test"}]
+  help = "Run all formatters, static checks and tests"
+  
+  [tool.poe.tasks.release]
+  cmd = "bump-my-version bump -v"
+  help = "Create and push a release tag (patch/minor/major)"
+  
+  [tool.poe.tasks.setup]
+  sequence = [
+      {cmd = "uv sync"},
+      {cmd = "prek install"},
+  ]
+  help = "Install project dependencies and git hooks"
+  
+  [tool.poe.tasks.snapup]
+  cmd = "pytest --snapshot-update"
+  help = "Update test snapshots"
+  
+  [tool.poe.tasks.test]
+  cmd = "pytest"
+  help = "Run tests"
+  
+  [tool.poe.tasks.test-versions]
+  sequence = ["test-py310", "test-py311", "test-py312", "test-py313", "test-py314"]
+  help = "Run tests across all Python versions"
+  
+  [tool.poe.tasks.test-py310]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.10"}
+  help = "Run tests using Python 3.10"
+  
+  [tool.poe.tasks.test-py311]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.11"}
+  help = "Run tests using Python 3.11"
+  
+  [tool.poe.tasks.test-py312]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.12"}
+  help = "Run tests using Python 3.12"
+  
+  [tool.poe.tasks.test-py313]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.13"}
+  help = "Run tests using Python 3.13"
+  
+  [tool.poe.tasks.test-py314]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.14"}
+  help = "Run tests using Python 3.14"
+  
+  [tool.poe.tasks.ti]
+  cmd = "pytest --numprocesses 0 --no-cov -v"
+  help = "Run tests with debug friendly options"
+  
+  [tool.pytest]
+  addopts = [
+      "-ra",
+      "--cov=pkfire",
+      "--strict-config",
+      "--strict-markers",
+  ]
+  testpaths = ["tests"]
+  
+  [tool.coverage.run]
+  source = ["pkfire"]
+  branch = true
+  
+  [tool.coverage.report]
+  show_missing = true
+  skip_covered = true
+  exclude_lines = [
+      "pragma: no cover",
+      "if TYPE_CHECKING:",
+      "@abstractmethod",
+  ]
+  
+  [tool.ruff]
+  line-length = 79
+  output-format = "concise"
+  target-version = "py310"
+  
+  [tool.ruff.lint]
+  select = ["ALL"]
+  ignore = [
+      "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
+      "COM812",  # Trailing comma missing
+      "D1",  # Missing docstring presence rules
+      "EM",  # flake8-errmsg
+      "G004",  # Logging statement uses f-string
+      "PLR",  # pylint Refactor
+      "S607",  # Starting a process with a partial executable path
+      "TD",  # flake8-todos
+      "TRY003", # Avoid specifying long messages outside the exception class
+  ]
+  
+  [tool.ruff.lint.isort]
+  known-first-party = ["pkfire"]
+  
+  [tool.ruff.lint.per-file-ignores]
+  "tests/**/*.py" = [
+      "ARG",  # flake8-unused-arguments
+      "S101",  # Use of assert detected
+  ]
+  
+  [tool.ruff.lint.pydocstyle]
+  convention = "google"
+  
+  [tool.ty.terminal]
+  error-on-warning = true
+  output-format = "concise"
+  
+  [tool.uv]
+  default-groups = ["dev"]
+  
+  [tool.uv-dynamic-versioning]
+  pattern = "default-unprefixed"
+  fallback-version = "0.0.0"
+  
+  '''
+# ---
+# name: test_pyproject_features[no_xdist-syrupy-no_docs-3.10-public]
+  '''
+  [build-system]
+  requires = ["hatchling", "uv-dynamic-versioning"]
+  build-backend = "hatchling.build"
+  
+  [project]
+  name = "PKFire"
+  dynamic = ["version"]
+  description = "Onett Little League"
+  readme = "README.md"
+  license = "MIT"
+  license-files = ["LICENSE"]
+  requires-python = ">=3.10"
+  authors = [
+      { name = "Ness", email = "ness@onett.example.com" },
+  ]
+  classifiers = [
+      "Development Status :: 3 - Alpha",
+      "Intended Audience :: Developers",
+      "Programming Language :: Python :: 3",
+      "Programming Language :: Python :: 3 :: Only",
+      "Programming Language :: Python :: 3.10",
+      "Programming Language :: Python :: 3.11",
+      "Programming Language :: Python :: 3.12",
+      "Programming Language :: Python :: 3.13",
+      "Programming Language :: Python :: 3.14",
+      "Topic :: Documentation",
+      "Topic :: Software Development",
+      "Topic :: Utilities",
+      "Typing :: Typed",
+  ]
+  keywords = []
+  dependencies = []
+  
+  [project.urls]
+  Homepage = "https://github.com/ness/PKFire"
+  Repository = "https://github.com/ness/PKFire"
+  Issues = "https://github.com/ness/PKFire/issues"
+  
+  [dependency-groups]
+  dev = [
+      "bump-my-version>=1.3.0",
+      "poethepoet>=0.42",
+      "prek>=0.3",
+      "pysentry-rs>=0.4",
+      "pytest>=9",
+      "pytest-cov>=7",
+      "pytest-sugar>=1",
+      "ruff>=0.15",
+      "syrupy>=5",
+      "ty>=0.0.37",
+  ]
+  
+  [tool.bumpversion]
+  commit = false
+  tag = true
+  tag_name = "v{new_version}"
+  tag_message = ""
+  push = true
+  
+  [tool.hatch.build.targets.sdist]
+  include = ["/pkfire", "/tests", "*.md", "LICENSE"]
+  
+  [tool.hatch.version]
+  source = "uv-dynamic-versioning"
+  
+  [tool.poe.executor]
+  type = "uv"
+  
+  [tool.poe.tasks.audit]
+  cmd = "pysentry-rs"
+  help = "Run dependencies security audit"
+  
+  [tool.poe.tasks.build]
+  cmd = "uv build"
+  help = "Build distribution package"
+  
+  [tool.poe.tasks.init]
+  sequence = [
+      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
+      {cmd = "git init"},
+      {ref = "setup"},
+      {cmd = "git remote add origin https://github.com/ness/PKFire"},
+      {cmd = "git config --local remote.origin.pushurl git@github.com:ness/PKFire.git"},
+      {cmd = "git add ."},
+      {cmd = "git commit -m 'Create project from template'"},
+  ]
+  help = "Initialize git repository once on project creation"
+  
+  [tool.poe.tasks.lint]
+  cmd = "prek run --all-files"
+  help = "Run all formatters and static checks"
+  
+  [tool.poe.tasks.lt]
+  sequence = [{ref = "lint"}, {ref = "test"}]
+  help = "Run all formatters, static checks and tests"
+  
+  [tool.poe.tasks.release]
+  cmd = "bump-my-version bump -v"
+  help = "Create and push a release tag (patch/minor/major)"
+  
+  [tool.poe.tasks.setup]
+  sequence = [
+      {cmd = "uv sync"},
+      {cmd = "prek install"},
+  ]
+  help = "Install project dependencies and git hooks"
+  
+  [tool.poe.tasks.snapup]
+  cmd = "pytest --snapshot-update"
+  help = "Update test snapshots"
+  
+  [tool.poe.tasks.test]
+  cmd = "pytest"
+  help = "Run tests"
+  
+  [tool.poe.tasks.test-versions]
+  sequence = ["test-py310", "test-py311", "test-py312", "test-py313", "test-py314"]
+  help = "Run tests across all Python versions"
+  
+  [tool.poe.tasks.test-py310]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.10"}
+  help = "Run tests using Python 3.10"
+  
+  [tool.poe.tasks.test-py311]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.11"}
+  help = "Run tests using Python 3.11"
+  
+  [tool.poe.tasks.test-py312]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.12"}
+  help = "Run tests using Python 3.12"
+  
+  [tool.poe.tasks.test-py313]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.13"}
+  help = "Run tests using Python 3.13"
+  
+  [tool.poe.tasks.test-py314]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.14"}
+  help = "Run tests using Python 3.14"
+  
+  [tool.poe.tasks.ti]
+  cmd = "pytest --numprocesses 0 --no-cov -v"
+  help = "Run tests with debug friendly options"
+  
+  [tool.pytest]
+  addopts = [
+      "-ra",
+      "--cov=pkfire",
+      "--strict-config",
+      "--strict-markers",
+  ]
+  testpaths = ["tests"]
+  
+  [tool.coverage.run]
+  source = ["pkfire"]
+  branch = true
+  
+  [tool.coverage.report]
+  show_missing = true
+  skip_covered = true
+  exclude_lines = [
+      "pragma: no cover",
+      "if TYPE_CHECKING:",
+      "@abstractmethod",
+  ]
+  
+  [tool.ruff]
+  line-length = 79
+  output-format = "concise"
+  target-version = "py310"
+  
+  [tool.ruff.lint]
+  select = ["ALL"]
+  ignore = [
+      "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
+      "COM812",  # Trailing comma missing
+      "D1",  # Missing docstring presence rules
+      "EM",  # flake8-errmsg
+      "G004",  # Logging statement uses f-string
+      "PLR",  # pylint Refactor
+      "S607",  # Starting a process with a partial executable path
+      "TD",  # flake8-todos
+      "TRY003", # Avoid specifying long messages outside the exception class
+  ]
+  
+  [tool.ruff.lint.isort]
+  known-first-party = ["pkfire"]
+  
+  [tool.ruff.lint.per-file-ignores]
+  "tests/**/*.py" = [
+      "ARG",  # flake8-unused-arguments
+      "S101",  # Use of assert detected
+  ]
+  
+  [tool.ruff.lint.pydocstyle]
+  convention = "google"
+  
+  [tool.ty.terminal]
+  error-on-warning = true
+  output-format = "concise"
+  
+  [tool.uv]
+  default-groups = ["dev"]
+  
+  [tool.uv-dynamic-versioning]
+  pattern = "default-unprefixed"
+  fallback-version = "0.0.0"
+  
+  '''
+# ---
+# name: test_pyproject_features[no_xdist-syrupy-no_docs-3.14-private]
+  '''
+  [build-system]
+  requires = ["hatchling", "uv-dynamic-versioning"]
+  build-backend = "hatchling.build"
+  
+  [project]
+  name = "PKFire"
+  dynamic = ["version"]
+  description = "Onett Little League"
+  readme = "README.md"
+  license = "MIT"
+  license-files = ["LICENSE"]
+  requires-python = ">=3.14"
+  authors = [
+      { name = "Ness", email = "ness@onett.example.com" },
+  ]
+  classifiers = [
+      "Development Status :: 3 - Alpha",
+      "Intended Audience :: Developers",
+      "Programming Language :: Python :: 3",
+      "Programming Language :: Python :: 3 :: Only",
+      "Programming Language :: Python :: 3.14",
+      "Topic :: Documentation",
+      "Topic :: Software Development",
+      "Topic :: Utilities",
+      "Typing :: Typed",
+  ]
+  keywords = []
+  dependencies = []
+  
+  [dependency-groups]
+  dev = [
+      "bump-my-version>=1.3.0",
+      "poethepoet>=0.42",
+      "prek>=0.3",
+      "pytest>=9",
+      "pytest-cov>=7",
+      "pytest-sugar>=1",
+      "ruff>=0.15",
+      "syrupy>=5",
+      "ty>=0.0.37",
+  ]
+  
+  [tool.bumpversion]
+  commit = false
+  tag = true
+  tag_name = "v{new_version}"
+  tag_message = ""
+  push = true
+  
+  [tool.hatch.build.targets.sdist]
+  include = ["/pkfire", "/tests", "*.md", "LICENSE"]
+  
+  [tool.hatch.version]
+  source = "uv-dynamic-versioning"
+  
+  [tool.poe.executor]
+  type = "uv"
+  
+  [tool.poe.tasks.build]
+  cmd = "uv build"
+  help = "Build distribution package"
+  
+  [tool.poe.tasks.init]
+  sequence = [
+      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
+      {cmd = "git init"},
+      {ref = "setup"},
+      {cmd = "git add ."},
+      {cmd = "git commit -m 'Create project from template'"},
+  ]
+  help = "Initialize git repository once on project creation"
+  
+  [tool.poe.tasks.lint]
+  cmd = "prek run --all-files"
+  help = "Run all formatters and static checks"
+  
+  [tool.poe.tasks.lt]
+  sequence = [{ref = "lint"}, {ref = "test"}]
+  help = "Run all formatters, static checks and tests"
+  
+  [tool.poe.tasks.release]
+  cmd = "bump-my-version bump -v"
+  help = "Create and push a release tag (patch/minor/major)"
+  
+  [tool.poe.tasks.setup]
+  sequence = [
+      {cmd = "uv sync"},
+      {cmd = "prek install"},
+  ]
+  help = "Install project dependencies and git hooks"
+  
+  [tool.poe.tasks.snapup]
+  cmd = "pytest --snapshot-update"
+  help = "Update test snapshots"
+  
+  [tool.poe.tasks.test]
+  cmd = "pytest"
+  help = "Run tests"
+  
+  [tool.poe.tasks.test-versions]
+  sequence = ["test-py314"]
+  help = "Run tests across all Python versions"
+  
+  [tool.poe.tasks.test-py314]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.14"}
+  help = "Run tests using Python 3.14"
+  
+  [tool.poe.tasks.ti]
+  cmd = "pytest --numprocesses 0 --no-cov -v"
+  help = "Run tests with debug friendly options"
+  
+  [tool.pytest]
+  addopts = [
+      "-ra",
+      "--cov=pkfire",
+      "--strict-config",
+      "--strict-markers",
+  ]
+  testpaths = ["tests"]
+  
+  [tool.coverage.run]
+  source = ["pkfire"]
+  branch = true
+  
+  [tool.coverage.report]
+  show_missing = true
+  skip_covered = true
+  exclude_lines = [
+      "pragma: no cover",
+      "if TYPE_CHECKING:",
+      "@abstractmethod",
+  ]
+  
+  [tool.ruff]
+  line-length = 79
+  output-format = "concise"
+  target-version = "py314"
+  
+  [tool.ruff.lint]
+  select = ["ALL"]
+  ignore = [
+      "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
+      "COM812",  # Trailing comma missing
+      "D1",  # Missing docstring presence rules
+      "EM",  # flake8-errmsg
+      "G004",  # Logging statement uses f-string
+      "PLR",  # pylint Refactor
+      "S607",  # Starting a process with a partial executable path
+      "TD",  # flake8-todos
+      "TRY003", # Avoid specifying long messages outside the exception class
+  ]
+  
+  [tool.ruff.lint.isort]
+  known-first-party = ["pkfire"]
+  
+  [tool.ruff.lint.per-file-ignores]
+  "tests/**/*.py" = [
+      "ARG",  # flake8-unused-arguments
+      "S101",  # Use of assert detected
+  ]
+  
+  [tool.ruff.lint.pydocstyle]
+  convention = "google"
+  
+  [tool.ty.terminal]
+  error-on-warning = true
+  output-format = "concise"
+  
+  [tool.uv]
+  default-groups = ["dev"]
+  
+  [tool.uv-dynamic-versioning]
+  pattern = "default-unprefixed"
+  fallback-version = "0.0.0"
+  
+  '''
+# ---
+# name: test_pyproject_features[no_xdist-syrupy-no_docs-3.14-public]
+  '''
+  [build-system]
+  requires = ["hatchling", "uv-dynamic-versioning"]
+  build-backend = "hatchling.build"
+  
+  [project]
+  name = "PKFire"
+  dynamic = ["version"]
+  description = "Onett Little League"
+  readme = "README.md"
+  license = "MIT"
+  license-files = ["LICENSE"]
+  requires-python = ">=3.14"
+  authors = [
+      { name = "Ness", email = "ness@onett.example.com" },
+  ]
+  classifiers = [
+      "Development Status :: 3 - Alpha",
+      "Intended Audience :: Developers",
+      "Programming Language :: Python :: 3",
+      "Programming Language :: Python :: 3 :: Only",
+      "Programming Language :: Python :: 3.14",
+      "Topic :: Documentation",
+      "Topic :: Software Development",
+      "Topic :: Utilities",
+      "Typing :: Typed",
+  ]
+  keywords = []
+  dependencies = []
+  
+  [project.urls]
+  Homepage = "https://github.com/ness/PKFire"
+  Repository = "https://github.com/ness/PKFire"
+  Issues = "https://github.com/ness/PKFire/issues"
+  
+  [dependency-groups]
+  dev = [
+      "bump-my-version>=1.3.0",
+      "poethepoet>=0.42",
+      "prek>=0.3",
+      "pysentry-rs>=0.4",
+      "pytest>=9",
+      "pytest-cov>=7",
+      "pytest-sugar>=1",
+      "ruff>=0.15",
+      "syrupy>=5",
+      "ty>=0.0.37",
+  ]
+  
+  [tool.bumpversion]
+  commit = false
+  tag = true
+  tag_name = "v{new_version}"
+  tag_message = ""
+  push = true
+  
+  [tool.hatch.build.targets.sdist]
+  include = ["/pkfire", "/tests", "*.md", "LICENSE"]
+  
+  [tool.hatch.version]
+  source = "uv-dynamic-versioning"
+  
+  [tool.poe.executor]
+  type = "uv"
+  
+  [tool.poe.tasks.audit]
+  cmd = "pysentry-rs"
+  help = "Run dependencies security audit"
+  
+  [tool.poe.tasks.build]
+  cmd = "uv build"
+  help = "Build distribution package"
+  
+  [tool.poe.tasks.init]
+  sequence = [
+      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
+      {cmd = "git init"},
+      {ref = "setup"},
+      {cmd = "git remote add origin https://github.com/ness/PKFire"},
+      {cmd = "git config --local remote.origin.pushurl git@github.com:ness/PKFire.git"},
+      {cmd = "git add ."},
+      {cmd = "git commit -m 'Create project from template'"},
+  ]
+  help = "Initialize git repository once on project creation"
+  
+  [tool.poe.tasks.lint]
+  cmd = "prek run --all-files"
+  help = "Run all formatters and static checks"
+  
+  [tool.poe.tasks.lt]
+  sequence = [{ref = "lint"}, {ref = "test"}]
+  help = "Run all formatters, static checks and tests"
+  
+  [tool.poe.tasks.release]
+  cmd = "bump-my-version bump -v"
+  help = "Create and push a release tag (patch/minor/major)"
+  
+  [tool.poe.tasks.setup]
+  sequence = [
+      {cmd = "uv sync"},
+      {cmd = "prek install"},
+  ]
+  help = "Install project dependencies and git hooks"
+  
+  [tool.poe.tasks.snapup]
+  cmd = "pytest --snapshot-update"
+  help = "Update test snapshots"
+  
+  [tool.poe.tasks.test]
+  cmd = "pytest"
+  help = "Run tests"
+  
+  [tool.poe.tasks.test-versions]
+  sequence = ["test-py314"]
+  help = "Run tests across all Python versions"
+  
+  [tool.poe.tasks.test-py314]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.14"}
+  help = "Run tests using Python 3.14"
+  
+  [tool.poe.tasks.ti]
+  cmd = "pytest --numprocesses 0 --no-cov -v"
+  help = "Run tests with debug friendly options"
+  
+  [tool.pytest]
+  addopts = [
+      "-ra",
+      "--cov=pkfire",
+      "--strict-config",
+      "--strict-markers",
+  ]
+  testpaths = ["tests"]
+  
+  [tool.coverage.run]
+  source = ["pkfire"]
+  branch = true
+  
+  [tool.coverage.report]
+  show_missing = true
+  skip_covered = true
+  exclude_lines = [
+      "pragma: no cover",
+      "if TYPE_CHECKING:",
+      "@abstractmethod",
+  ]
+  
+  [tool.ruff]
+  line-length = 79
+  output-format = "concise"
+  target-version = "py314"
+  
+  [tool.ruff.lint]
+  select = ["ALL"]
+  ignore = [
+      "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
+      "COM812",  # Trailing comma missing
+      "D1",  # Missing docstring presence rules
+      "EM",  # flake8-errmsg
+      "G004",  # Logging statement uses f-string
+      "PLR",  # pylint Refactor
+      "S607",  # Starting a process with a partial executable path
+      "TD",  # flake8-todos
+      "TRY003", # Avoid specifying long messages outside the exception class
+  ]
+  
+  [tool.ruff.lint.isort]
+  known-first-party = ["pkfire"]
+  
+  [tool.ruff.lint.per-file-ignores]
+  "tests/**/*.py" = [
+      "ARG",  # flake8-unused-arguments
+      "S101",  # Use of assert detected
+  ]
+  
+  [tool.ruff.lint.pydocstyle]
+  convention = "google"
+  
+  [tool.ty.terminal]
+  error-on-warning = true
+  output-format = "concise"
+  
+  [tool.uv]
+  default-groups = ["dev"]
+  
+  [tool.uv-dynamic-versioning]
+  pattern = "default-unprefixed"
+  fallback-version = "0.0.0"
+  
+  '''
+# ---
+# name: test_pyproject_features[xdist-no_syrupy-docs-3.10-private]
   '''
   [build-system]
   requires = ["hatchling", "uv-dynamic-versioning"]
@@ -155,7 +3483,7 @@
   help = "Run tests using Python 3.14"
   
   [tool.poe.tasks.ti]
-  cmd = "pytest -n 0 --no-cov -v"
+  cmd = "pytest --numprocesses 0 --no-cov -v"
   help = "Run tests with debug friendly options"
   
   [tool.pytest]
@@ -164,7 +3492,7 @@
       "--cov=pkfire",
       "--strict-config",
       "--strict-markers",
-      "-n",
+      "--numprocesses",
       "auto",
   ]
   testpaths = ["tests"]
@@ -226,7 +3554,7 @@
   
   '''
 # ---
-# name: test_pyproject_features[docs-3.10-public]
+# name: test_pyproject_features[xdist-no_syrupy-docs-3.10-public]
   '''
   [build-system]
   requires = ["hatchling", "uv-dynamic-versioning"]
@@ -394,7 +3722,7 @@
   help = "Run tests using Python 3.14"
   
   [tool.poe.tasks.ti]
-  cmd = "pytest -n 0 --no-cov -v"
+  cmd = "pytest --numprocesses 0 --no-cov -v"
   help = "Run tests with debug friendly options"
   
   [tool.pytest]
@@ -403,7 +3731,7 @@
       "--cov=pkfire",
       "--strict-config",
       "--strict-markers",
-      "-n",
+      "--numprocesses",
       "auto",
   ]
   testpaths = ["tests"]
@@ -465,7 +3793,7 @@
   
   '''
 # ---
-# name: test_pyproject_features[docs-3.14-private]
+# name: test_pyproject_features[xdist-no_syrupy-docs-3.14-private]
   '''
   [build-system]
   requires = ["hatchling", "uv-dynamic-versioning"]
@@ -597,7 +3925,7 @@
   help = "Run tests using Python 3.14"
   
   [tool.poe.tasks.ti]
-  cmd = "pytest -n 0 --no-cov -v"
+  cmd = "pytest --numprocesses 0 --no-cov -v"
   help = "Run tests with debug friendly options"
   
   [tool.pytest]
@@ -606,7 +3934,7 @@
       "--cov=pkfire",
       "--strict-config",
       "--strict-markers",
-      "-n",
+      "--numprocesses",
       "auto",
   ]
   testpaths = ["tests"]
@@ -668,7 +3996,7 @@
   
   '''
 # ---
-# name: test_pyproject_features[docs-3.14-public]
+# name: test_pyproject_features[xdist-no_syrupy-docs-3.14-public]
   '''
   [build-system]
   requires = ["hatchling", "uv-dynamic-versioning"]
@@ -812,7 +4140,7 @@
   help = "Run tests using Python 3.14"
   
   [tool.poe.tasks.ti]
-  cmd = "pytest -n 0 --no-cov -v"
+  cmd = "pytest --numprocesses 0 --no-cov -v"
   help = "Run tests with debug friendly options"
   
   [tool.pytest]
@@ -821,7 +4149,7 @@
       "--cov=pkfire",
       "--strict-config",
       "--strict-markers",
-      "-n",
+      "--numprocesses",
       "auto",
   ]
   testpaths = ["tests"]
@@ -883,7 +4211,7 @@
   
   '''
 # ---
-# name: test_pyproject_features[no_docs-3.10-private]
+# name: test_pyproject_features[xdist-no_syrupy-no_docs-3.10-private]
   '''
   [build-system]
   requires = ["hatchling", "uv-dynamic-versioning"]
@@ -1014,7 +4342,7 @@
   help = "Run tests using Python 3.14"
   
   [tool.poe.tasks.ti]
-  cmd = "pytest -n 0 --no-cov -v"
+  cmd = "pytest --numprocesses 0 --no-cov -v"
   help = "Run tests with debug friendly options"
   
   [tool.pytest]
@@ -1023,7 +4351,7 @@
       "--cov=pkfire",
       "--strict-config",
       "--strict-markers",
-      "-n",
+      "--numprocesses",
       "auto",
   ]
   testpaths = ["tests"]
@@ -1085,7 +4413,7 @@
   
   '''
 # ---
-# name: test_pyproject_features[no_docs-3.10-public]
+# name: test_pyproject_features[xdist-no_syrupy-no_docs-3.10-public]
   '''
   [build-system]
   requires = ["hatchling", "uv-dynamic-versioning"]
@@ -1228,7 +4556,7 @@
   help = "Run tests using Python 3.14"
   
   [tool.poe.tasks.ti]
-  cmd = "pytest -n 0 --no-cov -v"
+  cmd = "pytest --numprocesses 0 --no-cov -v"
   help = "Run tests with debug friendly options"
   
   [tool.pytest]
@@ -1237,7 +4565,7 @@
       "--cov=pkfire",
       "--strict-config",
       "--strict-markers",
-      "-n",
+      "--numprocesses",
       "auto",
   ]
   testpaths = ["tests"]
@@ -1299,7 +4627,7 @@
   
   '''
 # ---
-# name: test_pyproject_features[no_docs-3.14-private]
+# name: test_pyproject_features[xdist-no_syrupy-no_docs-3.14-private]
   '''
   [build-system]
   requires = ["hatchling", "uv-dynamic-versioning"]
@@ -1406,7 +4734,7 @@
   help = "Run tests using Python 3.14"
   
   [tool.poe.tasks.ti]
-  cmd = "pytest -n 0 --no-cov -v"
+  cmd = "pytest --numprocesses 0 --no-cov -v"
   help = "Run tests with debug friendly options"
   
   [tool.pytest]
@@ -1415,7 +4743,7 @@
       "--cov=pkfire",
       "--strict-config",
       "--strict-markers",
-      "-n",
+      "--numprocesses",
       "auto",
   ]
   testpaths = ["tests"]
@@ -1477,7 +4805,7 @@
   
   '''
 # ---
-# name: test_pyproject_features[no_docs-3.14-public]
+# name: test_pyproject_features[xdist-no_syrupy-no_docs-3.14-public]
   '''
   [build-system]
   requires = ["hatchling", "uv-dynamic-versioning"]
@@ -1596,7 +4924,7 @@
   help = "Run tests using Python 3.14"
   
   [tool.poe.tasks.ti]
-  cmd = "pytest -n 0 --no-cov -v"
+  cmd = "pytest --numprocesses 0 --no-cov -v"
   help = "Run tests with debug friendly options"
   
   [tool.pytest]
@@ -1605,7 +4933,1715 @@
       "--cov=pkfire",
       "--strict-config",
       "--strict-markers",
-      "-n",
+      "--numprocesses",
+      "auto",
+  ]
+  testpaths = ["tests"]
+  
+  [tool.coverage.run]
+  source = ["pkfire"]
+  branch = true
+  
+  [tool.coverage.report]
+  show_missing = true
+  skip_covered = true
+  exclude_lines = [
+      "pragma: no cover",
+      "if TYPE_CHECKING:",
+      "@abstractmethod",
+  ]
+  
+  [tool.ruff]
+  line-length = 79
+  output-format = "concise"
+  target-version = "py314"
+  
+  [tool.ruff.lint]
+  select = ["ALL"]
+  ignore = [
+      "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
+      "COM812",  # Trailing comma missing
+      "D1",  # Missing docstring presence rules
+      "EM",  # flake8-errmsg
+      "G004",  # Logging statement uses f-string
+      "PLR",  # pylint Refactor
+      "S607",  # Starting a process with a partial executable path
+      "TD",  # flake8-todos
+      "TRY003", # Avoid specifying long messages outside the exception class
+  ]
+  
+  [tool.ruff.lint.isort]
+  known-first-party = ["pkfire"]
+  
+  [tool.ruff.lint.per-file-ignores]
+  "tests/**/*.py" = [
+      "ARG",  # flake8-unused-arguments
+      "S101",  # Use of assert detected
+  ]
+  
+  [tool.ruff.lint.pydocstyle]
+  convention = "google"
+  
+  [tool.ty.terminal]
+  error-on-warning = true
+  output-format = "concise"
+  
+  [tool.uv]
+  default-groups = ["dev"]
+  
+  [tool.uv-dynamic-versioning]
+  pattern = "default-unprefixed"
+  fallback-version = "0.0.0"
+  
+  '''
+# ---
+# name: test_pyproject_features[xdist-syrupy-docs-3.10-private]
+  '''
+  [build-system]
+  requires = ["hatchling", "uv-dynamic-versioning"]
+  build-backend = "hatchling.build"
+  
+  [project]
+  name = "PKFire"
+  dynamic = ["version"]
+  description = "Onett Little League"
+  readme = "README.md"
+  license = "MIT"
+  license-files = ["LICENSE"]
+  requires-python = ">=3.10"
+  authors = [
+      { name = "Ness", email = "ness@onett.example.com" },
+  ]
+  classifiers = [
+      "Development Status :: 3 - Alpha",
+      "Intended Audience :: Developers",
+      "Programming Language :: Python :: 3",
+      "Programming Language :: Python :: 3 :: Only",
+      "Programming Language :: Python :: 3.10",
+      "Programming Language :: Python :: 3.11",
+      "Programming Language :: Python :: 3.12",
+      "Programming Language :: Python :: 3.13",
+      "Programming Language :: Python :: 3.14",
+      "Topic :: Documentation",
+      "Topic :: Software Development",
+      "Topic :: Utilities",
+      "Typing :: Typed",
+  ]
+  keywords = []
+  dependencies = []
+  
+  [dependency-groups]
+  dev = [
+      "bump-my-version>=1.3.0",
+      "poethepoet>=0.42",
+      "prek>=0.3",
+      "pytest>=9",
+      "pytest-cov>=7",
+      "pytest-sugar>=1",
+      "pytest-xdist>=3",
+      "ruff>=0.15",
+      "syrupy>=5",
+      "ty>=0.0.37",
+  ]
+  docs = [
+      "mkdocstrings[python]>=1",
+      "zensical>=0.0.42",
+  ]
+  
+  [tool.bumpversion]
+  commit = false
+  tag = true
+  tag_name = "v{new_version}"
+  tag_message = ""
+  push = true
+  
+  [tool.hatch.build.targets.sdist]
+  include = ["/pkfire", "/tests", "*.md", "LICENSE"]
+  
+  [tool.hatch.version]
+  source = "uv-dynamic-versioning"
+  
+  [tool.poe.executor]
+  type = "uv"
+  
+  [tool.poe.tasks.build]
+  cmd = "uv build"
+  help = "Build distribution package"
+  
+  [tool.poe.tasks.docs-build]
+  cmd = "zensical build -c"
+  help = "Build documentation site"
+  
+  [tool.poe.tasks.docs]
+  sequence = [
+      {ref = "docs-build"},
+      {cmd = "zensical serve -a \"${host}:${port}\""},
+  ]
+  help = "Run documentation site locally"
+  
+  [tool.poe.tasks.docs.args.host]
+  options = ['--host', '-h']
+  help = "Bind IP"
+  default = "localhost"
+  
+  [tool.poe.tasks.docs.args.port]
+  positional = true
+  help = "Bind Port"
+  default = "8000"
+  
+  [tool.poe.tasks.init]
+  sequence = [
+      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
+      {cmd = "git init"},
+      {ref = "setup"},
+      {cmd = "git add ."},
+      {cmd = "git commit -m 'Create project from template'"},
+  ]
+  help = "Initialize git repository once on project creation"
+  
+  [tool.poe.tasks.lint]
+  cmd = "prek run --all-files"
+  help = "Run all formatters and static checks"
+  
+  [tool.poe.tasks.lt]
+  sequence = [{ref = "lint"}, {ref = "test"}]
+  help = "Run all formatters, static checks and tests"
+  
+  [tool.poe.tasks.release]
+  cmd = "bump-my-version bump -v"
+  help = "Create and push a release tag (patch/minor/major)"
+  
+  [tool.poe.tasks.setup]
+  sequence = [
+      {cmd = "uv sync"},
+      {cmd = "prek install"},
+  ]
+  help = "Install project dependencies and git hooks"
+  
+  [tool.poe.tasks.snapup]
+  cmd = "pytest --snapshot-update --numprocesses 0"
+  help = "Update test snapshots"
+  
+  [tool.poe.tasks.test]
+  cmd = "pytest"
+  help = "Run tests"
+  
+  [tool.poe.tasks.test-versions]
+  sequence = ["test-py310", "test-py311", "test-py312", "test-py313", "test-py314"]
+  help = "Run tests across all Python versions"
+  
+  [tool.poe.tasks.test-py310]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.10"}
+  help = "Run tests using Python 3.10"
+  
+  [tool.poe.tasks.test-py311]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.11"}
+  help = "Run tests using Python 3.11"
+  
+  [tool.poe.tasks.test-py312]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.12"}
+  help = "Run tests using Python 3.12"
+  
+  [tool.poe.tasks.test-py313]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.13"}
+  help = "Run tests using Python 3.13"
+  
+  [tool.poe.tasks.test-py314]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.14"}
+  help = "Run tests using Python 3.14"
+  
+  [tool.poe.tasks.ti]
+  cmd = "pytest --numprocesses 0 --no-cov -v"
+  help = "Run tests with debug friendly options"
+  
+  [tool.pytest]
+  addopts = [
+      "-ra",
+      "--cov=pkfire",
+      "--strict-config",
+      "--strict-markers",
+      "--numprocesses",
+      "auto",
+  ]
+  testpaths = ["tests"]
+  
+  [tool.coverage.run]
+  source = ["pkfire"]
+  branch = true
+  
+  [tool.coverage.report]
+  show_missing = true
+  skip_covered = true
+  exclude_lines = [
+      "pragma: no cover",
+      "if TYPE_CHECKING:",
+      "@abstractmethod",
+  ]
+  
+  [tool.ruff]
+  line-length = 79
+  output-format = "concise"
+  target-version = "py310"
+  
+  [tool.ruff.lint]
+  select = ["ALL"]
+  ignore = [
+      "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
+      "COM812",  # Trailing comma missing
+      "D1",  # Missing docstring presence rules
+      "EM",  # flake8-errmsg
+      "G004",  # Logging statement uses f-string
+      "PLR",  # pylint Refactor
+      "S607",  # Starting a process with a partial executable path
+      "TD",  # flake8-todos
+      "TRY003", # Avoid specifying long messages outside the exception class
+  ]
+  
+  [tool.ruff.lint.isort]
+  known-first-party = ["pkfire"]
+  
+  [tool.ruff.lint.per-file-ignores]
+  "tests/**/*.py" = [
+      "ARG",  # flake8-unused-arguments
+      "S101",  # Use of assert detected
+  ]
+  
+  [tool.ruff.lint.pydocstyle]
+  convention = "google"
+  
+  [tool.ty.terminal]
+  error-on-warning = true
+  output-format = "concise"
+  
+  [tool.uv]
+  default-groups = ["dev", "docs"]
+  
+  [tool.uv-dynamic-versioning]
+  pattern = "default-unprefixed"
+  fallback-version = "0.0.0"
+  
+  '''
+# ---
+# name: test_pyproject_features[xdist-syrupy-docs-3.10-public]
+  '''
+  [build-system]
+  requires = ["hatchling", "uv-dynamic-versioning"]
+  build-backend = "hatchling.build"
+  
+  [project]
+  name = "PKFire"
+  dynamic = ["version"]
+  description = "Onett Little League"
+  readme = "README.md"
+  license = "MIT"
+  license-files = ["LICENSE"]
+  requires-python = ">=3.10"
+  authors = [
+      { name = "Ness", email = "ness@onett.example.com" },
+  ]
+  classifiers = [
+      "Development Status :: 3 - Alpha",
+      "Intended Audience :: Developers",
+      "Programming Language :: Python :: 3",
+      "Programming Language :: Python :: 3 :: Only",
+      "Programming Language :: Python :: 3.10",
+      "Programming Language :: Python :: 3.11",
+      "Programming Language :: Python :: 3.12",
+      "Programming Language :: Python :: 3.13",
+      "Programming Language :: Python :: 3.14",
+      "Topic :: Documentation",
+      "Topic :: Software Development",
+      "Topic :: Utilities",
+      "Typing :: Typed",
+  ]
+  keywords = []
+  dependencies = []
+  
+  [project.urls]
+  Homepage = "https://ness.github.io/PKFire"
+  Repository = "https://github.com/ness/PKFire"
+  Issues = "https://github.com/ness/PKFire/issues"
+  
+  [dependency-groups]
+  dev = [
+      "bump-my-version>=1.3.0",
+      "poethepoet>=0.42",
+      "prek>=0.3",
+      "pysentry-rs>=0.4",
+      "pytest>=9",
+      "pytest-cov>=7",
+      "pytest-sugar>=1",
+      "pytest-xdist>=3",
+      "ruff>=0.15",
+      "syrupy>=5",
+      "ty>=0.0.37",
+  ]
+  docs = [
+      "mkdocstrings[python]>=1",
+      "zensical>=0.0.42",
+  ]
+  
+  [tool.bumpversion]
+  commit = false
+  tag = true
+  tag_name = "v{new_version}"
+  tag_message = ""
+  push = true
+  
+  [tool.hatch.build.targets.sdist]
+  include = ["/pkfire", "/tests", "*.md", "LICENSE"]
+  
+  [tool.hatch.version]
+  source = "uv-dynamic-versioning"
+  
+  [tool.poe.executor]
+  type = "uv"
+  
+  [tool.poe.tasks.audit]
+  cmd = "pysentry-rs"
+  help = "Run dependencies security audit"
+  
+  [tool.poe.tasks.build]
+  cmd = "uv build"
+  help = "Build distribution package"
+  
+  [tool.poe.tasks.docs-build]
+  cmd = "zensical build -c"
+  help = "Build documentation site"
+  
+  [tool.poe.tasks.docs]
+  sequence = [
+      {ref = "docs-build"},
+      {cmd = "zensical serve -a \"${host}:${port}\""},
+  ]
+  help = "Run documentation site locally"
+  
+  [tool.poe.tasks.docs.args.host]
+  options = ['--host', '-h']
+  help = "Bind IP"
+  default = "localhost"
+  
+  [tool.poe.tasks.docs.args.port]
+  positional = true
+  help = "Bind Port"
+  default = "8000"
+  
+  [tool.poe.tasks.init]
+  sequence = [
+      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
+      {cmd = "git init"},
+      {ref = "setup"},
+      {cmd = "git remote add origin https://github.com/ness/PKFire"},
+      {cmd = "git config --local remote.origin.pushurl git@github.com:ness/PKFire.git"},
+      {cmd = "git add ."},
+      {cmd = "git commit -m 'Create project from template'"},
+  ]
+  help = "Initialize git repository once on project creation"
+  
+  [tool.poe.tasks.lint]
+  cmd = "prek run --all-files"
+  help = "Run all formatters and static checks"
+  
+  [tool.poe.tasks.lt]
+  sequence = [{ref = "lint"}, {ref = "test"}]
+  help = "Run all formatters, static checks and tests"
+  
+  [tool.poe.tasks.release]
+  cmd = "bump-my-version bump -v"
+  help = "Create and push a release tag (patch/minor/major)"
+  
+  [tool.poe.tasks.setup]
+  sequence = [
+      {cmd = "uv sync"},
+      {cmd = "prek install"},
+  ]
+  help = "Install project dependencies and git hooks"
+  
+  [tool.poe.tasks.snapup]
+  cmd = "pytest --snapshot-update --numprocesses 0"
+  help = "Update test snapshots"
+  
+  [tool.poe.tasks.test]
+  cmd = "pytest"
+  help = "Run tests"
+  
+  [tool.poe.tasks.test-versions]
+  sequence = ["test-py310", "test-py311", "test-py312", "test-py313", "test-py314"]
+  help = "Run tests across all Python versions"
+  
+  [tool.poe.tasks.test-py310]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.10"}
+  help = "Run tests using Python 3.10"
+  
+  [tool.poe.tasks.test-py311]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.11"}
+  help = "Run tests using Python 3.11"
+  
+  [tool.poe.tasks.test-py312]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.12"}
+  help = "Run tests using Python 3.12"
+  
+  [tool.poe.tasks.test-py313]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.13"}
+  help = "Run tests using Python 3.13"
+  
+  [tool.poe.tasks.test-py314]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.14"}
+  help = "Run tests using Python 3.14"
+  
+  [tool.poe.tasks.ti]
+  cmd = "pytest --numprocesses 0 --no-cov -v"
+  help = "Run tests with debug friendly options"
+  
+  [tool.pytest]
+  addopts = [
+      "-ra",
+      "--cov=pkfire",
+      "--strict-config",
+      "--strict-markers",
+      "--numprocesses",
+      "auto",
+  ]
+  testpaths = ["tests"]
+  
+  [tool.coverage.run]
+  source = ["pkfire"]
+  branch = true
+  
+  [tool.coverage.report]
+  show_missing = true
+  skip_covered = true
+  exclude_lines = [
+      "pragma: no cover",
+      "if TYPE_CHECKING:",
+      "@abstractmethod",
+  ]
+  
+  [tool.ruff]
+  line-length = 79
+  output-format = "concise"
+  target-version = "py310"
+  
+  [tool.ruff.lint]
+  select = ["ALL"]
+  ignore = [
+      "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
+      "COM812",  # Trailing comma missing
+      "D1",  # Missing docstring presence rules
+      "EM",  # flake8-errmsg
+      "G004",  # Logging statement uses f-string
+      "PLR",  # pylint Refactor
+      "S607",  # Starting a process with a partial executable path
+      "TD",  # flake8-todos
+      "TRY003", # Avoid specifying long messages outside the exception class
+  ]
+  
+  [tool.ruff.lint.isort]
+  known-first-party = ["pkfire"]
+  
+  [tool.ruff.lint.per-file-ignores]
+  "tests/**/*.py" = [
+      "ARG",  # flake8-unused-arguments
+      "S101",  # Use of assert detected
+  ]
+  
+  [tool.ruff.lint.pydocstyle]
+  convention = "google"
+  
+  [tool.ty.terminal]
+  error-on-warning = true
+  output-format = "concise"
+  
+  [tool.uv]
+  default-groups = ["dev", "docs"]
+  
+  [tool.uv-dynamic-versioning]
+  pattern = "default-unprefixed"
+  fallback-version = "0.0.0"
+  
+  '''
+# ---
+# name: test_pyproject_features[xdist-syrupy-docs-3.14-private]
+  '''
+  [build-system]
+  requires = ["hatchling", "uv-dynamic-versioning"]
+  build-backend = "hatchling.build"
+  
+  [project]
+  name = "PKFire"
+  dynamic = ["version"]
+  description = "Onett Little League"
+  readme = "README.md"
+  license = "MIT"
+  license-files = ["LICENSE"]
+  requires-python = ">=3.14"
+  authors = [
+      { name = "Ness", email = "ness@onett.example.com" },
+  ]
+  classifiers = [
+      "Development Status :: 3 - Alpha",
+      "Intended Audience :: Developers",
+      "Programming Language :: Python :: 3",
+      "Programming Language :: Python :: 3 :: Only",
+      "Programming Language :: Python :: 3.14",
+      "Topic :: Documentation",
+      "Topic :: Software Development",
+      "Topic :: Utilities",
+      "Typing :: Typed",
+  ]
+  keywords = []
+  dependencies = []
+  
+  [dependency-groups]
+  dev = [
+      "bump-my-version>=1.3.0",
+      "poethepoet>=0.42",
+      "prek>=0.3",
+      "pytest>=9",
+      "pytest-cov>=7",
+      "pytest-sugar>=1",
+      "pytest-xdist>=3",
+      "ruff>=0.15",
+      "syrupy>=5",
+      "ty>=0.0.37",
+  ]
+  docs = [
+      "mkdocstrings[python]>=1",
+      "zensical>=0.0.42",
+  ]
+  
+  [tool.bumpversion]
+  commit = false
+  tag = true
+  tag_name = "v{new_version}"
+  tag_message = ""
+  push = true
+  
+  [tool.hatch.build.targets.sdist]
+  include = ["/pkfire", "/tests", "*.md", "LICENSE"]
+  
+  [tool.hatch.version]
+  source = "uv-dynamic-versioning"
+  
+  [tool.poe.executor]
+  type = "uv"
+  
+  [tool.poe.tasks.build]
+  cmd = "uv build"
+  help = "Build distribution package"
+  
+  [tool.poe.tasks.docs-build]
+  cmd = "zensical build -c"
+  help = "Build documentation site"
+  
+  [tool.poe.tasks.docs]
+  sequence = [
+      {ref = "docs-build"},
+      {cmd = "zensical serve -a \"${host}:${port}\""},
+  ]
+  help = "Run documentation site locally"
+  
+  [tool.poe.tasks.docs.args.host]
+  options = ['--host', '-h']
+  help = "Bind IP"
+  default = "localhost"
+  
+  [tool.poe.tasks.docs.args.port]
+  positional = true
+  help = "Bind Port"
+  default = "8000"
+  
+  [tool.poe.tasks.init]
+  sequence = [
+      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
+      {cmd = "git init"},
+      {ref = "setup"},
+      {cmd = "git add ."},
+      {cmd = "git commit -m 'Create project from template'"},
+  ]
+  help = "Initialize git repository once on project creation"
+  
+  [tool.poe.tasks.lint]
+  cmd = "prek run --all-files"
+  help = "Run all formatters and static checks"
+  
+  [tool.poe.tasks.lt]
+  sequence = [{ref = "lint"}, {ref = "test"}]
+  help = "Run all formatters, static checks and tests"
+  
+  [tool.poe.tasks.release]
+  cmd = "bump-my-version bump -v"
+  help = "Create and push a release tag (patch/minor/major)"
+  
+  [tool.poe.tasks.setup]
+  sequence = [
+      {cmd = "uv sync"},
+      {cmd = "prek install"},
+  ]
+  help = "Install project dependencies and git hooks"
+  
+  [tool.poe.tasks.snapup]
+  cmd = "pytest --snapshot-update --numprocesses 0"
+  help = "Update test snapshots"
+  
+  [tool.poe.tasks.test]
+  cmd = "pytest"
+  help = "Run tests"
+  
+  [tool.poe.tasks.test-versions]
+  sequence = ["test-py314"]
+  help = "Run tests across all Python versions"
+  
+  [tool.poe.tasks.test-py314]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.14"}
+  help = "Run tests using Python 3.14"
+  
+  [tool.poe.tasks.ti]
+  cmd = "pytest --numprocesses 0 --no-cov -v"
+  help = "Run tests with debug friendly options"
+  
+  [tool.pytest]
+  addopts = [
+      "-ra",
+      "--cov=pkfire",
+      "--strict-config",
+      "--strict-markers",
+      "--numprocesses",
+      "auto",
+  ]
+  testpaths = ["tests"]
+  
+  [tool.coverage.run]
+  source = ["pkfire"]
+  branch = true
+  
+  [tool.coverage.report]
+  show_missing = true
+  skip_covered = true
+  exclude_lines = [
+      "pragma: no cover",
+      "if TYPE_CHECKING:",
+      "@abstractmethod",
+  ]
+  
+  [tool.ruff]
+  line-length = 79
+  output-format = "concise"
+  target-version = "py314"
+  
+  [tool.ruff.lint]
+  select = ["ALL"]
+  ignore = [
+      "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
+      "COM812",  # Trailing comma missing
+      "D1",  # Missing docstring presence rules
+      "EM",  # flake8-errmsg
+      "G004",  # Logging statement uses f-string
+      "PLR",  # pylint Refactor
+      "S607",  # Starting a process with a partial executable path
+      "TD",  # flake8-todos
+      "TRY003", # Avoid specifying long messages outside the exception class
+  ]
+  
+  [tool.ruff.lint.isort]
+  known-first-party = ["pkfire"]
+  
+  [tool.ruff.lint.per-file-ignores]
+  "tests/**/*.py" = [
+      "ARG",  # flake8-unused-arguments
+      "S101",  # Use of assert detected
+  ]
+  
+  [tool.ruff.lint.pydocstyle]
+  convention = "google"
+  
+  [tool.ty.terminal]
+  error-on-warning = true
+  output-format = "concise"
+  
+  [tool.uv]
+  default-groups = ["dev", "docs"]
+  
+  [tool.uv-dynamic-versioning]
+  pattern = "default-unprefixed"
+  fallback-version = "0.0.0"
+  
+  '''
+# ---
+# name: test_pyproject_features[xdist-syrupy-docs-3.14-public]
+  '''
+  [build-system]
+  requires = ["hatchling", "uv-dynamic-versioning"]
+  build-backend = "hatchling.build"
+  
+  [project]
+  name = "PKFire"
+  dynamic = ["version"]
+  description = "Onett Little League"
+  readme = "README.md"
+  license = "MIT"
+  license-files = ["LICENSE"]
+  requires-python = ">=3.14"
+  authors = [
+      { name = "Ness", email = "ness@onett.example.com" },
+  ]
+  classifiers = [
+      "Development Status :: 3 - Alpha",
+      "Intended Audience :: Developers",
+      "Programming Language :: Python :: 3",
+      "Programming Language :: Python :: 3 :: Only",
+      "Programming Language :: Python :: 3.14",
+      "Topic :: Documentation",
+      "Topic :: Software Development",
+      "Topic :: Utilities",
+      "Typing :: Typed",
+  ]
+  keywords = []
+  dependencies = []
+  
+  [project.urls]
+  Homepage = "https://ness.github.io/PKFire"
+  Repository = "https://github.com/ness/PKFire"
+  Issues = "https://github.com/ness/PKFire/issues"
+  
+  [dependency-groups]
+  dev = [
+      "bump-my-version>=1.3.0",
+      "poethepoet>=0.42",
+      "prek>=0.3",
+      "pysentry-rs>=0.4",
+      "pytest>=9",
+      "pytest-cov>=7",
+      "pytest-sugar>=1",
+      "pytest-xdist>=3",
+      "ruff>=0.15",
+      "syrupy>=5",
+      "ty>=0.0.37",
+  ]
+  docs = [
+      "mkdocstrings[python]>=1",
+      "zensical>=0.0.42",
+  ]
+  
+  [tool.bumpversion]
+  commit = false
+  tag = true
+  tag_name = "v{new_version}"
+  tag_message = ""
+  push = true
+  
+  [tool.hatch.build.targets.sdist]
+  include = ["/pkfire", "/tests", "*.md", "LICENSE"]
+  
+  [tool.hatch.version]
+  source = "uv-dynamic-versioning"
+  
+  [tool.poe.executor]
+  type = "uv"
+  
+  [tool.poe.tasks.audit]
+  cmd = "pysentry-rs"
+  help = "Run dependencies security audit"
+  
+  [tool.poe.tasks.build]
+  cmd = "uv build"
+  help = "Build distribution package"
+  
+  [tool.poe.tasks.docs-build]
+  cmd = "zensical build -c"
+  help = "Build documentation site"
+  
+  [tool.poe.tasks.docs]
+  sequence = [
+      {ref = "docs-build"},
+      {cmd = "zensical serve -a \"${host}:${port}\""},
+  ]
+  help = "Run documentation site locally"
+  
+  [tool.poe.tasks.docs.args.host]
+  options = ['--host', '-h']
+  help = "Bind IP"
+  default = "localhost"
+  
+  [tool.poe.tasks.docs.args.port]
+  positional = true
+  help = "Bind Port"
+  default = "8000"
+  
+  [tool.poe.tasks.init]
+  sequence = [
+      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
+      {cmd = "git init"},
+      {ref = "setup"},
+      {cmd = "git remote add origin https://github.com/ness/PKFire"},
+      {cmd = "git config --local remote.origin.pushurl git@github.com:ness/PKFire.git"},
+      {cmd = "git add ."},
+      {cmd = "git commit -m 'Create project from template'"},
+  ]
+  help = "Initialize git repository once on project creation"
+  
+  [tool.poe.tasks.lint]
+  cmd = "prek run --all-files"
+  help = "Run all formatters and static checks"
+  
+  [tool.poe.tasks.lt]
+  sequence = [{ref = "lint"}, {ref = "test"}]
+  help = "Run all formatters, static checks and tests"
+  
+  [tool.poe.tasks.release]
+  cmd = "bump-my-version bump -v"
+  help = "Create and push a release tag (patch/minor/major)"
+  
+  [tool.poe.tasks.setup]
+  sequence = [
+      {cmd = "uv sync"},
+      {cmd = "prek install"},
+  ]
+  help = "Install project dependencies and git hooks"
+  
+  [tool.poe.tasks.snapup]
+  cmd = "pytest --snapshot-update --numprocesses 0"
+  help = "Update test snapshots"
+  
+  [tool.poe.tasks.test]
+  cmd = "pytest"
+  help = "Run tests"
+  
+  [tool.poe.tasks.test-versions]
+  sequence = ["test-py314"]
+  help = "Run tests across all Python versions"
+  
+  [tool.poe.tasks.test-py314]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.14"}
+  help = "Run tests using Python 3.14"
+  
+  [tool.poe.tasks.ti]
+  cmd = "pytest --numprocesses 0 --no-cov -v"
+  help = "Run tests with debug friendly options"
+  
+  [tool.pytest]
+  addopts = [
+      "-ra",
+      "--cov=pkfire",
+      "--strict-config",
+      "--strict-markers",
+      "--numprocesses",
+      "auto",
+  ]
+  testpaths = ["tests"]
+  
+  [tool.coverage.run]
+  source = ["pkfire"]
+  branch = true
+  
+  [tool.coverage.report]
+  show_missing = true
+  skip_covered = true
+  exclude_lines = [
+      "pragma: no cover",
+      "if TYPE_CHECKING:",
+      "@abstractmethod",
+  ]
+  
+  [tool.ruff]
+  line-length = 79
+  output-format = "concise"
+  target-version = "py314"
+  
+  [tool.ruff.lint]
+  select = ["ALL"]
+  ignore = [
+      "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
+      "COM812",  # Trailing comma missing
+      "D1",  # Missing docstring presence rules
+      "EM",  # flake8-errmsg
+      "G004",  # Logging statement uses f-string
+      "PLR",  # pylint Refactor
+      "S607",  # Starting a process with a partial executable path
+      "TD",  # flake8-todos
+      "TRY003", # Avoid specifying long messages outside the exception class
+  ]
+  
+  [tool.ruff.lint.isort]
+  known-first-party = ["pkfire"]
+  
+  [tool.ruff.lint.per-file-ignores]
+  "tests/**/*.py" = [
+      "ARG",  # flake8-unused-arguments
+      "S101",  # Use of assert detected
+  ]
+  
+  [tool.ruff.lint.pydocstyle]
+  convention = "google"
+  
+  [tool.ty.terminal]
+  error-on-warning = true
+  output-format = "concise"
+  
+  [tool.uv]
+  default-groups = ["dev", "docs"]
+  
+  [tool.uv-dynamic-versioning]
+  pattern = "default-unprefixed"
+  fallback-version = "0.0.0"
+  
+  '''
+# ---
+# name: test_pyproject_features[xdist-syrupy-no_docs-3.10-private]
+  '''
+  [build-system]
+  requires = ["hatchling", "uv-dynamic-versioning"]
+  build-backend = "hatchling.build"
+  
+  [project]
+  name = "PKFire"
+  dynamic = ["version"]
+  description = "Onett Little League"
+  readme = "README.md"
+  license = "MIT"
+  license-files = ["LICENSE"]
+  requires-python = ">=3.10"
+  authors = [
+      { name = "Ness", email = "ness@onett.example.com" },
+  ]
+  classifiers = [
+      "Development Status :: 3 - Alpha",
+      "Intended Audience :: Developers",
+      "Programming Language :: Python :: 3",
+      "Programming Language :: Python :: 3 :: Only",
+      "Programming Language :: Python :: 3.10",
+      "Programming Language :: Python :: 3.11",
+      "Programming Language :: Python :: 3.12",
+      "Programming Language :: Python :: 3.13",
+      "Programming Language :: Python :: 3.14",
+      "Topic :: Documentation",
+      "Topic :: Software Development",
+      "Topic :: Utilities",
+      "Typing :: Typed",
+  ]
+  keywords = []
+  dependencies = []
+  
+  [dependency-groups]
+  dev = [
+      "bump-my-version>=1.3.0",
+      "poethepoet>=0.42",
+      "prek>=0.3",
+      "pytest>=9",
+      "pytest-cov>=7",
+      "pytest-sugar>=1",
+      "pytest-xdist>=3",
+      "ruff>=0.15",
+      "syrupy>=5",
+      "ty>=0.0.37",
+  ]
+  
+  [tool.bumpversion]
+  commit = false
+  tag = true
+  tag_name = "v{new_version}"
+  tag_message = ""
+  push = true
+  
+  [tool.hatch.build.targets.sdist]
+  include = ["/pkfire", "/tests", "*.md", "LICENSE"]
+  
+  [tool.hatch.version]
+  source = "uv-dynamic-versioning"
+  
+  [tool.poe.executor]
+  type = "uv"
+  
+  [tool.poe.tasks.build]
+  cmd = "uv build"
+  help = "Build distribution package"
+  
+  [tool.poe.tasks.init]
+  sequence = [
+      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
+      {cmd = "git init"},
+      {ref = "setup"},
+      {cmd = "git add ."},
+      {cmd = "git commit -m 'Create project from template'"},
+  ]
+  help = "Initialize git repository once on project creation"
+  
+  [tool.poe.tasks.lint]
+  cmd = "prek run --all-files"
+  help = "Run all formatters and static checks"
+  
+  [tool.poe.tasks.lt]
+  sequence = [{ref = "lint"}, {ref = "test"}]
+  help = "Run all formatters, static checks and tests"
+  
+  [tool.poe.tasks.release]
+  cmd = "bump-my-version bump -v"
+  help = "Create and push a release tag (patch/minor/major)"
+  
+  [tool.poe.tasks.setup]
+  sequence = [
+      {cmd = "uv sync"},
+      {cmd = "prek install"},
+  ]
+  help = "Install project dependencies and git hooks"
+  
+  [tool.poe.tasks.snapup]
+  cmd = "pytest --snapshot-update --numprocesses 0"
+  help = "Update test snapshots"
+  
+  [tool.poe.tasks.test]
+  cmd = "pytest"
+  help = "Run tests"
+  
+  [tool.poe.tasks.test-versions]
+  sequence = ["test-py310", "test-py311", "test-py312", "test-py313", "test-py314"]
+  help = "Run tests across all Python versions"
+  
+  [tool.poe.tasks.test-py310]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.10"}
+  help = "Run tests using Python 3.10"
+  
+  [tool.poe.tasks.test-py311]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.11"}
+  help = "Run tests using Python 3.11"
+  
+  [tool.poe.tasks.test-py312]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.12"}
+  help = "Run tests using Python 3.12"
+  
+  [tool.poe.tasks.test-py313]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.13"}
+  help = "Run tests using Python 3.13"
+  
+  [tool.poe.tasks.test-py314]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.14"}
+  help = "Run tests using Python 3.14"
+  
+  [tool.poe.tasks.ti]
+  cmd = "pytest --numprocesses 0 --no-cov -v"
+  help = "Run tests with debug friendly options"
+  
+  [tool.pytest]
+  addopts = [
+      "-ra",
+      "--cov=pkfire",
+      "--strict-config",
+      "--strict-markers",
+      "--numprocesses",
+      "auto",
+  ]
+  testpaths = ["tests"]
+  
+  [tool.coverage.run]
+  source = ["pkfire"]
+  branch = true
+  
+  [tool.coverage.report]
+  show_missing = true
+  skip_covered = true
+  exclude_lines = [
+      "pragma: no cover",
+      "if TYPE_CHECKING:",
+      "@abstractmethod",
+  ]
+  
+  [tool.ruff]
+  line-length = 79
+  output-format = "concise"
+  target-version = "py310"
+  
+  [tool.ruff.lint]
+  select = ["ALL"]
+  ignore = [
+      "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
+      "COM812",  # Trailing comma missing
+      "D1",  # Missing docstring presence rules
+      "EM",  # flake8-errmsg
+      "G004",  # Logging statement uses f-string
+      "PLR",  # pylint Refactor
+      "S607",  # Starting a process with a partial executable path
+      "TD",  # flake8-todos
+      "TRY003", # Avoid specifying long messages outside the exception class
+  ]
+  
+  [tool.ruff.lint.isort]
+  known-first-party = ["pkfire"]
+  
+  [tool.ruff.lint.per-file-ignores]
+  "tests/**/*.py" = [
+      "ARG",  # flake8-unused-arguments
+      "S101",  # Use of assert detected
+  ]
+  
+  [tool.ruff.lint.pydocstyle]
+  convention = "google"
+  
+  [tool.ty.terminal]
+  error-on-warning = true
+  output-format = "concise"
+  
+  [tool.uv]
+  default-groups = ["dev"]
+  
+  [tool.uv-dynamic-versioning]
+  pattern = "default-unprefixed"
+  fallback-version = "0.0.0"
+  
+  '''
+# ---
+# name: test_pyproject_features[xdist-syrupy-no_docs-3.10-public]
+  '''
+  [build-system]
+  requires = ["hatchling", "uv-dynamic-versioning"]
+  build-backend = "hatchling.build"
+  
+  [project]
+  name = "PKFire"
+  dynamic = ["version"]
+  description = "Onett Little League"
+  readme = "README.md"
+  license = "MIT"
+  license-files = ["LICENSE"]
+  requires-python = ">=3.10"
+  authors = [
+      { name = "Ness", email = "ness@onett.example.com" },
+  ]
+  classifiers = [
+      "Development Status :: 3 - Alpha",
+      "Intended Audience :: Developers",
+      "Programming Language :: Python :: 3",
+      "Programming Language :: Python :: 3 :: Only",
+      "Programming Language :: Python :: 3.10",
+      "Programming Language :: Python :: 3.11",
+      "Programming Language :: Python :: 3.12",
+      "Programming Language :: Python :: 3.13",
+      "Programming Language :: Python :: 3.14",
+      "Topic :: Documentation",
+      "Topic :: Software Development",
+      "Topic :: Utilities",
+      "Typing :: Typed",
+  ]
+  keywords = []
+  dependencies = []
+  
+  [project.urls]
+  Homepage = "https://github.com/ness/PKFire"
+  Repository = "https://github.com/ness/PKFire"
+  Issues = "https://github.com/ness/PKFire/issues"
+  
+  [dependency-groups]
+  dev = [
+      "bump-my-version>=1.3.0",
+      "poethepoet>=0.42",
+      "prek>=0.3",
+      "pysentry-rs>=0.4",
+      "pytest>=9",
+      "pytest-cov>=7",
+      "pytest-sugar>=1",
+      "pytest-xdist>=3",
+      "ruff>=0.15",
+      "syrupy>=5",
+      "ty>=0.0.37",
+  ]
+  
+  [tool.bumpversion]
+  commit = false
+  tag = true
+  tag_name = "v{new_version}"
+  tag_message = ""
+  push = true
+  
+  [tool.hatch.build.targets.sdist]
+  include = ["/pkfire", "/tests", "*.md", "LICENSE"]
+  
+  [tool.hatch.version]
+  source = "uv-dynamic-versioning"
+  
+  [tool.poe.executor]
+  type = "uv"
+  
+  [tool.poe.tasks.audit]
+  cmd = "pysentry-rs"
+  help = "Run dependencies security audit"
+  
+  [tool.poe.tasks.build]
+  cmd = "uv build"
+  help = "Build distribution package"
+  
+  [tool.poe.tasks.init]
+  sequence = [
+      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
+      {cmd = "git init"},
+      {ref = "setup"},
+      {cmd = "git remote add origin https://github.com/ness/PKFire"},
+      {cmd = "git config --local remote.origin.pushurl git@github.com:ness/PKFire.git"},
+      {cmd = "git add ."},
+      {cmd = "git commit -m 'Create project from template'"},
+  ]
+  help = "Initialize git repository once on project creation"
+  
+  [tool.poe.tasks.lint]
+  cmd = "prek run --all-files"
+  help = "Run all formatters and static checks"
+  
+  [tool.poe.tasks.lt]
+  sequence = [{ref = "lint"}, {ref = "test"}]
+  help = "Run all formatters, static checks and tests"
+  
+  [tool.poe.tasks.release]
+  cmd = "bump-my-version bump -v"
+  help = "Create and push a release tag (patch/minor/major)"
+  
+  [tool.poe.tasks.setup]
+  sequence = [
+      {cmd = "uv sync"},
+      {cmd = "prek install"},
+  ]
+  help = "Install project dependencies and git hooks"
+  
+  [tool.poe.tasks.snapup]
+  cmd = "pytest --snapshot-update --numprocesses 0"
+  help = "Update test snapshots"
+  
+  [tool.poe.tasks.test]
+  cmd = "pytest"
+  help = "Run tests"
+  
+  [tool.poe.tasks.test-versions]
+  sequence = ["test-py310", "test-py311", "test-py312", "test-py313", "test-py314"]
+  help = "Run tests across all Python versions"
+  
+  [tool.poe.tasks.test-py310]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.10"}
+  help = "Run tests using Python 3.10"
+  
+  [tool.poe.tasks.test-py311]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.11"}
+  help = "Run tests using Python 3.11"
+  
+  [tool.poe.tasks.test-py312]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.12"}
+  help = "Run tests using Python 3.12"
+  
+  [tool.poe.tasks.test-py313]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.13"}
+  help = "Run tests using Python 3.13"
+  
+  [tool.poe.tasks.test-py314]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.14"}
+  help = "Run tests using Python 3.14"
+  
+  [tool.poe.tasks.ti]
+  cmd = "pytest --numprocesses 0 --no-cov -v"
+  help = "Run tests with debug friendly options"
+  
+  [tool.pytest]
+  addopts = [
+      "-ra",
+      "--cov=pkfire",
+      "--strict-config",
+      "--strict-markers",
+      "--numprocesses",
+      "auto",
+  ]
+  testpaths = ["tests"]
+  
+  [tool.coverage.run]
+  source = ["pkfire"]
+  branch = true
+  
+  [tool.coverage.report]
+  show_missing = true
+  skip_covered = true
+  exclude_lines = [
+      "pragma: no cover",
+      "if TYPE_CHECKING:",
+      "@abstractmethod",
+  ]
+  
+  [tool.ruff]
+  line-length = 79
+  output-format = "concise"
+  target-version = "py310"
+  
+  [tool.ruff.lint]
+  select = ["ALL"]
+  ignore = [
+      "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
+      "COM812",  # Trailing comma missing
+      "D1",  # Missing docstring presence rules
+      "EM",  # flake8-errmsg
+      "G004",  # Logging statement uses f-string
+      "PLR",  # pylint Refactor
+      "S607",  # Starting a process with a partial executable path
+      "TD",  # flake8-todos
+      "TRY003", # Avoid specifying long messages outside the exception class
+  ]
+  
+  [tool.ruff.lint.isort]
+  known-first-party = ["pkfire"]
+  
+  [tool.ruff.lint.per-file-ignores]
+  "tests/**/*.py" = [
+      "ARG",  # flake8-unused-arguments
+      "S101",  # Use of assert detected
+  ]
+  
+  [tool.ruff.lint.pydocstyle]
+  convention = "google"
+  
+  [tool.ty.terminal]
+  error-on-warning = true
+  output-format = "concise"
+  
+  [tool.uv]
+  default-groups = ["dev"]
+  
+  [tool.uv-dynamic-versioning]
+  pattern = "default-unprefixed"
+  fallback-version = "0.0.0"
+  
+  '''
+# ---
+# name: test_pyproject_features[xdist-syrupy-no_docs-3.14-private]
+  '''
+  [build-system]
+  requires = ["hatchling", "uv-dynamic-versioning"]
+  build-backend = "hatchling.build"
+  
+  [project]
+  name = "PKFire"
+  dynamic = ["version"]
+  description = "Onett Little League"
+  readme = "README.md"
+  license = "MIT"
+  license-files = ["LICENSE"]
+  requires-python = ">=3.14"
+  authors = [
+      { name = "Ness", email = "ness@onett.example.com" },
+  ]
+  classifiers = [
+      "Development Status :: 3 - Alpha",
+      "Intended Audience :: Developers",
+      "Programming Language :: Python :: 3",
+      "Programming Language :: Python :: 3 :: Only",
+      "Programming Language :: Python :: 3.14",
+      "Topic :: Documentation",
+      "Topic :: Software Development",
+      "Topic :: Utilities",
+      "Typing :: Typed",
+  ]
+  keywords = []
+  dependencies = []
+  
+  [dependency-groups]
+  dev = [
+      "bump-my-version>=1.3.0",
+      "poethepoet>=0.42",
+      "prek>=0.3",
+      "pytest>=9",
+      "pytest-cov>=7",
+      "pytest-sugar>=1",
+      "pytest-xdist>=3",
+      "ruff>=0.15",
+      "syrupy>=5",
+      "ty>=0.0.37",
+  ]
+  
+  [tool.bumpversion]
+  commit = false
+  tag = true
+  tag_name = "v{new_version}"
+  tag_message = ""
+  push = true
+  
+  [tool.hatch.build.targets.sdist]
+  include = ["/pkfire", "/tests", "*.md", "LICENSE"]
+  
+  [tool.hatch.version]
+  source = "uv-dynamic-versioning"
+  
+  [tool.poe.executor]
+  type = "uv"
+  
+  [tool.poe.tasks.build]
+  cmd = "uv build"
+  help = "Build distribution package"
+  
+  [tool.poe.tasks.init]
+  sequence = [
+      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
+      {cmd = "git init"},
+      {ref = "setup"},
+      {cmd = "git add ."},
+      {cmd = "git commit -m 'Create project from template'"},
+  ]
+  help = "Initialize git repository once on project creation"
+  
+  [tool.poe.tasks.lint]
+  cmd = "prek run --all-files"
+  help = "Run all formatters and static checks"
+  
+  [tool.poe.tasks.lt]
+  sequence = [{ref = "lint"}, {ref = "test"}]
+  help = "Run all formatters, static checks and tests"
+  
+  [tool.poe.tasks.release]
+  cmd = "bump-my-version bump -v"
+  help = "Create and push a release tag (patch/minor/major)"
+  
+  [tool.poe.tasks.setup]
+  sequence = [
+      {cmd = "uv sync"},
+      {cmd = "prek install"},
+  ]
+  help = "Install project dependencies and git hooks"
+  
+  [tool.poe.tasks.snapup]
+  cmd = "pytest --snapshot-update --numprocesses 0"
+  help = "Update test snapshots"
+  
+  [tool.poe.tasks.test]
+  cmd = "pytest"
+  help = "Run tests"
+  
+  [tool.poe.tasks.test-versions]
+  sequence = ["test-py314"]
+  help = "Run tests across all Python versions"
+  
+  [tool.poe.tasks.test-py314]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.14"}
+  help = "Run tests using Python 3.14"
+  
+  [tool.poe.tasks.ti]
+  cmd = "pytest --numprocesses 0 --no-cov -v"
+  help = "Run tests with debug friendly options"
+  
+  [tool.pytest]
+  addopts = [
+      "-ra",
+      "--cov=pkfire",
+      "--strict-config",
+      "--strict-markers",
+      "--numprocesses",
+      "auto",
+  ]
+  testpaths = ["tests"]
+  
+  [tool.coverage.run]
+  source = ["pkfire"]
+  branch = true
+  
+  [tool.coverage.report]
+  show_missing = true
+  skip_covered = true
+  exclude_lines = [
+      "pragma: no cover",
+      "if TYPE_CHECKING:",
+      "@abstractmethod",
+  ]
+  
+  [tool.ruff]
+  line-length = 79
+  output-format = "concise"
+  target-version = "py314"
+  
+  [tool.ruff.lint]
+  select = ["ALL"]
+  ignore = [
+      "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
+      "COM812",  # Trailing comma missing
+      "D1",  # Missing docstring presence rules
+      "EM",  # flake8-errmsg
+      "G004",  # Logging statement uses f-string
+      "PLR",  # pylint Refactor
+      "S607",  # Starting a process with a partial executable path
+      "TD",  # flake8-todos
+      "TRY003", # Avoid specifying long messages outside the exception class
+  ]
+  
+  [tool.ruff.lint.isort]
+  known-first-party = ["pkfire"]
+  
+  [tool.ruff.lint.per-file-ignores]
+  "tests/**/*.py" = [
+      "ARG",  # flake8-unused-arguments
+      "S101",  # Use of assert detected
+  ]
+  
+  [tool.ruff.lint.pydocstyle]
+  convention = "google"
+  
+  [tool.ty.terminal]
+  error-on-warning = true
+  output-format = "concise"
+  
+  [tool.uv]
+  default-groups = ["dev"]
+  
+  [tool.uv-dynamic-versioning]
+  pattern = "default-unprefixed"
+  fallback-version = "0.0.0"
+  
+  '''
+# ---
+# name: test_pyproject_features[xdist-syrupy-no_docs-3.14-public]
+  '''
+  [build-system]
+  requires = ["hatchling", "uv-dynamic-versioning"]
+  build-backend = "hatchling.build"
+  
+  [project]
+  name = "PKFire"
+  dynamic = ["version"]
+  description = "Onett Little League"
+  readme = "README.md"
+  license = "MIT"
+  license-files = ["LICENSE"]
+  requires-python = ">=3.14"
+  authors = [
+      { name = "Ness", email = "ness@onett.example.com" },
+  ]
+  classifiers = [
+      "Development Status :: 3 - Alpha",
+      "Intended Audience :: Developers",
+      "Programming Language :: Python :: 3",
+      "Programming Language :: Python :: 3 :: Only",
+      "Programming Language :: Python :: 3.14",
+      "Topic :: Documentation",
+      "Topic :: Software Development",
+      "Topic :: Utilities",
+      "Typing :: Typed",
+  ]
+  keywords = []
+  dependencies = []
+  
+  [project.urls]
+  Homepage = "https://github.com/ness/PKFire"
+  Repository = "https://github.com/ness/PKFire"
+  Issues = "https://github.com/ness/PKFire/issues"
+  
+  [dependency-groups]
+  dev = [
+      "bump-my-version>=1.3.0",
+      "poethepoet>=0.42",
+      "prek>=0.3",
+      "pysentry-rs>=0.4",
+      "pytest>=9",
+      "pytest-cov>=7",
+      "pytest-sugar>=1",
+      "pytest-xdist>=3",
+      "ruff>=0.15",
+      "syrupy>=5",
+      "ty>=0.0.37",
+  ]
+  
+  [tool.bumpversion]
+  commit = false
+  tag = true
+  tag_name = "v{new_version}"
+  tag_message = ""
+  push = true
+  
+  [tool.hatch.build.targets.sdist]
+  include = ["/pkfire", "/tests", "*.md", "LICENSE"]
+  
+  [tool.hatch.version]
+  source = "uv-dynamic-versioning"
+  
+  [tool.poe.executor]
+  type = "uv"
+  
+  [tool.poe.tasks.audit]
+  cmd = "pysentry-rs"
+  help = "Run dependencies security audit"
+  
+  [tool.poe.tasks.build]
+  cmd = "uv build"
+  help = "Build distribution package"
+  
+  [tool.poe.tasks.init]
+  sequence = [
+      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
+      {cmd = "git init"},
+      {ref = "setup"},
+      {cmd = "git remote add origin https://github.com/ness/PKFire"},
+      {cmd = "git config --local remote.origin.pushurl git@github.com:ness/PKFire.git"},
+      {cmd = "git add ."},
+      {cmd = "git commit -m 'Create project from template'"},
+  ]
+  help = "Initialize git repository once on project creation"
+  
+  [tool.poe.tasks.lint]
+  cmd = "prek run --all-files"
+  help = "Run all formatters and static checks"
+  
+  [tool.poe.tasks.lt]
+  sequence = [{ref = "lint"}, {ref = "test"}]
+  help = "Run all formatters, static checks and tests"
+  
+  [tool.poe.tasks.release]
+  cmd = "bump-my-version bump -v"
+  help = "Create and push a release tag (patch/minor/major)"
+  
+  [tool.poe.tasks.setup]
+  sequence = [
+      {cmd = "uv sync"},
+      {cmd = "prek install"},
+  ]
+  help = "Install project dependencies and git hooks"
+  
+  [tool.poe.tasks.snapup]
+  cmd = "pytest --snapshot-update --numprocesses 0"
+  help = "Update test snapshots"
+  
+  [tool.poe.tasks.test]
+  cmd = "pytest"
+  help = "Run tests"
+  
+  [tool.poe.tasks.test-versions]
+  sequence = ["test-py314"]
+  help = "Run tests across all Python versions"
+  
+  [tool.poe.tasks.test-py314]
+  cmd = "pytest"
+  executor = {isolated = true, python = "3.14"}
+  help = "Run tests using Python 3.14"
+  
+  [tool.poe.tasks.ti]
+  cmd = "pytest --numprocesses 0 --no-cov -v"
+  help = "Run tests with debug friendly options"
+  
+  [tool.pytest]
+  addopts = [
+      "-ra",
+      "--cov=pkfire",
+      "--strict-config",
+      "--strict-markers",
+      "--numprocesses",
       "auto",
   ]
   testpaths = ["tests"]
@@ -1716,6 +6752,7 @@
       "pytest-sugar>=1",
       "pytest-xdist>=3",
       "ruff>=0.15",
+      "syrupy>=5",
       "ty>=0.0.37",
   ]
   docs = [
@@ -1799,6 +6836,10 @@
   ]
   help = "Install project dependencies and git hooks"
   
+  [tool.poe.tasks.snapup]
+  cmd = "pytest --snapshot-update --numprocesses 0"
+  help = "Update test snapshots"
+  
   [tool.poe.tasks.test]
   cmd = "pytest"
   help = "Run tests"
@@ -1823,7 +6864,7 @@
   help = "Run tests using Python 3.12"
   
   [tool.poe.tasks.ti]
-  cmd = "pytest -n 0 --no-cov -v"
+  cmd = "pytest --numprocesses 0 --no-cov -v"
   help = "Run tests with debug friendly options"
   
   [tool.pytest]
@@ -1832,7 +6873,7 @@
       "--cov=pkfire",
       "--strict-config",
       "--strict-markers",
-      "-n",
+      "--numprocesses",
       "auto",
   ]
   testpaths = ["tests"]
@@ -1941,6 +6982,7 @@
       "pytest-sugar>=1",
       "pytest-xdist>=3",
       "ruff>=0.15",
+      "syrupy>=5",
       "ty>=0.0.37",
   ]
   docs = [
@@ -2024,6 +7066,10 @@
   ]
   help = "Install project dependencies and git hooks"
   
+  [tool.poe.tasks.snapup]
+  cmd = "pytest --snapshot-update --numprocesses 0"
+  help = "Update test snapshots"
+  
   [tool.poe.tasks.test]
   cmd = "pytest"
   help = "Run tests"
@@ -2038,7 +7084,7 @@
   help = "Run tests using Python 3.12"
   
   [tool.poe.tasks.ti]
-  cmd = "pytest -n 0 --no-cov -v"
+  cmd = "pytest --numprocesses 0 --no-cov -v"
   help = "Run tests with debug friendly options"
   
   [tool.pytest]
@@ -2047,7 +7093,7 @@
       "--cov=pkfire",
       "--strict-config",
       "--strict-markers",
-      "-n",
+      "--numprocesses",
       "auto",
   ]
   testpaths = ["tests"]
@@ -2160,6 +7206,7 @@
       "pytest-sugar>=1",
       "pytest-xdist>=3",
       "ruff>=0.15",
+      "syrupy>=5",
       "ty>=0.0.37",
   ]
   docs = [
@@ -2243,6 +7290,10 @@
   ]
   help = "Install project dependencies and git hooks"
   
+  [tool.poe.tasks.snapup]
+  cmd = "pytest --snapshot-update --numprocesses 0"
+  help = "Update test snapshots"
+  
   [tool.poe.tasks.test]
   cmd = "pytest"
   help = "Run tests"
@@ -2277,7 +7328,7 @@
   help = "Run tests using Python 3.14"
   
   [tool.poe.tasks.ti]
-  cmd = "pytest -n 0 --no-cov -v"
+  cmd = "pytest --numprocesses 0 --no-cov -v"
   help = "Run tests with debug friendly options"
   
   [tool.pytest]
@@ -2286,7 +7337,7 @@
       "--cov=pkfire",
       "--strict-config",
       "--strict-markers",
-      "-n",
+      "--numprocesses",
       "auto",
   ]
   testpaths = ["tests"]
@@ -2397,6 +7448,7 @@
       "pytest-sugar>=1",
       "pytest-xdist>=3",
       "ruff>=0.15",
+      "syrupy>=5",
       "ty>=0.0.37",
   ]
   docs = [
@@ -2480,6 +7532,10 @@
   ]
   help = "Install project dependencies and git hooks"
   
+  [tool.poe.tasks.snapup]
+  cmd = "pytest --snapshot-update --numprocesses 0"
+  help = "Update test snapshots"
+  
   [tool.poe.tasks.test]
   cmd = "pytest"
   help = "Run tests"
@@ -2504,7 +7560,7 @@
   help = "Run tests using Python 3.14"
   
   [tool.poe.tasks.ti]
-  cmd = "pytest -n 0 --no-cov -v"
+  cmd = "pytest --numprocesses 0 --no-cov -v"
   help = "Run tests with debug friendly options"
   
   [tool.pytest]
@@ -2513,7 +7569,7 @@
       "--cov=pkfire",
       "--strict-config",
       "--strict-markers",
-      "-n",
+      "--numprocesses",
       "auto",
   ]
   testpaths = ["tests"]
@@ -2626,6 +7682,7 @@
       "pytest-sugar>=1",
       "pytest-xdist>=3",
       "ruff>=0.15",
+      "syrupy>=5",
       "ty>=0.0.37",
   ]
   docs = [
@@ -2709,6 +7766,10 @@
   ]
   help = "Install project dependencies and git hooks"
   
+  [tool.poe.tasks.snapup]
+  cmd = "pytest --snapshot-update --numprocesses 0"
+  help = "Update test snapshots"
+  
   [tool.poe.tasks.test]
   cmd = "pytest"
   help = "Run tests"
@@ -2743,7 +7804,7 @@
   help = "Run tests using Python 3.14"
   
   [tool.poe.tasks.ti]
-  cmd = "pytest -n 0 --no-cov -v"
+  cmd = "pytest --numprocesses 0 --no-cov -v"
   help = "Run tests with debug friendly options"
   
   [tool.pytest]
@@ -2752,7 +7813,7 @@
       "--cov=pkfire",
       "--strict-config",
       "--strict-markers",
-      "-n",
+      "--numprocesses",
       "auto",
   ]
   testpaths = ["tests"]
@@ -2863,6 +7924,7 @@
       "pytest-sugar>=1",
       "pytest-xdist>=3",
       "ruff>=0.15",
+      "syrupy>=5",
       "ty>=0.0.37",
   ]
   docs = [
@@ -2946,6 +8008,10 @@
   ]
   help = "Install project dependencies and git hooks"
   
+  [tool.poe.tasks.snapup]
+  cmd = "pytest --snapshot-update --numprocesses 0"
+  help = "Update test snapshots"
+  
   [tool.poe.tasks.test]
   cmd = "pytest"
   help = "Run tests"
@@ -2970,7 +8036,7 @@
   help = "Run tests using Python 3.14"
   
   [tool.poe.tasks.ti]
-  cmd = "pytest -n 0 --no-cov -v"
+  cmd = "pytest --numprocesses 0 --no-cov -v"
   help = "Run tests with debug friendly options"
   
   [tool.pytest]
@@ -2979,7 +8045,7 @@
       "--cov=pkfire",
       "--strict-config",
       "--strict-markers",
-      "-n",
+      "--numprocesses",
       "auto",
   ]
   testpaths = ["tests"]

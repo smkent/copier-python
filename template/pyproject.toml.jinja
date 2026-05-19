@@ -162,6 +162,10 @@ cmd = "pytest"
 executor = {isolated = true, python = "{{ v }}"}
 help = "Run tests using Python {{ v }}"
 {% endcall %}
+[tool.poe.tasks.ti]
+cmd = "pytest -n 0 --no-cov -v"
+help = "Run tests with debug friendly options"
+
 [tool.pytest]
 addopts = [
     "-ra",

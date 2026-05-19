@@ -47,8 +47,8 @@ dev = [
     "pytest-cov>=7",
     "pytest-sugar>=1",
     "pytest-xdist>=3",
-    "syrupy>=5",
     "ruff>=0.15",
+    "syrupy>=5",
     "ty>=0.0.37",
 ]
 docs = [
@@ -132,7 +132,7 @@ sequence = [
 help = "Install project dependencies and git hooks"
 
 [tool.poe.tasks.snapup]
-cmd = "pytest --snapshot-update"
+cmd = "pytest --snapshot-update --numprocesses 0"
 help = "Update test snapshots"
 
 [tool.poe.tasks.test]
@@ -169,7 +169,7 @@ executor = {isolated = true, python = "3.14"}
 help = "Run tests using Python 3.14"
 
 [tool.poe.tasks.ti]
-cmd = "pytest -n 0 --no-cov -v"
+cmd = "pytest --numprocesses 0 --no-cov -v"
 help = "Run tests with debug friendly options"
 
 [tool.pytest]
@@ -178,7 +178,7 @@ addopts = [
     "--cov=copier_python",
     "--strict-config",
     "--strict-markers",
-    "-n",
+    "--numprocesses",
     "auto",
 ]
 testpaths = ["tests"]

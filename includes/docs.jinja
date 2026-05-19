@@ -57,6 +57,17 @@ The `lint` and `test` tasks can also be run as a single combined command with:
 ```sh
 poe lt
 ```
+{%- if "syrupy" in enable_features %}
+
+### Test snapshots
+
+Some tests compare test results with saved snapshots. Test snapshots can be
+updated by running:
+
+```sh
+poe snapup
+```
+{%- endif %}
 {%- if enable_docs %}
 
 {{h}}## Documentation server

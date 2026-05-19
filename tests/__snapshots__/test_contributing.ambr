@@ -83,6 +83,15 @@
   poe lt
   ```
   
+  ### Test snapshots
+  
+  Some tests compare test results with saved snapshots. Test snapshots can be
+  updated by running:
+  
+  ```sh
+  poe snapup
+  ```
+  
   ### Applying copier-python template updates
   
   Copier can update your project with template changes that have occurred since

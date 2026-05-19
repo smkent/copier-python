@@ -52,8 +52,13 @@ dev = [
     "pytest>=9",
     "pytest-cov>=7",
     "pytest-sugar>=1",
+{%- if "xdist" in enable_features %}
     "pytest-xdist>=3",
+{%- endif %}
     "ruff>=0.15",
+{%- if "syrupy" in enable_features %}
+    "syrupy>=5",
+{%- endif %}
     "ty>=0.0.37",
 ]
 {%- if enable_docs %}
@@ -144,6 +149,12 @@ sequence = [
     {cmd = "prek install"},
 ]
 help = "Install project dependencies and git hooks"
+{%- if "syrupy" in enable_features %}
+
+[tool.poe.tasks.snapup]
+cmd = "pytest --snapshot-update{% if "xdist" in enable_features %} --numprocesses 0{% endif %}"
+help = "Update test snapshots"
+{%- endif %}
 
 [tool.poe.tasks.test]
 cmd = "pytest"
@@ -163,7 +174,7 @@ executor = {isolated = true, python = "{{ v }}"}
 help = "Run tests using Python {{ v }}"
 {% endcall %}
 [tool.poe.tasks.ti]
-cmd = "pytest -n 0 --no-cov -v"
+cmd = "pytest --numprocesses 0 --no-cov -v"
 help = "Run tests with debug friendly options"
 
 [tool.pytest]
@@ -172,8 +183,10 @@ addopts = [
     "--cov={{ project_slug }}",
     "--strict-config",
     "--strict-markers",
-    "-n",
+{%- if "xdist" in enable_features %}
+    "--numprocesses",
     "auto",
+{%- endif %}
 ]
 testpaths = ["tests"]
 

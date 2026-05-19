@@ -40,17 +40,23 @@ def test_docs_features(
     "enable_pypi",
     [pytest.param(True, id="pypi"), pytest.param(False, id="no_pypi")],
 )
+@pytest.mark.parametrize(
+    "enable_syrupy",
+    [pytest.param(True, id="syrupy"), pytest.param(False, id="no_syrupy")],
+)
 def test_docs_development_features(
     render_template: Callable[..., Path],
     snapshot: SnapshotAssertion,
     *,
     project_visibility: str,
     enable_pypi: bool,
+    enable_syrupy: bool,
 ) -> None:
     rendered = render_template(
         project_visibility=project_visibility,
         enable_pypi=enable_pypi,
         enable_docs=True,
+        enable_features=["syrupy"] if enable_syrupy else [],
     )
     for doc_file in ["requirements.md", "workflow.md", "updates.md"]:
         assert (

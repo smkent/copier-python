@@ -25,6 +25,9 @@ if TYPE_CHECKING:
     from .utils import DisallowCallable
 
 
+DEFAULT_BRANCH_NAME = "fhqwhgads"
+
+
 @pytest.fixture(params=["v0.6.0"])
 def start_ref(request: pytest.FixtureRequest) -> str:
     return request.param
@@ -47,7 +50,14 @@ def origin(tmp_path: Path, disallow_subprocess: DisallowCallable) -> Path:
     origin_path = tmp_path / "origin.git"
     with disallow_subprocess.pause():
         subprocess.run(  # noqa: S603
-            ["git", "init", "--bare", str(origin_path)],
+            [
+                "git",
+                "init",
+                "--bare",
+                str(origin_path),
+                "-b",
+                DEFAULT_BRANCH_NAME,
+            ],
             check=True,
             capture_output=True,
         )
@@ -67,11 +77,11 @@ def create_project(
     ) -> Path:
         project = render_template(vcs_ref=vcs_ref)
         for cmd in (
-            ["git", "init"],
+            ["git", "init", "-b", DEFAULT_BRANCH_NAME],
             ["git", "remote", "add", "origin", str(origin)],
             ["git", "add", "."],
             ["git", "commit", "-m", "init from template"],
-            ["git", "push", "-u", "origin", "main"],
+            ["git", "push", "-u", "origin", DEFAULT_BRANCH_NAME],
         ):
             with disallow_subprocess.pause():
                 subprocess.run(  # noqa: S603
@@ -409,7 +419,7 @@ def test_main_update_with_project(
                 "--body",
                 os.linesep.join(body),
                 "--base",
-                "main",
+                DEFAULT_BRANCH_NAME,
                 "--head",
                 "updates",
             ],

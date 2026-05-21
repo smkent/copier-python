@@ -56,7 +56,6 @@ def origin(tmp_path: Path, disallow_subprocess: DisallowCallable) -> Path:
 
 @pytest.fixture
 def create_project(
-    tmp_path: Path,
     disallow_subprocess: DisallowCallable,
     render_template: Callable[..., Path],
     origin: Path,
@@ -200,7 +199,6 @@ def test_main_help(monkeypatch: pytest.MonkeyPatch) -> None:
 
 
 def test_main_update_with_project_current(
-    disallow_subprocess: DisallowCallable,
     mock_temp_dir: Path,
     expect_run: ExpectRun,
     create_project: Callable[..., Path],
@@ -345,10 +343,8 @@ def test_main_update_repo_arguments(
 
 
 def test_main_update_with_project(
-    disallow_subprocess: DisallowCallable,
     mock_temp_dir: Path,
     expect_run: ExpectRun,
-    origin: Path,
     create_project: Callable[..., Path],
     end_ref: str,
     start_ref: str,

@@ -4,7 +4,10 @@ import subprocess
 from collections.abc import Callable
 from pathlib import Path
 
+import pytest
 
+
+@pytest.mark.usefixtures("allow_subprocess")
 def test_template_render_lint_test(
     render_template: Callable[..., Path],
 ) -> None:

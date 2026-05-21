@@ -418,8 +418,6 @@ def test_main_update_with_project(
                 title,
                 "--body",
                 os.linesep.join(body),
-                "--base",
-                DEFAULT_BRANCH_NAME,
                 "--head",
                 "updates",
             ],

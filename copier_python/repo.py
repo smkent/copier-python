@@ -138,8 +138,6 @@ class RepoWorktree:
                 title,
                 "--body",
                 body,
-                "--base",
-                "main",
                 "--head",
                 self.branch,
             ],

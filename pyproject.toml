@@ -31,6 +31,7 @@ classifiers = [
 keywords = []
 dependencies = [
     "pyyaml>=6",
+    "rich>=15",
     "typer>=0.9",
     "typing_extensions>=4.1; python_version < '3.12'",
 ]

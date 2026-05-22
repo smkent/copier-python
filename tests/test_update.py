@@ -159,7 +159,7 @@ class ExpectRun:
                 return SimpleNamespace(stdout=json.dumps(data))
             if mock:
                 return MagicMock()
-            if tuple(cmd) == ("copier", "update", "-l"):
+            if tuple(cmd) == ("copier", "update", "--skip-answered"):
                 cmd = [*cmd, "--vcs-ref", DEFAULT_END_REF]
             cmd = [
                 (
@@ -299,7 +299,7 @@ def test_main_update_error(
         cwd=worktree,
         capture_output=True,
     )
-    expect_run.expect(["copier", "update", "-l"], cwd=worktree)
+    expect_run.expect(["copier", "update", "--skip-answered"], cwd=worktree)
     expect_run.expect(
         ["git", "status", "--porcelain"], cwd=worktree, capture_output=True
     )
@@ -386,7 +386,7 @@ def test_main_update_with_project(
         cwd=worktree,
         capture_output=True,
     )
-    expect_run.expect(["copier", "update", "-l"], cwd=worktree)
+    expect_run.expect(["copier", "update", "--skip-answered"], cwd=worktree)
     expect_run.expect(
         ["git", "status", "--porcelain"], cwd=worktree, capture_output=True
     )

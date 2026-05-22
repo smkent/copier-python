@@ -3,6 +3,7 @@ from __future__ import annotations
 import os
 import re
 import subprocess
+import sys
 import tempfile
 from contextlib import contextmanager, suppress
 from dataclasses import InitVar, dataclass, field
@@ -14,7 +15,11 @@ import yaml
 from rich import print  # noqa: A004
 from rich.panel import Panel
 from rich.text import Text
-from typing_extensions import Self
+
+if sys.version_info >= (3, 11):
+    from typing import Self
+else:
+    from typing_extensions import Self
 
 if TYPE_CHECKING:
     from collections.abc import Generator, Sequence

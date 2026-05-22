@@ -26,6 +26,7 @@ if TYPE_CHECKING:
 
 
 DEFAULT_BRANCH_NAME = "fhqwhgads"
+DEFAULT_END_REF = "v0.8.0"
 
 
 @pytest.fixture(params=["v0.6.0"])
@@ -33,7 +34,7 @@ def start_ref(request: pytest.FixtureRequest) -> str:
     return request.param
 
 
-@pytest.fixture(params=["v0.8.0"])
+@pytest.fixture(params=[DEFAULT_END_REF])
 def end_ref(request: pytest.FixtureRequest) -> str:
     return request.param
 
@@ -103,13 +104,8 @@ def mock_temp_dir(tmp_path: Path) -> Iterator[Path]:
 
 
 @pytest.fixture
-def mock_worktree(mock_temp_dir: Path) -> Path:
-    wt = mock_temp_dir / "mock_worktree"
-    wt.mkdir(exist_ok=True)
-
-    with Path.open(wt / ".copier-answers.yml", "w") as f:
-        yaml.dump({"_commit": "deadbeef"}, f)
-    return wt
+def worktree(mock_temp_dir: Path) -> Path:
+    return mock_temp_dir / "worktree"
 
 
 @pytest.fixture(
@@ -127,10 +123,8 @@ class ExpectRun:
     disallow_subprocess: DisallowCallable
     mock_shell: Path
     origin: Path
+    worktree: Path
     expected_calls: list[_Call] = field(default_factory=list, init=False)
-    run_mocks: list[tuple[Callable[Sequence[str], bool], object]] = field(
-        default_factory=list
-    )
 
     @contextmanager
     def patch(
@@ -144,25 +138,29 @@ class ExpectRun:
         subp_run = subprocess.run
 
         def _run(cmd: Sequence[str], *args: Any, **kwargs: Any) -> Any:
-            for match_mock, mock_value in self.run_mocks:
-                if match_mock(cmd):
-                    return mock_value
             if cmd[0] == str(self.mock_shell):
                 if shell_callback:
                     return shell_callback()
                 return MagicMock()
+            if tuple(cmd[:2]) == ("copier", "check-update"):
+                if mock:
+                    current_version = "11.38.0"
+                    latest_version = current_version
+                else:
+                    current_version = yaml.safe_load(
+                        (self.worktree / ".copier-answers.yml").read_text()
+                    )["_commit"].removeprefix("v")
+                    latest_version = DEFAULT_END_REF.removeprefix("v")
+                data = {
+                    "update_available": (current_version != latest_version),
+                    "current_version": current_version,
+                    "latest_version": latest_version,
+                }
+                return SimpleNamespace(stdout=json.dumps(data))
             if mock:
-                if tuple(cmd[:2]) == ("copier", "check-update"):
-                    return SimpleNamespace(
-                        stdout=json.dumps(
-                            {
-                                "update_available": False,
-                                "current_version": "11.38.0",
-                                "latest_version": "11.38.0",
-                            }
-                        )
-                    )
                 return MagicMock()
+            if tuple(cmd) == ("copier", "update", "-l"):
+                cmd = [*cmd, "--vcs-ref", DEFAULT_END_REF]
             cmd = [
                 (
                     str(self.origin)
@@ -193,12 +191,16 @@ class ExpectRun:
 
 @pytest.fixture
 def expect_run(
-    disallow_subprocess: DisallowCallable, mock_shell: Path, origin: Path
+    disallow_subprocess: DisallowCallable,
+    mock_shell: Path,
+    origin: Path,
+    worktree: Path,
 ) -> ExpectRun:
     return ExpectRun(
         disallow_subprocess=disallow_subprocess,
         mock_shell=mock_shell,
         origin=origin,
+        worktree=worktree,
     )
 
 
@@ -209,7 +211,7 @@ def test_main_help(monkeypatch: pytest.MonkeyPatch) -> None:
 
 
 def test_main_update_with_project_current(
-    mock_temp_dir: Path,
+    worktree: Path,
     expect_run: ExpectRun,
     create_project: Callable[..., Path],
     end_ref: str,
@@ -217,7 +219,6 @@ def test_main_update_with_project_current(
     dry_run: bool,
 ) -> None:
     create_project(vcs_ref=end_ref)
-    worktree = mock_temp_dir / "worktree"
     expect_run.expect(
         ["git", "clone", "https://github.com/ness/pkfire", str(worktree)]
     )
@@ -241,8 +242,8 @@ def test_main_update_with_project_current(
 
 def test_main_update_error(
     disallow_subprocess: DisallowCallable,
+    worktree: Path,
     mock_shell: Path,
-    mock_temp_dir: Path,
     expect_run: ExpectRun,
     create_project: Callable[..., Path],
     start_ref: str,
@@ -261,7 +262,6 @@ def test_main_update_error(
                 )
 
     create_project(vcs_ref=start_ref, postcreate=_postcreate)
-    worktree = mock_temp_dir / "worktree"
     commit_message = os.linesep.join(
         (
             "Apply template updates",
@@ -338,22 +338,17 @@ def test_main_update_error(
     ],
 )
 def test_main_update_repo_arguments(
-    mock_temp_dir: Path, expect_run: ExpectRun, arg: str, repo: str
+    worktree: Path, expect_run: ExpectRun, arg: str, repo: str
 ) -> None:
     expect_run.expect(
-        [
-            "git",
-            "clone",
-            f"https://github.com/{repo}",
-            str(mock_temp_dir / "worktree"),
-        ]
+        ["git", "clone", f"https://github.com/{repo}", str(worktree)]
     )
     with expect_run.patch(mock=True, has_any=True):
         update([arg], dry_run=True)
 
 
 def test_main_update_with_project(
-    mock_temp_dir: Path,
+    worktree: Path,
     expect_run: ExpectRun,
     create_project: Callable[..., Path],
     end_ref: str,
@@ -362,7 +357,6 @@ def test_main_update_with_project(
     dry_run: bool,
 ) -> None:
     create_project(vcs_ref=start_ref)
-    worktree = mock_temp_dir / "worktree"
     commit_message = os.linesep.join(
         (
             "Apply template updates",

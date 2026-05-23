@@ -159,8 +159,8 @@ class ExpectRun:
                 return SimpleNamespace(stdout=json.dumps(data))
             if mock:
                 return MagicMock()
-            if tuple(cmd) == ("copier", "update", "--skip-answered"):
-                cmd = [*cmd, "--vcs-ref", DEFAULT_END_REF]
+            if tuple(cmd[:3]) == ("copier", "update", "--skip-answered"):
+                cmd = [*cmd[:2], "--defaults", "--vcs-ref", DEFAULT_END_REF]
             cmd = [
                 (
                     str(self.origin)

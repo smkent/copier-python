@@ -51,6 +51,7 @@ jobs:
         if: {% raw %}${{ matrix.python-version == '{% endraw %}{{ py.latest() }}{% raw %}' }}{% endraw %}
         with:
           fail_ci_if_error: true
+          use_pypi: true
 {%- endif %}
 {% if enable_docs %}
   docs:

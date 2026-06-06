@@ -55,6 +55,7 @@
           with:
             fail_ci_if_error: true
             use_pypi: true
+            version: 11.2.8
   
     docs:
       name: Documentation
@@ -236,6 +237,7 @@
           with:
             fail_ci_if_error: true
             use_pypi: true
+            version: 11.2.8
   
   
     gitleaks:
@@ -375,6 +377,7 @@
           with:
             fail_ci_if_error: true
             use_pypi: true
+            version: 11.2.8
   
     docs:
       name: Documentation
@@ -467,6 +470,7 @@
           with:
             fail_ci_if_error: true
             use_pypi: true
+            version: 11.2.8
   
     docs:
       name: Documentation
@@ -563,6 +567,7 @@
           with:
             fail_ci_if_error: true
             use_pypi: true
+            version: 11.2.8
   
     docs:
       name: Documentation
@@ -657,6 +662,7 @@
           with:
             fail_ci_if_error: true
             use_pypi: true
+            version: 11.2.8
   
     docs:
       name: Documentation
@@ -753,6 +759,7 @@
           with:
             fail_ci_if_error: true
             use_pypi: true
+            version: 11.2.8
   
     docs:
       name: Documentation
@@ -847,6 +854,7 @@
           with:
             fail_ci_if_error: true
             use_pypi: true
+            version: 11.2.8
   
     docs:
       name: Documentation

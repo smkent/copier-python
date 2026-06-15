@@ -31,7 +31,7 @@
           uses: actions/checkout@v6
   
         - name: 🦀 Set up Python project with uv
-          uses: astral-sh/setup-uv@v8.1.0
+          uses: astral-sh/setup-uv@v8.2.0
           with:
             enable-cache: true
             python-version: ${{ matrix.python-version }}
@@ -67,7 +67,7 @@
             fetch-depth: 0
   
         - name: 🦀 Set up Python project with uv
-          uses: astral-sh/setup-uv@v8.1.0
+          uses: astral-sh/setup-uv@v8.2.0
           with:
             enable-cache: true
             python-version: '3.14'
@@ -128,7 +128,7 @@
           uses: actions/checkout@v6
   
         - name: 🦀 Set up Python project with uv
-          uses: astral-sh/setup-uv@v8.1.0
+          uses: astral-sh/setup-uv@v8.2.0
           with:
             enable-cache: true
             python-version: ${{ matrix.python-version }}
@@ -152,7 +152,7 @@
             fetch-depth: 0
   
         - name: 🦀 Set up Python project with uv
-          uses: astral-sh/setup-uv@v8.1.0
+          uses: astral-sh/setup-uv@v8.2.0
           with:
             enable-cache: true
             python-version: '3.14'
@@ -213,7 +213,7 @@
           uses: actions/checkout@v6
   
         - name: 🦀 Set up Python project with uv
-          uses: astral-sh/setup-uv@v8.1.0
+          uses: astral-sh/setup-uv@v8.2.0
           with:
             enable-cache: true
             python-version: ${{ matrix.python-version }}
@@ -290,7 +290,7 @@
           uses: actions/checkout@v6
   
         - name: 🦀 Set up Python project with uv
-          uses: astral-sh/setup-uv@v8.1.0
+          uses: astral-sh/setup-uv@v8.2.0
           with:
             enable-cache: true
             python-version: ${{ matrix.python-version }}
@@ -353,7 +353,7 @@
           uses: actions/checkout@v6
   
         - name: 🦀 Set up Python project with uv
-          uses: astral-sh/setup-uv@v8.1.0
+          uses: astral-sh/setup-uv@v8.2.0
           with:
             enable-cache: true
             python-version: ${{ matrix.python-version }}
@@ -389,7 +389,7 @@
             fetch-depth: 0
   
         - name: 🦀 Set up Python project with uv
-          uses: astral-sh/setup-uv@v8.1.0
+          uses: astral-sh/setup-uv@v8.2.0
           with:
             enable-cache: true
             python-version: '3.12'
@@ -446,7 +446,7 @@
           uses: actions/checkout@v6
   
         - name: 🦀 Set up Python project with uv
-          uses: astral-sh/setup-uv@v8.1.0
+          uses: astral-sh/setup-uv@v8.2.0
           with:
             enable-cache: true
             python-version: ${{ matrix.python-version }}
@@ -482,7 +482,7 @@
             fetch-depth: 0
   
         - name: 🦀 Set up Python project with uv
-          uses: astral-sh/setup-uv@v8.1.0
+          uses: astral-sh/setup-uv@v8.2.0
           with:
             enable-cache: true
             python-version: '3.12'
@@ -543,7 +543,7 @@
           uses: actions/checkout@v6
   
         - name: 🦀 Set up Python project with uv
-          uses: astral-sh/setup-uv@v8.1.0
+          uses: astral-sh/setup-uv@v8.2.0
           with:
             enable-cache: true
             python-version: ${{ matrix.python-version }}
@@ -579,7 +579,7 @@
             fetch-depth: 0
   
         - name: 🦀 Set up Python project with uv
-          uses: astral-sh/setup-uv@v8.1.0
+          uses: astral-sh/setup-uv@v8.2.0
           with:
             enable-cache: true
             python-version: '3.14'
@@ -638,7 +638,7 @@
           uses: actions/checkout@v6
   
         - name: 🦀 Set up Python project with uv
-          uses: astral-sh/setup-uv@v8.1.0
+          uses: astral-sh/setup-uv@v8.2.0
           with:
             enable-cache: true
             python-version: ${{ matrix.python-version }}
@@ -674,7 +674,7 @@
             fetch-depth: 0
   
         - name: 🦀 Set up Python project with uv
-          uses: astral-sh/setup-uv@v8.1.0
+          uses: astral-sh/setup-uv@v8.2.0
           with:
             enable-cache: true
             python-version: '3.14'
@@ -735,7 +735,7 @@
           uses: actions/checkout@v6
   
         - name: 🦀 Set up Python project with uv
-          uses: astral-sh/setup-uv@v8.1.0
+          uses: astral-sh/setup-uv@v8.2.0
           with:
             enable-cache: true
             python-version: ${{ matrix.python-version }}
@@ -771,7 +771,7 @@
             fetch-depth: 0
   
         - name: 🦀 Set up Python project with uv
-          uses: astral-sh/setup-uv@v8.1.0
+          uses: astral-sh/setup-uv@v8.2.0
           with:
             enable-cache: true
             python-version: '3.14'
@@ -830,7 +830,7 @@
           uses: actions/checkout@v6
   
         - name: 🦀 Set up Python project with uv
-          uses: astral-sh/setup-uv@v8.1.0
+          uses: astral-sh/setup-uv@v8.2.0
           with:
             enable-cache: true
             python-version: ${{ matrix.python-version }}
@@ -866,7 +866,7 @@
             fetch-depth: 0
   
         - name: 🦀 Set up Python project with uv
-          uses: astral-sh/setup-uv@v8.1.0
+          uses: astral-sh/setup-uv@v8.2.0
           with:
             enable-cache: true
             python-version: '3.14'
@@ -915,7 +915,7 @@
             fetch-depth: 0
   
         - name: 🦀 Set up Python project with uv
-          uses: astral-sh/setup-uv@v8.1.0
+          uses: astral-sh/setup-uv@v8.2.0
           with:
             enable-cache: true
             python-version: '3.14'
@@ -974,7 +974,7 @@
             fetch-depth: 0
   
         - name: 🦀 Set up Python project with uv
-          uses: astral-sh/setup-uv@v8.1.0
+          uses: astral-sh/setup-uv@v8.2.0
           with:
             enable-cache: true
             python-version: '3.14'

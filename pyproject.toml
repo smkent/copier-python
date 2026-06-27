@@ -236,6 +236,9 @@ known-first-party = ["copier_python"]
 [tool.ruff.lint.pydocstyle]
 convention = "google"
 
+[tool.ty.src]
+include = ["copier_python/", "tests/"]
+
 [tool.ty.terminal]
 error-on-warning = true
 output-format = "concise"

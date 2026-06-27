@@ -234,6 +234,9 @@ known-first-party = ["{{ project_slug }}"]
 [tool.ruff.lint.pydocstyle]
 convention = "google"
 
+[tool.ty.src]
+include = ["{{ project_slug }}/", "tests/"]
+
 [tool.ty.terminal]
 error-on-warning = true
 output-format = "concise"

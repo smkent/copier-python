@@ -210,6 +210,9 @@
   [tool.ruff.lint.pydocstyle]
   convention = "google"
   
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
+  
   [tool.ty.terminal]
   error-on-warning = true
   output-format = "concise"
@@ -446,6 +449,9 @@
   [tool.ruff.lint.pydocstyle]
   convention = "google"
   
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
+  
   [tool.ty.terminal]
   error-on-warning = true
   output-format = "concise"
@@ -645,6 +651,9 @@
   
   [tool.ruff.lint.pydocstyle]
   convention = "google"
+  
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
   
   [tool.ty.terminal]
   error-on-warning = true
@@ -858,6 +867,9 @@
   [tool.ruff.lint.pydocstyle]
   convention = "google"
   
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
+  
   [tool.ty.terminal]
   error-on-warning = true
   output-format = "concise"
@@ -1056,6 +1068,9 @@
   
   [tool.ruff.lint.pydocstyle]
   convention = "google"
+  
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
   
   [tool.ty.terminal]
   error-on-warning = true
@@ -1268,6 +1283,9 @@
   [tool.ruff.lint.pydocstyle]
   convention = "google"
   
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
+  
   [tool.ty.terminal]
   error-on-warning = true
   output-format = "concise"
@@ -1442,6 +1460,9 @@
   
   [tool.ruff.lint.pydocstyle]
   convention = "google"
+  
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
   
   [tool.ty.terminal]
   error-on-warning = true
@@ -1629,6 +1650,9 @@
   
   [tool.ruff.lint.pydocstyle]
   convention = "google"
+  
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
   
   [tool.ty.terminal]
   error-on-warning = true
@@ -1858,6 +1882,9 @@
   
   [tool.ruff.lint.pydocstyle]
   convention = "google"
+  
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
   
   [tool.ty.terminal]
   error-on-warning = true
@@ -2100,6 +2127,9 @@
   [tool.ruff.lint.pydocstyle]
   convention = "google"
   
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
+  
   [tool.ty.terminal]
   error-on-warning = true
   output-format = "concise"
@@ -2304,6 +2334,9 @@
   
   [tool.ruff.lint.pydocstyle]
   convention = "google"
+  
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
   
   [tool.ty.terminal]
   error-on-warning = true
@@ -2522,6 +2555,9 @@
   [tool.ruff.lint.pydocstyle]
   convention = "google"
   
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
+  
   [tool.ty.terminal]
   error-on-warning = true
   output-format = "concise"
@@ -2725,6 +2761,9 @@
   
   [tool.ruff.lint.pydocstyle]
   convention = "google"
+  
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
   
   [tool.ty.terminal]
   error-on-warning = true
@@ -2942,6 +2981,9 @@
   [tool.ruff.lint.pydocstyle]
   convention = "google"
   
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
+  
   [tool.ty.terminal]
   error-on-warning = true
   output-format = "concise"
@@ -3121,6 +3163,9 @@
   
   [tool.ruff.lint.pydocstyle]
   convention = "google"
+  
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
   
   [tool.ty.terminal]
   error-on-warning = true
@@ -3313,6 +3358,9 @@
   
   [tool.ruff.lint.pydocstyle]
   convention = "google"
+  
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
   
   [tool.ty.terminal]
   error-on-warning = true
@@ -3540,6 +3588,9 @@
   
   [tool.ruff.lint.pydocstyle]
   convention = "google"
+  
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
   
   [tool.ty.terminal]
   error-on-warning = true
@@ -3780,6 +3831,9 @@
   [tool.ruff.lint.pydocstyle]
   convention = "google"
   
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
+  
   [tool.ty.terminal]
   error-on-warning = true
   output-format = "concise"
@@ -3982,6 +4036,9 @@
   
   [tool.ruff.lint.pydocstyle]
   convention = "google"
+  
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
   
   [tool.ty.terminal]
   error-on-warning = true
@@ -4198,6 +4255,9 @@
   [tool.ruff.lint.pydocstyle]
   convention = "google"
   
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
+  
   [tool.ty.terminal]
   error-on-warning = true
   output-format = "concise"
@@ -4399,6 +4459,9 @@
   
   [tool.ruff.lint.pydocstyle]
   convention = "google"
+  
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
   
   [tool.ty.terminal]
   error-on-warning = true
@@ -4614,6 +4677,9 @@
   [tool.ruff.lint.pydocstyle]
   convention = "google"
   
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
+  
   [tool.ty.terminal]
   error-on-warning = true
   output-format = "concise"
@@ -4791,6 +4857,9 @@
   
   [tool.ruff.lint.pydocstyle]
   convention = "google"
+  
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
   
   [tool.ty.terminal]
   error-on-warning = true
@@ -4981,6 +5050,9 @@
   
   [tool.ruff.lint.pydocstyle]
   convention = "google"
+  
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
   
   [tool.ty.terminal]
   error-on-warning = true
@@ -5213,6 +5285,9 @@
   
   [tool.ruff.lint.pydocstyle]
   convention = "google"
+  
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
   
   [tool.ty.terminal]
   error-on-warning = true
@@ -5458,6 +5533,9 @@
   [tool.ruff.lint.pydocstyle]
   convention = "google"
   
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
+  
   [tool.ty.terminal]
   error-on-warning = true
   output-format = "concise"
@@ -5665,6 +5743,9 @@
   
   [tool.ruff.lint.pydocstyle]
   convention = "google"
+  
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
   
   [tool.ty.terminal]
   error-on-warning = true
@@ -5886,6 +5967,9 @@
   [tool.ruff.lint.pydocstyle]
   convention = "google"
   
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
+  
   [tool.ty.terminal]
   error-on-warning = true
   output-format = "concise"
@@ -6092,6 +6176,9 @@
   
   [tool.ruff.lint.pydocstyle]
   convention = "google"
+  
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
   
   [tool.ty.terminal]
   error-on-warning = true
@@ -6312,6 +6399,9 @@
   [tool.ruff.lint.pydocstyle]
   convention = "google"
   
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
+  
   [tool.ty.terminal]
   error-on-warning = true
   output-format = "concise"
@@ -6494,6 +6584,9 @@
   
   [tool.ruff.lint.pydocstyle]
   convention = "google"
+  
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
   
   [tool.ty.terminal]
   error-on-warning = true
@@ -6689,6 +6782,9 @@
   
   [tool.ruff.lint.pydocstyle]
   convention = "google"
+  
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
   
   [tool.ty.terminal]
   error-on-warning = true
@@ -6922,6 +7018,9 @@
   [tool.ruff.lint.pydocstyle]
   convention = "google"
   
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
+  
   [tool.ty.terminal]
   error-on-warning = true
   output-format = "concise"
@@ -7141,6 +7240,9 @@
   
   [tool.ruff.lint.pydocstyle]
   convention = "google"
+  
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
   
   [tool.ty.terminal]
   error-on-warning = true
@@ -7386,6 +7488,9 @@
   [tool.ruff.lint.pydocstyle]
   convention = "google"
   
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
+  
   [tool.ty.terminal]
   error-on-warning = true
   output-format = "concise"
@@ -7617,6 +7722,9 @@
   
   [tool.ruff.lint.pydocstyle]
   convention = "google"
+  
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
   
   [tool.ty.terminal]
   error-on-warning = true
@@ -7862,6 +7970,9 @@
   [tool.ruff.lint.pydocstyle]
   convention = "google"
   
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
+  
   [tool.ty.terminal]
   error-on-warning = true
   output-format = "concise"
@@ -8093,6 +8204,9 @@
   
   [tool.ruff.lint.pydocstyle]
   convention = "google"
+  
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
   
   [tool.ty.terminal]
   error-on-warning = true

@@ -71,15 +71,28 @@ def create_project(
     render_template: Callable[..., Path],
     origin: Path,
 ) -> Callable[..., Path]:
+
+    def _vcs_ref_timestamp(ref: str) -> str:
+        with disallow_subprocess.pause():
+            return subprocess.run(  # noqa: S603
+                ["git", "log", "-n", "1", "--format=%aI", str(ref), "--"],
+                check=True,
+                capture_output=True,
+                text=True,
+            ).stdout.strip()
+
     def _create(
         vcs_ref: str,
         postcreate: Callable[[Path], None] | None = None,
         **kwargs: Any,
     ) -> Path:
         project = render_template(vcs_ref=vcs_ref)
+        timestamp = _vcs_ref_timestamp(vcs_ref)
         for cmd in (
             ["git", "init", "-b", DEFAULT_BRANCH_NAME],
             ["git", "remote", "add", "origin", str(origin)],
+            ["uv", "sync", f"--exclude-newer={timestamp}"],
+            ["uv", "sync"],
             ["git", "add", "."],
             ["git", "commit", "-m", "init from template"],
             ["git", "push", "-u", "origin", DEFAULT_BRANCH_NAME],

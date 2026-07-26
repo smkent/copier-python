@@ -20,7 +20,7 @@ TEMPLATE_ROOT = Path(__file__).parent.parent
 DEFAULT_DATA: dict[str, Any] = {
     "project_name": "PKFire",
     "project_description": "Onett Little League",
-    "project_type": "library",
+    "project_type": "application",
     "project_visibility": "public",
     "python_version_minimum": "3.10",
     "user_name": "Ness",

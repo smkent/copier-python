@@ -189,6 +189,7 @@
   ignore = [
       "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
       "COM812",  # Trailing comma missing
+      "CPY001",  # Missing copyright notice at top of file
       "D1",  # Missing docstring presence rules
       "EM",  # flake8-errmsg
       "G004",  # Logging statement uses f-string
@@ -428,6 +429,7 @@
   ignore = [
       "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
       "COM812",  # Trailing comma missing
+      "CPY001",  # Missing copyright notice at top of file
       "D1",  # Missing docstring presence rules
       "EM",  # flake8-errmsg
       "G004",  # Logging statement uses f-string
@@ -631,6 +633,7 @@
   ignore = [
       "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
       "COM812",  # Trailing comma missing
+      "CPY001",  # Missing copyright notice at top of file
       "D1",  # Missing docstring presence rules
       "EM",  # flake8-errmsg
       "G004",  # Logging statement uses f-string
@@ -846,6 +849,7 @@
   ignore = [
       "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
       "COM812",  # Trailing comma missing
+      "CPY001",  # Missing copyright notice at top of file
       "D1",  # Missing docstring presence rules
       "EM",  # flake8-errmsg
       "G004",  # Logging statement uses f-string
@@ -1048,6 +1052,7 @@
   ignore = [
       "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
       "COM812",  # Trailing comma missing
+      "CPY001",  # Missing copyright notice at top of file
       "D1",  # Missing docstring presence rules
       "EM",  # flake8-errmsg
       "G004",  # Logging statement uses f-string
@@ -1262,6 +1267,7 @@
   ignore = [
       "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
       "COM812",  # Trailing comma missing
+      "CPY001",  # Missing copyright notice at top of file
       "D1",  # Missing docstring presence rules
       "EM",  # flake8-errmsg
       "G004",  # Logging statement uses f-string
@@ -1440,6 +1446,7 @@
   ignore = [
       "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
       "COM812",  # Trailing comma missing
+      "CPY001",  # Missing copyright notice at top of file
       "D1",  # Missing docstring presence rules
       "EM",  # flake8-errmsg
       "G004",  # Logging statement uses f-string
@@ -1630,6 +1637,7 @@
   ignore = [
       "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
       "COM812",  # Trailing comma missing
+      "CPY001",  # Missing copyright notice at top of file
       "D1",  # Missing docstring presence rules
       "EM",  # flake8-errmsg
       "G004",  # Logging statement uses f-string
@@ -1862,6 +1870,7 @@
   ignore = [
       "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
       "COM812",  # Trailing comma missing
+      "CPY001",  # Missing copyright notice at top of file
       "D1",  # Missing docstring presence rules
       "EM",  # flake8-errmsg
       "G004",  # Logging statement uses f-string
@@ -2106,6 +2115,7 @@
   ignore = [
       "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
       "COM812",  # Trailing comma missing
+      "CPY001",  # Missing copyright notice at top of file
       "D1",  # Missing docstring presence rules
       "EM",  # flake8-errmsg
       "G004",  # Logging statement uses f-string
@@ -2314,6 +2324,7 @@
   ignore = [
       "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
       "COM812",  # Trailing comma missing
+      "CPY001",  # Missing copyright notice at top of file
       "D1",  # Missing docstring presence rules
       "EM",  # flake8-errmsg
       "G004",  # Logging statement uses f-string
@@ -2534,6 +2545,7 @@
   ignore = [
       "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
       "COM812",  # Trailing comma missing
+      "CPY001",  # Missing copyright notice at top of file
       "D1",  # Missing docstring presence rules
       "EM",  # flake8-errmsg
       "G004",  # Logging statement uses f-string
@@ -2741,6 +2753,7 @@
   ignore = [
       "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
       "COM812",  # Trailing comma missing
+      "CPY001",  # Missing copyright notice at top of file
       "D1",  # Missing docstring presence rules
       "EM",  # flake8-errmsg
       "G004",  # Logging statement uses f-string
@@ -2960,6 +2973,7 @@
   ignore = [
       "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
       "COM812",  # Trailing comma missing
+      "CPY001",  # Missing copyright notice at top of file
       "D1",  # Missing docstring presence rules
       "EM",  # flake8-errmsg
       "G004",  # Logging statement uses f-string
@@ -3143,6 +3157,7 @@
   ignore = [
       "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
       "COM812",  # Trailing comma missing
+      "CPY001",  # Missing copyright notice at top of file
       "D1",  # Missing docstring presence rules
       "EM",  # flake8-errmsg
       "G004",  # Logging statement uses f-string
@@ -3338,6 +3353,7 @@
   ignore = [
       "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
       "COM812",  # Trailing comma missing
+      "CPY001",  # Missing copyright notice at top of file
       "D1",  # Missing docstring presence rules
       "EM",  # flake8-errmsg
       "G004",  # Logging statement uses f-string
@@ -3568,6 +3584,7 @@
   ignore = [
       "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
       "COM812",  # Trailing comma missing
+      "CPY001",  # Missing copyright notice at top of file
       "D1",  # Missing docstring presence rules
       "EM",  # flake8-errmsg
       "G004",  # Logging statement uses f-string
@@ -3810,6 +3827,7 @@
   ignore = [
       "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
       "COM812",  # Trailing comma missing
+      "CPY001",  # Missing copyright notice at top of file
       "D1",  # Missing docstring presence rules
       "EM",  # flake8-errmsg
       "G004",  # Logging statement uses f-string
@@ -4016,6 +4034,7 @@
   ignore = [
       "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
       "COM812",  # Trailing comma missing
+      "CPY001",  # Missing copyright notice at top of file
       "D1",  # Missing docstring presence rules
       "EM",  # flake8-errmsg
       "G004",  # Logging statement uses f-string
@@ -4234,6 +4253,7 @@
   ignore = [
       "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
       "COM812",  # Trailing comma missing
+      "CPY001",  # Missing copyright notice at top of file
       "D1",  # Missing docstring presence rules
       "EM",  # flake8-errmsg
       "G004",  # Logging statement uses f-string
@@ -4439,6 +4459,7 @@
   ignore = [
       "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
       "COM812",  # Trailing comma missing
+      "CPY001",  # Missing copyright notice at top of file
       "D1",  # Missing docstring presence rules
       "EM",  # flake8-errmsg
       "G004",  # Logging statement uses f-string
@@ -4656,6 +4677,7 @@
   ignore = [
       "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
       "COM812",  # Trailing comma missing
+      "CPY001",  # Missing copyright notice at top of file
       "D1",  # Missing docstring presence rules
       "EM",  # flake8-errmsg
       "G004",  # Logging statement uses f-string
@@ -4837,6 +4859,7 @@
   ignore = [
       "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
       "COM812",  # Trailing comma missing
+      "CPY001",  # Missing copyright notice at top of file
       "D1",  # Missing docstring presence rules
       "EM",  # flake8-errmsg
       "G004",  # Logging statement uses f-string
@@ -5030,6 +5053,7 @@
   ignore = [
       "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
       "COM812",  # Trailing comma missing
+      "CPY001",  # Missing copyright notice at top of file
       "D1",  # Missing docstring presence rules
       "EM",  # flake8-errmsg
       "G004",  # Logging statement uses f-string
@@ -5265,6 +5289,7 @@
   ignore = [
       "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
       "COM812",  # Trailing comma missing
+      "CPY001",  # Missing copyright notice at top of file
       "D1",  # Missing docstring presence rules
       "EM",  # flake8-errmsg
       "G004",  # Logging statement uses f-string
@@ -5512,6 +5537,7 @@
   ignore = [
       "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
       "COM812",  # Trailing comma missing
+      "CPY001",  # Missing copyright notice at top of file
       "D1",  # Missing docstring presence rules
       "EM",  # flake8-errmsg
       "G004",  # Logging statement uses f-string
@@ -5723,6 +5749,7 @@
   ignore = [
       "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
       "COM812",  # Trailing comma missing
+      "CPY001",  # Missing copyright notice at top of file
       "D1",  # Missing docstring presence rules
       "EM",  # flake8-errmsg
       "G004",  # Logging statement uses f-string
@@ -5946,6 +5973,7 @@
   ignore = [
       "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
       "COM812",  # Trailing comma missing
+      "CPY001",  # Missing copyright notice at top of file
       "D1",  # Missing docstring presence rules
       "EM",  # flake8-errmsg
       "G004",  # Logging statement uses f-string
@@ -6156,6 +6184,7 @@
   ignore = [
       "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
       "COM812",  # Trailing comma missing
+      "CPY001",  # Missing copyright notice at top of file
       "D1",  # Missing docstring presence rules
       "EM",  # flake8-errmsg
       "G004",  # Logging statement uses f-string
@@ -6378,6 +6407,7 @@
   ignore = [
       "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
       "COM812",  # Trailing comma missing
+      "CPY001",  # Missing copyright notice at top of file
       "D1",  # Missing docstring presence rules
       "EM",  # flake8-errmsg
       "G004",  # Logging statement uses f-string
@@ -6564,6 +6594,7 @@
   ignore = [
       "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
       "COM812",  # Trailing comma missing
+      "CPY001",  # Missing copyright notice at top of file
       "D1",  # Missing docstring presence rules
       "EM",  # flake8-errmsg
       "G004",  # Logging statement uses f-string
@@ -6762,6 +6793,7 @@
   ignore = [
       "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
       "COM812",  # Trailing comma missing
+      "CPY001",  # Missing copyright notice at top of file
       "D1",  # Missing docstring presence rules
       "EM",  # flake8-errmsg
       "G004",  # Logging statement uses f-string
@@ -6997,6 +7029,7 @@
   ignore = [
       "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
       "COM812",  # Trailing comma missing
+      "CPY001",  # Missing copyright notice at top of file
       "D1",  # Missing docstring presence rules
       "EM",  # flake8-errmsg
       "G004",  # Logging statement uses f-string
@@ -7220,6 +7253,7 @@
   ignore = [
       "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
       "COM812",  # Trailing comma missing
+      "CPY001",  # Missing copyright notice at top of file
       "D1",  # Missing docstring presence rules
       "EM",  # flake8-errmsg
       "G004",  # Logging statement uses f-string
@@ -7467,6 +7501,7 @@
   ignore = [
       "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
       "COM812",  # Trailing comma missing
+      "CPY001",  # Missing copyright notice at top of file
       "D1",  # Missing docstring presence rules
       "EM",  # flake8-errmsg
       "G004",  # Logging statement uses f-string
@@ -7702,6 +7737,7 @@
   ignore = [
       "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
       "COM812",  # Trailing comma missing
+      "CPY001",  # Missing copyright notice at top of file
       "D1",  # Missing docstring presence rules
       "EM",  # flake8-errmsg
       "G004",  # Logging statement uses f-string
@@ -7949,6 +7985,7 @@
   ignore = [
       "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
       "COM812",  # Trailing comma missing
+      "CPY001",  # Missing copyright notice at top of file
       "D1",  # Missing docstring presence rules
       "EM",  # flake8-errmsg
       "G004",  # Logging statement uses f-string
@@ -8184,6 +8221,7 @@
   ignore = [
       "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
       "COM812",  # Trailing comma missing
+      "CPY001",  # Missing copyright notice at top of file
       "D1",  # Missing docstring presence rules
       "EM",  # flake8-errmsg
       "G004",  # Logging statement uses f-string

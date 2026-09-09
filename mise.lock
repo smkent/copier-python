@@ -7,6 +7,11 @@ version = "9.18.1"
 backend = "pipx:copier"
 specifiers = ["latest"]
 
+[[tools."pipx:poethepoet"]]
+version = "0.48.0"
+backend = "pipx:poethepoet"
+specifiers = ["latest"]
+
 [[tools.prek]]
 version = "0.5.2"
 backend = "aqua:j178/prek"

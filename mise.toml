@@ -8,6 +8,7 @@ postinstall = [
 
 [tools]
 "pipx:copier" = "latest"
+"pipx:poethepoet" = "latest"
 prek = "latest"
 uv = "latest"
 

@@ -36,13 +36,6 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: 🍳 Set up mise
-        uses: jdx/mise-action@v4
-        with:
-          install: true
-          version: 2026.9.1
-          cache: true
-
       - name: 📦 Restore uv cache
         uses: actions/cache@v6
         with:

@@ -1,5 +1,7 @@
 {%- import "includes/python.jinja" as py with context -%}
-FROM ghcr.io/astral-sh/uv:python{{ py.latest() }}-bookworm-slim AS builder
+FROM python:{{ py.latest() }}-slim AS builder
+
+COPY --from=ghcr.io/astral-sh/uv /uv /uvx /bin/
 
 WORKDIR /app
 

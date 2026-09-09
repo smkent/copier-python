@@ -1,7 +1,9 @@
 # serializer version: 1
 # name: test_workflows_container[3.12-3.10]
   '''
-  FROM ghcr.io/astral-sh/uv:python3.12-bookworm-slim AS builder
+  FROM python:3.12-slim AS builder
+  
+  COPY --from=ghcr.io/astral-sh/uv /uv /uvx /bin/
   
   WORKDIR /app
   
@@ -28,7 +30,9 @@
 # ---
 # name: test_workflows_container[3.12-3.12]
   '''
-  FROM ghcr.io/astral-sh/uv:python3.12-bookworm-slim AS builder
+  FROM python:3.12-slim AS builder
+  
+  COPY --from=ghcr.io/astral-sh/uv /uv /uvx /bin/
   
   WORKDIR /app
   
@@ -55,7 +59,9 @@
 # ---
 # name: test_workflows_container[3.14-3.10]
   '''
-  FROM ghcr.io/astral-sh/uv:python3.14-bookworm-slim AS builder
+  FROM python:3.14-slim AS builder
+  
+  COPY --from=ghcr.io/astral-sh/uv /uv /uvx /bin/
   
   WORKDIR /app
   
@@ -82,7 +88,9 @@
 # ---
 # name: test_workflows_container[3.14-3.12]
   '''
-  FROM ghcr.io/astral-sh/uv:python3.14-bookworm-slim AS builder
+  FROM python:3.14-slim AS builder
+  
+  COPY --from=ghcr.io/astral-sh/uv /uv /uvx /bin/
   
   WORKDIR /app
   
@@ -109,7 +117,9 @@
 # ---
 # name: test_workflows_container[No maximum-3.10]
   '''
-  FROM ghcr.io/astral-sh/uv:python3.14-bookworm-slim AS builder
+  FROM python:3.14-slim AS builder
+  
+  COPY --from=ghcr.io/astral-sh/uv /uv /uvx /bin/
   
   WORKDIR /app
   
@@ -136,7 +146,9 @@
 # ---
 # name: test_workflows_container[No maximum-3.12]
   '''
-  FROM ghcr.io/astral-sh/uv:python3.14-bookworm-slim AS builder
+  FROM python:3.14-slim AS builder
+  
+  COPY --from=ghcr.io/astral-sh/uv /uv /uvx /bin/
   
   WORKDIR /app
   

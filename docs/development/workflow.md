@@ -7,12 +7,16 @@ icon: lucide/braces
 
 ## Cloning the repository
 
-Run `poe setup` in new repository clones to enable git hooks:
-
 ```sh
 git clone https://github.com/smkent/copier-python
 cd copier-python
-poe setup  # Enables git hooks
+```
+
+Run `mise install` in new repository clones to install tools, dependencies, and
+git hooks:
+
+```sh
+mise install
 ```
 
 ## Local template usage
@@ -30,13 +34,13 @@ uncommitted changes.
 
 ## Development tools
 
-* `poe lint`: Run formatters and static checks
-* `poe test`: Run tests
+* `mise run lint`: Run formatters and static checks
+* `mise run test`: Run tests
 
 The `lint` and `test` tasks can also be run as a single combined command with:
 
 ```sh
-poe lt
+mise run lt
 ```
 
 ### Test snapshots
@@ -46,7 +50,7 @@ When templates are modified, the snapshots need to be updated. Update test
 snapshots by running:
 
 ```sh
-poe snapup
+mise run snapup
 ```
 
 ## Documentation server
@@ -54,11 +58,11 @@ poe snapup
 Start the development server with:
 
 ```sh
-poe docs
+mise run docs
 ```
 
 The documentation site will be served at:
 
 [**http://localhost:8000**](http://localhost:8000){ .md-button .md-button--primary target="_blank" }
 
-To use a different bind host/port, run `poe --help docs` for arguments info.
+To use a different bind host/port, run `mise run docs --help` for usage info.

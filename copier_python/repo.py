@@ -83,15 +83,26 @@ class RepoWorktree:
         with tempfile.TemporaryDirectory() as td:
             repo_dir = Path(td) / "worktree"
             cls.run_in(["git", "clone", repo.url, str(repo_dir)], repo=repo)
-            for cmd in (
+            cls.run_in(
                 [
                     *["git", "remote", "set-url", "--push", "origin"],
                     repo.push_url,
                 ],
-                ["poe", "setup"],
-                ["git", "checkout", "-b", branch],
-            ):
-                cls.run_in(cmd, repo=repo, cwd=repo_dir)
+                repo=repo,
+                cwd=repo_dir,
+            )
+            cls.run_in(
+                (
+                    ["mise", "install", "--locked"]
+                    if (repo_dir / "mise.toml").is_file()
+                    else ["poe", "setup"]
+                ),
+                repo=repo,
+                cwd=repo_dir,
+            )
+            cls.run_in(
+                ["git", "checkout", "-b", branch], repo=repo, cwd=repo_dir
+            )
             yield cls(path=repo_dir, repo=repo, branch=branch)
 
     @classmethod
@@ -113,6 +124,16 @@ class RepoWorktree:
     ) -> subprocess.CompletedProcess[str]:
         kwargs.setdefault("cwd", self.path)
         return self.run_in(cmd, repo=self.repo, **kwargs)
+
+    def run_task(
+        self, name: str, **kwargs: Any
+    ) -> subprocess.CompletedProcess[str]:
+        task_runner = (
+            ["mise", "run"]
+            if (self.path / "mise.toml").is_file()
+            else ["uv", "run", "poe"]
+        )
+        return self.run([*task_runner, name], **kwargs)
 
     def git_status(self) -> list[str]:
         return self.run(

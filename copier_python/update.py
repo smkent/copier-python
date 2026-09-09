@@ -51,7 +51,7 @@ class UpdateAction:
                 raise RuntimeError("Conflicts remain, aborting")
 
         try:
-            repo.run(["uv", "run", "poe", "lt"])
+            repo.run_task("lt")
         except subprocess.CalledProcessError:
             print(  # noqa: T201
                 "Lint/test failed. Fix errors and exit the shell to continue."

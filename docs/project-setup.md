@@ -10,7 +10,7 @@ icon: lucide/settings
     these instructions are also present in your new project along with links
     directly to your project's specific settings pages! To view:
 
-    1. Start the local documentation server: `poe docs`
+    1. Start the local documentation server: `mise run docs`
     2. In your browser:
 
         1. Open **<http://localhost:8000>**

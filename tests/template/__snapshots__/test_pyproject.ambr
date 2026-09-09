@@ -37,8 +37,6 @@
   [dependency-groups]
   dev = [
       "bump-my-version>=1.3.0",
-      "poethepoet>=0.46",
-      "prek>=0.4",
       "pytest>=9",
       "pytest-cov>=7",
       "pytest-sugar>=1",
@@ -62,100 +60,6 @@
   
   [tool.hatch.version]
   source = "uv-dynamic-versioning"
-  
-  [tool.poe.executor]
-  type = "uv"
-  
-  [tool.poe.tasks.build]
-  cmd = "uv build"
-  help = "Build distribution package"
-  
-  [tool.poe.tasks.docs-build]
-  cmd = "zensical build -c"
-  help = "Build documentation site"
-  
-  [tool.poe.tasks.docs]
-  sequence = [
-      {ref = "docs-build"},
-      {cmd = "zensical serve -a \"${host}:${port}\""},
-  ]
-  help = "Run documentation site locally"
-  
-  [tool.poe.tasks.docs.args.host]
-  options = ['--host', '-h']
-  help = "Bind IP"
-  default = "localhost"
-  
-  [tool.poe.tasks.docs.args.port]
-  positional = true
-  help = "Bind Port"
-  default = "8000"
-  
-  [tool.poe.tasks.init]
-  sequence = [
-      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
-      {cmd = "git init"},
-      {ref = "setup"},
-      {cmd = "git add ."},
-      {cmd = "git commit -m 'Create project from template'"},
-  ]
-  help = "Initialize git repository once on project creation"
-  
-  [tool.poe.tasks.lint]
-  cmd = "prek run --all-files"
-  help = "Run all formatters and static checks"
-  
-  [tool.poe.tasks.lt]
-  sequence = [{ref = "lint"}, {ref = "test"}]
-  help = "Run all formatters, static checks and tests"
-  
-  [tool.poe.tasks.release]
-  cmd = "bump-my-version bump -v"
-  help = "Create and push a release tag (patch/minor/major)"
-  
-  [tool.poe.tasks.setup]
-  sequence = [
-      {cmd = "uv sync"},
-      {cmd = "prek install"},
-  ]
-  help = "Install project dependencies and git hooks"
-  
-  [tool.poe.tasks.test]
-  cmd = "pytest"
-  help = "Run tests"
-  
-  [tool.poe.tasks.test-versions]
-  sequence = ["test-py310", "test-py311", "test-py312", "test-py313", "test-py314"]
-  help = "Run tests across all Python versions"
-  
-  [tool.poe.tasks.test-py310]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.10"}
-  help = "Run tests using Python 3.10"
-  
-  [tool.poe.tasks.test-py311]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.11"}
-  help = "Run tests using Python 3.11"
-  
-  [tool.poe.tasks.test-py312]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.12"}
-  help = "Run tests using Python 3.12"
-  
-  [tool.poe.tasks.test-py313]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.13"}
-  help = "Run tests using Python 3.13"
-  
-  [tool.poe.tasks.test-py314]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.14"}
-  help = "Run tests using Python 3.14"
-  
-  [tool.poe.tasks.ti]
-  cmd = "pytest --numprocesses 0 --no-cov -vv"
-  help = "Run tests with debug friendly options"
   
   [tool.pytest]
   addopts = [
@@ -270,8 +174,6 @@
   [dependency-groups]
   dev = [
       "bump-my-version>=1.3.0",
-      "poethepoet>=0.46",
-      "prek>=0.4",
       "pysentry-rs>=0.4",
       "pytest>=9",
       "pytest-cov>=7",
@@ -296,106 +198,6 @@
   
   [tool.hatch.version]
   source = "uv-dynamic-versioning"
-  
-  [tool.poe.executor]
-  type = "uv"
-  
-  [tool.poe.tasks.audit]
-  cmd = "pysentry-rs"
-  help = "Run dependencies security audit"
-  
-  [tool.poe.tasks.build]
-  cmd = "uv build"
-  help = "Build distribution package"
-  
-  [tool.poe.tasks.docs-build]
-  cmd = "zensical build -c"
-  help = "Build documentation site"
-  
-  [tool.poe.tasks.docs]
-  sequence = [
-      {ref = "docs-build"},
-      {cmd = "zensical serve -a \"${host}:${port}\""},
-  ]
-  help = "Run documentation site locally"
-  
-  [tool.poe.tasks.docs.args.host]
-  options = ['--host', '-h']
-  help = "Bind IP"
-  default = "localhost"
-  
-  [tool.poe.tasks.docs.args.port]
-  positional = true
-  help = "Bind Port"
-  default = "8000"
-  
-  [tool.poe.tasks.init]
-  sequence = [
-      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
-      {cmd = "git init"},
-      {ref = "setup"},
-      {cmd = "git remote add origin https://github.com/ness/PKFire"},
-      {cmd = "git config --local remote.origin.pushurl git@github.com:ness/PKFire.git"},
-      {cmd = "git add ."},
-      {cmd = "git commit -m 'Create project from template'"},
-  ]
-  help = "Initialize git repository once on project creation"
-  
-  [tool.poe.tasks.lint]
-  cmd = "prek run --all-files"
-  help = "Run all formatters and static checks"
-  
-  [tool.poe.tasks.lt]
-  sequence = [{ref = "lint"}, {ref = "test"}]
-  help = "Run all formatters, static checks and tests"
-  
-  [tool.poe.tasks.release]
-  cmd = "bump-my-version bump -v"
-  help = "Create and push a release tag (patch/minor/major)"
-  
-  [tool.poe.tasks.setup]
-  sequence = [
-      {cmd = "uv sync"},
-      {cmd = "prek install"},
-  ]
-  help = "Install project dependencies and git hooks"
-  
-  [tool.poe.tasks.test]
-  cmd = "pytest"
-  help = "Run tests"
-  
-  [tool.poe.tasks.test-versions]
-  sequence = ["test-py310", "test-py311", "test-py312", "test-py313", "test-py314"]
-  help = "Run tests across all Python versions"
-  
-  [tool.poe.tasks.test-py310]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.10"}
-  help = "Run tests using Python 3.10"
-  
-  [tool.poe.tasks.test-py311]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.11"}
-  help = "Run tests using Python 3.11"
-  
-  [tool.poe.tasks.test-py312]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.12"}
-  help = "Run tests using Python 3.12"
-  
-  [tool.poe.tasks.test-py313]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.13"}
-  help = "Run tests using Python 3.13"
-  
-  [tool.poe.tasks.test-py314]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.14"}
-  help = "Run tests using Python 3.14"
-  
-  [tool.poe.tasks.ti]
-  cmd = "pytest --numprocesses 0 --no-cov -vv"
-  help = "Run tests with debug friendly options"
   
   [tool.pytest]
   addopts = [
@@ -501,8 +303,6 @@
   [dependency-groups]
   dev = [
       "bump-my-version>=1.3.0",
-      "poethepoet>=0.46",
-      "prek>=0.4",
       "pytest>=9",
       "pytest-cov>=7",
       "pytest-sugar>=1",
@@ -526,80 +326,6 @@
   
   [tool.hatch.version]
   source = "uv-dynamic-versioning"
-  
-  [tool.poe.executor]
-  type = "uv"
-  
-  [tool.poe.tasks.build]
-  cmd = "uv build"
-  help = "Build distribution package"
-  
-  [tool.poe.tasks.docs-build]
-  cmd = "zensical build -c"
-  help = "Build documentation site"
-  
-  [tool.poe.tasks.docs]
-  sequence = [
-      {ref = "docs-build"},
-      {cmd = "zensical serve -a \"${host}:${port}\""},
-  ]
-  help = "Run documentation site locally"
-  
-  [tool.poe.tasks.docs.args.host]
-  options = ['--host', '-h']
-  help = "Bind IP"
-  default = "localhost"
-  
-  [tool.poe.tasks.docs.args.port]
-  positional = true
-  help = "Bind Port"
-  default = "8000"
-  
-  [tool.poe.tasks.init]
-  sequence = [
-      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
-      {cmd = "git init"},
-      {ref = "setup"},
-      {cmd = "git add ."},
-      {cmd = "git commit -m 'Create project from template'"},
-  ]
-  help = "Initialize git repository once on project creation"
-  
-  [tool.poe.tasks.lint]
-  cmd = "prek run --all-files"
-  help = "Run all formatters and static checks"
-  
-  [tool.poe.tasks.lt]
-  sequence = [{ref = "lint"}, {ref = "test"}]
-  help = "Run all formatters, static checks and tests"
-  
-  [tool.poe.tasks.release]
-  cmd = "bump-my-version bump -v"
-  help = "Create and push a release tag (patch/minor/major)"
-  
-  [tool.poe.tasks.setup]
-  sequence = [
-      {cmd = "uv sync"},
-      {cmd = "prek install"},
-  ]
-  help = "Install project dependencies and git hooks"
-  
-  [tool.poe.tasks.test]
-  cmd = "pytest"
-  help = "Run tests"
-  
-  [tool.poe.tasks.test-versions]
-  sequence = ["test-py314"]
-  help = "Run tests across all Python versions"
-  
-  [tool.poe.tasks.test-py314]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.14"}
-  help = "Run tests using Python 3.14"
-  
-  [tool.poe.tasks.ti]
-  cmd = "pytest --numprocesses 0 --no-cov -vv"
-  help = "Run tests with debug friendly options"
   
   [tool.pytest]
   addopts = [
@@ -710,8 +436,6 @@
   [dependency-groups]
   dev = [
       "bump-my-version>=1.3.0",
-      "poethepoet>=0.46",
-      "prek>=0.4",
       "pysentry-rs>=0.4",
       "pytest>=9",
       "pytest-cov>=7",
@@ -736,86 +460,6 @@
   
   [tool.hatch.version]
   source = "uv-dynamic-versioning"
-  
-  [tool.poe.executor]
-  type = "uv"
-  
-  [tool.poe.tasks.audit]
-  cmd = "pysentry-rs"
-  help = "Run dependencies security audit"
-  
-  [tool.poe.tasks.build]
-  cmd = "uv build"
-  help = "Build distribution package"
-  
-  [tool.poe.tasks.docs-build]
-  cmd = "zensical build -c"
-  help = "Build documentation site"
-  
-  [tool.poe.tasks.docs]
-  sequence = [
-      {ref = "docs-build"},
-      {cmd = "zensical serve -a \"${host}:${port}\""},
-  ]
-  help = "Run documentation site locally"
-  
-  [tool.poe.tasks.docs.args.host]
-  options = ['--host', '-h']
-  help = "Bind IP"
-  default = "localhost"
-  
-  [tool.poe.tasks.docs.args.port]
-  positional = true
-  help = "Bind Port"
-  default = "8000"
-  
-  [tool.poe.tasks.init]
-  sequence = [
-      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
-      {cmd = "git init"},
-      {ref = "setup"},
-      {cmd = "git remote add origin https://github.com/ness/PKFire"},
-      {cmd = "git config --local remote.origin.pushurl git@github.com:ness/PKFire.git"},
-      {cmd = "git add ."},
-      {cmd = "git commit -m 'Create project from template'"},
-  ]
-  help = "Initialize git repository once on project creation"
-  
-  [tool.poe.tasks.lint]
-  cmd = "prek run --all-files"
-  help = "Run all formatters and static checks"
-  
-  [tool.poe.tasks.lt]
-  sequence = [{ref = "lint"}, {ref = "test"}]
-  help = "Run all formatters, static checks and tests"
-  
-  [tool.poe.tasks.release]
-  cmd = "bump-my-version bump -v"
-  help = "Create and push a release tag (patch/minor/major)"
-  
-  [tool.poe.tasks.setup]
-  sequence = [
-      {cmd = "uv sync"},
-      {cmd = "prek install"},
-  ]
-  help = "Install project dependencies and git hooks"
-  
-  [tool.poe.tasks.test]
-  cmd = "pytest"
-  help = "Run tests"
-  
-  [tool.poe.tasks.test-versions]
-  sequence = ["test-py314"]
-  help = "Run tests across all Python versions"
-  
-  [tool.poe.tasks.test-py314]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.14"}
-  help = "Run tests using Python 3.14"
-  
-  [tool.poe.tasks.ti]
-  cmd = "pytest --numprocesses 0 --no-cov -vv"
-  help = "Run tests with debug friendly options"
   
   [tool.pytest]
   addopts = [
@@ -925,8 +569,6 @@
   [dependency-groups]
   dev = [
       "bump-my-version>=1.3.0",
-      "poethepoet>=0.46",
-      "prek>=0.4",
       "pytest>=9",
       "pytest-cov>=7",
       "pytest-sugar>=1",
@@ -946,79 +588,6 @@
   
   [tool.hatch.version]
   source = "uv-dynamic-versioning"
-  
-  [tool.poe.executor]
-  type = "uv"
-  
-  [tool.poe.tasks.build]
-  cmd = "uv build"
-  help = "Build distribution package"
-  
-  [tool.poe.tasks.init]
-  sequence = [
-      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
-      {cmd = "git init"},
-      {ref = "setup"},
-      {cmd = "git add ."},
-      {cmd = "git commit -m 'Create project from template'"},
-  ]
-  help = "Initialize git repository once on project creation"
-  
-  [tool.poe.tasks.lint]
-  cmd = "prek run --all-files"
-  help = "Run all formatters and static checks"
-  
-  [tool.poe.tasks.lt]
-  sequence = [{ref = "lint"}, {ref = "test"}]
-  help = "Run all formatters, static checks and tests"
-  
-  [tool.poe.tasks.release]
-  cmd = "bump-my-version bump -v"
-  help = "Create and push a release tag (patch/minor/major)"
-  
-  [tool.poe.tasks.setup]
-  sequence = [
-      {cmd = "uv sync"},
-      {cmd = "prek install"},
-  ]
-  help = "Install project dependencies and git hooks"
-  
-  [tool.poe.tasks.test]
-  cmd = "pytest"
-  help = "Run tests"
-  
-  [tool.poe.tasks.test-versions]
-  sequence = ["test-py310", "test-py311", "test-py312", "test-py313", "test-py314"]
-  help = "Run tests across all Python versions"
-  
-  [tool.poe.tasks.test-py310]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.10"}
-  help = "Run tests using Python 3.10"
-  
-  [tool.poe.tasks.test-py311]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.11"}
-  help = "Run tests using Python 3.11"
-  
-  [tool.poe.tasks.test-py312]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.12"}
-  help = "Run tests using Python 3.12"
-  
-  [tool.poe.tasks.test-py313]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.13"}
-  help = "Run tests using Python 3.13"
-  
-  [tool.poe.tasks.test-py314]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.14"}
-  help = "Run tests using Python 3.14"
-  
-  [tool.poe.tasks.ti]
-  cmd = "pytest --numprocesses 0 --no-cov -vv"
-  help = "Run tests with debug friendly options"
   
   [tool.pytest]
   addopts = [
@@ -1133,8 +702,6 @@
   [dependency-groups]
   dev = [
       "bump-my-version>=1.3.0",
-      "poethepoet>=0.46",
-      "prek>=0.4",
       "pysentry-rs>=0.4",
       "pytest>=9",
       "pytest-cov>=7",
@@ -1155,85 +722,6 @@
   
   [tool.hatch.version]
   source = "uv-dynamic-versioning"
-  
-  [tool.poe.executor]
-  type = "uv"
-  
-  [tool.poe.tasks.audit]
-  cmd = "pysentry-rs"
-  help = "Run dependencies security audit"
-  
-  [tool.poe.tasks.build]
-  cmd = "uv build"
-  help = "Build distribution package"
-  
-  [tool.poe.tasks.init]
-  sequence = [
-      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
-      {cmd = "git init"},
-      {ref = "setup"},
-      {cmd = "git remote add origin https://github.com/ness/PKFire"},
-      {cmd = "git config --local remote.origin.pushurl git@github.com:ness/PKFire.git"},
-      {cmd = "git add ."},
-      {cmd = "git commit -m 'Create project from template'"},
-  ]
-  help = "Initialize git repository once on project creation"
-  
-  [tool.poe.tasks.lint]
-  cmd = "prek run --all-files"
-  help = "Run all formatters and static checks"
-  
-  [tool.poe.tasks.lt]
-  sequence = [{ref = "lint"}, {ref = "test"}]
-  help = "Run all formatters, static checks and tests"
-  
-  [tool.poe.tasks.release]
-  cmd = "bump-my-version bump -v"
-  help = "Create and push a release tag (patch/minor/major)"
-  
-  [tool.poe.tasks.setup]
-  sequence = [
-      {cmd = "uv sync"},
-      {cmd = "prek install"},
-  ]
-  help = "Install project dependencies and git hooks"
-  
-  [tool.poe.tasks.test]
-  cmd = "pytest"
-  help = "Run tests"
-  
-  [tool.poe.tasks.test-versions]
-  sequence = ["test-py310", "test-py311", "test-py312", "test-py313", "test-py314"]
-  help = "Run tests across all Python versions"
-  
-  [tool.poe.tasks.test-py310]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.10"}
-  help = "Run tests using Python 3.10"
-  
-  [tool.poe.tasks.test-py311]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.11"}
-  help = "Run tests using Python 3.11"
-  
-  [tool.poe.tasks.test-py312]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.12"}
-  help = "Run tests using Python 3.12"
-  
-  [tool.poe.tasks.test-py313]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.13"}
-  help = "Run tests using Python 3.13"
-  
-  [tool.poe.tasks.test-py314]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.14"}
-  help = "Run tests using Python 3.14"
-  
-  [tool.poe.tasks.ti]
-  cmd = "pytest --numprocesses 0 --no-cov -vv"
-  help = "Run tests with debug friendly options"
   
   [tool.pytest]
   addopts = [
@@ -1339,8 +827,6 @@
   [dependency-groups]
   dev = [
       "bump-my-version>=1.3.0",
-      "poethepoet>=0.46",
-      "prek>=0.4",
       "pytest>=9",
       "pytest-cov>=7",
       "pytest-sugar>=1",
@@ -1360,59 +846,6 @@
   
   [tool.hatch.version]
   source = "uv-dynamic-versioning"
-  
-  [tool.poe.executor]
-  type = "uv"
-  
-  [tool.poe.tasks.build]
-  cmd = "uv build"
-  help = "Build distribution package"
-  
-  [tool.poe.tasks.init]
-  sequence = [
-      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
-      {cmd = "git init"},
-      {ref = "setup"},
-      {cmd = "git add ."},
-      {cmd = "git commit -m 'Create project from template'"},
-  ]
-  help = "Initialize git repository once on project creation"
-  
-  [tool.poe.tasks.lint]
-  cmd = "prek run --all-files"
-  help = "Run all formatters and static checks"
-  
-  [tool.poe.tasks.lt]
-  sequence = [{ref = "lint"}, {ref = "test"}]
-  help = "Run all formatters, static checks and tests"
-  
-  [tool.poe.tasks.release]
-  cmd = "bump-my-version bump -v"
-  help = "Create and push a release tag (patch/minor/major)"
-  
-  [tool.poe.tasks.setup]
-  sequence = [
-      {cmd = "uv sync"},
-      {cmd = "prek install"},
-  ]
-  help = "Install project dependencies and git hooks"
-  
-  [tool.poe.tasks.test]
-  cmd = "pytest"
-  help = "Run tests"
-  
-  [tool.poe.tasks.test-versions]
-  sequence = ["test-py314"]
-  help = "Run tests across all Python versions"
-  
-  [tool.poe.tasks.test-py314]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.14"}
-  help = "Run tests using Python 3.14"
-  
-  [tool.poe.tasks.ti]
-  cmd = "pytest --numprocesses 0 --no-cov -vv"
-  help = "Run tests with debug friendly options"
   
   [tool.pytest]
   addopts = [
@@ -1523,8 +956,6 @@
   [dependency-groups]
   dev = [
       "bump-my-version>=1.3.0",
-      "poethepoet>=0.46",
-      "prek>=0.4",
       "pysentry-rs>=0.4",
       "pytest>=9",
       "pytest-cov>=7",
@@ -1545,65 +976,6 @@
   
   [tool.hatch.version]
   source = "uv-dynamic-versioning"
-  
-  [tool.poe.executor]
-  type = "uv"
-  
-  [tool.poe.tasks.audit]
-  cmd = "pysentry-rs"
-  help = "Run dependencies security audit"
-  
-  [tool.poe.tasks.build]
-  cmd = "uv build"
-  help = "Build distribution package"
-  
-  [tool.poe.tasks.init]
-  sequence = [
-      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
-      {cmd = "git init"},
-      {ref = "setup"},
-      {cmd = "git remote add origin https://github.com/ness/PKFire"},
-      {cmd = "git config --local remote.origin.pushurl git@github.com:ness/PKFire.git"},
-      {cmd = "git add ."},
-      {cmd = "git commit -m 'Create project from template'"},
-  ]
-  help = "Initialize git repository once on project creation"
-  
-  [tool.poe.tasks.lint]
-  cmd = "prek run --all-files"
-  help = "Run all formatters and static checks"
-  
-  [tool.poe.tasks.lt]
-  sequence = [{ref = "lint"}, {ref = "test"}]
-  help = "Run all formatters, static checks and tests"
-  
-  [tool.poe.tasks.release]
-  cmd = "bump-my-version bump -v"
-  help = "Create and push a release tag (patch/minor/major)"
-  
-  [tool.poe.tasks.setup]
-  sequence = [
-      {cmd = "uv sync"},
-      {cmd = "prek install"},
-  ]
-  help = "Install project dependencies and git hooks"
-  
-  [tool.poe.tasks.test]
-  cmd = "pytest"
-  help = "Run tests"
-  
-  [tool.poe.tasks.test-versions]
-  sequence = ["test-py314"]
-  help = "Run tests across all Python versions"
-  
-  [tool.poe.tasks.test-py314]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.14"}
-  help = "Run tests using Python 3.14"
-  
-  [tool.poe.tasks.ti]
-  cmd = "pytest --numprocesses 0 --no-cov -vv"
-  help = "Run tests with debug friendly options"
   
   [tool.pytest]
   addopts = [
@@ -1713,8 +1085,6 @@
   [dependency-groups]
   dev = [
       "bump-my-version>=1.3.0",
-      "poethepoet>=0.46",
-      "prek>=0.4",
       "pytest>=9",
       "pytest-cov>=7",
       "pytest-sugar>=1",
@@ -1739,104 +1109,6 @@
   
   [tool.hatch.version]
   source = "uv-dynamic-versioning"
-  
-  [tool.poe.executor]
-  type = "uv"
-  
-  [tool.poe.tasks.build]
-  cmd = "uv build"
-  help = "Build distribution package"
-  
-  [tool.poe.tasks.docs-build]
-  cmd = "zensical build -c"
-  help = "Build documentation site"
-  
-  [tool.poe.tasks.docs]
-  sequence = [
-      {ref = "docs-build"},
-      {cmd = "zensical serve -a \"${host}:${port}\""},
-  ]
-  help = "Run documentation site locally"
-  
-  [tool.poe.tasks.docs.args.host]
-  options = ['--host', '-h']
-  help = "Bind IP"
-  default = "localhost"
-  
-  [tool.poe.tasks.docs.args.port]
-  positional = true
-  help = "Bind Port"
-  default = "8000"
-  
-  [tool.poe.tasks.init]
-  sequence = [
-      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
-      {cmd = "git init"},
-      {ref = "setup"},
-      {cmd = "git add ."},
-      {cmd = "git commit -m 'Create project from template'"},
-  ]
-  help = "Initialize git repository once on project creation"
-  
-  [tool.poe.tasks.lint]
-  cmd = "prek run --all-files"
-  help = "Run all formatters and static checks"
-  
-  [tool.poe.tasks.lt]
-  sequence = [{ref = "lint"}, {ref = "test"}]
-  help = "Run all formatters, static checks and tests"
-  
-  [tool.poe.tasks.release]
-  cmd = "bump-my-version bump -v"
-  help = "Create and push a release tag (patch/minor/major)"
-  
-  [tool.poe.tasks.setup]
-  sequence = [
-      {cmd = "uv sync"},
-      {cmd = "prek install"},
-  ]
-  help = "Install project dependencies and git hooks"
-  
-  [tool.poe.tasks.snapup]
-  cmd = "pytest --snapshot-update"
-  help = "Update test snapshots"
-  
-  [tool.poe.tasks.test]
-  cmd = "pytest"
-  help = "Run tests"
-  
-  [tool.poe.tasks.test-versions]
-  sequence = ["test-py310", "test-py311", "test-py312", "test-py313", "test-py314"]
-  help = "Run tests across all Python versions"
-  
-  [tool.poe.tasks.test-py310]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.10"}
-  help = "Run tests using Python 3.10"
-  
-  [tool.poe.tasks.test-py311]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.11"}
-  help = "Run tests using Python 3.11"
-  
-  [tool.poe.tasks.test-py312]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.12"}
-  help = "Run tests using Python 3.12"
-  
-  [tool.poe.tasks.test-py313]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.13"}
-  help = "Run tests using Python 3.13"
-  
-  [tool.poe.tasks.test-py314]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.14"}
-  help = "Run tests using Python 3.14"
-  
-  [tool.poe.tasks.ti]
-  cmd = "pytest --numprocesses 0 --no-cov -vv"
-  help = "Run tests with debug friendly options"
   
   [tool.pytest]
   addopts = [
@@ -1951,8 +1223,6 @@
   [dependency-groups]
   dev = [
       "bump-my-version>=1.3.0",
-      "poethepoet>=0.46",
-      "prek>=0.4",
       "pysentry-rs>=0.4",
       "pytest>=9",
       "pytest-cov>=7",
@@ -1978,110 +1248,6 @@
   
   [tool.hatch.version]
   source = "uv-dynamic-versioning"
-  
-  [tool.poe.executor]
-  type = "uv"
-  
-  [tool.poe.tasks.audit]
-  cmd = "pysentry-rs"
-  help = "Run dependencies security audit"
-  
-  [tool.poe.tasks.build]
-  cmd = "uv build"
-  help = "Build distribution package"
-  
-  [tool.poe.tasks.docs-build]
-  cmd = "zensical build -c"
-  help = "Build documentation site"
-  
-  [tool.poe.tasks.docs]
-  sequence = [
-      {ref = "docs-build"},
-      {cmd = "zensical serve -a \"${host}:${port}\""},
-  ]
-  help = "Run documentation site locally"
-  
-  [tool.poe.tasks.docs.args.host]
-  options = ['--host', '-h']
-  help = "Bind IP"
-  default = "localhost"
-  
-  [tool.poe.tasks.docs.args.port]
-  positional = true
-  help = "Bind Port"
-  default = "8000"
-  
-  [tool.poe.tasks.init]
-  sequence = [
-      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
-      {cmd = "git init"},
-      {ref = "setup"},
-      {cmd = "git remote add origin https://github.com/ness/PKFire"},
-      {cmd = "git config --local remote.origin.pushurl git@github.com:ness/PKFire.git"},
-      {cmd = "git add ."},
-      {cmd = "git commit -m 'Create project from template'"},
-  ]
-  help = "Initialize git repository once on project creation"
-  
-  [tool.poe.tasks.lint]
-  cmd = "prek run --all-files"
-  help = "Run all formatters and static checks"
-  
-  [tool.poe.tasks.lt]
-  sequence = [{ref = "lint"}, {ref = "test"}]
-  help = "Run all formatters, static checks and tests"
-  
-  [tool.poe.tasks.release]
-  cmd = "bump-my-version bump -v"
-  help = "Create and push a release tag (patch/minor/major)"
-  
-  [tool.poe.tasks.setup]
-  sequence = [
-      {cmd = "uv sync"},
-      {cmd = "prek install"},
-  ]
-  help = "Install project dependencies and git hooks"
-  
-  [tool.poe.tasks.snapup]
-  cmd = "pytest --snapshot-update"
-  help = "Update test snapshots"
-  
-  [tool.poe.tasks.test]
-  cmd = "pytest"
-  help = "Run tests"
-  
-  [tool.poe.tasks.test-versions]
-  sequence = ["test-py310", "test-py311", "test-py312", "test-py313", "test-py314"]
-  help = "Run tests across all Python versions"
-  
-  [tool.poe.tasks.test-py310]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.10"}
-  help = "Run tests using Python 3.10"
-  
-  [tool.poe.tasks.test-py311]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.11"}
-  help = "Run tests using Python 3.11"
-  
-  [tool.poe.tasks.test-py312]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.12"}
-  help = "Run tests using Python 3.12"
-  
-  [tool.poe.tasks.test-py313]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.13"}
-  help = "Run tests using Python 3.13"
-  
-  [tool.poe.tasks.test-py314]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.14"}
-  help = "Run tests using Python 3.14"
-  
-  [tool.poe.tasks.ti]
-  cmd = "pytest --numprocesses 0 --no-cov -vv"
-  help = "Run tests with debug friendly options"
   
   [tool.pytest]
   addopts = [
@@ -2187,8 +1353,6 @@
   [dependency-groups]
   dev = [
       "bump-my-version>=1.3.0",
-      "poethepoet>=0.46",
-      "prek>=0.4",
       "pytest>=9",
       "pytest-cov>=7",
       "pytest-sugar>=1",
@@ -2213,84 +1377,6 @@
   
   [tool.hatch.version]
   source = "uv-dynamic-versioning"
-  
-  [tool.poe.executor]
-  type = "uv"
-  
-  [tool.poe.tasks.build]
-  cmd = "uv build"
-  help = "Build distribution package"
-  
-  [tool.poe.tasks.docs-build]
-  cmd = "zensical build -c"
-  help = "Build documentation site"
-  
-  [tool.poe.tasks.docs]
-  sequence = [
-      {ref = "docs-build"},
-      {cmd = "zensical serve -a \"${host}:${port}\""},
-  ]
-  help = "Run documentation site locally"
-  
-  [tool.poe.tasks.docs.args.host]
-  options = ['--host', '-h']
-  help = "Bind IP"
-  default = "localhost"
-  
-  [tool.poe.tasks.docs.args.port]
-  positional = true
-  help = "Bind Port"
-  default = "8000"
-  
-  [tool.poe.tasks.init]
-  sequence = [
-      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
-      {cmd = "git init"},
-      {ref = "setup"},
-      {cmd = "git add ."},
-      {cmd = "git commit -m 'Create project from template'"},
-  ]
-  help = "Initialize git repository once on project creation"
-  
-  [tool.poe.tasks.lint]
-  cmd = "prek run --all-files"
-  help = "Run all formatters and static checks"
-  
-  [tool.poe.tasks.lt]
-  sequence = [{ref = "lint"}, {ref = "test"}]
-  help = "Run all formatters, static checks and tests"
-  
-  [tool.poe.tasks.release]
-  cmd = "bump-my-version bump -v"
-  help = "Create and push a release tag (patch/minor/major)"
-  
-  [tool.poe.tasks.setup]
-  sequence = [
-      {cmd = "uv sync"},
-      {cmd = "prek install"},
-  ]
-  help = "Install project dependencies and git hooks"
-  
-  [tool.poe.tasks.snapup]
-  cmd = "pytest --snapshot-update"
-  help = "Update test snapshots"
-  
-  [tool.poe.tasks.test]
-  cmd = "pytest"
-  help = "Run tests"
-  
-  [tool.poe.tasks.test-versions]
-  sequence = ["test-py314"]
-  help = "Run tests across all Python versions"
-  
-  [tool.poe.tasks.test-py314]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.14"}
-  help = "Run tests using Python 3.14"
-  
-  [tool.poe.tasks.ti]
-  cmd = "pytest --numprocesses 0 --no-cov -vv"
-  help = "Run tests with debug friendly options"
   
   [tool.pytest]
   addopts = [
@@ -2401,8 +1487,6 @@
   [dependency-groups]
   dev = [
       "bump-my-version>=1.3.0",
-      "poethepoet>=0.46",
-      "prek>=0.4",
       "pysentry-rs>=0.4",
       "pytest>=9",
       "pytest-cov>=7",
@@ -2428,90 +1512,6 @@
   
   [tool.hatch.version]
   source = "uv-dynamic-versioning"
-  
-  [tool.poe.executor]
-  type = "uv"
-  
-  [tool.poe.tasks.audit]
-  cmd = "pysentry-rs"
-  help = "Run dependencies security audit"
-  
-  [tool.poe.tasks.build]
-  cmd = "uv build"
-  help = "Build distribution package"
-  
-  [tool.poe.tasks.docs-build]
-  cmd = "zensical build -c"
-  help = "Build documentation site"
-  
-  [tool.poe.tasks.docs]
-  sequence = [
-      {ref = "docs-build"},
-      {cmd = "zensical serve -a \"${host}:${port}\""},
-  ]
-  help = "Run documentation site locally"
-  
-  [tool.poe.tasks.docs.args.host]
-  options = ['--host', '-h']
-  help = "Bind IP"
-  default = "localhost"
-  
-  [tool.poe.tasks.docs.args.port]
-  positional = true
-  help = "Bind Port"
-  default = "8000"
-  
-  [tool.poe.tasks.init]
-  sequence = [
-      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
-      {cmd = "git init"},
-      {ref = "setup"},
-      {cmd = "git remote add origin https://github.com/ness/PKFire"},
-      {cmd = "git config --local remote.origin.pushurl git@github.com:ness/PKFire.git"},
-      {cmd = "git add ."},
-      {cmd = "git commit -m 'Create project from template'"},
-  ]
-  help = "Initialize git repository once on project creation"
-  
-  [tool.poe.tasks.lint]
-  cmd = "prek run --all-files"
-  help = "Run all formatters and static checks"
-  
-  [tool.poe.tasks.lt]
-  sequence = [{ref = "lint"}, {ref = "test"}]
-  help = "Run all formatters, static checks and tests"
-  
-  [tool.poe.tasks.release]
-  cmd = "bump-my-version bump -v"
-  help = "Create and push a release tag (patch/minor/major)"
-  
-  [tool.poe.tasks.setup]
-  sequence = [
-      {cmd = "uv sync"},
-      {cmd = "prek install"},
-  ]
-  help = "Install project dependencies and git hooks"
-  
-  [tool.poe.tasks.snapup]
-  cmd = "pytest --snapshot-update"
-  help = "Update test snapshots"
-  
-  [tool.poe.tasks.test]
-  cmd = "pytest"
-  help = "Run tests"
-  
-  [tool.poe.tasks.test-versions]
-  sequence = ["test-py314"]
-  help = "Run tests across all Python versions"
-  
-  [tool.poe.tasks.test-py314]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.14"}
-  help = "Run tests using Python 3.14"
-  
-  [tool.poe.tasks.ti]
-  cmd = "pytest --numprocesses 0 --no-cov -vv"
-  help = "Run tests with debug friendly options"
   
   [tool.pytest]
   addopts = [
@@ -2621,8 +1621,6 @@
   [dependency-groups]
   dev = [
       "bump-my-version>=1.3.0",
-      "poethepoet>=0.46",
-      "prek>=0.4",
       "pytest>=9",
       "pytest-cov>=7",
       "pytest-sugar>=1",
@@ -2643,83 +1641,6 @@
   
   [tool.hatch.version]
   source = "uv-dynamic-versioning"
-  
-  [tool.poe.executor]
-  type = "uv"
-  
-  [tool.poe.tasks.build]
-  cmd = "uv build"
-  help = "Build distribution package"
-  
-  [tool.poe.tasks.init]
-  sequence = [
-      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
-      {cmd = "git init"},
-      {ref = "setup"},
-      {cmd = "git add ."},
-      {cmd = "git commit -m 'Create project from template'"},
-  ]
-  help = "Initialize git repository once on project creation"
-  
-  [tool.poe.tasks.lint]
-  cmd = "prek run --all-files"
-  help = "Run all formatters and static checks"
-  
-  [tool.poe.tasks.lt]
-  sequence = [{ref = "lint"}, {ref = "test"}]
-  help = "Run all formatters, static checks and tests"
-  
-  [tool.poe.tasks.release]
-  cmd = "bump-my-version bump -v"
-  help = "Create and push a release tag (patch/minor/major)"
-  
-  [tool.poe.tasks.setup]
-  sequence = [
-      {cmd = "uv sync"},
-      {cmd = "prek install"},
-  ]
-  help = "Install project dependencies and git hooks"
-  
-  [tool.poe.tasks.snapup]
-  cmd = "pytest --snapshot-update"
-  help = "Update test snapshots"
-  
-  [tool.poe.tasks.test]
-  cmd = "pytest"
-  help = "Run tests"
-  
-  [tool.poe.tasks.test-versions]
-  sequence = ["test-py310", "test-py311", "test-py312", "test-py313", "test-py314"]
-  help = "Run tests across all Python versions"
-  
-  [tool.poe.tasks.test-py310]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.10"}
-  help = "Run tests using Python 3.10"
-  
-  [tool.poe.tasks.test-py311]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.11"}
-  help = "Run tests using Python 3.11"
-  
-  [tool.poe.tasks.test-py312]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.12"}
-  help = "Run tests using Python 3.12"
-  
-  [tool.poe.tasks.test-py313]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.13"}
-  help = "Run tests using Python 3.13"
-  
-  [tool.poe.tasks.test-py314]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.14"}
-  help = "Run tests using Python 3.14"
-  
-  [tool.poe.tasks.ti]
-  cmd = "pytest --numprocesses 0 --no-cov -vv"
-  help = "Run tests with debug friendly options"
   
   [tool.pytest]
   addopts = [
@@ -2834,8 +1755,6 @@
   [dependency-groups]
   dev = [
       "bump-my-version>=1.3.0",
-      "poethepoet>=0.46",
-      "prek>=0.4",
       "pysentry-rs>=0.4",
       "pytest>=9",
       "pytest-cov>=7",
@@ -2857,89 +1776,6 @@
   
   [tool.hatch.version]
   source = "uv-dynamic-versioning"
-  
-  [tool.poe.executor]
-  type = "uv"
-  
-  [tool.poe.tasks.audit]
-  cmd = "pysentry-rs"
-  help = "Run dependencies security audit"
-  
-  [tool.poe.tasks.build]
-  cmd = "uv build"
-  help = "Build distribution package"
-  
-  [tool.poe.tasks.init]
-  sequence = [
-      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
-      {cmd = "git init"},
-      {ref = "setup"},
-      {cmd = "git remote add origin https://github.com/ness/PKFire"},
-      {cmd = "git config --local remote.origin.pushurl git@github.com:ness/PKFire.git"},
-      {cmd = "git add ."},
-      {cmd = "git commit -m 'Create project from template'"},
-  ]
-  help = "Initialize git repository once on project creation"
-  
-  [tool.poe.tasks.lint]
-  cmd = "prek run --all-files"
-  help = "Run all formatters and static checks"
-  
-  [tool.poe.tasks.lt]
-  sequence = [{ref = "lint"}, {ref = "test"}]
-  help = "Run all formatters, static checks and tests"
-  
-  [tool.poe.tasks.release]
-  cmd = "bump-my-version bump -v"
-  help = "Create and push a release tag (patch/minor/major)"
-  
-  [tool.poe.tasks.setup]
-  sequence = [
-      {cmd = "uv sync"},
-      {cmd = "prek install"},
-  ]
-  help = "Install project dependencies and git hooks"
-  
-  [tool.poe.tasks.snapup]
-  cmd = "pytest --snapshot-update"
-  help = "Update test snapshots"
-  
-  [tool.poe.tasks.test]
-  cmd = "pytest"
-  help = "Run tests"
-  
-  [tool.poe.tasks.test-versions]
-  sequence = ["test-py310", "test-py311", "test-py312", "test-py313", "test-py314"]
-  help = "Run tests across all Python versions"
-  
-  [tool.poe.tasks.test-py310]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.10"}
-  help = "Run tests using Python 3.10"
-  
-  [tool.poe.tasks.test-py311]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.11"}
-  help = "Run tests using Python 3.11"
-  
-  [tool.poe.tasks.test-py312]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.12"}
-  help = "Run tests using Python 3.12"
-  
-  [tool.poe.tasks.test-py313]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.13"}
-  help = "Run tests using Python 3.13"
-  
-  [tool.poe.tasks.test-py314]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.14"}
-  help = "Run tests using Python 3.14"
-  
-  [tool.poe.tasks.ti]
-  cmd = "pytest --numprocesses 0 --no-cov -vv"
-  help = "Run tests with debug friendly options"
   
   [tool.pytest]
   addopts = [
@@ -3045,8 +1881,6 @@
   [dependency-groups]
   dev = [
       "bump-my-version>=1.3.0",
-      "poethepoet>=0.46",
-      "prek>=0.4",
       "pytest>=9",
       "pytest-cov>=7",
       "pytest-sugar>=1",
@@ -3067,63 +1901,6 @@
   
   [tool.hatch.version]
   source = "uv-dynamic-versioning"
-  
-  [tool.poe.executor]
-  type = "uv"
-  
-  [tool.poe.tasks.build]
-  cmd = "uv build"
-  help = "Build distribution package"
-  
-  [tool.poe.tasks.init]
-  sequence = [
-      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
-      {cmd = "git init"},
-      {ref = "setup"},
-      {cmd = "git add ."},
-      {cmd = "git commit -m 'Create project from template'"},
-  ]
-  help = "Initialize git repository once on project creation"
-  
-  [tool.poe.tasks.lint]
-  cmd = "prek run --all-files"
-  help = "Run all formatters and static checks"
-  
-  [tool.poe.tasks.lt]
-  sequence = [{ref = "lint"}, {ref = "test"}]
-  help = "Run all formatters, static checks and tests"
-  
-  [tool.poe.tasks.release]
-  cmd = "bump-my-version bump -v"
-  help = "Create and push a release tag (patch/minor/major)"
-  
-  [tool.poe.tasks.setup]
-  sequence = [
-      {cmd = "uv sync"},
-      {cmd = "prek install"},
-  ]
-  help = "Install project dependencies and git hooks"
-  
-  [tool.poe.tasks.snapup]
-  cmd = "pytest --snapshot-update"
-  help = "Update test snapshots"
-  
-  [tool.poe.tasks.test]
-  cmd = "pytest"
-  help = "Run tests"
-  
-  [tool.poe.tasks.test-versions]
-  sequence = ["test-py314"]
-  help = "Run tests across all Python versions"
-  
-  [tool.poe.tasks.test-py314]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.14"}
-  help = "Run tests using Python 3.14"
-  
-  [tool.poe.tasks.ti]
-  cmd = "pytest --numprocesses 0 --no-cov -vv"
-  help = "Run tests with debug friendly options"
   
   [tool.pytest]
   addopts = [
@@ -3234,8 +2011,6 @@
   [dependency-groups]
   dev = [
       "bump-my-version>=1.3.0",
-      "poethepoet>=0.46",
-      "prek>=0.4",
       "pysentry-rs>=0.4",
       "pytest>=9",
       "pytest-cov>=7",
@@ -3257,69 +2032,6 @@
   
   [tool.hatch.version]
   source = "uv-dynamic-versioning"
-  
-  [tool.poe.executor]
-  type = "uv"
-  
-  [tool.poe.tasks.audit]
-  cmd = "pysentry-rs"
-  help = "Run dependencies security audit"
-  
-  [tool.poe.tasks.build]
-  cmd = "uv build"
-  help = "Build distribution package"
-  
-  [tool.poe.tasks.init]
-  sequence = [
-      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
-      {cmd = "git init"},
-      {ref = "setup"},
-      {cmd = "git remote add origin https://github.com/ness/PKFire"},
-      {cmd = "git config --local remote.origin.pushurl git@github.com:ness/PKFire.git"},
-      {cmd = "git add ."},
-      {cmd = "git commit -m 'Create project from template'"},
-  ]
-  help = "Initialize git repository once on project creation"
-  
-  [tool.poe.tasks.lint]
-  cmd = "prek run --all-files"
-  help = "Run all formatters and static checks"
-  
-  [tool.poe.tasks.lt]
-  sequence = [{ref = "lint"}, {ref = "test"}]
-  help = "Run all formatters, static checks and tests"
-  
-  [tool.poe.tasks.release]
-  cmd = "bump-my-version bump -v"
-  help = "Create and push a release tag (patch/minor/major)"
-  
-  [tool.poe.tasks.setup]
-  sequence = [
-      {cmd = "uv sync"},
-      {cmd = "prek install"},
-  ]
-  help = "Install project dependencies and git hooks"
-  
-  [tool.poe.tasks.snapup]
-  cmd = "pytest --snapshot-update"
-  help = "Update test snapshots"
-  
-  [tool.poe.tasks.test]
-  cmd = "pytest"
-  help = "Run tests"
-  
-  [tool.poe.tasks.test-versions]
-  sequence = ["test-py314"]
-  help = "Run tests across all Python versions"
-  
-  [tool.poe.tasks.test-py314]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.14"}
-  help = "Run tests using Python 3.14"
-  
-  [tool.poe.tasks.ti]
-  cmd = "pytest --numprocesses 0 --no-cov -vv"
-  help = "Run tests with debug friendly options"
   
   [tool.pytest]
   addopts = [
@@ -3429,8 +2141,6 @@
   [dependency-groups]
   dev = [
       "bump-my-version>=1.3.0",
-      "poethepoet>=0.46",
-      "prek>=0.4",
       "pytest>=9",
       "pytest-cov>=7",
       "pytest-sugar>=1",
@@ -3455,100 +2165,6 @@
   
   [tool.hatch.version]
   source = "uv-dynamic-versioning"
-  
-  [tool.poe.executor]
-  type = "uv"
-  
-  [tool.poe.tasks.build]
-  cmd = "uv build"
-  help = "Build distribution package"
-  
-  [tool.poe.tasks.docs-build]
-  cmd = "zensical build -c"
-  help = "Build documentation site"
-  
-  [tool.poe.tasks.docs]
-  sequence = [
-      {ref = "docs-build"},
-      {cmd = "zensical serve -a \"${host}:${port}\""},
-  ]
-  help = "Run documentation site locally"
-  
-  [tool.poe.tasks.docs.args.host]
-  options = ['--host', '-h']
-  help = "Bind IP"
-  default = "localhost"
-  
-  [tool.poe.tasks.docs.args.port]
-  positional = true
-  help = "Bind Port"
-  default = "8000"
-  
-  [tool.poe.tasks.init]
-  sequence = [
-      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
-      {cmd = "git init"},
-      {ref = "setup"},
-      {cmd = "git add ."},
-      {cmd = "git commit -m 'Create project from template'"},
-  ]
-  help = "Initialize git repository once on project creation"
-  
-  [tool.poe.tasks.lint]
-  cmd = "prek run --all-files"
-  help = "Run all formatters and static checks"
-  
-  [tool.poe.tasks.lt]
-  sequence = [{ref = "lint"}, {ref = "test"}]
-  help = "Run all formatters, static checks and tests"
-  
-  [tool.poe.tasks.release]
-  cmd = "bump-my-version bump -v"
-  help = "Create and push a release tag (patch/minor/major)"
-  
-  [tool.poe.tasks.setup]
-  sequence = [
-      {cmd = "uv sync"},
-      {cmd = "prek install"},
-  ]
-  help = "Install project dependencies and git hooks"
-  
-  [tool.poe.tasks.test]
-  cmd = "pytest"
-  help = "Run tests"
-  
-  [tool.poe.tasks.test-versions]
-  sequence = ["test-py310", "test-py311", "test-py312", "test-py313", "test-py314"]
-  help = "Run tests across all Python versions"
-  
-  [tool.poe.tasks.test-py310]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.10"}
-  help = "Run tests using Python 3.10"
-  
-  [tool.poe.tasks.test-py311]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.11"}
-  help = "Run tests using Python 3.11"
-  
-  [tool.poe.tasks.test-py312]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.12"}
-  help = "Run tests using Python 3.12"
-  
-  [tool.poe.tasks.test-py313]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.13"}
-  help = "Run tests using Python 3.13"
-  
-  [tool.poe.tasks.test-py314]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.14"}
-  help = "Run tests using Python 3.14"
-  
-  [tool.poe.tasks.ti]
-  cmd = "pytest --numprocesses 0 --no-cov -vv"
-  help = "Run tests with debug friendly options"
   
   [tool.pytest]
   addopts = [
@@ -3665,8 +2281,6 @@
   [dependency-groups]
   dev = [
       "bump-my-version>=1.3.0",
-      "poethepoet>=0.46",
-      "prek>=0.4",
       "pysentry-rs>=0.4",
       "pytest>=9",
       "pytest-cov>=7",
@@ -3692,106 +2306,6 @@
   
   [tool.hatch.version]
   source = "uv-dynamic-versioning"
-  
-  [tool.poe.executor]
-  type = "uv"
-  
-  [tool.poe.tasks.audit]
-  cmd = "pysentry-rs"
-  help = "Run dependencies security audit"
-  
-  [tool.poe.tasks.build]
-  cmd = "uv build"
-  help = "Build distribution package"
-  
-  [tool.poe.tasks.docs-build]
-  cmd = "zensical build -c"
-  help = "Build documentation site"
-  
-  [tool.poe.tasks.docs]
-  sequence = [
-      {ref = "docs-build"},
-      {cmd = "zensical serve -a \"${host}:${port}\""},
-  ]
-  help = "Run documentation site locally"
-  
-  [tool.poe.tasks.docs.args.host]
-  options = ['--host', '-h']
-  help = "Bind IP"
-  default = "localhost"
-  
-  [tool.poe.tasks.docs.args.port]
-  positional = true
-  help = "Bind Port"
-  default = "8000"
-  
-  [tool.poe.tasks.init]
-  sequence = [
-      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
-      {cmd = "git init"},
-      {ref = "setup"},
-      {cmd = "git remote add origin https://github.com/ness/PKFire"},
-      {cmd = "git config --local remote.origin.pushurl git@github.com:ness/PKFire.git"},
-      {cmd = "git add ."},
-      {cmd = "git commit -m 'Create project from template'"},
-  ]
-  help = "Initialize git repository once on project creation"
-  
-  [tool.poe.tasks.lint]
-  cmd = "prek run --all-files"
-  help = "Run all formatters and static checks"
-  
-  [tool.poe.tasks.lt]
-  sequence = [{ref = "lint"}, {ref = "test"}]
-  help = "Run all formatters, static checks and tests"
-  
-  [tool.poe.tasks.release]
-  cmd = "bump-my-version bump -v"
-  help = "Create and push a release tag (patch/minor/major)"
-  
-  [tool.poe.tasks.setup]
-  sequence = [
-      {cmd = "uv sync"},
-      {cmd = "prek install"},
-  ]
-  help = "Install project dependencies and git hooks"
-  
-  [tool.poe.tasks.test]
-  cmd = "pytest"
-  help = "Run tests"
-  
-  [tool.poe.tasks.test-versions]
-  sequence = ["test-py310", "test-py311", "test-py312", "test-py313", "test-py314"]
-  help = "Run tests across all Python versions"
-  
-  [tool.poe.tasks.test-py310]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.10"}
-  help = "Run tests using Python 3.10"
-  
-  [tool.poe.tasks.test-py311]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.11"}
-  help = "Run tests using Python 3.11"
-  
-  [tool.poe.tasks.test-py312]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.12"}
-  help = "Run tests using Python 3.12"
-  
-  [tool.poe.tasks.test-py313]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.13"}
-  help = "Run tests using Python 3.13"
-  
-  [tool.poe.tasks.test-py314]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.14"}
-  help = "Run tests using Python 3.14"
-  
-  [tool.poe.tasks.ti]
-  cmd = "pytest --numprocesses 0 --no-cov -vv"
-  help = "Run tests with debug friendly options"
   
   [tool.pytest]
   addopts = [
@@ -3899,8 +2413,6 @@
   [dependency-groups]
   dev = [
       "bump-my-version>=1.3.0",
-      "poethepoet>=0.46",
-      "prek>=0.4",
       "pytest>=9",
       "pytest-cov>=7",
       "pytest-sugar>=1",
@@ -3925,80 +2437,6 @@
   
   [tool.hatch.version]
   source = "uv-dynamic-versioning"
-  
-  [tool.poe.executor]
-  type = "uv"
-  
-  [tool.poe.tasks.build]
-  cmd = "uv build"
-  help = "Build distribution package"
-  
-  [tool.poe.tasks.docs-build]
-  cmd = "zensical build -c"
-  help = "Build documentation site"
-  
-  [tool.poe.tasks.docs]
-  sequence = [
-      {ref = "docs-build"},
-      {cmd = "zensical serve -a \"${host}:${port}\""},
-  ]
-  help = "Run documentation site locally"
-  
-  [tool.poe.tasks.docs.args.host]
-  options = ['--host', '-h']
-  help = "Bind IP"
-  default = "localhost"
-  
-  [tool.poe.tasks.docs.args.port]
-  positional = true
-  help = "Bind Port"
-  default = "8000"
-  
-  [tool.poe.tasks.init]
-  sequence = [
-      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
-      {cmd = "git init"},
-      {ref = "setup"},
-      {cmd = "git add ."},
-      {cmd = "git commit -m 'Create project from template'"},
-  ]
-  help = "Initialize git repository once on project creation"
-  
-  [tool.poe.tasks.lint]
-  cmd = "prek run --all-files"
-  help = "Run all formatters and static checks"
-  
-  [tool.poe.tasks.lt]
-  sequence = [{ref = "lint"}, {ref = "test"}]
-  help = "Run all formatters, static checks and tests"
-  
-  [tool.poe.tasks.release]
-  cmd = "bump-my-version bump -v"
-  help = "Create and push a release tag (patch/minor/major)"
-  
-  [tool.poe.tasks.setup]
-  sequence = [
-      {cmd = "uv sync"},
-      {cmd = "prek install"},
-  ]
-  help = "Install project dependencies and git hooks"
-  
-  [tool.poe.tasks.test]
-  cmd = "pytest"
-  help = "Run tests"
-  
-  [tool.poe.tasks.test-versions]
-  sequence = ["test-py314"]
-  help = "Run tests across all Python versions"
-  
-  [tool.poe.tasks.test-py314]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.14"}
-  help = "Run tests using Python 3.14"
-  
-  [tool.poe.tasks.ti]
-  cmd = "pytest --numprocesses 0 --no-cov -vv"
-  help = "Run tests with debug friendly options"
   
   [tool.pytest]
   addopts = [
@@ -4111,8 +2549,6 @@
   [dependency-groups]
   dev = [
       "bump-my-version>=1.3.0",
-      "poethepoet>=0.46",
-      "prek>=0.4",
       "pysentry-rs>=0.4",
       "pytest>=9",
       "pytest-cov>=7",
@@ -4138,86 +2574,6 @@
   
   [tool.hatch.version]
   source = "uv-dynamic-versioning"
-  
-  [tool.poe.executor]
-  type = "uv"
-  
-  [tool.poe.tasks.audit]
-  cmd = "pysentry-rs"
-  help = "Run dependencies security audit"
-  
-  [tool.poe.tasks.build]
-  cmd = "uv build"
-  help = "Build distribution package"
-  
-  [tool.poe.tasks.docs-build]
-  cmd = "zensical build -c"
-  help = "Build documentation site"
-  
-  [tool.poe.tasks.docs]
-  sequence = [
-      {ref = "docs-build"},
-      {cmd = "zensical serve -a \"${host}:${port}\""},
-  ]
-  help = "Run documentation site locally"
-  
-  [tool.poe.tasks.docs.args.host]
-  options = ['--host', '-h']
-  help = "Bind IP"
-  default = "localhost"
-  
-  [tool.poe.tasks.docs.args.port]
-  positional = true
-  help = "Bind Port"
-  default = "8000"
-  
-  [tool.poe.tasks.init]
-  sequence = [
-      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
-      {cmd = "git init"},
-      {ref = "setup"},
-      {cmd = "git remote add origin https://github.com/ness/PKFire"},
-      {cmd = "git config --local remote.origin.pushurl git@github.com:ness/PKFire.git"},
-      {cmd = "git add ."},
-      {cmd = "git commit -m 'Create project from template'"},
-  ]
-  help = "Initialize git repository once on project creation"
-  
-  [tool.poe.tasks.lint]
-  cmd = "prek run --all-files"
-  help = "Run all formatters and static checks"
-  
-  [tool.poe.tasks.lt]
-  sequence = [{ref = "lint"}, {ref = "test"}]
-  help = "Run all formatters, static checks and tests"
-  
-  [tool.poe.tasks.release]
-  cmd = "bump-my-version bump -v"
-  help = "Create and push a release tag (patch/minor/major)"
-  
-  [tool.poe.tasks.setup]
-  sequence = [
-      {cmd = "uv sync"},
-      {cmd = "prek install"},
-  ]
-  help = "Install project dependencies and git hooks"
-  
-  [tool.poe.tasks.test]
-  cmd = "pytest"
-  help = "Run tests"
-  
-  [tool.poe.tasks.test-versions]
-  sequence = ["test-py314"]
-  help = "Run tests across all Python versions"
-  
-  [tool.poe.tasks.test-py314]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.14"}
-  help = "Run tests using Python 3.14"
-  
-  [tool.poe.tasks.ti]
-  cmd = "pytest --numprocesses 0 --no-cov -vv"
-  help = "Run tests with debug friendly options"
   
   [tool.pytest]
   addopts = [
@@ -4329,8 +2685,6 @@
   [dependency-groups]
   dev = [
       "bump-my-version>=1.3.0",
-      "poethepoet>=0.46",
-      "prek>=0.4",
       "pytest>=9",
       "pytest-cov>=7",
       "pytest-sugar>=1",
@@ -4351,79 +2705,6 @@
   
   [tool.hatch.version]
   source = "uv-dynamic-versioning"
-  
-  [tool.poe.executor]
-  type = "uv"
-  
-  [tool.poe.tasks.build]
-  cmd = "uv build"
-  help = "Build distribution package"
-  
-  [tool.poe.tasks.init]
-  sequence = [
-      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
-      {cmd = "git init"},
-      {ref = "setup"},
-      {cmd = "git add ."},
-      {cmd = "git commit -m 'Create project from template'"},
-  ]
-  help = "Initialize git repository once on project creation"
-  
-  [tool.poe.tasks.lint]
-  cmd = "prek run --all-files"
-  help = "Run all formatters and static checks"
-  
-  [tool.poe.tasks.lt]
-  sequence = [{ref = "lint"}, {ref = "test"}]
-  help = "Run all formatters, static checks and tests"
-  
-  [tool.poe.tasks.release]
-  cmd = "bump-my-version bump -v"
-  help = "Create and push a release tag (patch/minor/major)"
-  
-  [tool.poe.tasks.setup]
-  sequence = [
-      {cmd = "uv sync"},
-      {cmd = "prek install"},
-  ]
-  help = "Install project dependencies and git hooks"
-  
-  [tool.poe.tasks.test]
-  cmd = "pytest"
-  help = "Run tests"
-  
-  [tool.poe.tasks.test-versions]
-  sequence = ["test-py310", "test-py311", "test-py312", "test-py313", "test-py314"]
-  help = "Run tests across all Python versions"
-  
-  [tool.poe.tasks.test-py310]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.10"}
-  help = "Run tests using Python 3.10"
-  
-  [tool.poe.tasks.test-py311]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.11"}
-  help = "Run tests using Python 3.11"
-  
-  [tool.poe.tasks.test-py312]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.12"}
-  help = "Run tests using Python 3.12"
-  
-  [tool.poe.tasks.test-py313]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.13"}
-  help = "Run tests using Python 3.13"
-  
-  [tool.poe.tasks.test-py314]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.14"}
-  help = "Run tests using Python 3.14"
-  
-  [tool.poe.tasks.ti]
-  cmd = "pytest --numprocesses 0 --no-cov -vv"
-  help = "Run tests with debug friendly options"
   
   [tool.pytest]
   addopts = [
@@ -4540,8 +2821,6 @@
   [dependency-groups]
   dev = [
       "bump-my-version>=1.3.0",
-      "poethepoet>=0.46",
-      "prek>=0.4",
       "pysentry-rs>=0.4",
       "pytest>=9",
       "pytest-cov>=7",
@@ -4563,85 +2842,6 @@
   
   [tool.hatch.version]
   source = "uv-dynamic-versioning"
-  
-  [tool.poe.executor]
-  type = "uv"
-  
-  [tool.poe.tasks.audit]
-  cmd = "pysentry-rs"
-  help = "Run dependencies security audit"
-  
-  [tool.poe.tasks.build]
-  cmd = "uv build"
-  help = "Build distribution package"
-  
-  [tool.poe.tasks.init]
-  sequence = [
-      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
-      {cmd = "git init"},
-      {ref = "setup"},
-      {cmd = "git remote add origin https://github.com/ness/PKFire"},
-      {cmd = "git config --local remote.origin.pushurl git@github.com:ness/PKFire.git"},
-      {cmd = "git add ."},
-      {cmd = "git commit -m 'Create project from template'"},
-  ]
-  help = "Initialize git repository once on project creation"
-  
-  [tool.poe.tasks.lint]
-  cmd = "prek run --all-files"
-  help = "Run all formatters and static checks"
-  
-  [tool.poe.tasks.lt]
-  sequence = [{ref = "lint"}, {ref = "test"}]
-  help = "Run all formatters, static checks and tests"
-  
-  [tool.poe.tasks.release]
-  cmd = "bump-my-version bump -v"
-  help = "Create and push a release tag (patch/minor/major)"
-  
-  [tool.poe.tasks.setup]
-  sequence = [
-      {cmd = "uv sync"},
-      {cmd = "prek install"},
-  ]
-  help = "Install project dependencies and git hooks"
-  
-  [tool.poe.tasks.test]
-  cmd = "pytest"
-  help = "Run tests"
-  
-  [tool.poe.tasks.test-versions]
-  sequence = ["test-py310", "test-py311", "test-py312", "test-py313", "test-py314"]
-  help = "Run tests across all Python versions"
-  
-  [tool.poe.tasks.test-py310]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.10"}
-  help = "Run tests using Python 3.10"
-  
-  [tool.poe.tasks.test-py311]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.11"}
-  help = "Run tests using Python 3.11"
-  
-  [tool.poe.tasks.test-py312]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.12"}
-  help = "Run tests using Python 3.12"
-  
-  [tool.poe.tasks.test-py313]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.13"}
-  help = "Run tests using Python 3.13"
-  
-  [tool.poe.tasks.test-py314]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.14"}
-  help = "Run tests using Python 3.14"
-  
-  [tool.poe.tasks.ti]
-  cmd = "pytest --numprocesses 0 --no-cov -vv"
-  help = "Run tests with debug friendly options"
   
   [tool.pytest]
   addopts = [
@@ -4749,8 +2949,6 @@
   [dependency-groups]
   dev = [
       "bump-my-version>=1.3.0",
-      "poethepoet>=0.46",
-      "prek>=0.4",
       "pytest>=9",
       "pytest-cov>=7",
       "pytest-sugar>=1",
@@ -4771,59 +2969,6 @@
   
   [tool.hatch.version]
   source = "uv-dynamic-versioning"
-  
-  [tool.poe.executor]
-  type = "uv"
-  
-  [tool.poe.tasks.build]
-  cmd = "uv build"
-  help = "Build distribution package"
-  
-  [tool.poe.tasks.init]
-  sequence = [
-      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
-      {cmd = "git init"},
-      {ref = "setup"},
-      {cmd = "git add ."},
-      {cmd = "git commit -m 'Create project from template'"},
-  ]
-  help = "Initialize git repository once on project creation"
-  
-  [tool.poe.tasks.lint]
-  cmd = "prek run --all-files"
-  help = "Run all formatters and static checks"
-  
-  [tool.poe.tasks.lt]
-  sequence = [{ref = "lint"}, {ref = "test"}]
-  help = "Run all formatters, static checks and tests"
-  
-  [tool.poe.tasks.release]
-  cmd = "bump-my-version bump -v"
-  help = "Create and push a release tag (patch/minor/major)"
-  
-  [tool.poe.tasks.setup]
-  sequence = [
-      {cmd = "uv sync"},
-      {cmd = "prek install"},
-  ]
-  help = "Install project dependencies and git hooks"
-  
-  [tool.poe.tasks.test]
-  cmd = "pytest"
-  help = "Run tests"
-  
-  [tool.poe.tasks.test-versions]
-  sequence = ["test-py314"]
-  help = "Run tests across all Python versions"
-  
-  [tool.poe.tasks.test-py314]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.14"}
-  help = "Run tests using Python 3.14"
-  
-  [tool.poe.tasks.ti]
-  cmd = "pytest --numprocesses 0 --no-cov -vv"
-  help = "Run tests with debug friendly options"
   
   [tool.pytest]
   addopts = [
@@ -4936,8 +3081,6 @@
   [dependency-groups]
   dev = [
       "bump-my-version>=1.3.0",
-      "poethepoet>=0.46",
-      "prek>=0.4",
       "pysentry-rs>=0.4",
       "pytest>=9",
       "pytest-cov>=7",
@@ -4959,65 +3102,6 @@
   
   [tool.hatch.version]
   source = "uv-dynamic-versioning"
-  
-  [tool.poe.executor]
-  type = "uv"
-  
-  [tool.poe.tasks.audit]
-  cmd = "pysentry-rs"
-  help = "Run dependencies security audit"
-  
-  [tool.poe.tasks.build]
-  cmd = "uv build"
-  help = "Build distribution package"
-  
-  [tool.poe.tasks.init]
-  sequence = [
-      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
-      {cmd = "git init"},
-      {ref = "setup"},
-      {cmd = "git remote add origin https://github.com/ness/PKFire"},
-      {cmd = "git config --local remote.origin.pushurl git@github.com:ness/PKFire.git"},
-      {cmd = "git add ."},
-      {cmd = "git commit -m 'Create project from template'"},
-  ]
-  help = "Initialize git repository once on project creation"
-  
-  [tool.poe.tasks.lint]
-  cmd = "prek run --all-files"
-  help = "Run all formatters and static checks"
-  
-  [tool.poe.tasks.lt]
-  sequence = [{ref = "lint"}, {ref = "test"}]
-  help = "Run all formatters, static checks and tests"
-  
-  [tool.poe.tasks.release]
-  cmd = "bump-my-version bump -v"
-  help = "Create and push a release tag (patch/minor/major)"
-  
-  [tool.poe.tasks.setup]
-  sequence = [
-      {cmd = "uv sync"},
-      {cmd = "prek install"},
-  ]
-  help = "Install project dependencies and git hooks"
-  
-  [tool.poe.tasks.test]
-  cmd = "pytest"
-  help = "Run tests"
-  
-  [tool.poe.tasks.test-versions]
-  sequence = ["test-py314"]
-  help = "Run tests across all Python versions"
-  
-  [tool.poe.tasks.test-py314]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.14"}
-  help = "Run tests using Python 3.14"
-  
-  [tool.poe.tasks.ti]
-  cmd = "pytest --numprocesses 0 --no-cov -vv"
-  help = "Run tests with debug friendly options"
   
   [tool.pytest]
   addopts = [
@@ -5129,8 +3213,6 @@
   [dependency-groups]
   dev = [
       "bump-my-version>=1.3.0",
-      "poethepoet>=0.46",
-      "prek>=0.4",
       "pytest>=9",
       "pytest-cov>=7",
       "pytest-sugar>=1",
@@ -5156,104 +3238,6 @@
   
   [tool.hatch.version]
   source = "uv-dynamic-versioning"
-  
-  [tool.poe.executor]
-  type = "uv"
-  
-  [tool.poe.tasks.build]
-  cmd = "uv build"
-  help = "Build distribution package"
-  
-  [tool.poe.tasks.docs-build]
-  cmd = "zensical build -c"
-  help = "Build documentation site"
-  
-  [tool.poe.tasks.docs]
-  sequence = [
-      {ref = "docs-build"},
-      {cmd = "zensical serve -a \"${host}:${port}\""},
-  ]
-  help = "Run documentation site locally"
-  
-  [tool.poe.tasks.docs.args.host]
-  options = ['--host', '-h']
-  help = "Bind IP"
-  default = "localhost"
-  
-  [tool.poe.tasks.docs.args.port]
-  positional = true
-  help = "Bind Port"
-  default = "8000"
-  
-  [tool.poe.tasks.init]
-  sequence = [
-      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
-      {cmd = "git init"},
-      {ref = "setup"},
-      {cmd = "git add ."},
-      {cmd = "git commit -m 'Create project from template'"},
-  ]
-  help = "Initialize git repository once on project creation"
-  
-  [tool.poe.tasks.lint]
-  cmd = "prek run --all-files"
-  help = "Run all formatters and static checks"
-  
-  [tool.poe.tasks.lt]
-  sequence = [{ref = "lint"}, {ref = "test"}]
-  help = "Run all formatters, static checks and tests"
-  
-  [tool.poe.tasks.release]
-  cmd = "bump-my-version bump -v"
-  help = "Create and push a release tag (patch/minor/major)"
-  
-  [tool.poe.tasks.setup]
-  sequence = [
-      {cmd = "uv sync"},
-      {cmd = "prek install"},
-  ]
-  help = "Install project dependencies and git hooks"
-  
-  [tool.poe.tasks.snapup]
-  cmd = "pytest --snapshot-update --numprocesses 0"
-  help = "Update test snapshots"
-  
-  [tool.poe.tasks.test]
-  cmd = "pytest"
-  help = "Run tests"
-  
-  [tool.poe.tasks.test-versions]
-  sequence = ["test-py310", "test-py311", "test-py312", "test-py313", "test-py314"]
-  help = "Run tests across all Python versions"
-  
-  [tool.poe.tasks.test-py310]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.10"}
-  help = "Run tests using Python 3.10"
-  
-  [tool.poe.tasks.test-py311]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.11"}
-  help = "Run tests using Python 3.11"
-  
-  [tool.poe.tasks.test-py312]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.12"}
-  help = "Run tests using Python 3.12"
-  
-  [tool.poe.tasks.test-py313]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.13"}
-  help = "Run tests using Python 3.13"
-  
-  [tool.poe.tasks.test-py314]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.14"}
-  help = "Run tests using Python 3.14"
-  
-  [tool.poe.tasks.ti]
-  cmd = "pytest --numprocesses 0 --no-cov -vv"
-  help = "Run tests with debug friendly options"
   
   [tool.pytest]
   addopts = [
@@ -5370,8 +3354,6 @@
   [dependency-groups]
   dev = [
       "bump-my-version>=1.3.0",
-      "poethepoet>=0.46",
-      "prek>=0.4",
       "pysentry-rs>=0.4",
       "pytest>=9",
       "pytest-cov>=7",
@@ -5398,110 +3380,6 @@
   
   [tool.hatch.version]
   source = "uv-dynamic-versioning"
-  
-  [tool.poe.executor]
-  type = "uv"
-  
-  [tool.poe.tasks.audit]
-  cmd = "pysentry-rs"
-  help = "Run dependencies security audit"
-  
-  [tool.poe.tasks.build]
-  cmd = "uv build"
-  help = "Build distribution package"
-  
-  [tool.poe.tasks.docs-build]
-  cmd = "zensical build -c"
-  help = "Build documentation site"
-  
-  [tool.poe.tasks.docs]
-  sequence = [
-      {ref = "docs-build"},
-      {cmd = "zensical serve -a \"${host}:${port}\""},
-  ]
-  help = "Run documentation site locally"
-  
-  [tool.poe.tasks.docs.args.host]
-  options = ['--host', '-h']
-  help = "Bind IP"
-  default = "localhost"
-  
-  [tool.poe.tasks.docs.args.port]
-  positional = true
-  help = "Bind Port"
-  default = "8000"
-  
-  [tool.poe.tasks.init]
-  sequence = [
-      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
-      {cmd = "git init"},
-      {ref = "setup"},
-      {cmd = "git remote add origin https://github.com/ness/PKFire"},
-      {cmd = "git config --local remote.origin.pushurl git@github.com:ness/PKFire.git"},
-      {cmd = "git add ."},
-      {cmd = "git commit -m 'Create project from template'"},
-  ]
-  help = "Initialize git repository once on project creation"
-  
-  [tool.poe.tasks.lint]
-  cmd = "prek run --all-files"
-  help = "Run all formatters and static checks"
-  
-  [tool.poe.tasks.lt]
-  sequence = [{ref = "lint"}, {ref = "test"}]
-  help = "Run all formatters, static checks and tests"
-  
-  [tool.poe.tasks.release]
-  cmd = "bump-my-version bump -v"
-  help = "Create and push a release tag (patch/minor/major)"
-  
-  [tool.poe.tasks.setup]
-  sequence = [
-      {cmd = "uv sync"},
-      {cmd = "prek install"},
-  ]
-  help = "Install project dependencies and git hooks"
-  
-  [tool.poe.tasks.snapup]
-  cmd = "pytest --snapshot-update --numprocesses 0"
-  help = "Update test snapshots"
-  
-  [tool.poe.tasks.test]
-  cmd = "pytest"
-  help = "Run tests"
-  
-  [tool.poe.tasks.test-versions]
-  sequence = ["test-py310", "test-py311", "test-py312", "test-py313", "test-py314"]
-  help = "Run tests across all Python versions"
-  
-  [tool.poe.tasks.test-py310]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.10"}
-  help = "Run tests using Python 3.10"
-  
-  [tool.poe.tasks.test-py311]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.11"}
-  help = "Run tests using Python 3.11"
-  
-  [tool.poe.tasks.test-py312]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.12"}
-  help = "Run tests using Python 3.12"
-  
-  [tool.poe.tasks.test-py313]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.13"}
-  help = "Run tests using Python 3.13"
-  
-  [tool.poe.tasks.test-py314]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.14"}
-  help = "Run tests using Python 3.14"
-  
-  [tool.poe.tasks.ti]
-  cmd = "pytest --numprocesses 0 --no-cov -vv"
-  help = "Run tests with debug friendly options"
   
   [tool.pytest]
   addopts = [
@@ -5609,8 +3487,6 @@
   [dependency-groups]
   dev = [
       "bump-my-version>=1.3.0",
-      "poethepoet>=0.46",
-      "prek>=0.4",
       "pytest>=9",
       "pytest-cov>=7",
       "pytest-sugar>=1",
@@ -5636,84 +3512,6 @@
   
   [tool.hatch.version]
   source = "uv-dynamic-versioning"
-  
-  [tool.poe.executor]
-  type = "uv"
-  
-  [tool.poe.tasks.build]
-  cmd = "uv build"
-  help = "Build distribution package"
-  
-  [tool.poe.tasks.docs-build]
-  cmd = "zensical build -c"
-  help = "Build documentation site"
-  
-  [tool.poe.tasks.docs]
-  sequence = [
-      {ref = "docs-build"},
-      {cmd = "zensical serve -a \"${host}:${port}\""},
-  ]
-  help = "Run documentation site locally"
-  
-  [tool.poe.tasks.docs.args.host]
-  options = ['--host', '-h']
-  help = "Bind IP"
-  default = "localhost"
-  
-  [tool.poe.tasks.docs.args.port]
-  positional = true
-  help = "Bind Port"
-  default = "8000"
-  
-  [tool.poe.tasks.init]
-  sequence = [
-      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
-      {cmd = "git init"},
-      {ref = "setup"},
-      {cmd = "git add ."},
-      {cmd = "git commit -m 'Create project from template'"},
-  ]
-  help = "Initialize git repository once on project creation"
-  
-  [tool.poe.tasks.lint]
-  cmd = "prek run --all-files"
-  help = "Run all formatters and static checks"
-  
-  [tool.poe.tasks.lt]
-  sequence = [{ref = "lint"}, {ref = "test"}]
-  help = "Run all formatters, static checks and tests"
-  
-  [tool.poe.tasks.release]
-  cmd = "bump-my-version bump -v"
-  help = "Create and push a release tag (patch/minor/major)"
-  
-  [tool.poe.tasks.setup]
-  sequence = [
-      {cmd = "uv sync"},
-      {cmd = "prek install"},
-  ]
-  help = "Install project dependencies and git hooks"
-  
-  [tool.poe.tasks.snapup]
-  cmd = "pytest --snapshot-update --numprocesses 0"
-  help = "Update test snapshots"
-  
-  [tool.poe.tasks.test]
-  cmd = "pytest"
-  help = "Run tests"
-  
-  [tool.poe.tasks.test-versions]
-  sequence = ["test-py314"]
-  help = "Run tests across all Python versions"
-  
-  [tool.poe.tasks.test-py314]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.14"}
-  help = "Run tests using Python 3.14"
-  
-  [tool.poe.tasks.ti]
-  cmd = "pytest --numprocesses 0 --no-cov -vv"
-  help = "Run tests with debug friendly options"
   
   [tool.pytest]
   addopts = [
@@ -5826,8 +3624,6 @@
   [dependency-groups]
   dev = [
       "bump-my-version>=1.3.0",
-      "poethepoet>=0.46",
-      "prek>=0.4",
       "pysentry-rs>=0.4",
       "pytest>=9",
       "pytest-cov>=7",
@@ -5854,90 +3650,6 @@
   
   [tool.hatch.version]
   source = "uv-dynamic-versioning"
-  
-  [tool.poe.executor]
-  type = "uv"
-  
-  [tool.poe.tasks.audit]
-  cmd = "pysentry-rs"
-  help = "Run dependencies security audit"
-  
-  [tool.poe.tasks.build]
-  cmd = "uv build"
-  help = "Build distribution package"
-  
-  [tool.poe.tasks.docs-build]
-  cmd = "zensical build -c"
-  help = "Build documentation site"
-  
-  [tool.poe.tasks.docs]
-  sequence = [
-      {ref = "docs-build"},
-      {cmd = "zensical serve -a \"${host}:${port}\""},
-  ]
-  help = "Run documentation site locally"
-  
-  [tool.poe.tasks.docs.args.host]
-  options = ['--host', '-h']
-  help = "Bind IP"
-  default = "localhost"
-  
-  [tool.poe.tasks.docs.args.port]
-  positional = true
-  help = "Bind Port"
-  default = "8000"
-  
-  [tool.poe.tasks.init]
-  sequence = [
-      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
-      {cmd = "git init"},
-      {ref = "setup"},
-      {cmd = "git remote add origin https://github.com/ness/PKFire"},
-      {cmd = "git config --local remote.origin.pushurl git@github.com:ness/PKFire.git"},
-      {cmd = "git add ."},
-      {cmd = "git commit -m 'Create project from template'"},
-  ]
-  help = "Initialize git repository once on project creation"
-  
-  [tool.poe.tasks.lint]
-  cmd = "prek run --all-files"
-  help = "Run all formatters and static checks"
-  
-  [tool.poe.tasks.lt]
-  sequence = [{ref = "lint"}, {ref = "test"}]
-  help = "Run all formatters, static checks and tests"
-  
-  [tool.poe.tasks.release]
-  cmd = "bump-my-version bump -v"
-  help = "Create and push a release tag (patch/minor/major)"
-  
-  [tool.poe.tasks.setup]
-  sequence = [
-      {cmd = "uv sync"},
-      {cmd = "prek install"},
-  ]
-  help = "Install project dependencies and git hooks"
-  
-  [tool.poe.tasks.snapup]
-  cmd = "pytest --snapshot-update --numprocesses 0"
-  help = "Update test snapshots"
-  
-  [tool.poe.tasks.test]
-  cmd = "pytest"
-  help = "Run tests"
-  
-  [tool.poe.tasks.test-versions]
-  sequence = ["test-py314"]
-  help = "Run tests across all Python versions"
-  
-  [tool.poe.tasks.test-py314]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.14"}
-  help = "Run tests using Python 3.14"
-  
-  [tool.poe.tasks.ti]
-  cmd = "pytest --numprocesses 0 --no-cov -vv"
-  help = "Run tests with debug friendly options"
   
   [tool.pytest]
   addopts = [
@@ -6049,8 +3761,6 @@
   [dependency-groups]
   dev = [
       "bump-my-version>=1.3.0",
-      "poethepoet>=0.46",
-      "prek>=0.4",
       "pytest>=9",
       "pytest-cov>=7",
       "pytest-sugar>=1",
@@ -6072,83 +3782,6 @@
   
   [tool.hatch.version]
   source = "uv-dynamic-versioning"
-  
-  [tool.poe.executor]
-  type = "uv"
-  
-  [tool.poe.tasks.build]
-  cmd = "uv build"
-  help = "Build distribution package"
-  
-  [tool.poe.tasks.init]
-  sequence = [
-      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
-      {cmd = "git init"},
-      {ref = "setup"},
-      {cmd = "git add ."},
-      {cmd = "git commit -m 'Create project from template'"},
-  ]
-  help = "Initialize git repository once on project creation"
-  
-  [tool.poe.tasks.lint]
-  cmd = "prek run --all-files"
-  help = "Run all formatters and static checks"
-  
-  [tool.poe.tasks.lt]
-  sequence = [{ref = "lint"}, {ref = "test"}]
-  help = "Run all formatters, static checks and tests"
-  
-  [tool.poe.tasks.release]
-  cmd = "bump-my-version bump -v"
-  help = "Create and push a release tag (patch/minor/major)"
-  
-  [tool.poe.tasks.setup]
-  sequence = [
-      {cmd = "uv sync"},
-      {cmd = "prek install"},
-  ]
-  help = "Install project dependencies and git hooks"
-  
-  [tool.poe.tasks.snapup]
-  cmd = "pytest --snapshot-update --numprocesses 0"
-  help = "Update test snapshots"
-  
-  [tool.poe.tasks.test]
-  cmd = "pytest"
-  help = "Run tests"
-  
-  [tool.poe.tasks.test-versions]
-  sequence = ["test-py310", "test-py311", "test-py312", "test-py313", "test-py314"]
-  help = "Run tests across all Python versions"
-  
-  [tool.poe.tasks.test-py310]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.10"}
-  help = "Run tests using Python 3.10"
-  
-  [tool.poe.tasks.test-py311]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.11"}
-  help = "Run tests using Python 3.11"
-  
-  [tool.poe.tasks.test-py312]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.12"}
-  help = "Run tests using Python 3.12"
-  
-  [tool.poe.tasks.test-py313]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.13"}
-  help = "Run tests using Python 3.13"
-  
-  [tool.poe.tasks.test-py314]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.14"}
-  help = "Run tests using Python 3.14"
-  
-  [tool.poe.tasks.ti]
-  cmd = "pytest --numprocesses 0 --no-cov -vv"
-  help = "Run tests with debug friendly options"
   
   [tool.pytest]
   addopts = [
@@ -6265,8 +3898,6 @@
   [dependency-groups]
   dev = [
       "bump-my-version>=1.3.0",
-      "poethepoet>=0.46",
-      "prek>=0.4",
       "pysentry-rs>=0.4",
       "pytest>=9",
       "pytest-cov>=7",
@@ -6289,89 +3920,6 @@
   
   [tool.hatch.version]
   source = "uv-dynamic-versioning"
-  
-  [tool.poe.executor]
-  type = "uv"
-  
-  [tool.poe.tasks.audit]
-  cmd = "pysentry-rs"
-  help = "Run dependencies security audit"
-  
-  [tool.poe.tasks.build]
-  cmd = "uv build"
-  help = "Build distribution package"
-  
-  [tool.poe.tasks.init]
-  sequence = [
-      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
-      {cmd = "git init"},
-      {ref = "setup"},
-      {cmd = "git remote add origin https://github.com/ness/PKFire"},
-      {cmd = "git config --local remote.origin.pushurl git@github.com:ness/PKFire.git"},
-      {cmd = "git add ."},
-      {cmd = "git commit -m 'Create project from template'"},
-  ]
-  help = "Initialize git repository once on project creation"
-  
-  [tool.poe.tasks.lint]
-  cmd = "prek run --all-files"
-  help = "Run all formatters and static checks"
-  
-  [tool.poe.tasks.lt]
-  sequence = [{ref = "lint"}, {ref = "test"}]
-  help = "Run all formatters, static checks and tests"
-  
-  [tool.poe.tasks.release]
-  cmd = "bump-my-version bump -v"
-  help = "Create and push a release tag (patch/minor/major)"
-  
-  [tool.poe.tasks.setup]
-  sequence = [
-      {cmd = "uv sync"},
-      {cmd = "prek install"},
-  ]
-  help = "Install project dependencies and git hooks"
-  
-  [tool.poe.tasks.snapup]
-  cmd = "pytest --snapshot-update --numprocesses 0"
-  help = "Update test snapshots"
-  
-  [tool.poe.tasks.test]
-  cmd = "pytest"
-  help = "Run tests"
-  
-  [tool.poe.tasks.test-versions]
-  sequence = ["test-py310", "test-py311", "test-py312", "test-py313", "test-py314"]
-  help = "Run tests across all Python versions"
-  
-  [tool.poe.tasks.test-py310]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.10"}
-  help = "Run tests using Python 3.10"
-  
-  [tool.poe.tasks.test-py311]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.11"}
-  help = "Run tests using Python 3.11"
-  
-  [tool.poe.tasks.test-py312]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.12"}
-  help = "Run tests using Python 3.12"
-  
-  [tool.poe.tasks.test-py313]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.13"}
-  help = "Run tests using Python 3.13"
-  
-  [tool.poe.tasks.test-py314]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.14"}
-  help = "Run tests using Python 3.14"
-  
-  [tool.poe.tasks.ti]
-  cmd = "pytest --numprocesses 0 --no-cov -vv"
-  help = "Run tests with debug friendly options"
   
   [tool.pytest]
   addopts = [
@@ -6479,8 +4027,6 @@
   [dependency-groups]
   dev = [
       "bump-my-version>=1.3.0",
-      "poethepoet>=0.46",
-      "prek>=0.4",
       "pytest>=9",
       "pytest-cov>=7",
       "pytest-sugar>=1",
@@ -6502,63 +4048,6 @@
   
   [tool.hatch.version]
   source = "uv-dynamic-versioning"
-  
-  [tool.poe.executor]
-  type = "uv"
-  
-  [tool.poe.tasks.build]
-  cmd = "uv build"
-  help = "Build distribution package"
-  
-  [tool.poe.tasks.init]
-  sequence = [
-      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
-      {cmd = "git init"},
-      {ref = "setup"},
-      {cmd = "git add ."},
-      {cmd = "git commit -m 'Create project from template'"},
-  ]
-  help = "Initialize git repository once on project creation"
-  
-  [tool.poe.tasks.lint]
-  cmd = "prek run --all-files"
-  help = "Run all formatters and static checks"
-  
-  [tool.poe.tasks.lt]
-  sequence = [{ref = "lint"}, {ref = "test"}]
-  help = "Run all formatters, static checks and tests"
-  
-  [tool.poe.tasks.release]
-  cmd = "bump-my-version bump -v"
-  help = "Create and push a release tag (patch/minor/major)"
-  
-  [tool.poe.tasks.setup]
-  sequence = [
-      {cmd = "uv sync"},
-      {cmd = "prek install"},
-  ]
-  help = "Install project dependencies and git hooks"
-  
-  [tool.poe.tasks.snapup]
-  cmd = "pytest --snapshot-update --numprocesses 0"
-  help = "Update test snapshots"
-  
-  [tool.poe.tasks.test]
-  cmd = "pytest"
-  help = "Run tests"
-  
-  [tool.poe.tasks.test-versions]
-  sequence = ["test-py314"]
-  help = "Run tests across all Python versions"
-  
-  [tool.poe.tasks.test-py314]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.14"}
-  help = "Run tests using Python 3.14"
-  
-  [tool.poe.tasks.ti]
-  cmd = "pytest --numprocesses 0 --no-cov -vv"
-  help = "Run tests with debug friendly options"
   
   [tool.pytest]
   addopts = [
@@ -6671,8 +4160,6 @@
   [dependency-groups]
   dev = [
       "bump-my-version>=1.3.0",
-      "poethepoet>=0.46",
-      "prek>=0.4",
       "pysentry-rs>=0.4",
       "pytest>=9",
       "pytest-cov>=7",
@@ -6695,69 +4182,6 @@
   
   [tool.hatch.version]
   source = "uv-dynamic-versioning"
-  
-  [tool.poe.executor]
-  type = "uv"
-  
-  [tool.poe.tasks.audit]
-  cmd = "pysentry-rs"
-  help = "Run dependencies security audit"
-  
-  [tool.poe.tasks.build]
-  cmd = "uv build"
-  help = "Build distribution package"
-  
-  [tool.poe.tasks.init]
-  sequence = [
-      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
-      {cmd = "git init"},
-      {ref = "setup"},
-      {cmd = "git remote add origin https://github.com/ness/PKFire"},
-      {cmd = "git config --local remote.origin.pushurl git@github.com:ness/PKFire.git"},
-      {cmd = "git add ."},
-      {cmd = "git commit -m 'Create project from template'"},
-  ]
-  help = "Initialize git repository once on project creation"
-  
-  [tool.poe.tasks.lint]
-  cmd = "prek run --all-files"
-  help = "Run all formatters and static checks"
-  
-  [tool.poe.tasks.lt]
-  sequence = [{ref = "lint"}, {ref = "test"}]
-  help = "Run all formatters, static checks and tests"
-  
-  [tool.poe.tasks.release]
-  cmd = "bump-my-version bump -v"
-  help = "Create and push a release tag (patch/minor/major)"
-  
-  [tool.poe.tasks.setup]
-  sequence = [
-      {cmd = "uv sync"},
-      {cmd = "prek install"},
-  ]
-  help = "Install project dependencies and git hooks"
-  
-  [tool.poe.tasks.snapup]
-  cmd = "pytest --snapshot-update --numprocesses 0"
-  help = "Update test snapshots"
-  
-  [tool.poe.tasks.test]
-  cmd = "pytest"
-  help = "Run tests"
-  
-  [tool.poe.tasks.test-versions]
-  sequence = ["test-py314"]
-  help = "Run tests across all Python versions"
-  
-  [tool.poe.tasks.test-py314]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.14"}
-  help = "Run tests using Python 3.14"
-  
-  [tool.poe.tasks.ti]
-  cmd = "pytest --numprocesses 0 --no-cov -vv"
-  help = "Run tests with debug friendly options"
   
   [tool.pytest]
   addopts = [
@@ -6872,8 +4296,6 @@
   [dependency-groups]
   dev = [
       "bump-my-version>=1.3.0",
-      "poethepoet>=0.46",
-      "prek>=0.4",
       "pysentry-rs>=0.4",
       "pytest>=9",
       "pytest-cov>=7",
@@ -6900,100 +4322,6 @@
   
   [tool.hatch.version]
   source = "uv-dynamic-versioning"
-  
-  [tool.poe.executor]
-  type = "uv"
-  
-  [tool.poe.tasks.audit]
-  cmd = "pysentry-rs"
-  help = "Run dependencies security audit"
-  
-  [tool.poe.tasks.build]
-  cmd = "uv build"
-  help = "Build distribution package"
-  
-  [tool.poe.tasks.docs-build]
-  cmd = "zensical build -c"
-  help = "Build documentation site"
-  
-  [tool.poe.tasks.docs]
-  sequence = [
-      {ref = "docs-build"},
-      {cmd = "zensical serve -a \"${host}:${port}\""},
-  ]
-  help = "Run documentation site locally"
-  
-  [tool.poe.tasks.docs.args.host]
-  options = ['--host', '-h']
-  help = "Bind IP"
-  default = "localhost"
-  
-  [tool.poe.tasks.docs.args.port]
-  positional = true
-  help = "Bind Port"
-  default = "8000"
-  
-  [tool.poe.tasks.init]
-  sequence = [
-      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
-      {cmd = "git init"},
-      {ref = "setup"},
-      {cmd = "git remote add origin https://github.com/ness/PKFire"},
-      {cmd = "git config --local remote.origin.pushurl git@github.com:ness/PKFire.git"},
-      {cmd = "git add ."},
-      {cmd = "git commit -m 'Create project from template'"},
-  ]
-  help = "Initialize git repository once on project creation"
-  
-  [tool.poe.tasks.lint]
-  cmd = "prek run --all-files"
-  help = "Run all formatters and static checks"
-  
-  [tool.poe.tasks.lt]
-  sequence = [{ref = "lint"}, {ref = "test"}]
-  help = "Run all formatters, static checks and tests"
-  
-  [tool.poe.tasks.release]
-  cmd = "bump-my-version bump -v"
-  help = "Create and push a release tag (patch/minor/major)"
-  
-  [tool.poe.tasks.setup]
-  sequence = [
-      {cmd = "uv sync"},
-      {cmd = "prek install"},
-  ]
-  help = "Install project dependencies and git hooks"
-  
-  [tool.poe.tasks.snapup]
-  cmd = "pytest --snapshot-update --numprocesses 0"
-  help = "Update test snapshots"
-  
-  [tool.poe.tasks.test]
-  cmd = "pytest"
-  help = "Run tests"
-  
-  [tool.poe.tasks.test-versions]
-  sequence = ["test-py310", "test-py311", "test-py312"]
-  help = "Run tests across all Python versions"
-  
-  [tool.poe.tasks.test-py310]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.10"}
-  help = "Run tests using Python 3.10"
-  
-  [tool.poe.tasks.test-py311]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.11"}
-  help = "Run tests using Python 3.11"
-  
-  [tool.poe.tasks.test-py312]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.12"}
-  help = "Run tests using Python 3.12"
-  
-  [tool.poe.tasks.ti]
-  cmd = "pytest --numprocesses 0 --no-cov -vv"
-  help = "Run tests with debug friendly options"
   
   [tool.pytest]
   addopts = [
@@ -7106,8 +4434,6 @@
   [dependency-groups]
   dev = [
       "bump-my-version>=1.3.0",
-      "poethepoet>=0.46",
-      "prek>=0.4",
       "pysentry-rs>=0.4",
       "pytest>=9",
       "pytest-cov>=7",
@@ -7134,90 +4460,6 @@
   
   [tool.hatch.version]
   source = "uv-dynamic-versioning"
-  
-  [tool.poe.executor]
-  type = "uv"
-  
-  [tool.poe.tasks.audit]
-  cmd = "pysentry-rs"
-  help = "Run dependencies security audit"
-  
-  [tool.poe.tasks.build]
-  cmd = "uv build"
-  help = "Build distribution package"
-  
-  [tool.poe.tasks.docs-build]
-  cmd = "zensical build -c"
-  help = "Build documentation site"
-  
-  [tool.poe.tasks.docs]
-  sequence = [
-      {ref = "docs-build"},
-      {cmd = "zensical serve -a \"${host}:${port}\""},
-  ]
-  help = "Run documentation site locally"
-  
-  [tool.poe.tasks.docs.args.host]
-  options = ['--host', '-h']
-  help = "Bind IP"
-  default = "localhost"
-  
-  [tool.poe.tasks.docs.args.port]
-  positional = true
-  help = "Bind Port"
-  default = "8000"
-  
-  [tool.poe.tasks.init]
-  sequence = [
-      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
-      {cmd = "git init"},
-      {ref = "setup"},
-      {cmd = "git remote add origin https://github.com/ness/PKFire"},
-      {cmd = "git config --local remote.origin.pushurl git@github.com:ness/PKFire.git"},
-      {cmd = "git add ."},
-      {cmd = "git commit -m 'Create project from template'"},
-  ]
-  help = "Initialize git repository once on project creation"
-  
-  [tool.poe.tasks.lint]
-  cmd = "prek run --all-files"
-  help = "Run all formatters and static checks"
-  
-  [tool.poe.tasks.lt]
-  sequence = [{ref = "lint"}, {ref = "test"}]
-  help = "Run all formatters, static checks and tests"
-  
-  [tool.poe.tasks.release]
-  cmd = "bump-my-version bump -v"
-  help = "Create and push a release tag (patch/minor/major)"
-  
-  [tool.poe.tasks.setup]
-  sequence = [
-      {cmd = "uv sync"},
-      {cmd = "prek install"},
-  ]
-  help = "Install project dependencies and git hooks"
-  
-  [tool.poe.tasks.snapup]
-  cmd = "pytest --snapshot-update --numprocesses 0"
-  help = "Update test snapshots"
-  
-  [tool.poe.tasks.test]
-  cmd = "pytest"
-  help = "Run tests"
-  
-  [tool.poe.tasks.test-versions]
-  sequence = ["test-py312"]
-  help = "Run tests across all Python versions"
-  
-  [tool.poe.tasks.test-py312]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.12"}
-  help = "Run tests using Python 3.12"
-  
-  [tool.poe.tasks.ti]
-  cmd = "pytest --numprocesses 0 --no-cov -vv"
-  help = "Run tests with debug friendly options"
   
   [tool.pytest]
   addopts = [
@@ -7334,8 +4576,6 @@
   [dependency-groups]
   dev = [
       "bump-my-version>=1.3.0",
-      "poethepoet>=0.46",
-      "prek>=0.4",
       "pysentry-rs>=0.4",
       "pytest>=9",
       "pytest-cov>=7",
@@ -7362,110 +4602,6 @@
   
   [tool.hatch.version]
   source = "uv-dynamic-versioning"
-  
-  [tool.poe.executor]
-  type = "uv"
-  
-  [tool.poe.tasks.audit]
-  cmd = "pysentry-rs"
-  help = "Run dependencies security audit"
-  
-  [tool.poe.tasks.build]
-  cmd = "uv build"
-  help = "Build distribution package"
-  
-  [tool.poe.tasks.docs-build]
-  cmd = "zensical build -c"
-  help = "Build documentation site"
-  
-  [tool.poe.tasks.docs]
-  sequence = [
-      {ref = "docs-build"},
-      {cmd = "zensical serve -a \"${host}:${port}\""},
-  ]
-  help = "Run documentation site locally"
-  
-  [tool.poe.tasks.docs.args.host]
-  options = ['--host', '-h']
-  help = "Bind IP"
-  default = "localhost"
-  
-  [tool.poe.tasks.docs.args.port]
-  positional = true
-  help = "Bind Port"
-  default = "8000"
-  
-  [tool.poe.tasks.init]
-  sequence = [
-      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
-      {cmd = "git init"},
-      {ref = "setup"},
-      {cmd = "git remote add origin https://github.com/ness/PKFire"},
-      {cmd = "git config --local remote.origin.pushurl git@github.com:ness/PKFire.git"},
-      {cmd = "git add ."},
-      {cmd = "git commit -m 'Create project from template'"},
-  ]
-  help = "Initialize git repository once on project creation"
-  
-  [tool.poe.tasks.lint]
-  cmd = "prek run --all-files"
-  help = "Run all formatters and static checks"
-  
-  [tool.poe.tasks.lt]
-  sequence = [{ref = "lint"}, {ref = "test"}]
-  help = "Run all formatters, static checks and tests"
-  
-  [tool.poe.tasks.release]
-  cmd = "bump-my-version bump -v"
-  help = "Create and push a release tag (patch/minor/major)"
-  
-  [tool.poe.tasks.setup]
-  sequence = [
-      {cmd = "uv sync"},
-      {cmd = "prek install"},
-  ]
-  help = "Install project dependencies and git hooks"
-  
-  [tool.poe.tasks.snapup]
-  cmd = "pytest --snapshot-update --numprocesses 0"
-  help = "Update test snapshots"
-  
-  [tool.poe.tasks.test]
-  cmd = "pytest"
-  help = "Run tests"
-  
-  [tool.poe.tasks.test-versions]
-  sequence = ["test-py310", "test-py311", "test-py312", "test-py313", "test-py314"]
-  help = "Run tests across all Python versions"
-  
-  [tool.poe.tasks.test-py310]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.10"}
-  help = "Run tests using Python 3.10"
-  
-  [tool.poe.tasks.test-py311]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.11"}
-  help = "Run tests using Python 3.11"
-  
-  [tool.poe.tasks.test-py312]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.12"}
-  help = "Run tests using Python 3.12"
-  
-  [tool.poe.tasks.test-py313]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.13"}
-  help = "Run tests using Python 3.13"
-  
-  [tool.poe.tasks.test-py314]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.14"}
-  help = "Run tests using Python 3.14"
-  
-  [tool.poe.tasks.ti]
-  cmd = "pytest --numprocesses 0 --no-cov -vv"
-  help = "Run tests with debug friendly options"
   
   [tool.pytest]
   addopts = [
@@ -7580,8 +4716,6 @@
   [dependency-groups]
   dev = [
       "bump-my-version>=1.3.0",
-      "poethepoet>=0.46",
-      "prek>=0.4",
       "pysentry-rs>=0.4",
       "pytest>=9",
       "pytest-cov>=7",
@@ -7608,100 +4742,6 @@
   
   [tool.hatch.version]
   source = "uv-dynamic-versioning"
-  
-  [tool.poe.executor]
-  type = "uv"
-  
-  [tool.poe.tasks.audit]
-  cmd = "pysentry-rs"
-  help = "Run dependencies security audit"
-  
-  [tool.poe.tasks.build]
-  cmd = "uv build"
-  help = "Build distribution package"
-  
-  [tool.poe.tasks.docs-build]
-  cmd = "zensical build -c"
-  help = "Build documentation site"
-  
-  [tool.poe.tasks.docs]
-  sequence = [
-      {ref = "docs-build"},
-      {cmd = "zensical serve -a \"${host}:${port}\""},
-  ]
-  help = "Run documentation site locally"
-  
-  [tool.poe.tasks.docs.args.host]
-  options = ['--host', '-h']
-  help = "Bind IP"
-  default = "localhost"
-  
-  [tool.poe.tasks.docs.args.port]
-  positional = true
-  help = "Bind Port"
-  default = "8000"
-  
-  [tool.poe.tasks.init]
-  sequence = [
-      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
-      {cmd = "git init"},
-      {ref = "setup"},
-      {cmd = "git remote add origin https://github.com/ness/PKFire"},
-      {cmd = "git config --local remote.origin.pushurl git@github.com:ness/PKFire.git"},
-      {cmd = "git add ."},
-      {cmd = "git commit -m 'Create project from template'"},
-  ]
-  help = "Initialize git repository once on project creation"
-  
-  [tool.poe.tasks.lint]
-  cmd = "prek run --all-files"
-  help = "Run all formatters and static checks"
-  
-  [tool.poe.tasks.lt]
-  sequence = [{ref = "lint"}, {ref = "test"}]
-  help = "Run all formatters, static checks and tests"
-  
-  [tool.poe.tasks.release]
-  cmd = "bump-my-version bump -v"
-  help = "Create and push a release tag (patch/minor/major)"
-  
-  [tool.poe.tasks.setup]
-  sequence = [
-      {cmd = "uv sync"},
-      {cmd = "prek install"},
-  ]
-  help = "Install project dependencies and git hooks"
-  
-  [tool.poe.tasks.snapup]
-  cmd = "pytest --snapshot-update --numprocesses 0"
-  help = "Update test snapshots"
-  
-  [tool.poe.tasks.test]
-  cmd = "pytest"
-  help = "Run tests"
-  
-  [tool.poe.tasks.test-versions]
-  sequence = ["test-py312", "test-py313", "test-py314"]
-  help = "Run tests across all Python versions"
-  
-  [tool.poe.tasks.test-py312]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.12"}
-  help = "Run tests using Python 3.12"
-  
-  [tool.poe.tasks.test-py313]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.13"}
-  help = "Run tests using Python 3.13"
-  
-  [tool.poe.tasks.test-py314]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.14"}
-  help = "Run tests using Python 3.14"
-  
-  [tool.poe.tasks.ti]
-  cmd = "pytest --numprocesses 0 --no-cov -vv"
-  help = "Run tests with debug friendly options"
   
   [tool.pytest]
   addopts = [
@@ -7818,8 +4858,6 @@
   [dependency-groups]
   dev = [
       "bump-my-version>=1.3.0",
-      "poethepoet>=0.46",
-      "prek>=0.4",
       "pysentry-rs>=0.4",
       "pytest>=9",
       "pytest-cov>=7",
@@ -7846,110 +4884,6 @@
   
   [tool.hatch.version]
   source = "uv-dynamic-versioning"
-  
-  [tool.poe.executor]
-  type = "uv"
-  
-  [tool.poe.tasks.audit]
-  cmd = "pysentry-rs"
-  help = "Run dependencies security audit"
-  
-  [tool.poe.tasks.build]
-  cmd = "uv build"
-  help = "Build distribution package"
-  
-  [tool.poe.tasks.docs-build]
-  cmd = "zensical build -c"
-  help = "Build documentation site"
-  
-  [tool.poe.tasks.docs]
-  sequence = [
-      {ref = "docs-build"},
-      {cmd = "zensical serve -a \"${host}:${port}\""},
-  ]
-  help = "Run documentation site locally"
-  
-  [tool.poe.tasks.docs.args.host]
-  options = ['--host', '-h']
-  help = "Bind IP"
-  default = "localhost"
-  
-  [tool.poe.tasks.docs.args.port]
-  positional = true
-  help = "Bind Port"
-  default = "8000"
-  
-  [tool.poe.tasks.init]
-  sequence = [
-      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
-      {cmd = "git init"},
-      {ref = "setup"},
-      {cmd = "git remote add origin https://github.com/ness/PKFire"},
-      {cmd = "git config --local remote.origin.pushurl git@github.com:ness/PKFire.git"},
-      {cmd = "git add ."},
-      {cmd = "git commit -m 'Create project from template'"},
-  ]
-  help = "Initialize git repository once on project creation"
-  
-  [tool.poe.tasks.lint]
-  cmd = "prek run --all-files"
-  help = "Run all formatters and static checks"
-  
-  [tool.poe.tasks.lt]
-  sequence = [{ref = "lint"}, {ref = "test"}]
-  help = "Run all formatters, static checks and tests"
-  
-  [tool.poe.tasks.release]
-  cmd = "bump-my-version bump -v"
-  help = "Create and push a release tag (patch/minor/major)"
-  
-  [tool.poe.tasks.setup]
-  sequence = [
-      {cmd = "uv sync"},
-      {cmd = "prek install"},
-  ]
-  help = "Install project dependencies and git hooks"
-  
-  [tool.poe.tasks.snapup]
-  cmd = "pytest --snapshot-update --numprocesses 0"
-  help = "Update test snapshots"
-  
-  [tool.poe.tasks.test]
-  cmd = "pytest"
-  help = "Run tests"
-  
-  [tool.poe.tasks.test-versions]
-  sequence = ["test-py310", "test-py311", "test-py312", "test-py313", "test-py314"]
-  help = "Run tests across all Python versions"
-  
-  [tool.poe.tasks.test-py310]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.10"}
-  help = "Run tests using Python 3.10"
-  
-  [tool.poe.tasks.test-py311]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.11"}
-  help = "Run tests using Python 3.11"
-  
-  [tool.poe.tasks.test-py312]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.12"}
-  help = "Run tests using Python 3.12"
-  
-  [tool.poe.tasks.test-py313]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.13"}
-  help = "Run tests using Python 3.13"
-  
-  [tool.poe.tasks.test-py314]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.14"}
-  help = "Run tests using Python 3.14"
-  
-  [tool.poe.tasks.ti]
-  cmd = "pytest --numprocesses 0 --no-cov -vv"
-  help = "Run tests with debug friendly options"
   
   [tool.pytest]
   addopts = [
@@ -8064,8 +4998,6 @@
   [dependency-groups]
   dev = [
       "bump-my-version>=1.3.0",
-      "poethepoet>=0.46",
-      "prek>=0.4",
       "pysentry-rs>=0.4",
       "pytest>=9",
       "pytest-cov>=7",
@@ -8092,100 +5024,6 @@
   
   [tool.hatch.version]
   source = "uv-dynamic-versioning"
-  
-  [tool.poe.executor]
-  type = "uv"
-  
-  [tool.poe.tasks.audit]
-  cmd = "pysentry-rs"
-  help = "Run dependencies security audit"
-  
-  [tool.poe.tasks.build]
-  cmd = "uv build"
-  help = "Build distribution package"
-  
-  [tool.poe.tasks.docs-build]
-  cmd = "zensical build -c"
-  help = "Build documentation site"
-  
-  [tool.poe.tasks.docs]
-  sequence = [
-      {ref = "docs-build"},
-      {cmd = "zensical serve -a \"${host}:${port}\""},
-  ]
-  help = "Run documentation site locally"
-  
-  [tool.poe.tasks.docs.args.host]
-  options = ['--host', '-h']
-  help = "Bind IP"
-  default = "localhost"
-  
-  [tool.poe.tasks.docs.args.port]
-  positional = true
-  help = "Bind Port"
-  default = "8000"
-  
-  [tool.poe.tasks.init]
-  sequence = [
-      {shell = "[ ! -d .git ] || { echo \"git repository already exists\"; exit 1; }"},
-      {cmd = "git init"},
-      {ref = "setup"},
-      {cmd = "git remote add origin https://github.com/ness/PKFire"},
-      {cmd = "git config --local remote.origin.pushurl git@github.com:ness/PKFire.git"},
-      {cmd = "git add ."},
-      {cmd = "git commit -m 'Create project from template'"},
-  ]
-  help = "Initialize git repository once on project creation"
-  
-  [tool.poe.tasks.lint]
-  cmd = "prek run --all-files"
-  help = "Run all formatters and static checks"
-  
-  [tool.poe.tasks.lt]
-  sequence = [{ref = "lint"}, {ref = "test"}]
-  help = "Run all formatters, static checks and tests"
-  
-  [tool.poe.tasks.release]
-  cmd = "bump-my-version bump -v"
-  help = "Create and push a release tag (patch/minor/major)"
-  
-  [tool.poe.tasks.setup]
-  sequence = [
-      {cmd = "uv sync"},
-      {cmd = "prek install"},
-  ]
-  help = "Install project dependencies and git hooks"
-  
-  [tool.poe.tasks.snapup]
-  cmd = "pytest --snapshot-update --numprocesses 0"
-  help = "Update test snapshots"
-  
-  [tool.poe.tasks.test]
-  cmd = "pytest"
-  help = "Run tests"
-  
-  [tool.poe.tasks.test-versions]
-  sequence = ["test-py312", "test-py313", "test-py314"]
-  help = "Run tests across all Python versions"
-  
-  [tool.poe.tasks.test-py312]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.12"}
-  help = "Run tests using Python 3.12"
-  
-  [tool.poe.tasks.test-py313]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.13"}
-  help = "Run tests using Python 3.13"
-  
-  [tool.poe.tasks.test-py314]
-  cmd = "pytest"
-  executor = {isolated = true, python = "3.14"}
-  help = "Run tests using Python 3.14"
-  
-  [tool.poe.tasks.ti]
-  cmd = "pytest --numprocesses 0 --no-cov -vv"
-  help = "Run tests with debug friendly options"
   
   [tool.pytest]
   addopts = [

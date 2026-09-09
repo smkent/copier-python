@@ -11,7 +11,7 @@ _message_after_copy: |
        https://github.com/new?owner={{ github_user }}&name={{ project_name }}
 
   2. Initialize git and environment:
-       uv run poe init
+       mise run init
 
   3. Push:
   {%- if project_visibility == 'private' %}
@@ -26,7 +26,7 @@ _message_after_copy: |
   {%- if enable_docs %}
   OR run the documentation site locally:
 
-       uv run poe docs
+       mise run docs
 
   Then, see One Time Setup at: http://localhost:8000/{{ project_name }}/setup/
   {%- endif %}
@@ -35,9 +35,10 @@ _message_after_copy: |
 _message_after_update: |
   Template update applied. Before committing:
 
-    git diff         # review all changes
-    uv run poe lint  # verify code quality
-    uv run poe test  # verify tests pass
+    git diff       # review all changes
+    mise install   # install tools, dependencies, git hooks
+    mise run lint  # verify code quality
+    mise run test  # verify tests pass
 
 project_name:
   type: str

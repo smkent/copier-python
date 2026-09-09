@@ -10,8 +10,13 @@
 
 ## Quick start
 
-With [Astral's **uv**][uv] and [**Copier**][copier] (`uv tool install copier`)
-installed:
+Install required software:
+
+- [**mise-en-place**][mise]: `curl https://mise.run | sh` or
+  [alternate installation method][mise-installation]
+- [**Copier**][copier]: `mise use -g copier` or `uv tool install copier`
+
+Create a new project from the template:
 
 ```sh
 copier copy "gh:smkent/copier-python" /new/project/path
@@ -20,6 +25,10 @@ copier copy "gh:smkent/copier-python" /new/project/path
 **[For more details, see the documentation!][docs-usage]**
 
 ## Features
+
+* [**mise-en-place**][mise] ("mise") for development toolchain management
+
+    [![mise][mise-badge]][mise]
 
 * [Astral][astral] toolset: [**uv**][uv], [**ruff**][ruff], and [**ty**][ty]
 
@@ -42,8 +51,6 @@ copier copy "gh:smkent/copier-python" /new/project/path
 * [**pytest**][pytest] test framework with [**codecov.io**][codecovio] support
 * [**Zensical**][zensical] project documentation with automatic deployment to
   [**GitHub Pages**][github-pages]
-* [**Poe the Poet**][poethepoet] for task shortcuts such as
-   `poe lint`, `poe test`
 
 ## Credits
 
@@ -61,7 +68,9 @@ This template was inspired by [pawamoy/copier-uv][copier-uv] and
 [ghcr-docs]: https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry
 [github-actions]: https://github.com/features/actions
 [github-pages]: https://pages.github.com
-[poethepoet]: https://poethepoet.natn.io/
+[mise]: https://mise.jdx.dev
+[mise-installation]: https://mise.jdx.dev/installing-mise.html
+[mise-badge]: https://mise-versions.jdx.dev/badge.svg
 [pre-commit]: https://pre-commit.com/
 [prek-badge]: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/j178/prek/master/docs/assets/badge-v0.json
 [prek]: https://prek.j178.dev/

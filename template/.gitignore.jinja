@@ -4,12 +4,17 @@ __pycache__/
 *.py[cod]
 
 # uv and packaging
-.venv/
+.venv*/
 /build/
 /dist/
 {%- if project_type == 'library' %}
 uv.lock
 {%- endif %}
+
+# mise
+mise.local.toml
+.mise.local.toml
+.mise/
 
 # Development tools
 .cache/

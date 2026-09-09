@@ -45,13 +45,13 @@ Set **Repository name** to your chosen project name.
 To complete project initialization, run:
 
 ```sh
-poe init
+mise run init
 ```
 
 This will:
 
 1. Create the local git repository
-2. Install dependencies and git hooks (same as `poe setup`)
+2. Install tools, dependencies, and git hooks (same as `mise install`)
 3. Create an initial commit with the newly created project contents
 4. Add your GitHub repository as the `origin` remote
    (when `project_visibility: public`)

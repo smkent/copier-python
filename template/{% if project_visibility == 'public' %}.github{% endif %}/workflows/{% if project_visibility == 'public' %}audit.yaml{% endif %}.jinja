@@ -15,19 +15,26 @@ jobs:
   audit:
     name: Dependencies
     runs-on: ubuntu-latest
+    env:
+      UV_PYTHON: '{{ py.latest() }}'
     steps:
       - name: 💾 Check out repository
         uses: actions/checkout@v6
 
-      - name: 🦀 Set up Python project with uv
-        uses: astral-sh/setup-uv@v8.2.0
+      - name: 📦 Restore uv cache
+        uses: actions/cache@v6
         with:
-          enable-cache: true
-          python-version: '{{ py.latest() }}'
+          path: ~/.cache/uv
+          key: {% raw %}uv-${{ runner.os }}-${{ hashFiles('pyproject.toml', 'uv.lock') }}{% endraw %}
+          restore-keys: |
+            {% raw %}uv-${{ runner.os }}-{% endraw %}
 
-      - name: 🐍 Install dependencies
-        run: uv sync
+      - name: 🍳 Set up mise
+        uses: jdx/mise-action@v4
+        with:
+          cache: true
+          install: true
 
       - name: 🔍 Check dependencies
-        run: uv run poe audit
+        run: mise run audit
 {#- vim: set ft=yaml: #}

@@ -17,6 +17,8 @@
     ci:
       name: Test (Python ${{ matrix.python-version }})
       runs-on: ubuntu-latest
+      env:
+        UV_PYTHON: ${{ matrix.python-version }}
       strategy:
         fail-fast: false
         matrix:
@@ -30,20 +32,25 @@
         - name: 💾 Check out repository
           uses: actions/checkout@v6
   
-        - name: 🦀 Set up Python project with uv
-          uses: astral-sh/setup-uv@v8.2.0
+        - name: 📦 Restore uv cache
+          uses: actions/cache@v6
           with:
-            enable-cache: true
-            python-version: ${{ matrix.python-version }}
+            path: ~/.cache/uv
+            key: uv-${{ runner.os }}-${{ matrix.python-version }}-${{ hashFiles('pyproject.toml', 'uv.lock') }}
+            restore-keys: |
+              uv-${{ runner.os }}-${{ matrix.python-version }}-
   
-        - name: 🐍 Install dependencies
-          run: uv sync
+        - name: 🍳 Set up mise
+          uses: jdx/mise-action@v4
+          with:
+            cache: true
+            install: true
   
         - name: 📐 Lint
-          run: uv run poe lint
+          run: mise run lint
   
         - name: 🔥 Test
-          run: uv run poe test
+          run: mise run test
   
         - name: 🔍 Collect coverage results
           run: uv run coverage xml
@@ -60,23 +67,30 @@
     docs:
       name: Documentation
       runs-on: ubuntu-latest
+      env:
+        UV_PYTHON: '3.14'
       steps:
         - name: 💾 Check out repository
           uses: actions/checkout@v6
           with:
             fetch-depth: 0
   
-        - name: 🦀 Set up Python project with uv
-          uses: astral-sh/setup-uv@v8.2.0
+        - name: 📦 Restore uv cache
+          uses: actions/cache@v6
           with:
-            enable-cache: true
-            python-version: '3.14'
+            path: ~/.cache/uv
+            key: uv-${{ runner.os }}-${{ hashFiles('pyproject.toml', 'uv.lock') }}
+            restore-keys: |
+              uv-${{ runner.os }}-
   
-        - name: 🐍 Install dependencies
-          run: uv sync
+        - name: 🍳 Set up mise
+          uses: jdx/mise-action@v4
+          with:
+            cache: true
+            install: true
   
         - name: 📖 Build documentation
-          run: uv run poe docs-build
+          run: mise run docs-build
   
     gitleaks:
       name: Secret scan
@@ -114,6 +128,8 @@
     ci:
       name: Test (Python ${{ matrix.python-version }})
       runs-on: ubuntu-latest
+      env:
+        UV_PYTHON: ${{ matrix.python-version }}
       strategy:
         fail-fast: false
         matrix:
@@ -127,41 +143,53 @@
         - name: 💾 Check out repository
           uses: actions/checkout@v6
   
-        - name: 🦀 Set up Python project with uv
-          uses: astral-sh/setup-uv@v8.2.0
+        - name: 📦 Restore uv cache
+          uses: actions/cache@v6
           with:
-            enable-cache: true
-            python-version: ${{ matrix.python-version }}
+            path: ~/.cache/uv
+            key: uv-${{ runner.os }}-${{ matrix.python-version }}-${{ hashFiles('pyproject.toml', 'uv.lock') }}
+            restore-keys: |
+              uv-${{ runner.os }}-${{ matrix.python-version }}-
   
-        - name: 🐍 Install dependencies
-          run: uv sync
+        - name: 🍳 Set up mise
+          uses: jdx/mise-action@v4
+          with:
+            cache: true
+            install: true
   
         - name: 📐 Lint
-          run: uv run poe lint
+          run: mise run lint
   
         - name: 🔥 Test
-          run: uv run poe test
+          run: mise run test
   
     docs:
       name: Documentation
       runs-on: ubuntu-latest
+      env:
+        UV_PYTHON: '3.14'
       steps:
         - name: 💾 Check out repository
           uses: actions/checkout@v6
           with:
             fetch-depth: 0
   
-        - name: 🦀 Set up Python project with uv
-          uses: astral-sh/setup-uv@v8.2.0
+        - name: 📦 Restore uv cache
+          uses: actions/cache@v6
           with:
-            enable-cache: true
-            python-version: '3.14'
+            path: ~/.cache/uv
+            key: uv-${{ runner.os }}-${{ hashFiles('pyproject.toml', 'uv.lock') }}
+            restore-keys: |
+              uv-${{ runner.os }}-
   
-        - name: 🐍 Install dependencies
-          run: uv sync
+        - name: 🍳 Set up mise
+          uses: jdx/mise-action@v4
+          with:
+            cache: true
+            install: true
   
         - name: 📖 Build documentation
-          run: uv run poe docs-build
+          run: mise run docs-build
   
     gitleaks:
       name: Secret scan
@@ -199,6 +227,8 @@
     ci:
       name: Test (Python ${{ matrix.python-version }})
       runs-on: ubuntu-latest
+      env:
+        UV_PYTHON: ${{ matrix.python-version }}
       strategy:
         fail-fast: false
         matrix:
@@ -212,20 +242,25 @@
         - name: 💾 Check out repository
           uses: actions/checkout@v6
   
-        - name: 🦀 Set up Python project with uv
-          uses: astral-sh/setup-uv@v8.2.0
+        - name: 📦 Restore uv cache
+          uses: actions/cache@v6
           with:
-            enable-cache: true
-            python-version: ${{ matrix.python-version }}
+            path: ~/.cache/uv
+            key: uv-${{ runner.os }}-${{ matrix.python-version }}-${{ hashFiles('pyproject.toml', 'uv.lock') }}
+            restore-keys: |
+              uv-${{ runner.os }}-${{ matrix.python-version }}-
   
-        - name: 🐍 Install dependencies
-          run: uv sync
+        - name: 🍳 Set up mise
+          uses: jdx/mise-action@v4
+          with:
+            cache: true
+            install: true
   
         - name: 📐 Lint
-          run: uv run poe lint
+          run: mise run lint
   
         - name: 🔥 Test
-          run: uv run poe test
+          run: mise run test
   
         - name: 🔍 Collect coverage results
           run: uv run coverage xml
@@ -276,6 +311,8 @@
     ci:
       name: Test (Python ${{ matrix.python-version }})
       runs-on: ubuntu-latest
+      env:
+        UV_PYTHON: ${{ matrix.python-version }}
       strategy:
         fail-fast: false
         matrix:
@@ -289,20 +326,25 @@
         - name: 💾 Check out repository
           uses: actions/checkout@v6
   
-        - name: 🦀 Set up Python project with uv
-          uses: astral-sh/setup-uv@v8.2.0
+        - name: 📦 Restore uv cache
+          uses: actions/cache@v6
           with:
-            enable-cache: true
-            python-version: ${{ matrix.python-version }}
+            path: ~/.cache/uv
+            key: uv-${{ runner.os }}-${{ matrix.python-version }}-${{ hashFiles('pyproject.toml', 'uv.lock') }}
+            restore-keys: |
+              uv-${{ runner.os }}-${{ matrix.python-version }}-
   
-        - name: 🐍 Install dependencies
-          run: uv sync
+        - name: 🍳 Set up mise
+          uses: jdx/mise-action@v4
+          with:
+            cache: true
+            install: true
   
         - name: 📐 Lint
-          run: uv run poe lint
+          run: mise run lint
   
         - name: 🔥 Test
-          run: uv run poe test
+          run: mise run test
   
   
     gitleaks:
@@ -341,6 +383,8 @@
     ci:
       name: Test (Python ${{ matrix.python-version }})
       runs-on: ubuntu-latest
+      env:
+        UV_PYTHON: ${{ matrix.python-version }}
       strategy:
         fail-fast: false
         matrix:
@@ -352,20 +396,25 @@
         - name: 💾 Check out repository
           uses: actions/checkout@v6
   
-        - name: 🦀 Set up Python project with uv
-          uses: astral-sh/setup-uv@v8.2.0
+        - name: 📦 Restore uv cache
+          uses: actions/cache@v6
           with:
-            enable-cache: true
-            python-version: ${{ matrix.python-version }}
+            path: ~/.cache/uv
+            key: uv-${{ runner.os }}-${{ matrix.python-version }}-${{ hashFiles('pyproject.toml', 'uv.lock') }}
+            restore-keys: |
+              uv-${{ runner.os }}-${{ matrix.python-version }}-
   
-        - name: 🐍 Install dependencies
-          run: uv sync
+        - name: 🍳 Set up mise
+          uses: jdx/mise-action@v4
+          with:
+            cache: true
+            install: true
   
         - name: 📐 Lint
-          run: uv run poe lint
+          run: mise run lint
   
         - name: 🔥 Test
-          run: uv run poe test
+          run: mise run test
   
         - name: 🔍 Collect coverage results
           run: uv run coverage xml
@@ -382,23 +431,30 @@
     docs:
       name: Documentation
       runs-on: ubuntu-latest
+      env:
+        UV_PYTHON: '3.12'
       steps:
         - name: 💾 Check out repository
           uses: actions/checkout@v6
           with:
             fetch-depth: 0
   
-        - name: 🦀 Set up Python project with uv
-          uses: astral-sh/setup-uv@v8.2.0
+        - name: 📦 Restore uv cache
+          uses: actions/cache@v6
           with:
-            enable-cache: true
-            python-version: '3.12'
+            path: ~/.cache/uv
+            key: uv-${{ runner.os }}-${{ hashFiles('pyproject.toml', 'uv.lock') }}
+            restore-keys: |
+              uv-${{ runner.os }}-
   
-        - name: 🐍 Install dependencies
-          run: uv sync
+        - name: 🍳 Set up mise
+          uses: jdx/mise-action@v4
+          with:
+            cache: true
+            install: true
   
         - name: 📖 Build documentation
-          run: uv run poe docs-build
+          run: mise run docs-build
   
     gitleaks:
       name: Secret scan
@@ -436,6 +492,8 @@
     ci:
       name: Test (Python ${{ matrix.python-version }})
       runs-on: ubuntu-latest
+      env:
+        UV_PYTHON: ${{ matrix.python-version }}
       strategy:
         fail-fast: false
         matrix:
@@ -445,20 +503,25 @@
         - name: 💾 Check out repository
           uses: actions/checkout@v6
   
-        - name: 🦀 Set up Python project with uv
-          uses: astral-sh/setup-uv@v8.2.0
+        - name: 📦 Restore uv cache
+          uses: actions/cache@v6
           with:
-            enable-cache: true
-            python-version: ${{ matrix.python-version }}
+            path: ~/.cache/uv
+            key: uv-${{ runner.os }}-${{ matrix.python-version }}-${{ hashFiles('pyproject.toml', 'uv.lock') }}
+            restore-keys: |
+              uv-${{ runner.os }}-${{ matrix.python-version }}-
   
-        - name: 🐍 Install dependencies
-          run: uv sync
+        - name: 🍳 Set up mise
+          uses: jdx/mise-action@v4
+          with:
+            cache: true
+            install: true
   
         - name: 📐 Lint
-          run: uv run poe lint
+          run: mise run lint
   
         - name: 🔥 Test
-          run: uv run poe test
+          run: mise run test
   
         - name: 🔍 Collect coverage results
           run: uv run coverage xml
@@ -475,23 +538,30 @@
     docs:
       name: Documentation
       runs-on: ubuntu-latest
+      env:
+        UV_PYTHON: '3.12'
       steps:
         - name: 💾 Check out repository
           uses: actions/checkout@v6
           with:
             fetch-depth: 0
   
-        - name: 🦀 Set up Python project with uv
-          uses: astral-sh/setup-uv@v8.2.0
+        - name: 📦 Restore uv cache
+          uses: actions/cache@v6
           with:
-            enable-cache: true
-            python-version: '3.12'
+            path: ~/.cache/uv
+            key: uv-${{ runner.os }}-${{ hashFiles('pyproject.toml', 'uv.lock') }}
+            restore-keys: |
+              uv-${{ runner.os }}-
   
-        - name: 🐍 Install dependencies
-          run: uv sync
+        - name: 🍳 Set up mise
+          uses: jdx/mise-action@v4
+          with:
+            cache: true
+            install: true
   
         - name: 📖 Build documentation
-          run: uv run poe docs-build
+          run: mise run docs-build
   
     gitleaks:
       name: Secret scan
@@ -529,6 +599,8 @@
     ci:
       name: Test (Python ${{ matrix.python-version }})
       runs-on: ubuntu-latest
+      env:
+        UV_PYTHON: ${{ matrix.python-version }}
       strategy:
         fail-fast: false
         matrix:
@@ -542,20 +614,25 @@
         - name: 💾 Check out repository
           uses: actions/checkout@v6
   
-        - name: 🦀 Set up Python project with uv
-          uses: astral-sh/setup-uv@v8.2.0
+        - name: 📦 Restore uv cache
+          uses: actions/cache@v6
           with:
-            enable-cache: true
-            python-version: ${{ matrix.python-version }}
+            path: ~/.cache/uv
+            key: uv-${{ runner.os }}-${{ matrix.python-version }}-${{ hashFiles('pyproject.toml', 'uv.lock') }}
+            restore-keys: |
+              uv-${{ runner.os }}-${{ matrix.python-version }}-
   
-        - name: 🐍 Install dependencies
-          run: uv sync
+        - name: 🍳 Set up mise
+          uses: jdx/mise-action@v4
+          with:
+            cache: true
+            install: true
   
         - name: 📐 Lint
-          run: uv run poe lint
+          run: mise run lint
   
         - name: 🔥 Test
-          run: uv run poe test
+          run: mise run test
   
         - name: 🔍 Collect coverage results
           run: uv run coverage xml
@@ -572,23 +649,30 @@
     docs:
       name: Documentation
       runs-on: ubuntu-latest
+      env:
+        UV_PYTHON: '3.14'
       steps:
         - name: 💾 Check out repository
           uses: actions/checkout@v6
           with:
             fetch-depth: 0
   
-        - name: 🦀 Set up Python project with uv
-          uses: astral-sh/setup-uv@v8.2.0
+        - name: 📦 Restore uv cache
+          uses: actions/cache@v6
           with:
-            enable-cache: true
-            python-version: '3.14'
+            path: ~/.cache/uv
+            key: uv-${{ runner.os }}-${{ hashFiles('pyproject.toml', 'uv.lock') }}
+            restore-keys: |
+              uv-${{ runner.os }}-
   
-        - name: 🐍 Install dependencies
-          run: uv sync
+        - name: 🍳 Set up mise
+          uses: jdx/mise-action@v4
+          with:
+            cache: true
+            install: true
   
         - name: 📖 Build documentation
-          run: uv run poe docs-build
+          run: mise run docs-build
   
     gitleaks:
       name: Secret scan
@@ -626,6 +710,8 @@
     ci:
       name: Test (Python ${{ matrix.python-version }})
       runs-on: ubuntu-latest
+      env:
+        UV_PYTHON: ${{ matrix.python-version }}
       strategy:
         fail-fast: false
         matrix:
@@ -637,20 +723,25 @@
         - name: 💾 Check out repository
           uses: actions/checkout@v6
   
-        - name: 🦀 Set up Python project with uv
-          uses: astral-sh/setup-uv@v8.2.0
+        - name: 📦 Restore uv cache
+          uses: actions/cache@v6
           with:
-            enable-cache: true
-            python-version: ${{ matrix.python-version }}
+            path: ~/.cache/uv
+            key: uv-${{ runner.os }}-${{ matrix.python-version }}-${{ hashFiles('pyproject.toml', 'uv.lock') }}
+            restore-keys: |
+              uv-${{ runner.os }}-${{ matrix.python-version }}-
   
-        - name: 🐍 Install dependencies
-          run: uv sync
+        - name: 🍳 Set up mise
+          uses: jdx/mise-action@v4
+          with:
+            cache: true
+            install: true
   
         - name: 📐 Lint
-          run: uv run poe lint
+          run: mise run lint
   
         - name: 🔥 Test
-          run: uv run poe test
+          run: mise run test
   
         - name: 🔍 Collect coverage results
           run: uv run coverage xml
@@ -667,23 +758,30 @@
     docs:
       name: Documentation
       runs-on: ubuntu-latest
+      env:
+        UV_PYTHON: '3.14'
       steps:
         - name: 💾 Check out repository
           uses: actions/checkout@v6
           with:
             fetch-depth: 0
   
-        - name: 🦀 Set up Python project with uv
-          uses: astral-sh/setup-uv@v8.2.0
+        - name: 📦 Restore uv cache
+          uses: actions/cache@v6
           with:
-            enable-cache: true
-            python-version: '3.14'
+            path: ~/.cache/uv
+            key: uv-${{ runner.os }}-${{ hashFiles('pyproject.toml', 'uv.lock') }}
+            restore-keys: |
+              uv-${{ runner.os }}-
   
-        - name: 🐍 Install dependencies
-          run: uv sync
+        - name: 🍳 Set up mise
+          uses: jdx/mise-action@v4
+          with:
+            cache: true
+            install: true
   
         - name: 📖 Build documentation
-          run: uv run poe docs-build
+          run: mise run docs-build
   
     gitleaks:
       name: Secret scan
@@ -721,6 +819,8 @@
     ci:
       name: Test (Python ${{ matrix.python-version }})
       runs-on: ubuntu-latest
+      env:
+        UV_PYTHON: ${{ matrix.python-version }}
       strategy:
         fail-fast: false
         matrix:
@@ -734,20 +834,25 @@
         - name: 💾 Check out repository
           uses: actions/checkout@v6
   
-        - name: 🦀 Set up Python project with uv
-          uses: astral-sh/setup-uv@v8.2.0
+        - name: 📦 Restore uv cache
+          uses: actions/cache@v6
           with:
-            enable-cache: true
-            python-version: ${{ matrix.python-version }}
+            path: ~/.cache/uv
+            key: uv-${{ runner.os }}-${{ matrix.python-version }}-${{ hashFiles('pyproject.toml', 'uv.lock') }}
+            restore-keys: |
+              uv-${{ runner.os }}-${{ matrix.python-version }}-
   
-        - name: 🐍 Install dependencies
-          run: uv sync
+        - name: 🍳 Set up mise
+          uses: jdx/mise-action@v4
+          with:
+            cache: true
+            install: true
   
         - name: 📐 Lint
-          run: uv run poe lint
+          run: mise run lint
   
         - name: 🔥 Test
-          run: uv run poe test
+          run: mise run test
   
         - name: 🔍 Collect coverage results
           run: uv run coverage xml
@@ -764,23 +869,30 @@
     docs:
       name: Documentation
       runs-on: ubuntu-latest
+      env:
+        UV_PYTHON: '3.14'
       steps:
         - name: 💾 Check out repository
           uses: actions/checkout@v6
           with:
             fetch-depth: 0
   
-        - name: 🦀 Set up Python project with uv
-          uses: astral-sh/setup-uv@v8.2.0
+        - name: 📦 Restore uv cache
+          uses: actions/cache@v6
           with:
-            enable-cache: true
-            python-version: '3.14'
+            path: ~/.cache/uv
+            key: uv-${{ runner.os }}-${{ hashFiles('pyproject.toml', 'uv.lock') }}
+            restore-keys: |
+              uv-${{ runner.os }}-
   
-        - name: 🐍 Install dependencies
-          run: uv sync
+        - name: 🍳 Set up mise
+          uses: jdx/mise-action@v4
+          with:
+            cache: true
+            install: true
   
         - name: 📖 Build documentation
-          run: uv run poe docs-build
+          run: mise run docs-build
   
     gitleaks:
       name: Secret scan
@@ -818,6 +930,8 @@
     ci:
       name: Test (Python ${{ matrix.python-version }})
       runs-on: ubuntu-latest
+      env:
+        UV_PYTHON: ${{ matrix.python-version }}
       strategy:
         fail-fast: false
         matrix:
@@ -829,20 +943,25 @@
         - name: 💾 Check out repository
           uses: actions/checkout@v6
   
-        - name: 🦀 Set up Python project with uv
-          uses: astral-sh/setup-uv@v8.2.0
+        - name: 📦 Restore uv cache
+          uses: actions/cache@v6
           with:
-            enable-cache: true
-            python-version: ${{ matrix.python-version }}
+            path: ~/.cache/uv
+            key: uv-${{ runner.os }}-${{ matrix.python-version }}-${{ hashFiles('pyproject.toml', 'uv.lock') }}
+            restore-keys: |
+              uv-${{ runner.os }}-${{ matrix.python-version }}-
   
-        - name: 🐍 Install dependencies
-          run: uv sync
+        - name: 🍳 Set up mise
+          uses: jdx/mise-action@v4
+          with:
+            cache: true
+            install: true
   
         - name: 📐 Lint
-          run: uv run poe lint
+          run: mise run lint
   
         - name: 🔥 Test
-          run: uv run poe test
+          run: mise run test
   
         - name: 🔍 Collect coverage results
           run: uv run coverage xml
@@ -859,23 +978,30 @@
     docs:
       name: Documentation
       runs-on: ubuntu-latest
+      env:
+        UV_PYTHON: '3.14'
       steps:
         - name: 💾 Check out repository
           uses: actions/checkout@v6
           with:
             fetch-depth: 0
   
-        - name: 🦀 Set up Python project with uv
-          uses: astral-sh/setup-uv@v8.2.0
+        - name: 📦 Restore uv cache
+          uses: actions/cache@v6
           with:
-            enable-cache: true
-            python-version: '3.14'
+            path: ~/.cache/uv
+            key: uv-${{ runner.os }}-${{ hashFiles('pyproject.toml', 'uv.lock') }}
+            restore-keys: |
+              uv-${{ runner.os }}-
   
-        - name: 🐍 Install dependencies
-          run: uv sync
+        - name: 🍳 Set up mise
+          uses: jdx/mise-action@v4
+          with:
+            cache: true
+            install: true
   
         - name: 📖 Build documentation
-          run: uv run poe docs-build
+          run: mise run docs-build
   
     gitleaks:
       name: Secret scan
@@ -908,20 +1034,30 @@
     build:
       name: Build distribution
       runs-on: ubuntu-latest
+      env:
+        UV_PYTHON: '3.14'
       steps:
         - name: 💾 Check out repository
           uses: actions/checkout@v6
           with:
             fetch-depth: 0
   
-        - name: 🦀 Set up Python project with uv
-          uses: astral-sh/setup-uv@v8.2.0
+        - name: 📦 Restore uv cache
+          uses: actions/cache@v6
           with:
-            enable-cache: true
-            python-version: '3.14'
+            path: ~/.cache/uv
+            key: uv-${{ runner.os }}-${{ hashFiles('pyproject.toml', 'uv.lock') }}
+            restore-keys: |
+              uv-${{ runner.os }}-
+  
+        - name: 🍳 Set up mise
+          uses: jdx/mise-action@v4
+          with:
+            cache: true
+            install: true
   
         - name: 📦 Build package
-          run: uv build
+          run: mise run build
   
         - name: 🔼 Upload artifact
           uses: actions/upload-artifact@v7
@@ -967,20 +1103,30 @@
     build:
       name: Build distribution
       runs-on: ubuntu-latest
+      env:
+        UV_PYTHON: '3.14'
       steps:
         - name: 💾 Check out repository
           uses: actions/checkout@v6
           with:
             fetch-depth: 0
   
-        - name: 🦀 Set up Python project with uv
-          uses: astral-sh/setup-uv@v8.2.0
+        - name: 📦 Restore uv cache
+          uses: actions/cache@v6
           with:
-            enable-cache: true
-            python-version: '3.14'
+            path: ~/.cache/uv
+            key: uv-${{ runner.os }}-${{ hashFiles('pyproject.toml', 'uv.lock') }}
+            restore-keys: |
+              uv-${{ runner.os }}-
+  
+        - name: 🍳 Set up mise
+          uses: jdx/mise-action@v4
+          with:
+            cache: true
+            install: true
   
         - name: 📦 Build package
-          run: uv build
+          run: mise run build
   
         - name: 🔼 Upload artifact
           uses: actions/upload-artifact@v7

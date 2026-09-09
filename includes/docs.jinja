@@ -10,22 +10,22 @@
 {%- macro requirements(h='') -%}
 {{h}}# Prerequisites
 
-- [x] A [supported version][python-versions] of [**Python**][python]
-- [x] [**git** for verson control][git]
-- [x] [Astral's **uv** Python project manager][uv]: `pip install uv` or
-  [other supported method][uv-installation]
-- [x] [**Copier**][copier]: `uv tool install copier`
-- [x] [Poe the Poet][poethepoet] (recommended): `uv tool install poethepoet`
+- [x] [**git** for version control][git]
+- [x] [**mise**][mise] tool manager: `curl https://mise.run | sh` or
+  [alternate installation method][mise-installation]
 
-    This provides `poe` without the `uv run` prefix,
-    e.g. `poe test` instead of `uv run poe test`
+    !!! info
 
-[copier]: https://copier.readthedocs.io
+        `mise` ensures additional software is available, such as:
+
+        * A [supported version][python-versions] of [**Python**][python]
+        * [Astral's **uv** Python project manager][uv]
+
 [git]: https://git-scm.com
-[poethepoet]: https://poethepoet.natn.io/
+[mise-installation]: https://mise.jdx.dev/installing-mise.html
+[mise]: https://mise.jdx.dev
 [python-versions]: https://devguide.python.org/versions/
 [python]: https://python.org
-[uv-installation]: https://docs.astral.sh/uv/getting-started/installation/
 [uv]: https://docs.astral.sh/uv/
 {%- endmacro -%}
 
@@ -41,21 +41,22 @@ cd {{ project_name }}
 ```
 {%- endif %}
 
-Run `poe setup` in new repository clones to enable git hooks:
+Run `mise install` in new repository clones to install tools, dependencies, and
+git hooks:
 
 ```sh
-poe setup  # Enables git hooks
+mise install
 ```
 
 {{h}}## Development tools
 
-* `poe lint`: Run formatters and static checks
-* `poe test`: Run tests
+* `mise run lint`: Run formatters and static checks
+* `mise run test`: Run tests
 
 The `lint` and `test` tasks can also be run as a single combined command with:
 
 ```sh
-poe lt
+mise run lt
 ```
 {%- if "syrupy" in enable_features %}
 
@@ -65,7 +66,7 @@ Some tests compare test results with saved snapshots. Test snapshots can be
 updated by running:
 
 ```sh
-poe snapup
+mise run snapup
 ```
 {%- endif %}
 {%- if enable_docs %}
@@ -75,14 +76,14 @@ poe snapup
 Start the development server with:
 
 ```sh
-poe docs
+mise run docs
 ```
 
 The documentation site will be served at:
 
 [**http://localhost:8000**](http://localhost:8000){ .md-button .md-button--primary target="_blank" }
 
-To use a different bind host/port, run `poe --help docs` for arguments info.
+To use a different bind host/port, run `mise run docs --help` for usage info.
 {%- endif %}
 {%- endmacro -%}
 

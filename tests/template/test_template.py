@@ -18,5 +18,5 @@ def test_template_render_lint_test(
         enable_docs=True,
         enable_pypi=True,
     )
-    subprocess.run(["uv", "run", "poe", "init"], cwd=rendered, check=True)
-    subprocess.run(["uv", "run", "poe", "lt"], cwd=rendered, check=True)
+    subprocess.run(["mise", "run", "init"], cwd=rendered, check=True)
+    subprocess.run(["mise", "run", "lt"], cwd=rendered, check=True)

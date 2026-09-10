@@ -93,7 +93,7 @@ class RepoWorktree:
             )
             cls.run_in(
                 (
-                    ["mise", "install", "--locked"]
+                    ["mise", "install"]
                     if (repo_dir / "mise.toml").is_file()
                     else ["poe", "setup"]
                 ),

@@ -92,7 +92,7 @@
         - name: 📖 Build documentation
           run: mise run docs-build
   
-    gitleaks:
+    betterleaks:
       name: Secret scan
       runs-on: ubuntu-latest
       permissions:
@@ -103,10 +103,14 @@
           with:
             fetch-depth: 0
   
+        - name: 🍳 Set up mise
+          uses: jdx/mise-action@v4
+          with:
+            cache: true
+            install: true
+  
         - name: 🔍 Check for secrets
-          uses: gitleaks/gitleaks-action@v2
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          run: mise run secretscan
   
   '''
 # ---
@@ -191,7 +195,7 @@
         - name: 📖 Build documentation
           run: mise run docs-build
   
-    gitleaks:
+    betterleaks:
       name: Secret scan
       runs-on: ubuntu-latest
       permissions:
@@ -202,10 +206,14 @@
           with:
             fetch-depth: 0
   
+        - name: 🍳 Set up mise
+          uses: jdx/mise-action@v4
+          with:
+            cache: true
+            install: true
+  
         - name: 🔍 Check for secrets
-          uses: gitleaks/gitleaks-action@v2
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          run: mise run secretscan
   
   '''
 # ---
@@ -275,7 +283,7 @@
             version: 11.2.8
   
   
-    gitleaks:
+    betterleaks:
       name: Secret scan
       runs-on: ubuntu-latest
       permissions:
@@ -286,10 +294,14 @@
           with:
             fetch-depth: 0
   
+        - name: 🍳 Set up mise
+          uses: jdx/mise-action@v4
+          with:
+            cache: true
+            install: true
+  
         - name: 🔍 Check for secrets
-          uses: gitleaks/gitleaks-action@v2
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          run: mise run secretscan
   
   '''
 # ---
@@ -347,7 +359,7 @@
           run: mise run test
   
   
-    gitleaks:
+    betterleaks:
       name: Secret scan
       runs-on: ubuntu-latest
       permissions:
@@ -358,10 +370,14 @@
           with:
             fetch-depth: 0
   
+        - name: 🍳 Set up mise
+          uses: jdx/mise-action@v4
+          with:
+            cache: true
+            install: true
+  
         - name: 🔍 Check for secrets
-          uses: gitleaks/gitleaks-action@v2
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          run: mise run secretscan
   
   '''
 # ---
@@ -456,7 +472,7 @@
         - name: 📖 Build documentation
           run: mise run docs-build
   
-    gitleaks:
+    betterleaks:
       name: Secret scan
       runs-on: ubuntu-latest
       permissions:
@@ -467,10 +483,14 @@
           with:
             fetch-depth: 0
   
+        - name: 🍳 Set up mise
+          uses: jdx/mise-action@v4
+          with:
+            cache: true
+            install: true
+  
         - name: 🔍 Check for secrets
-          uses: gitleaks/gitleaks-action@v2
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          run: mise run secretscan
   
   '''
 # ---
@@ -563,7 +583,7 @@
         - name: 📖 Build documentation
           run: mise run docs-build
   
-    gitleaks:
+    betterleaks:
       name: Secret scan
       runs-on: ubuntu-latest
       permissions:
@@ -574,10 +594,14 @@
           with:
             fetch-depth: 0
   
+        - name: 🍳 Set up mise
+          uses: jdx/mise-action@v4
+          with:
+            cache: true
+            install: true
+  
         - name: 🔍 Check for secrets
-          uses: gitleaks/gitleaks-action@v2
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          run: mise run secretscan
   
   '''
 # ---
@@ -674,7 +698,7 @@
         - name: 📖 Build documentation
           run: mise run docs-build
   
-    gitleaks:
+    betterleaks:
       name: Secret scan
       runs-on: ubuntu-latest
       permissions:
@@ -685,10 +709,14 @@
           with:
             fetch-depth: 0
   
+        - name: 🍳 Set up mise
+          uses: jdx/mise-action@v4
+          with:
+            cache: true
+            install: true
+  
         - name: 🔍 Check for secrets
-          uses: gitleaks/gitleaks-action@v2
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          run: mise run secretscan
   
   '''
 # ---
@@ -783,7 +811,7 @@
         - name: 📖 Build documentation
           run: mise run docs-build
   
-    gitleaks:
+    betterleaks:
       name: Secret scan
       runs-on: ubuntu-latest
       permissions:
@@ -794,10 +822,14 @@
           with:
             fetch-depth: 0
   
+        - name: 🍳 Set up mise
+          uses: jdx/mise-action@v4
+          with:
+            cache: true
+            install: true
+  
         - name: 🔍 Check for secrets
-          uses: gitleaks/gitleaks-action@v2
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          run: mise run secretscan
   
   '''
 # ---
@@ -894,7 +926,7 @@
         - name: 📖 Build documentation
           run: mise run docs-build
   
-    gitleaks:
+    betterleaks:
       name: Secret scan
       runs-on: ubuntu-latest
       permissions:
@@ -905,10 +937,14 @@
           with:
             fetch-depth: 0
   
+        - name: 🍳 Set up mise
+          uses: jdx/mise-action@v4
+          with:
+            cache: true
+            install: true
+  
         - name: 🔍 Check for secrets
-          uses: gitleaks/gitleaks-action@v2
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          run: mise run secretscan
   
   '''
 # ---
@@ -1003,7 +1039,7 @@
         - name: 📖 Build documentation
           run: mise run docs-build
   
-    gitleaks:
+    betterleaks:
       name: Secret scan
       runs-on: ubuntu-latest
       permissions:
@@ -1014,10 +1050,14 @@
           with:
             fetch-depth: 0
   
+        - name: 🍳 Set up mise
+          uses: jdx/mise-action@v4
+          with:
+            cache: true
+            install: true
+  
         - name: 🔍 Check for secrets
-          uses: gitleaks/gitleaks-action@v2
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          run: mise run secretscan
   
   '''
 # ---

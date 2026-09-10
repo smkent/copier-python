@@ -105,6 +105,11 @@ class RepoWorktree:
             )
             yield cls(path=repo_dir, repo=repo, branch=branch)
 
+    def refresh_tools_lock(self) -> None:
+        if not (self.path / "mise.toml").is_file():
+            return
+        self.run(["mise", "lock"])
+
     @classmethod
     def run_in(
         cls, cmd: list[str], *, repo: RepoTarget, **kwargs: Any

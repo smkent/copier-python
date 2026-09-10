@@ -93,7 +93,7 @@ class RepoWorktree:
             )
             cls.run_in(
                 (
-                    ["mise", "install", "--locked"]
+                    ["mise", "install"]
                     if (repo_dir / "mise.toml").is_file()
                     else ["poe", "setup"]
                 ),
@@ -104,6 +104,11 @@ class RepoWorktree:
                 ["git", "checkout", "-b", branch], repo=repo, cwd=repo_dir
             )
             yield cls(path=repo_dir, repo=repo, branch=branch)
+
+    def refresh_tools_lock(self) -> None:
+        if not (self.path / "mise.toml").is_file():
+            return
+        self.run(["mise", "lock"])
 
     @classmethod
     def run_in(

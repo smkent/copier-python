@@ -51,6 +51,15 @@ class UpdateAction:
                 raise RuntimeError("Conflicts remain, aborting")
 
         try:
+            repo.refresh_tools_lock()
+        except subprocess.CalledProcessError:
+            print(  # noqa: T201
+                "Tool refresh failed."
+                " Fix errors and exit the shell to continue."
+            )
+            repo.shell()
+
+        try:
             repo.run_task("lt")
         except subprocess.CalledProcessError:
             print(  # noqa: T201

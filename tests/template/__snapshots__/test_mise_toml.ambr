@@ -15,8 +15,6 @@
   prek = "latest"
   uv = "latest"
   
-  [settings]
-  
   [tasks.build]
   description = "Build distribution package"
   raw_args = true
@@ -135,8 +133,6 @@
   "pipx:copier" = "latest"
   prek = "latest"
   uv = "latest"
-  
-  [settings]
   
   [tasks.audit]
   description = "Run dependencies security audit"
@@ -264,8 +260,6 @@
   prek = "latest"
   uv = "latest"
   
-  [settings]
-  
   [tasks.build]
   description = "Build distribution package"
   raw_args = true
@@ -370,8 +364,6 @@
   "pipx:copier" = "latest"
   prek = "latest"
   uv = "latest"
-  
-  [settings]
   
   [tasks.audit]
   description = "Run dependencies security audit"
@@ -484,8 +476,6 @@
   "pipx:copier" = "latest"
   prek = "latest"
   uv = "latest"
-  
-  [settings]
   
   [tasks.build]
   description = "Build distribution package"
@@ -610,8 +600,6 @@
   "pipx:copier" = "latest"
   prek = "latest"
   uv = "latest"
-  
-  [settings]
   
   [tasks.audit]
   description = "Run dependencies security audit"
@@ -744,8 +732,6 @@
   prek = "latest"
   uv = "latest"
   
-  [settings]
-  
   [tasks.build]
   description = "Build distribution package"
   raw_args = true
@@ -855,8 +841,6 @@
   "pipx:copier" = "latest"
   prek = "latest"
   uv = "latest"
-  
-  [settings]
   
   [tasks.audit]
   description = "Run dependencies security audit"
@@ -974,8 +958,6 @@
   "pipx:copier" = "latest"
   prek = "latest"
   uv = "latest"
-  
-  [settings]
   
   [tasks.build]
   description = "Build distribution package"
@@ -1095,8 +1077,6 @@
   "pipx:copier" = "latest"
   prek = "latest"
   uv = "latest"
-  
-  [settings]
   
   [tasks.audit]
   description = "Run dependencies security audit"
@@ -1224,8 +1204,6 @@
   prek = "latest"
   uv = "latest"
   
-  [settings]
-  
   [tasks.build]
   description = "Build distribution package"
   raw_args = true
@@ -1330,8 +1308,6 @@
   "pipx:copier" = "latest"
   prek = "latest"
   uv = "latest"
-  
-  [settings]
   
   [tasks.audit]
   description = "Run dependencies security audit"
@@ -1444,8 +1420,6 @@
   "pipx:copier" = "latest"
   prek = "latest"
   uv = "latest"
-  
-  [settings]
   
   [tasks.build]
   description = "Build distribution package"
@@ -1570,8 +1544,6 @@
   "pipx:copier" = "latest"
   prek = "latest"
   uv = "latest"
-  
-  [settings]
   
   [tasks.audit]
   description = "Run dependencies security audit"
@@ -1704,8 +1676,6 @@
   prek = "latest"
   uv = "latest"
   
-  [settings]
-  
   [tasks.build]
   description = "Build distribution package"
   raw_args = true
@@ -1815,8 +1785,6 @@
   "pipx:copier" = "latest"
   prek = "latest"
   uv = "latest"
-  
-  [settings]
   
   [tasks.audit]
   description = "Run dependencies security audit"

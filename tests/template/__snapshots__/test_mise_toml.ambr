@@ -16,7 +16,6 @@
   uv = "latest"
   
   [settings]
-  lockfile = true
   
   [tasks.build]
   description = "Build distribution package"
@@ -138,7 +137,6 @@
   uv = "latest"
   
   [settings]
-  lockfile = true
   
   [tasks.audit]
   description = "Run dependencies security audit"
@@ -267,7 +265,6 @@
   uv = "latest"
   
   [settings]
-  lockfile = true
   
   [tasks.build]
   description = "Build distribution package"
@@ -375,7 +372,6 @@
   uv = "latest"
   
   [settings]
-  lockfile = true
   
   [tasks.audit]
   description = "Run dependencies security audit"
@@ -490,7 +486,6 @@
   uv = "latest"
   
   [settings]
-  lockfile = true
   
   [tasks.build]
   description = "Build distribution package"
@@ -617,7 +612,6 @@
   uv = "latest"
   
   [settings]
-  lockfile = true
   
   [tasks.audit]
   description = "Run dependencies security audit"
@@ -751,7 +745,6 @@
   uv = "latest"
   
   [settings]
-  lockfile = true
   
   [tasks.build]
   description = "Build distribution package"
@@ -864,7 +857,6 @@
   uv = "latest"
   
   [settings]
-  lockfile = true
   
   [tasks.audit]
   description = "Run dependencies security audit"
@@ -984,7 +976,6 @@
   uv = "latest"
   
   [settings]
-  lockfile = true
   
   [tasks.build]
   description = "Build distribution package"
@@ -1106,7 +1097,6 @@
   uv = "latest"
   
   [settings]
-  lockfile = true
   
   [tasks.audit]
   description = "Run dependencies security audit"
@@ -1235,7 +1225,6 @@
   uv = "latest"
   
   [settings]
-  lockfile = true
   
   [tasks.build]
   description = "Build distribution package"
@@ -1343,7 +1332,6 @@
   uv = "latest"
   
   [settings]
-  lockfile = true
   
   [tasks.audit]
   description = "Run dependencies security audit"
@@ -1458,7 +1446,6 @@
   uv = "latest"
   
   [settings]
-  lockfile = true
   
   [tasks.build]
   description = "Build distribution package"
@@ -1585,7 +1572,6 @@
   uv = "latest"
   
   [settings]
-  lockfile = true
   
   [tasks.audit]
   description = "Run dependencies security audit"
@@ -1719,7 +1705,6 @@
   uv = "latest"
   
   [settings]
-  lockfile = true
   
   [tasks.build]
   description = "Build distribution package"
@@ -1832,7 +1817,6 @@
   uv = "latest"
   
   [settings]
-  lockfile = true
   
   [tasks.audit]
   description = "Run dependencies security audit"

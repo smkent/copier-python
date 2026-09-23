@@ -10,30 +10,28 @@ readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE"]
 requires-python = ">=3.10"
-authors = [
-    { name = "Stephen Kent", email = "smkent@smkent.net" },
-]
+authors = [{ name = "Stephen Kent", email = "smkent@smkent.net" }]
 classifiers = [
-    "Development Status :: 3 - Alpha",
-    "Intended Audience :: Developers",
-    "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: 3.12",
-    "Programming Language :: Python :: 3.13",
-    "Programming Language :: Python :: 3.14",
-    "Topic :: Documentation",
-    "Topic :: Software Development",
-    "Topic :: Utilities",
-    "Typing :: Typed",
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Topic :: Documentation",
+  "Topic :: Software Development",
+  "Topic :: Utilities",
+  "Typing :: Typed",
 ]
 keywords = []
 dependencies = [
-    "pyyaml>=6",
-    "rich>=15",
-    "typer>=0.9",
-    "typing_extensions>=4.1; python_version < '3.12'",
+  "pyyaml>=6",
+  "rich>=15",
+  "typer>=0.9",
+  "typing_extensions>=4.1; python_version < '3.12'",
 ]
 
 [project.scripts]
@@ -46,22 +44,20 @@ Issues = "https://github.com/smkent/copier-python/issues"
 
 [dependency-groups]
 dev = [
-    "bump-my-version>=1.3.0",
-    "copier>=9",
-    "poethepoet>=0.46",
-    "pysentry-rs>=0.4",
-    "pytest>=9",
-    "pytest-cov>=7",
-    "pytest-sugar>=1",
-    "pytest-xdist>=3",
-    "ruff>=0.15",
-    "syrupy>=5",
-    "ty>=0.0.49",
-    "typing-extensions>=4",
+  "bump-my-version>=1.3.0",
+  "copier>=9",
+  "poethepoet>=0.46",
+  "pysentry-rs>=0.4",
+  "pytest>=9",
+  "pytest-cov>=7",
+  "pytest-sugar>=1",
+  "pytest-xdist>=3",
+  "ruff>=0.15",
+  "syrupy>=5",
+  "ty>=0.0.49",
+  "typing-extensions>=4",
 ]
-docs = [
-    "zensical>=0.0.45",
-]
+docs = ["zensical>=0.0.45"]
 
 [tool.bumpversion]
 commit = false
@@ -78,12 +74,12 @@ source = "uv-dynamic-versioning"
 
 [tool.pytest]
 addopts = [
-    "-ra",
-    "--cov=copier_python",
-    "--strict-config",
-    "--strict-markers",
-    "--numprocesses",
-    "auto",
+  "-ra",
+  "--cov=copier_python",
+  "--strict-config",
+  "--strict-markers",
+  "--numprocesses",
+  "auto",
 ]
 testpaths = ["tests"]
 
@@ -94,11 +90,7 @@ branch = true
 [tool.coverage.report]
 show_missing = true
 skip_covered = true
-exclude_lines = [
-    "pragma: no cover",
-    "if TYPE_CHECKING:",
-    "@abstractmethod",
-]
+exclude_lines = ["pragma: no cover", "if TYPE_CHECKING:", "@abstractmethod"]
 
 [tool.ruff]
 line-length = 79
@@ -108,16 +100,16 @@ target-version = "py310"
 [tool.ruff.lint]
 select = ["ALL"]
 ignore = [
-    "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
-    "COM812",  # Trailing comma missing
-    "CPY001",  # Missing copyright notice at top of file
-    "D1",  # Missing docstring presence rules
-    "EM",  # flake8-errmsg
-    "G004",  # Logging statement uses f-string
-    "PLR",  # pylint Refactor
-    "S607",  # Starting a process with a partial executable path
-    "TD",  # flake8-todos
-    "TRY003", # Avoid specifying long messages outside the exception class
+  "ANN401", # Dynamically typed expressions (typing.Any) are disallowed
+  "COM812", # Trailing comma missing
+  "CPY001", # Missing copyright notice at top of file
+  "D1",     # Missing docstring presence rules
+  "EM",     # flake8-errmsg
+  "G004",   # Logging statement uses f-string
+  "PLR",    # pylint Refactor
+  "S607",   # Starting a process with a partial executable path
+  "TD",     # flake8-todos
+  "TRY003", # Avoid specifying long messages outside the exception class
 ]
 
 [tool.ruff.lint.isort]
@@ -125,8 +117,8 @@ known-first-party = ["copier_python"]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**/*.py" = [
-    "ARG",  # flake8-unused-arguments
-    "S101",  # Use of assert detected
+  "ARG",  # flake8-unused-arguments
+  "S101", # Use of assert detected
 ]
 
 [tool.ruff.lint.pydocstyle]

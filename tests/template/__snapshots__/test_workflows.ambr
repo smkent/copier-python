@@ -103,6 +103,14 @@
           with:
             fetch-depth: 0
   
+        - name: 📦 Restore uv cache
+          uses: actions/cache@v6
+          with:
+            path: ~/.cache/uv
+            key: uv-${{ runner.os }}-${{ hashFiles('pyproject.toml', 'uv.lock') }}
+            restore-keys: |
+              uv-${{ runner.os }}-
+  
         - name: 🍳 Set up mise
           uses: jdx/mise-action@v4
           with:
@@ -206,6 +214,14 @@
           with:
             fetch-depth: 0
   
+        - name: 📦 Restore uv cache
+          uses: actions/cache@v6
+          with:
+            path: ~/.cache/uv
+            key: uv-${{ runner.os }}-${{ hashFiles('pyproject.toml', 'uv.lock') }}
+            restore-keys: |
+              uv-${{ runner.os }}-
+  
         - name: 🍳 Set up mise
           uses: jdx/mise-action@v4
           with:
@@ -294,6 +310,14 @@
           with:
             fetch-depth: 0
   
+        - name: 📦 Restore uv cache
+          uses: actions/cache@v6
+          with:
+            path: ~/.cache/uv
+            key: uv-${{ runner.os }}-${{ hashFiles('pyproject.toml', 'uv.lock') }}
+            restore-keys: |
+              uv-${{ runner.os }}-
+  
         - name: 🍳 Set up mise
           uses: jdx/mise-action@v4
           with:
@@ -369,6 +393,14 @@
           uses: actions/checkout@v7
           with:
             fetch-depth: 0
+  
+        - name: 📦 Restore uv cache
+          uses: actions/cache@v6
+          with:
+            path: ~/.cache/uv
+            key: uv-${{ runner.os }}-${{ hashFiles('pyproject.toml', 'uv.lock') }}
+            restore-keys: |
+              uv-${{ runner.os }}-
   
         - name: 🍳 Set up mise
           uses: jdx/mise-action@v4
@@ -483,6 +515,14 @@
           with:
             fetch-depth: 0
   
+        - name: 📦 Restore uv cache
+          uses: actions/cache@v6
+          with:
+            path: ~/.cache/uv
+            key: uv-${{ runner.os }}-${{ hashFiles('pyproject.toml', 'uv.lock') }}
+            restore-keys: |
+              uv-${{ runner.os }}-
+  
         - name: 🍳 Set up mise
           uses: jdx/mise-action@v4
           with:
@@ -593,6 +633,14 @@
           uses: actions/checkout@v7
           with:
             fetch-depth: 0
+  
+        - name: 📦 Restore uv cache
+          uses: actions/cache@v6
+          with:
+            path: ~/.cache/uv
+            key: uv-${{ runner.os }}-${{ hashFiles('pyproject.toml', 'uv.lock') }}
+            restore-keys: |
+              uv-${{ runner.os }}-
   
         - name: 🍳 Set up mise
           uses: jdx/mise-action@v4
@@ -709,6 +757,14 @@
           with:
             fetch-depth: 0
   
+        - name: 📦 Restore uv cache
+          uses: actions/cache@v6
+          with:
+            path: ~/.cache/uv
+            key: uv-${{ runner.os }}-${{ hashFiles('pyproject.toml', 'uv.lock') }}
+            restore-keys: |
+              uv-${{ runner.os }}-
+  
         - name: 🍳 Set up mise
           uses: jdx/mise-action@v4
           with:
@@ -821,6 +877,14 @@
           uses: actions/checkout@v7
           with:
             fetch-depth: 0
+  
+        - name: 📦 Restore uv cache
+          uses: actions/cache@v6
+          with:
+            path: ~/.cache/uv
+            key: uv-${{ runner.os }}-${{ hashFiles('pyproject.toml', 'uv.lock') }}
+            restore-keys: |
+              uv-${{ runner.os }}-
   
         - name: 🍳 Set up mise
           uses: jdx/mise-action@v4
@@ -937,6 +1001,14 @@
           with:
             fetch-depth: 0
   
+        - name: 📦 Restore uv cache
+          uses: actions/cache@v6
+          with:
+            path: ~/.cache/uv
+            key: uv-${{ runner.os }}-${{ hashFiles('pyproject.toml', 'uv.lock') }}
+            restore-keys: |
+              uv-${{ runner.os }}-
+  
         - name: 🍳 Set up mise
           uses: jdx/mise-action@v4
           with:
@@ -1049,6 +1121,14 @@
           uses: actions/checkout@v7
           with:
             fetch-depth: 0
+  
+        - name: 📦 Restore uv cache
+          uses: actions/cache@v6
+          with:
+            path: ~/.cache/uv
+            key: uv-${{ runner.os }}-${{ hashFiles('pyproject.toml', 'uv.lock') }}
+            restore-keys: |
+              uv-${{ runner.os }}-
   
         - name: 🍳 Set up mise
           uses: jdx/mise-action@v4

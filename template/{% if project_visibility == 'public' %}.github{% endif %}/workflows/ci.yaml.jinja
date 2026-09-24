@@ -102,6 +102,14 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: 📦 Restore uv cache
+        uses: actions/cache@v6
+        with:
+          path: ~/.cache/uv
+          key: {% raw %}uv-${{ runner.os }}-${{ hashFiles('pyproject.toml', 'uv.lock') }}{% endraw %}
+          restore-keys: |
+            {% raw %}uv-${{ runner.os }}-{% endraw %}
+
       - name: 🍳 Set up mise
         uses: jdx/mise-action@v4
         with:

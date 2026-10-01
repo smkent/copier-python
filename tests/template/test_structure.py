@@ -44,7 +44,7 @@ import pytest
         pytest.param(
             {"project_visibility": "private"},
             [],
-            [".github"],
+            [".github", "CONTRIBUTING.md"],
             id="private",
         ),
         pytest.param(

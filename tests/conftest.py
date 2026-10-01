@@ -58,6 +58,9 @@ def render_template(
 ) -> Callable[..., Path]:
     def _render(*, vcs_ref: str = "HEAD", **kwargs: Any) -> Path:
         worktree = tmp_path / "project"
+        data = {**DEFAULT_DATA, **(kwargs or {})}
+        if data["project_visibility"] == "private":
+            data.pop("github_user", None)
         with warnings.catch_warnings():
             warnings.filterwarnings(
                 "ignore",
@@ -67,7 +70,7 @@ def render_template(
                 copier.run_copy(
                     src_path=str(TEMPLATE_ROOT),
                     dst_path=str(worktree),
-                    data={**DEFAULT_DATA, **(kwargs or {})},
+                    data=data,
                     vcs_ref=vcs_ref,
                     defaults=True,
                     overwrite=True,

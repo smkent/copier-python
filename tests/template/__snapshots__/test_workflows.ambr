@@ -57,7 +57,7 @@
           if: ${{ matrix.python-version == '3.14' }}
   
         - name: 📊 Upload coverage to Codecov
-          uses: codecov/codecov-action@v6
+          uses: codecov/codecov-action@v7
           if: ${{ matrix.python-version == '3.14' }}
           with:
             fail_ci_if_error: true
@@ -291,7 +291,7 @@
           if: ${{ matrix.python-version == '3.14' }}
   
         - name: 📊 Upload coverage to Codecov
-          uses: codecov/codecov-action@v6
+          uses: codecov/codecov-action@v7
           if: ${{ matrix.python-version == '3.14' }}
           with:
             fail_ci_if_error: true
@@ -469,7 +469,7 @@
           if: ${{ matrix.python-version == '3.12' }}
   
         - name: 📊 Upload coverage to Codecov
-          uses: codecov/codecov-action@v6
+          uses: codecov/codecov-action@v7
           if: ${{ matrix.python-version == '3.12' }}
           with:
             fail_ci_if_error: true
@@ -588,7 +588,7 @@
           if: ${{ matrix.python-version == '3.12' }}
   
         - name: 📊 Upload coverage to Codecov
-          uses: codecov/codecov-action@v6
+          uses: codecov/codecov-action@v7
           if: ${{ matrix.python-version == '3.12' }}
           with:
             fail_ci_if_error: true
@@ -711,7 +711,7 @@
           if: ${{ matrix.python-version == '3.14' }}
   
         - name: 📊 Upload coverage to Codecov
-          uses: codecov/codecov-action@v6
+          uses: codecov/codecov-action@v7
           if: ${{ matrix.python-version == '3.14' }}
           with:
             fail_ci_if_error: true
@@ -832,7 +832,7 @@
           if: ${{ matrix.python-version == '3.14' }}
   
         - name: 📊 Upload coverage to Codecov
-          uses: codecov/codecov-action@v6
+          uses: codecov/codecov-action@v7
           if: ${{ matrix.python-version == '3.14' }}
           with:
             fail_ci_if_error: true
@@ -955,7 +955,7 @@
           if: ${{ matrix.python-version == '3.14' }}
   
         - name: 📊 Upload coverage to Codecov
-          uses: codecov/codecov-action@v6
+          uses: codecov/codecov-action@v7
           if: ${{ matrix.python-version == '3.14' }}
           with:
             fail_ci_if_error: true
@@ -1076,7 +1076,7 @@
           if: ${{ matrix.python-version == '3.14' }}
   
         - name: 📊 Upload coverage to Codecov
-          uses: codecov/codecov-action@v6
+          uses: codecov/codecov-action@v7
           if: ${{ matrix.python-version == '3.14' }}
           with:
             fail_ci_if_error: true

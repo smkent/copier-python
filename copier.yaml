@@ -1,4 +1,7 @@
-_min_copier_version: '9'
+_min_copier_version: '9.5'
+_external_data:
+  # Previous answers, used to migrate deprecated answer values
+  previous_answers: '{{ _copier_conf.answers_file }}'
 _preserve_symlinks: true
 _skip_if_exists:
   - CHANGELOG.md
@@ -187,17 +190,32 @@ copyright_year:
 copyright_license:
   type: str
   qmark: ⚖️
-  help: Project license
-  default: "{% if project_type == 'library' %}L{% endif %}GPL-3.0"
+  help: Project license (GNU "or later" also permits future license versions)
+  # Map deprecated GNU SPDX identifiers from existing answers to "-only" ones.
+  # Previous answers are only loaded during updates, detected by the presence
+  # of an answer to a question asked after this one.
+  default: >-
+    {%- set previous = (
+      _external_data.previous_answers.copyright_license | default('')
+      if template_attribution is defined else ''
+    ) -%}
+    {%- if previous in ['AGPL-3.0', 'GPL-3.0', 'LGPL-3.0'] -%}
+      {{ previous }}-only
+    {%- else -%}
+      {% if project_type == 'library' %}L{% endif %}GPL-3.0-only
+    {%- endif -%}
   choices:
     Apache License 2.0: Apache-2.0
     BSD 3-Clause "New" or "Revised" License: BSD-3-Clause
     Creative Commons Attribution 4.0 International: CC-BY-4.0
     Creative Commons Attribution Share Alike 4.0 International: CC-BY-SA-4.0
     Creative Commons Zero v1.0 Universal: CC0-1.0
-    GNU Affero General Public License v3.0: AGPL-3.0
-    GNU General Public License v3.0 only: GPL-3.0
-    GNU Lesser General Public License v3.0 only: LGPL-3.0
+    GNU Affero General Public License v3.0 only: AGPL-3.0-only
+    GNU Affero General Public License v3.0 or later: AGPL-3.0-or-later
+    GNU General Public License v3.0 only: GPL-3.0-only
+    GNU General Public License v3.0 or later: GPL-3.0-or-later
+    GNU Lesser General Public License v3.0 only: LGPL-3.0-only
+    GNU Lesser General Public License v3.0 or later: LGPL-3.0-or-later
     ISC License: ISC
     MIT License: MIT
 

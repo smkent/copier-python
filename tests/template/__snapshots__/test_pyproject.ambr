@@ -4015,6 +4015,1735 @@
   
   '''
 # ---
+# name: test_pyproject_licenses[AGPL-3.0-only]
+  '''
+  [build-system]
+  requires = ["hatchling", "uv-dynamic-versioning"]
+  build-backend = "hatchling.build"
+  
+  [project]
+  name = "PKFire"
+  dynamic = ["version"]
+  description = "Onett Little League"
+  readme = "README.md"
+  license = "AGPL-3.0-only"
+  license-files = ["COPYING"]
+  requires-python = ">=3.10"
+  authors = [{ name = "Ness", email = "ness@onett.example.com" }]
+  classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Documentation",
+    "Topic :: Software Development",
+    "Topic :: Utilities",
+    "Typing :: Typed",
+  ]
+  keywords = []
+  dependencies = []
+  
+  [project.urls]
+  Homepage = "https://ness.github.io/PKFire"
+  Repository = "https://github.com/ness/PKFire"
+  Issues = "https://github.com/ness/PKFire/issues"
+  
+  [dependency-groups]
+  dev = [
+    "bump-my-version>=1.3.0",
+    "pysentry-rs>=0.4",
+    "pytest>=9",
+    "pytest-cov>=7",
+    "pytest-sugar>=1",
+    "pytest-xdist>=3",
+    "ruff>=0.15",
+    "syrupy>=5",
+    "ty>=0.0.49",
+  ]
+  docs = ["mkdocstrings[python]>=1", "zensical>=0.0.45"]
+  
+  [tool.bumpversion]
+  commit = false
+  tag = true
+  tag_name = "v{new_version}"
+  tag_message = ""
+  push = true
+  
+  [tool.hatch.build.targets.sdist]
+  include = ["/pkfire", "/tests", "*.md", "COPYING"]
+  
+  [tool.hatch.version]
+  source = "uv-dynamic-versioning"
+  
+  [tool.pytest]
+  addopts = [
+    "-ra",
+    "--cov=pkfire",
+    "--strict-config",
+    "--strict-markers",
+    "--numprocesses",
+    "auto",
+  ]
+  testpaths = ["tests"]
+  
+  [tool.coverage.run]
+  source = ["pkfire"]
+  branch = true
+  
+  [tool.coverage.report]
+  show_missing = true
+  skip_covered = true
+  exclude_lines = ["pragma: no cover", "if TYPE_CHECKING:", "@abstractmethod"]
+  
+  [tool.ruff]
+  line-length = 79
+  output-format = "concise"
+  target-version = "py310"
+  
+  [tool.ruff.lint]
+  select = ["ALL"]
+  ignore = [
+    "ANN401", # Dynamically typed expressions (typing.Any) are disallowed
+    "COM812", # Trailing comma missing
+    "CPY001", # Missing copyright notice at top of file
+    "D1",     # Missing docstring presence rules
+    "EM",     # flake8-errmsg
+    "G004",   # Logging statement uses f-string
+    "PLR",    # pylint Refactor
+    "S607",   # Starting a process with a partial executable path
+    "TD",     # flake8-todos
+    "TRY003", # Avoid specifying long messages outside the exception class
+  ]
+  
+  [tool.ruff.lint.isort]
+  known-first-party = ["pkfire"]
+  
+  [tool.ruff.lint.per-file-ignores]
+  "tests/**/*.py" = [
+    "ARG",  # flake8-unused-arguments
+    "S101", # Use of assert detected
+  ]
+  
+  [tool.ruff.lint.pydocstyle]
+  convention = "google"
+  
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
+  
+  [tool.ty.terminal]
+  error-on-warning = true
+  output-format = "concise"
+  
+  [tool.uv]
+  default-groups = ["dev", "docs"]
+  
+  [tool.uv-dynamic-versioning]
+  pattern = "default-unprefixed"
+  fallback-version = "0.0.0"
+  
+  '''
+# ---
+# name: test_pyproject_licenses[AGPL-3.0-or-later]
+  '''
+  [build-system]
+  requires = ["hatchling", "uv-dynamic-versioning"]
+  build-backend = "hatchling.build"
+  
+  [project]
+  name = "PKFire"
+  dynamic = ["version"]
+  description = "Onett Little League"
+  readme = "README.md"
+  license = "AGPL-3.0-or-later"
+  license-files = ["COPYING"]
+  requires-python = ">=3.10"
+  authors = [{ name = "Ness", email = "ness@onett.example.com" }]
+  classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Documentation",
+    "Topic :: Software Development",
+    "Topic :: Utilities",
+    "Typing :: Typed",
+  ]
+  keywords = []
+  dependencies = []
+  
+  [project.urls]
+  Homepage = "https://ness.github.io/PKFire"
+  Repository = "https://github.com/ness/PKFire"
+  Issues = "https://github.com/ness/PKFire/issues"
+  
+  [dependency-groups]
+  dev = [
+    "bump-my-version>=1.3.0",
+    "pysentry-rs>=0.4",
+    "pytest>=9",
+    "pytest-cov>=7",
+    "pytest-sugar>=1",
+    "pytest-xdist>=3",
+    "ruff>=0.15",
+    "syrupy>=5",
+    "ty>=0.0.49",
+  ]
+  docs = ["mkdocstrings[python]>=1", "zensical>=0.0.45"]
+  
+  [tool.bumpversion]
+  commit = false
+  tag = true
+  tag_name = "v{new_version}"
+  tag_message = ""
+  push = true
+  
+  [tool.hatch.build.targets.sdist]
+  include = ["/pkfire", "/tests", "*.md", "COPYING"]
+  
+  [tool.hatch.version]
+  source = "uv-dynamic-versioning"
+  
+  [tool.pytest]
+  addopts = [
+    "-ra",
+    "--cov=pkfire",
+    "--strict-config",
+    "--strict-markers",
+    "--numprocesses",
+    "auto",
+  ]
+  testpaths = ["tests"]
+  
+  [tool.coverage.run]
+  source = ["pkfire"]
+  branch = true
+  
+  [tool.coverage.report]
+  show_missing = true
+  skip_covered = true
+  exclude_lines = ["pragma: no cover", "if TYPE_CHECKING:", "@abstractmethod"]
+  
+  [tool.ruff]
+  line-length = 79
+  output-format = "concise"
+  target-version = "py310"
+  
+  [tool.ruff.lint]
+  select = ["ALL"]
+  ignore = [
+    "ANN401", # Dynamically typed expressions (typing.Any) are disallowed
+    "COM812", # Trailing comma missing
+    "CPY001", # Missing copyright notice at top of file
+    "D1",     # Missing docstring presence rules
+    "EM",     # flake8-errmsg
+    "G004",   # Logging statement uses f-string
+    "PLR",    # pylint Refactor
+    "S607",   # Starting a process with a partial executable path
+    "TD",     # flake8-todos
+    "TRY003", # Avoid specifying long messages outside the exception class
+  ]
+  
+  [tool.ruff.lint.isort]
+  known-first-party = ["pkfire"]
+  
+  [tool.ruff.lint.per-file-ignores]
+  "tests/**/*.py" = [
+    "ARG",  # flake8-unused-arguments
+    "S101", # Use of assert detected
+  ]
+  
+  [tool.ruff.lint.pydocstyle]
+  convention = "google"
+  
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
+  
+  [tool.ty.terminal]
+  error-on-warning = true
+  output-format = "concise"
+  
+  [tool.uv]
+  default-groups = ["dev", "docs"]
+  
+  [tool.uv-dynamic-versioning]
+  pattern = "default-unprefixed"
+  fallback-version = "0.0.0"
+  
+  '''
+# ---
+# name: test_pyproject_licenses[Apache-2.0]
+  '''
+  [build-system]
+  requires = ["hatchling", "uv-dynamic-versioning"]
+  build-backend = "hatchling.build"
+  
+  [project]
+  name = "PKFire"
+  dynamic = ["version"]
+  description = "Onett Little League"
+  readme = "README.md"
+  license = "Apache-2.0"
+  license-files = ["LICENSE"]
+  requires-python = ">=3.10"
+  authors = [{ name = "Ness", email = "ness@onett.example.com" }]
+  classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Documentation",
+    "Topic :: Software Development",
+    "Topic :: Utilities",
+    "Typing :: Typed",
+  ]
+  keywords = []
+  dependencies = []
+  
+  [project.urls]
+  Homepage = "https://ness.github.io/PKFire"
+  Repository = "https://github.com/ness/PKFire"
+  Issues = "https://github.com/ness/PKFire/issues"
+  
+  [dependency-groups]
+  dev = [
+    "bump-my-version>=1.3.0",
+    "pysentry-rs>=0.4",
+    "pytest>=9",
+    "pytest-cov>=7",
+    "pytest-sugar>=1",
+    "pytest-xdist>=3",
+    "ruff>=0.15",
+    "syrupy>=5",
+    "ty>=0.0.49",
+  ]
+  docs = ["mkdocstrings[python]>=1", "zensical>=0.0.45"]
+  
+  [tool.bumpversion]
+  commit = false
+  tag = true
+  tag_name = "v{new_version}"
+  tag_message = ""
+  push = true
+  
+  [tool.hatch.build.targets.sdist]
+  include = ["/pkfire", "/tests", "*.md", "LICENSE"]
+  
+  [tool.hatch.version]
+  source = "uv-dynamic-versioning"
+  
+  [tool.pytest]
+  addopts = [
+    "-ra",
+    "--cov=pkfire",
+    "--strict-config",
+    "--strict-markers",
+    "--numprocesses",
+    "auto",
+  ]
+  testpaths = ["tests"]
+  
+  [tool.coverage.run]
+  source = ["pkfire"]
+  branch = true
+  
+  [tool.coverage.report]
+  show_missing = true
+  skip_covered = true
+  exclude_lines = ["pragma: no cover", "if TYPE_CHECKING:", "@abstractmethod"]
+  
+  [tool.ruff]
+  line-length = 79
+  output-format = "concise"
+  target-version = "py310"
+  
+  [tool.ruff.lint]
+  select = ["ALL"]
+  ignore = [
+    "ANN401", # Dynamically typed expressions (typing.Any) are disallowed
+    "COM812", # Trailing comma missing
+    "CPY001", # Missing copyright notice at top of file
+    "D1",     # Missing docstring presence rules
+    "EM",     # flake8-errmsg
+    "G004",   # Logging statement uses f-string
+    "PLR",    # pylint Refactor
+    "S607",   # Starting a process with a partial executable path
+    "TD",     # flake8-todos
+    "TRY003", # Avoid specifying long messages outside the exception class
+  ]
+  
+  [tool.ruff.lint.isort]
+  known-first-party = ["pkfire"]
+  
+  [tool.ruff.lint.per-file-ignores]
+  "tests/**/*.py" = [
+    "ARG",  # flake8-unused-arguments
+    "S101", # Use of assert detected
+  ]
+  
+  [tool.ruff.lint.pydocstyle]
+  convention = "google"
+  
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
+  
+  [tool.ty.terminal]
+  error-on-warning = true
+  output-format = "concise"
+  
+  [tool.uv]
+  default-groups = ["dev", "docs"]
+  
+  [tool.uv-dynamic-versioning]
+  pattern = "default-unprefixed"
+  fallback-version = "0.0.0"
+  
+  '''
+# ---
+# name: test_pyproject_licenses[BSD-3-Clause]
+  '''
+  [build-system]
+  requires = ["hatchling", "uv-dynamic-versioning"]
+  build-backend = "hatchling.build"
+  
+  [project]
+  name = "PKFire"
+  dynamic = ["version"]
+  description = "Onett Little League"
+  readme = "README.md"
+  license = "BSD-3-Clause"
+  license-files = ["LICENSE"]
+  requires-python = ">=3.10"
+  authors = [{ name = "Ness", email = "ness@onett.example.com" }]
+  classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Documentation",
+    "Topic :: Software Development",
+    "Topic :: Utilities",
+    "Typing :: Typed",
+  ]
+  keywords = []
+  dependencies = []
+  
+  [project.urls]
+  Homepage = "https://ness.github.io/PKFire"
+  Repository = "https://github.com/ness/PKFire"
+  Issues = "https://github.com/ness/PKFire/issues"
+  
+  [dependency-groups]
+  dev = [
+    "bump-my-version>=1.3.0",
+    "pysentry-rs>=0.4",
+    "pytest>=9",
+    "pytest-cov>=7",
+    "pytest-sugar>=1",
+    "pytest-xdist>=3",
+    "ruff>=0.15",
+    "syrupy>=5",
+    "ty>=0.0.49",
+  ]
+  docs = ["mkdocstrings[python]>=1", "zensical>=0.0.45"]
+  
+  [tool.bumpversion]
+  commit = false
+  tag = true
+  tag_name = "v{new_version}"
+  tag_message = ""
+  push = true
+  
+  [tool.hatch.build.targets.sdist]
+  include = ["/pkfire", "/tests", "*.md", "LICENSE"]
+  
+  [tool.hatch.version]
+  source = "uv-dynamic-versioning"
+  
+  [tool.pytest]
+  addopts = [
+    "-ra",
+    "--cov=pkfire",
+    "--strict-config",
+    "--strict-markers",
+    "--numprocesses",
+    "auto",
+  ]
+  testpaths = ["tests"]
+  
+  [tool.coverage.run]
+  source = ["pkfire"]
+  branch = true
+  
+  [tool.coverage.report]
+  show_missing = true
+  skip_covered = true
+  exclude_lines = ["pragma: no cover", "if TYPE_CHECKING:", "@abstractmethod"]
+  
+  [tool.ruff]
+  line-length = 79
+  output-format = "concise"
+  target-version = "py310"
+  
+  [tool.ruff.lint]
+  select = ["ALL"]
+  ignore = [
+    "ANN401", # Dynamically typed expressions (typing.Any) are disallowed
+    "COM812", # Trailing comma missing
+    "CPY001", # Missing copyright notice at top of file
+    "D1",     # Missing docstring presence rules
+    "EM",     # flake8-errmsg
+    "G004",   # Logging statement uses f-string
+    "PLR",    # pylint Refactor
+    "S607",   # Starting a process with a partial executable path
+    "TD",     # flake8-todos
+    "TRY003", # Avoid specifying long messages outside the exception class
+  ]
+  
+  [tool.ruff.lint.isort]
+  known-first-party = ["pkfire"]
+  
+  [tool.ruff.lint.per-file-ignores]
+  "tests/**/*.py" = [
+    "ARG",  # flake8-unused-arguments
+    "S101", # Use of assert detected
+  ]
+  
+  [tool.ruff.lint.pydocstyle]
+  convention = "google"
+  
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
+  
+  [tool.ty.terminal]
+  error-on-warning = true
+  output-format = "concise"
+  
+  [tool.uv]
+  default-groups = ["dev", "docs"]
+  
+  [tool.uv-dynamic-versioning]
+  pattern = "default-unprefixed"
+  fallback-version = "0.0.0"
+  
+  '''
+# ---
+# name: test_pyproject_licenses[CC-BY-4.0]
+  '''
+  [build-system]
+  requires = ["hatchling", "uv-dynamic-versioning"]
+  build-backend = "hatchling.build"
+  
+  [project]
+  name = "PKFire"
+  dynamic = ["version"]
+  description = "Onett Little League"
+  readme = "README.md"
+  license = "CC-BY-4.0"
+  license-files = ["LICENSE"]
+  requires-python = ">=3.10"
+  authors = [{ name = "Ness", email = "ness@onett.example.com" }]
+  classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Documentation",
+    "Topic :: Software Development",
+    "Topic :: Utilities",
+    "Typing :: Typed",
+  ]
+  keywords = []
+  dependencies = []
+  
+  [project.urls]
+  Homepage = "https://ness.github.io/PKFire"
+  Repository = "https://github.com/ness/PKFire"
+  Issues = "https://github.com/ness/PKFire/issues"
+  
+  [dependency-groups]
+  dev = [
+    "bump-my-version>=1.3.0",
+    "pysentry-rs>=0.4",
+    "pytest>=9",
+    "pytest-cov>=7",
+    "pytest-sugar>=1",
+    "pytest-xdist>=3",
+    "ruff>=0.15",
+    "syrupy>=5",
+    "ty>=0.0.49",
+  ]
+  docs = ["mkdocstrings[python]>=1", "zensical>=0.0.45"]
+  
+  [tool.bumpversion]
+  commit = false
+  tag = true
+  tag_name = "v{new_version}"
+  tag_message = ""
+  push = true
+  
+  [tool.hatch.build.targets.sdist]
+  include = ["/pkfire", "/tests", "*.md", "LICENSE"]
+  
+  [tool.hatch.version]
+  source = "uv-dynamic-versioning"
+  
+  [tool.pytest]
+  addopts = [
+    "-ra",
+    "--cov=pkfire",
+    "--strict-config",
+    "--strict-markers",
+    "--numprocesses",
+    "auto",
+  ]
+  testpaths = ["tests"]
+  
+  [tool.coverage.run]
+  source = ["pkfire"]
+  branch = true
+  
+  [tool.coverage.report]
+  show_missing = true
+  skip_covered = true
+  exclude_lines = ["pragma: no cover", "if TYPE_CHECKING:", "@abstractmethod"]
+  
+  [tool.ruff]
+  line-length = 79
+  output-format = "concise"
+  target-version = "py310"
+  
+  [tool.ruff.lint]
+  select = ["ALL"]
+  ignore = [
+    "ANN401", # Dynamically typed expressions (typing.Any) are disallowed
+    "COM812", # Trailing comma missing
+    "CPY001", # Missing copyright notice at top of file
+    "D1",     # Missing docstring presence rules
+    "EM",     # flake8-errmsg
+    "G004",   # Logging statement uses f-string
+    "PLR",    # pylint Refactor
+    "S607",   # Starting a process with a partial executable path
+    "TD",     # flake8-todos
+    "TRY003", # Avoid specifying long messages outside the exception class
+  ]
+  
+  [tool.ruff.lint.isort]
+  known-first-party = ["pkfire"]
+  
+  [tool.ruff.lint.per-file-ignores]
+  "tests/**/*.py" = [
+    "ARG",  # flake8-unused-arguments
+    "S101", # Use of assert detected
+  ]
+  
+  [tool.ruff.lint.pydocstyle]
+  convention = "google"
+  
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
+  
+  [tool.ty.terminal]
+  error-on-warning = true
+  output-format = "concise"
+  
+  [tool.uv]
+  default-groups = ["dev", "docs"]
+  
+  [tool.uv-dynamic-versioning]
+  pattern = "default-unprefixed"
+  fallback-version = "0.0.0"
+  
+  '''
+# ---
+# name: test_pyproject_licenses[CC-BY-SA-4.0]
+  '''
+  [build-system]
+  requires = ["hatchling", "uv-dynamic-versioning"]
+  build-backend = "hatchling.build"
+  
+  [project]
+  name = "PKFire"
+  dynamic = ["version"]
+  description = "Onett Little League"
+  readme = "README.md"
+  license = "CC-BY-SA-4.0"
+  license-files = ["LICENSE"]
+  requires-python = ">=3.10"
+  authors = [{ name = "Ness", email = "ness@onett.example.com" }]
+  classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Documentation",
+    "Topic :: Software Development",
+    "Topic :: Utilities",
+    "Typing :: Typed",
+  ]
+  keywords = []
+  dependencies = []
+  
+  [project.urls]
+  Homepage = "https://ness.github.io/PKFire"
+  Repository = "https://github.com/ness/PKFire"
+  Issues = "https://github.com/ness/PKFire/issues"
+  
+  [dependency-groups]
+  dev = [
+    "bump-my-version>=1.3.0",
+    "pysentry-rs>=0.4",
+    "pytest>=9",
+    "pytest-cov>=7",
+    "pytest-sugar>=1",
+    "pytest-xdist>=3",
+    "ruff>=0.15",
+    "syrupy>=5",
+    "ty>=0.0.49",
+  ]
+  docs = ["mkdocstrings[python]>=1", "zensical>=0.0.45"]
+  
+  [tool.bumpversion]
+  commit = false
+  tag = true
+  tag_name = "v{new_version}"
+  tag_message = ""
+  push = true
+  
+  [tool.hatch.build.targets.sdist]
+  include = ["/pkfire", "/tests", "*.md", "LICENSE"]
+  
+  [tool.hatch.version]
+  source = "uv-dynamic-versioning"
+  
+  [tool.pytest]
+  addopts = [
+    "-ra",
+    "--cov=pkfire",
+    "--strict-config",
+    "--strict-markers",
+    "--numprocesses",
+    "auto",
+  ]
+  testpaths = ["tests"]
+  
+  [tool.coverage.run]
+  source = ["pkfire"]
+  branch = true
+  
+  [tool.coverage.report]
+  show_missing = true
+  skip_covered = true
+  exclude_lines = ["pragma: no cover", "if TYPE_CHECKING:", "@abstractmethod"]
+  
+  [tool.ruff]
+  line-length = 79
+  output-format = "concise"
+  target-version = "py310"
+  
+  [tool.ruff.lint]
+  select = ["ALL"]
+  ignore = [
+    "ANN401", # Dynamically typed expressions (typing.Any) are disallowed
+    "COM812", # Trailing comma missing
+    "CPY001", # Missing copyright notice at top of file
+    "D1",     # Missing docstring presence rules
+    "EM",     # flake8-errmsg
+    "G004",   # Logging statement uses f-string
+    "PLR",    # pylint Refactor
+    "S607",   # Starting a process with a partial executable path
+    "TD",     # flake8-todos
+    "TRY003", # Avoid specifying long messages outside the exception class
+  ]
+  
+  [tool.ruff.lint.isort]
+  known-first-party = ["pkfire"]
+  
+  [tool.ruff.lint.per-file-ignores]
+  "tests/**/*.py" = [
+    "ARG",  # flake8-unused-arguments
+    "S101", # Use of assert detected
+  ]
+  
+  [tool.ruff.lint.pydocstyle]
+  convention = "google"
+  
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
+  
+  [tool.ty.terminal]
+  error-on-warning = true
+  output-format = "concise"
+  
+  [tool.uv]
+  default-groups = ["dev", "docs"]
+  
+  [tool.uv-dynamic-versioning]
+  pattern = "default-unprefixed"
+  fallback-version = "0.0.0"
+  
+  '''
+# ---
+# name: test_pyproject_licenses[CC0-1.0]
+  '''
+  [build-system]
+  requires = ["hatchling", "uv-dynamic-versioning"]
+  build-backend = "hatchling.build"
+  
+  [project]
+  name = "PKFire"
+  dynamic = ["version"]
+  description = "Onett Little League"
+  readme = "README.md"
+  license = "CC0-1.0"
+  license-files = ["LICENSE"]
+  requires-python = ">=3.10"
+  authors = [{ name = "Ness", email = "ness@onett.example.com" }]
+  classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Documentation",
+    "Topic :: Software Development",
+    "Topic :: Utilities",
+    "Typing :: Typed",
+  ]
+  keywords = []
+  dependencies = []
+  
+  [project.urls]
+  Homepage = "https://ness.github.io/PKFire"
+  Repository = "https://github.com/ness/PKFire"
+  Issues = "https://github.com/ness/PKFire/issues"
+  
+  [dependency-groups]
+  dev = [
+    "bump-my-version>=1.3.0",
+    "pysentry-rs>=0.4",
+    "pytest>=9",
+    "pytest-cov>=7",
+    "pytest-sugar>=1",
+    "pytest-xdist>=3",
+    "ruff>=0.15",
+    "syrupy>=5",
+    "ty>=0.0.49",
+  ]
+  docs = ["mkdocstrings[python]>=1", "zensical>=0.0.45"]
+  
+  [tool.bumpversion]
+  commit = false
+  tag = true
+  tag_name = "v{new_version}"
+  tag_message = ""
+  push = true
+  
+  [tool.hatch.build.targets.sdist]
+  include = ["/pkfire", "/tests", "*.md", "LICENSE"]
+  
+  [tool.hatch.version]
+  source = "uv-dynamic-versioning"
+  
+  [tool.pytest]
+  addopts = [
+    "-ra",
+    "--cov=pkfire",
+    "--strict-config",
+    "--strict-markers",
+    "--numprocesses",
+    "auto",
+  ]
+  testpaths = ["tests"]
+  
+  [tool.coverage.run]
+  source = ["pkfire"]
+  branch = true
+  
+  [tool.coverage.report]
+  show_missing = true
+  skip_covered = true
+  exclude_lines = ["pragma: no cover", "if TYPE_CHECKING:", "@abstractmethod"]
+  
+  [tool.ruff]
+  line-length = 79
+  output-format = "concise"
+  target-version = "py310"
+  
+  [tool.ruff.lint]
+  select = ["ALL"]
+  ignore = [
+    "ANN401", # Dynamically typed expressions (typing.Any) are disallowed
+    "COM812", # Trailing comma missing
+    "CPY001", # Missing copyright notice at top of file
+    "D1",     # Missing docstring presence rules
+    "EM",     # flake8-errmsg
+    "G004",   # Logging statement uses f-string
+    "PLR",    # pylint Refactor
+    "S607",   # Starting a process with a partial executable path
+    "TD",     # flake8-todos
+    "TRY003", # Avoid specifying long messages outside the exception class
+  ]
+  
+  [tool.ruff.lint.isort]
+  known-first-party = ["pkfire"]
+  
+  [tool.ruff.lint.per-file-ignores]
+  "tests/**/*.py" = [
+    "ARG",  # flake8-unused-arguments
+    "S101", # Use of assert detected
+  ]
+  
+  [tool.ruff.lint.pydocstyle]
+  convention = "google"
+  
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
+  
+  [tool.ty.terminal]
+  error-on-warning = true
+  output-format = "concise"
+  
+  [tool.uv]
+  default-groups = ["dev", "docs"]
+  
+  [tool.uv-dynamic-versioning]
+  pattern = "default-unprefixed"
+  fallback-version = "0.0.0"
+  
+  '''
+# ---
+# name: test_pyproject_licenses[GPL-3.0-only]
+  '''
+  [build-system]
+  requires = ["hatchling", "uv-dynamic-versioning"]
+  build-backend = "hatchling.build"
+  
+  [project]
+  name = "PKFire"
+  dynamic = ["version"]
+  description = "Onett Little League"
+  readme = "README.md"
+  license = "GPL-3.0-only"
+  license-files = ["COPYING"]
+  requires-python = ">=3.10"
+  authors = [{ name = "Ness", email = "ness@onett.example.com" }]
+  classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Documentation",
+    "Topic :: Software Development",
+    "Topic :: Utilities",
+    "Typing :: Typed",
+  ]
+  keywords = []
+  dependencies = []
+  
+  [project.urls]
+  Homepage = "https://ness.github.io/PKFire"
+  Repository = "https://github.com/ness/PKFire"
+  Issues = "https://github.com/ness/PKFire/issues"
+  
+  [dependency-groups]
+  dev = [
+    "bump-my-version>=1.3.0",
+    "pysentry-rs>=0.4",
+    "pytest>=9",
+    "pytest-cov>=7",
+    "pytest-sugar>=1",
+    "pytest-xdist>=3",
+    "ruff>=0.15",
+    "syrupy>=5",
+    "ty>=0.0.49",
+  ]
+  docs = ["mkdocstrings[python]>=1", "zensical>=0.0.45"]
+  
+  [tool.bumpversion]
+  commit = false
+  tag = true
+  tag_name = "v{new_version}"
+  tag_message = ""
+  push = true
+  
+  [tool.hatch.build.targets.sdist]
+  include = ["/pkfire", "/tests", "*.md", "COPYING"]
+  
+  [tool.hatch.version]
+  source = "uv-dynamic-versioning"
+  
+  [tool.pytest]
+  addopts = [
+    "-ra",
+    "--cov=pkfire",
+    "--strict-config",
+    "--strict-markers",
+    "--numprocesses",
+    "auto",
+  ]
+  testpaths = ["tests"]
+  
+  [tool.coverage.run]
+  source = ["pkfire"]
+  branch = true
+  
+  [tool.coverage.report]
+  show_missing = true
+  skip_covered = true
+  exclude_lines = ["pragma: no cover", "if TYPE_CHECKING:", "@abstractmethod"]
+  
+  [tool.ruff]
+  line-length = 79
+  output-format = "concise"
+  target-version = "py310"
+  
+  [tool.ruff.lint]
+  select = ["ALL"]
+  ignore = [
+    "ANN401", # Dynamically typed expressions (typing.Any) are disallowed
+    "COM812", # Trailing comma missing
+    "CPY001", # Missing copyright notice at top of file
+    "D1",     # Missing docstring presence rules
+    "EM",     # flake8-errmsg
+    "G004",   # Logging statement uses f-string
+    "PLR",    # pylint Refactor
+    "S607",   # Starting a process with a partial executable path
+    "TD",     # flake8-todos
+    "TRY003", # Avoid specifying long messages outside the exception class
+  ]
+  
+  [tool.ruff.lint.isort]
+  known-first-party = ["pkfire"]
+  
+  [tool.ruff.lint.per-file-ignores]
+  "tests/**/*.py" = [
+    "ARG",  # flake8-unused-arguments
+    "S101", # Use of assert detected
+  ]
+  
+  [tool.ruff.lint.pydocstyle]
+  convention = "google"
+  
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
+  
+  [tool.ty.terminal]
+  error-on-warning = true
+  output-format = "concise"
+  
+  [tool.uv]
+  default-groups = ["dev", "docs"]
+  
+  [tool.uv-dynamic-versioning]
+  pattern = "default-unprefixed"
+  fallback-version = "0.0.0"
+  
+  '''
+# ---
+# name: test_pyproject_licenses[GPL-3.0-or-later]
+  '''
+  [build-system]
+  requires = ["hatchling", "uv-dynamic-versioning"]
+  build-backend = "hatchling.build"
+  
+  [project]
+  name = "PKFire"
+  dynamic = ["version"]
+  description = "Onett Little League"
+  readme = "README.md"
+  license = "GPL-3.0-or-later"
+  license-files = ["COPYING"]
+  requires-python = ">=3.10"
+  authors = [{ name = "Ness", email = "ness@onett.example.com" }]
+  classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Documentation",
+    "Topic :: Software Development",
+    "Topic :: Utilities",
+    "Typing :: Typed",
+  ]
+  keywords = []
+  dependencies = []
+  
+  [project.urls]
+  Homepage = "https://ness.github.io/PKFire"
+  Repository = "https://github.com/ness/PKFire"
+  Issues = "https://github.com/ness/PKFire/issues"
+  
+  [dependency-groups]
+  dev = [
+    "bump-my-version>=1.3.0",
+    "pysentry-rs>=0.4",
+    "pytest>=9",
+    "pytest-cov>=7",
+    "pytest-sugar>=1",
+    "pytest-xdist>=3",
+    "ruff>=0.15",
+    "syrupy>=5",
+    "ty>=0.0.49",
+  ]
+  docs = ["mkdocstrings[python]>=1", "zensical>=0.0.45"]
+  
+  [tool.bumpversion]
+  commit = false
+  tag = true
+  tag_name = "v{new_version}"
+  tag_message = ""
+  push = true
+  
+  [tool.hatch.build.targets.sdist]
+  include = ["/pkfire", "/tests", "*.md", "COPYING"]
+  
+  [tool.hatch.version]
+  source = "uv-dynamic-versioning"
+  
+  [tool.pytest]
+  addopts = [
+    "-ra",
+    "--cov=pkfire",
+    "--strict-config",
+    "--strict-markers",
+    "--numprocesses",
+    "auto",
+  ]
+  testpaths = ["tests"]
+  
+  [tool.coverage.run]
+  source = ["pkfire"]
+  branch = true
+  
+  [tool.coverage.report]
+  show_missing = true
+  skip_covered = true
+  exclude_lines = ["pragma: no cover", "if TYPE_CHECKING:", "@abstractmethod"]
+  
+  [tool.ruff]
+  line-length = 79
+  output-format = "concise"
+  target-version = "py310"
+  
+  [tool.ruff.lint]
+  select = ["ALL"]
+  ignore = [
+    "ANN401", # Dynamically typed expressions (typing.Any) are disallowed
+    "COM812", # Trailing comma missing
+    "CPY001", # Missing copyright notice at top of file
+    "D1",     # Missing docstring presence rules
+    "EM",     # flake8-errmsg
+    "G004",   # Logging statement uses f-string
+    "PLR",    # pylint Refactor
+    "S607",   # Starting a process with a partial executable path
+    "TD",     # flake8-todos
+    "TRY003", # Avoid specifying long messages outside the exception class
+  ]
+  
+  [tool.ruff.lint.isort]
+  known-first-party = ["pkfire"]
+  
+  [tool.ruff.lint.per-file-ignores]
+  "tests/**/*.py" = [
+    "ARG",  # flake8-unused-arguments
+    "S101", # Use of assert detected
+  ]
+  
+  [tool.ruff.lint.pydocstyle]
+  convention = "google"
+  
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
+  
+  [tool.ty.terminal]
+  error-on-warning = true
+  output-format = "concise"
+  
+  [tool.uv]
+  default-groups = ["dev", "docs"]
+  
+  [tool.uv-dynamic-versioning]
+  pattern = "default-unprefixed"
+  fallback-version = "0.0.0"
+  
+  '''
+# ---
+# name: test_pyproject_licenses[ISC]
+  '''
+  [build-system]
+  requires = ["hatchling", "uv-dynamic-versioning"]
+  build-backend = "hatchling.build"
+  
+  [project]
+  name = "PKFire"
+  dynamic = ["version"]
+  description = "Onett Little League"
+  readme = "README.md"
+  license = "ISC"
+  license-files = ["LICENSE"]
+  requires-python = ">=3.10"
+  authors = [{ name = "Ness", email = "ness@onett.example.com" }]
+  classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Documentation",
+    "Topic :: Software Development",
+    "Topic :: Utilities",
+    "Typing :: Typed",
+  ]
+  keywords = []
+  dependencies = []
+  
+  [project.urls]
+  Homepage = "https://ness.github.io/PKFire"
+  Repository = "https://github.com/ness/PKFire"
+  Issues = "https://github.com/ness/PKFire/issues"
+  
+  [dependency-groups]
+  dev = [
+    "bump-my-version>=1.3.0",
+    "pysentry-rs>=0.4",
+    "pytest>=9",
+    "pytest-cov>=7",
+    "pytest-sugar>=1",
+    "pytest-xdist>=3",
+    "ruff>=0.15",
+    "syrupy>=5",
+    "ty>=0.0.49",
+  ]
+  docs = ["mkdocstrings[python]>=1", "zensical>=0.0.45"]
+  
+  [tool.bumpversion]
+  commit = false
+  tag = true
+  tag_name = "v{new_version}"
+  tag_message = ""
+  push = true
+  
+  [tool.hatch.build.targets.sdist]
+  include = ["/pkfire", "/tests", "*.md", "LICENSE"]
+  
+  [tool.hatch.version]
+  source = "uv-dynamic-versioning"
+  
+  [tool.pytest]
+  addopts = [
+    "-ra",
+    "--cov=pkfire",
+    "--strict-config",
+    "--strict-markers",
+    "--numprocesses",
+    "auto",
+  ]
+  testpaths = ["tests"]
+  
+  [tool.coverage.run]
+  source = ["pkfire"]
+  branch = true
+  
+  [tool.coverage.report]
+  show_missing = true
+  skip_covered = true
+  exclude_lines = ["pragma: no cover", "if TYPE_CHECKING:", "@abstractmethod"]
+  
+  [tool.ruff]
+  line-length = 79
+  output-format = "concise"
+  target-version = "py310"
+  
+  [tool.ruff.lint]
+  select = ["ALL"]
+  ignore = [
+    "ANN401", # Dynamically typed expressions (typing.Any) are disallowed
+    "COM812", # Trailing comma missing
+    "CPY001", # Missing copyright notice at top of file
+    "D1",     # Missing docstring presence rules
+    "EM",     # flake8-errmsg
+    "G004",   # Logging statement uses f-string
+    "PLR",    # pylint Refactor
+    "S607",   # Starting a process with a partial executable path
+    "TD",     # flake8-todos
+    "TRY003", # Avoid specifying long messages outside the exception class
+  ]
+  
+  [tool.ruff.lint.isort]
+  known-first-party = ["pkfire"]
+  
+  [tool.ruff.lint.per-file-ignores]
+  "tests/**/*.py" = [
+    "ARG",  # flake8-unused-arguments
+    "S101", # Use of assert detected
+  ]
+  
+  [tool.ruff.lint.pydocstyle]
+  convention = "google"
+  
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
+  
+  [tool.ty.terminal]
+  error-on-warning = true
+  output-format = "concise"
+  
+  [tool.uv]
+  default-groups = ["dev", "docs"]
+  
+  [tool.uv-dynamic-versioning]
+  pattern = "default-unprefixed"
+  fallback-version = "0.0.0"
+  
+  '''
+# ---
+# name: test_pyproject_licenses[LGPL-3.0-only]
+  '''
+  [build-system]
+  requires = ["hatchling", "uv-dynamic-versioning"]
+  build-backend = "hatchling.build"
+  
+  [project]
+  name = "PKFire"
+  dynamic = ["version"]
+  description = "Onett Little League"
+  readme = "README.md"
+  license = "LGPL-3.0-only"
+  license-files = ["COPYING", "COPYING.LESSER"]
+  requires-python = ">=3.10"
+  authors = [{ name = "Ness", email = "ness@onett.example.com" }]
+  classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Documentation",
+    "Topic :: Software Development",
+    "Topic :: Utilities",
+    "Typing :: Typed",
+  ]
+  keywords = []
+  dependencies = []
+  
+  [project.urls]
+  Homepage = "https://ness.github.io/PKFire"
+  Repository = "https://github.com/ness/PKFire"
+  Issues = "https://github.com/ness/PKFire/issues"
+  
+  [dependency-groups]
+  dev = [
+    "bump-my-version>=1.3.0",
+    "pysentry-rs>=0.4",
+    "pytest>=9",
+    "pytest-cov>=7",
+    "pytest-sugar>=1",
+    "pytest-xdist>=3",
+    "ruff>=0.15",
+    "syrupy>=5",
+    "ty>=0.0.49",
+  ]
+  docs = ["mkdocstrings[python]>=1", "zensical>=0.0.45"]
+  
+  [tool.bumpversion]
+  commit = false
+  tag = true
+  tag_name = "v{new_version}"
+  tag_message = ""
+  push = true
+  
+  [tool.hatch.build.targets.sdist]
+  include = ["/pkfire", "/tests", "*.md", "COPYING", "COPYING.LESSER"]
+  
+  [tool.hatch.version]
+  source = "uv-dynamic-versioning"
+  
+  [tool.pytest]
+  addopts = [
+    "-ra",
+    "--cov=pkfire",
+    "--strict-config",
+    "--strict-markers",
+    "--numprocesses",
+    "auto",
+  ]
+  testpaths = ["tests"]
+  
+  [tool.coverage.run]
+  source = ["pkfire"]
+  branch = true
+  
+  [tool.coverage.report]
+  show_missing = true
+  skip_covered = true
+  exclude_lines = ["pragma: no cover", "if TYPE_CHECKING:", "@abstractmethod"]
+  
+  [tool.ruff]
+  line-length = 79
+  output-format = "concise"
+  target-version = "py310"
+  
+  [tool.ruff.lint]
+  select = ["ALL"]
+  ignore = [
+    "ANN401", # Dynamically typed expressions (typing.Any) are disallowed
+    "COM812", # Trailing comma missing
+    "CPY001", # Missing copyright notice at top of file
+    "D1",     # Missing docstring presence rules
+    "EM",     # flake8-errmsg
+    "G004",   # Logging statement uses f-string
+    "PLR",    # pylint Refactor
+    "S607",   # Starting a process with a partial executable path
+    "TD",     # flake8-todos
+    "TRY003", # Avoid specifying long messages outside the exception class
+  ]
+  
+  [tool.ruff.lint.isort]
+  known-first-party = ["pkfire"]
+  
+  [tool.ruff.lint.per-file-ignores]
+  "tests/**/*.py" = [
+    "ARG",  # flake8-unused-arguments
+    "S101", # Use of assert detected
+  ]
+  
+  [tool.ruff.lint.pydocstyle]
+  convention = "google"
+  
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
+  
+  [tool.ty.terminal]
+  error-on-warning = true
+  output-format = "concise"
+  
+  [tool.uv]
+  default-groups = ["dev", "docs"]
+  
+  [tool.uv-dynamic-versioning]
+  pattern = "default-unprefixed"
+  fallback-version = "0.0.0"
+  
+  '''
+# ---
+# name: test_pyproject_licenses[LGPL-3.0-or-later]
+  '''
+  [build-system]
+  requires = ["hatchling", "uv-dynamic-versioning"]
+  build-backend = "hatchling.build"
+  
+  [project]
+  name = "PKFire"
+  dynamic = ["version"]
+  description = "Onett Little League"
+  readme = "README.md"
+  license = "LGPL-3.0-or-later"
+  license-files = ["COPYING", "COPYING.LESSER"]
+  requires-python = ">=3.10"
+  authors = [{ name = "Ness", email = "ness@onett.example.com" }]
+  classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Documentation",
+    "Topic :: Software Development",
+    "Topic :: Utilities",
+    "Typing :: Typed",
+  ]
+  keywords = []
+  dependencies = []
+  
+  [project.urls]
+  Homepage = "https://ness.github.io/PKFire"
+  Repository = "https://github.com/ness/PKFire"
+  Issues = "https://github.com/ness/PKFire/issues"
+  
+  [dependency-groups]
+  dev = [
+    "bump-my-version>=1.3.0",
+    "pysentry-rs>=0.4",
+    "pytest>=9",
+    "pytest-cov>=7",
+    "pytest-sugar>=1",
+    "pytest-xdist>=3",
+    "ruff>=0.15",
+    "syrupy>=5",
+    "ty>=0.0.49",
+  ]
+  docs = ["mkdocstrings[python]>=1", "zensical>=0.0.45"]
+  
+  [tool.bumpversion]
+  commit = false
+  tag = true
+  tag_name = "v{new_version}"
+  tag_message = ""
+  push = true
+  
+  [tool.hatch.build.targets.sdist]
+  include = ["/pkfire", "/tests", "*.md", "COPYING", "COPYING.LESSER"]
+  
+  [tool.hatch.version]
+  source = "uv-dynamic-versioning"
+  
+  [tool.pytest]
+  addopts = [
+    "-ra",
+    "--cov=pkfire",
+    "--strict-config",
+    "--strict-markers",
+    "--numprocesses",
+    "auto",
+  ]
+  testpaths = ["tests"]
+  
+  [tool.coverage.run]
+  source = ["pkfire"]
+  branch = true
+  
+  [tool.coverage.report]
+  show_missing = true
+  skip_covered = true
+  exclude_lines = ["pragma: no cover", "if TYPE_CHECKING:", "@abstractmethod"]
+  
+  [tool.ruff]
+  line-length = 79
+  output-format = "concise"
+  target-version = "py310"
+  
+  [tool.ruff.lint]
+  select = ["ALL"]
+  ignore = [
+    "ANN401", # Dynamically typed expressions (typing.Any) are disallowed
+    "COM812", # Trailing comma missing
+    "CPY001", # Missing copyright notice at top of file
+    "D1",     # Missing docstring presence rules
+    "EM",     # flake8-errmsg
+    "G004",   # Logging statement uses f-string
+    "PLR",    # pylint Refactor
+    "S607",   # Starting a process with a partial executable path
+    "TD",     # flake8-todos
+    "TRY003", # Avoid specifying long messages outside the exception class
+  ]
+  
+  [tool.ruff.lint.isort]
+  known-first-party = ["pkfire"]
+  
+  [tool.ruff.lint.per-file-ignores]
+  "tests/**/*.py" = [
+    "ARG",  # flake8-unused-arguments
+    "S101", # Use of assert detected
+  ]
+  
+  [tool.ruff.lint.pydocstyle]
+  convention = "google"
+  
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
+  
+  [tool.ty.terminal]
+  error-on-warning = true
+  output-format = "concise"
+  
+  [tool.uv]
+  default-groups = ["dev", "docs"]
+  
+  [tool.uv-dynamic-versioning]
+  pattern = "default-unprefixed"
+  fallback-version = "0.0.0"
+  
+  '''
+# ---
+# name: test_pyproject_licenses[MIT]
+  '''
+  [build-system]
+  requires = ["hatchling", "uv-dynamic-versioning"]
+  build-backend = "hatchling.build"
+  
+  [project]
+  name = "PKFire"
+  dynamic = ["version"]
+  description = "Onett Little League"
+  readme = "README.md"
+  license = "MIT"
+  license-files = ["LICENSE"]
+  requires-python = ">=3.10"
+  authors = [{ name = "Ness", email = "ness@onett.example.com" }]
+  classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Documentation",
+    "Topic :: Software Development",
+    "Topic :: Utilities",
+    "Typing :: Typed",
+  ]
+  keywords = []
+  dependencies = []
+  
+  [project.urls]
+  Homepage = "https://ness.github.io/PKFire"
+  Repository = "https://github.com/ness/PKFire"
+  Issues = "https://github.com/ness/PKFire/issues"
+  
+  [dependency-groups]
+  dev = [
+    "bump-my-version>=1.3.0",
+    "pysentry-rs>=0.4",
+    "pytest>=9",
+    "pytest-cov>=7",
+    "pytest-sugar>=1",
+    "pytest-xdist>=3",
+    "ruff>=0.15",
+    "syrupy>=5",
+    "ty>=0.0.49",
+  ]
+  docs = ["mkdocstrings[python]>=1", "zensical>=0.0.45"]
+  
+  [tool.bumpversion]
+  commit = false
+  tag = true
+  tag_name = "v{new_version}"
+  tag_message = ""
+  push = true
+  
+  [tool.hatch.build.targets.sdist]
+  include = ["/pkfire", "/tests", "*.md", "LICENSE"]
+  
+  [tool.hatch.version]
+  source = "uv-dynamic-versioning"
+  
+  [tool.pytest]
+  addopts = [
+    "-ra",
+    "--cov=pkfire",
+    "--strict-config",
+    "--strict-markers",
+    "--numprocesses",
+    "auto",
+  ]
+  testpaths = ["tests"]
+  
+  [tool.coverage.run]
+  source = ["pkfire"]
+  branch = true
+  
+  [tool.coverage.report]
+  show_missing = true
+  skip_covered = true
+  exclude_lines = ["pragma: no cover", "if TYPE_CHECKING:", "@abstractmethod"]
+  
+  [tool.ruff]
+  line-length = 79
+  output-format = "concise"
+  target-version = "py310"
+  
+  [tool.ruff.lint]
+  select = ["ALL"]
+  ignore = [
+    "ANN401", # Dynamically typed expressions (typing.Any) are disallowed
+    "COM812", # Trailing comma missing
+    "CPY001", # Missing copyright notice at top of file
+    "D1",     # Missing docstring presence rules
+    "EM",     # flake8-errmsg
+    "G004",   # Logging statement uses f-string
+    "PLR",    # pylint Refactor
+    "S607",   # Starting a process with a partial executable path
+    "TD",     # flake8-todos
+    "TRY003", # Avoid specifying long messages outside the exception class
+  ]
+  
+  [tool.ruff.lint.isort]
+  known-first-party = ["pkfire"]
+  
+  [tool.ruff.lint.per-file-ignores]
+  "tests/**/*.py" = [
+    "ARG",  # flake8-unused-arguments
+    "S101", # Use of assert detected
+  ]
+  
+  [tool.ruff.lint.pydocstyle]
+  convention = "google"
+  
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
+  
+  [tool.ty.terminal]
+  error-on-warning = true
+  output-format = "concise"
+  
+  [tool.uv]
+  default-groups = ["dev", "docs"]
+  
+  [tool.uv-dynamic-versioning]
+  pattern = "default-unprefixed"
+  fallback-version = "0.0.0"
+  
+  '''
+# ---
 # name: test_pyproject_versions[3.12-3.10]
   '''
   [build-system]

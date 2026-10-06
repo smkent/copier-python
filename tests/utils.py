@@ -3,8 +3,11 @@ from __future__ import annotations
 import sys
 from contextlib import contextmanager
 from dataclasses import dataclass, field
+from pathlib import Path
 from typing import TYPE_CHECKING, Any
 from unittest.mock import MagicMock, patch
+
+import yaml
 
 if sys.version_info >= (3, 11):
     from typing import Self
@@ -15,6 +18,9 @@ if TYPE_CHECKING:
     from collections.abc import Callable, Iterator
 
     import pytest
+
+
+TEMPLATE_ROOT = Path(__file__).parent.parent
 
 
 @dataclass
@@ -61,3 +67,12 @@ class DisallowCallable:
             with patch.object(self.obj, self.attr, self.original):
                 yield
             self.mock_attr.assert_not_called()
+
+
+def _load_license_choices() -> dict[str, str]:
+    return yaml.safe_load((TEMPLATE_ROOT / "copier.yaml").read_text())[
+        "copyright_license"
+    ]["choices"]
+
+
+license_choices = _load_license_choices()

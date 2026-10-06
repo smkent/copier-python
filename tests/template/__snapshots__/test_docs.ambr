@@ -1365,3 +1365,206 @@
   
   '''
 # ---
+# name: test_docs_license[AGPL-3.0-only]
+  '''
+  ---
+  title: License
+  icon: lucide/scale
+  ---
+  
+  # License
+  
+  ```
+  --8<-- "COPYING"
+  ```
+  
+  '''
+# ---
+# name: test_docs_license[AGPL-3.0-or-later]
+  '''
+  ---
+  title: License
+  icon: lucide/scale
+  ---
+  
+  # License
+  
+  ```
+  --8<-- "COPYING"
+  ```
+  
+  '''
+# ---
+# name: test_docs_license[Apache-2.0]
+  '''
+  ---
+  title: License
+  icon: lucide/scale
+  ---
+  
+  # License
+  
+  ```
+  --8<-- "LICENSE"
+  ```
+  
+  '''
+# ---
+# name: test_docs_license[BSD-3-Clause]
+  '''
+  ---
+  title: License
+  icon: lucide/scale
+  ---
+  
+  # License
+  
+  ```
+  --8<-- "LICENSE"
+  ```
+  
+  '''
+# ---
+# name: test_docs_license[CC-BY-4.0]
+  '''
+  ---
+  title: License
+  icon: lucide/scale
+  ---
+  
+  # License
+  
+  ```
+  --8<-- "LICENSE"
+  ```
+  
+  '''
+# ---
+# name: test_docs_license[CC-BY-SA-4.0]
+  '''
+  ---
+  title: License
+  icon: lucide/scale
+  ---
+  
+  # License
+  
+  ```
+  --8<-- "LICENSE"
+  ```
+  
+  '''
+# ---
+# name: test_docs_license[CC0-1.0]
+  '''
+  ---
+  title: License
+  icon: lucide/scale
+  ---
+  
+  # License
+  
+  ```
+  --8<-- "LICENSE"
+  ```
+  
+  '''
+# ---
+# name: test_docs_license[GPL-3.0-only]
+  '''
+  ---
+  title: License
+  icon: lucide/scale
+  ---
+  
+  # License
+  
+  ```
+  --8<-- "COPYING"
+  ```
+  
+  '''
+# ---
+# name: test_docs_license[GPL-3.0-or-later]
+  '''
+  ---
+  title: License
+  icon: lucide/scale
+  ---
+  
+  # License
+  
+  ```
+  --8<-- "COPYING"
+  ```
+  
+  '''
+# ---
+# name: test_docs_license[ISC]
+  '''
+  ---
+  title: License
+  icon: lucide/scale
+  ---
+  
+  # License
+  
+  ```
+  --8<-- "LICENSE"
+  ```
+  
+  '''
+# ---
+# name: test_docs_license[LGPL-3.0-only]
+  '''
+  ---
+  title: License
+  icon: lucide/scale
+  ---
+  
+  # License
+  
+  ```
+  --8<-- "COPYING.LESSER"
+  ```
+  
+  ```
+  --8<-- "COPYING"
+  ```
+  
+  '''
+# ---
+# name: test_docs_license[LGPL-3.0-or-later]
+  '''
+  ---
+  title: License
+  icon: lucide/scale
+  ---
+  
+  # License
+  
+  ```
+  --8<-- "COPYING.LESSER"
+  ```
+  
+  ```
+  --8<-- "COPYING"
+  ```
+  
+  '''
+# ---
+# name: test_docs_license[MIT]
+  '''
+  ---
+  title: License
+  icon: lucide/scale
+  ---
+  
+  # License
+  
+  ```
+  --8<-- "LICENSE"
+  ```
+  
+  '''
+# ---

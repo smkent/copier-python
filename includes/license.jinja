@@ -1,0 +1,67 @@
+{%- set licenses = {
+    "Apache-2.0": "Apache License 2.0",
+    "BSD-3-Clause": 'BSD 3-Clause "New" or "Revised" License',
+    "CC-BY-4.0": "Creative Commons Attribution 4.0 International",
+    "CC-BY-SA-4.0": "Creative Commons Attribution Share Alike 4.0 International",
+    "CC0-1.0": "Creative Commons Zero v1.0 Universal",
+    "AGPL-3.0-only": {
+        "name": "GNU Affero General Public License v3.0 only",
+        "files": {"COPYING": "AGPL-3.0-only"},
+    },
+    "AGPL-3.0-or-later": {
+        "name": "GNU Affero General Public License v3.0 or later",
+        "files": {"COPYING": "AGPL-3.0-or-later"},
+    },
+    "GPL-3.0-only": {
+        "name": "GNU General Public License v3.0 only",
+        "files": {"COPYING": "GPL-3.0-only"},
+    },
+    "GPL-3.0-or-later": {
+        "name": "GNU General Public License v3.0 or later",
+        "files": {"COPYING": "GPL-3.0-or-later"},
+    },
+    "LGPL-3.0-only": {
+        "name": "GNU Lesser General Public License v3.0 only",
+        "files": {
+            "COPYING": "GPL-3.0-only",
+            "COPYING.LESSER": "LGPL-3.0-only",
+        },
+    },
+    "LGPL-3.0-or-later": {
+        "name": "GNU Lesser General Public License v3.0 or later",
+        "files": {
+            "COPYING": "GPL-3.0-only",
+            "COPYING.LESSER": "LGPL-3.0-or-later",
+        },
+    },
+    "ISC": "ISC License",
+    "MIT": "MIT License",
+} -%}
+{%- set data = (
+    {"name": licenses[copyright_license]}
+    if licenses[copyright_license] is string
+    else licenses[copyright_license]
+) -%}
+{%- set files = data.get("files", {"LICENSE": copyright_license}) -%}
+
+{%- macro name() -%}
+{{ data["name"] }}
+{%- endmacro -%}
+
+{%- macro url() -%}
+{%- set file = files | last -%}
+{%- if project_visibility == 'public' -%}
+https://github.com/{{ github_user }}/{{ project_name }}/blob/main/{{ file }}
+{%- else -%}
+{{ file }}
+{%- endif -%}
+{%- endmacro -%}
+
+{%- macro notice(h='') -%}
+{{h}}# License
+
+Copyright (C) {{ copyright_year }} {{ copyright_holder }} and contributors
+
+Licensed under the {{ name() }}
+([`{{ copyright_license }}`]({{ url() }})).
+{%- endmacro -%}

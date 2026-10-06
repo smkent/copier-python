@@ -1,3 +1,4 @@
+{%- import "includes/license.jinja" as license with context -%}
 {%- import "includes/python.jinja" as py with context -%}
 [build-system]
 requires = ["hatchling", "uv-dynamic-versioning"]
@@ -9,7 +10,7 @@ dynamic = ["version"]
 description = "{{ project_description }}"
 readme = "README.md"
 license = "{{ copyright_license }}"
-license-files = ["LICENSE"]
+license-files = ["{{ license.files | join('", "') }}"]
 requires-python = "{{ py.requires_python() }}"
 authors = [{ name = "{{ user_name }}", email = "{{ user_email }}" }]
 classifiers = [
@@ -69,7 +70,7 @@ tag_message = ""
 push = true
 
 [tool.hatch.build.targets.sdist]
-include = ["/{{ project_slug }}", "/tests", "*.md", "LICENSE"]
+include = ["/{{ project_slug }}", "/tests", "*.md", "{{ license.files | join('", "') }}"]
 
 [tool.hatch.version]
 source = "uv-dynamic-versioning"

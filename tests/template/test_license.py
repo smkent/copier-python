@@ -17,7 +17,30 @@ def test_license(
     copyright_license: str,
 ) -> None:
     rendered = render_template(copyright_license=copyright_license)
-    assert (rendered / "LICENSE").read_text() == snapshot
+    for name in ["LICENSE", "COPYING.LESSER", "COPYING"]:
+        if (rendered / name).exists():
+            assert (rendered / name).read_text() == snapshot
+
+
+@pytest.mark.parametrize("copyright_license", license_choices.values())
+def test_license_files(
+    render_template: Callable[..., Path], copyright_license: str
+) -> None:
+    if copyright_license.startswith("LGPL-"):
+        expected = ["COPYING", "COPYING.LESSER"]
+    elif "GPL-" in copyright_license:
+        expected = ["COPYING"]
+    else:
+        expected = ["LICENSE"]
+    rendered = render_template(copyright_license=copyright_license)
+    assert (
+        sorted(
+            p.name
+            for p in rendered.iterdir()
+            if p.name in {"LICENSE", "COPYING", "COPYING.LESSER"}
+        )
+        == expected
+    )
 
 
 @pytest.mark.parametrize("project_type", ["application", "library"])

@@ -288,7 +288,7 @@
   Copyright (C) 1995 Ness and contributors
   
   Licensed under the GNU Affero General Public License v3.0 only
-  ([`AGPL-3.0-only`](LICENSE)).
+  ([`AGPL-3.0-only`](COPYING)).
   
   '''
 # ---
@@ -298,7 +298,7 @@
   
   Onett Little League
   
-  [![License](https://img.shields.io/github/license/ness/PKFire)](https://github.com/ness/PKFire/blob/main/LICENSE)
+  [![License](https://img.shields.io/github/license/ness/PKFire)](https://github.com/ness/PKFire/blob/main/COPYING)
   [![PyPI](https://img.shields.io/pypi/v/PKFire)](https://pypi.org/project/PKFire/)
   [![Python](https://img.shields.io/pypi/pyversions/PKFire)](https://pypi.org/project/PKFire/)
   [![CI](https://github.com/ness/PKFire/actions/workflows/ci.yaml/badge.svg)](https://github.com/ness/PKFire/actions/workflows/ci.yaml)
@@ -317,7 +317,7 @@
   Copyright (C) 1995 Ness and contributors
   
   Licensed under the GNU Affero General Public License v3.0 only
-  ([`AGPL-3.0-only`](https://github.com/ness/PKFire/blob/main/LICENSE)).
+  ([`AGPL-3.0-only`](https://github.com/ness/PKFire/blob/main/COPYING)).
   
   '''
 # ---
@@ -332,7 +332,7 @@
   Copyright (C) 1995 Ness and contributors
   
   Licensed under the GNU Affero General Public License v3.0 or later
-  ([`AGPL-3.0-or-later`](LICENSE)).
+  ([`AGPL-3.0-or-later`](COPYING)).
   
   '''
 # ---
@@ -342,7 +342,7 @@
   
   Onett Little League
   
-  [![License](https://img.shields.io/github/license/ness/PKFire)](https://github.com/ness/PKFire/blob/main/LICENSE)
+  [![License](https://img.shields.io/github/license/ness/PKFire)](https://github.com/ness/PKFire/blob/main/COPYING)
   [![PyPI](https://img.shields.io/pypi/v/PKFire)](https://pypi.org/project/PKFire/)
   [![Python](https://img.shields.io/pypi/pyversions/PKFire)](https://pypi.org/project/PKFire/)
   [![CI](https://github.com/ness/PKFire/actions/workflows/ci.yaml/badge.svg)](https://github.com/ness/PKFire/actions/workflows/ci.yaml)
@@ -361,7 +361,7 @@
   Copyright (C) 1995 Ness and contributors
   
   Licensed under the GNU Affero General Public License v3.0 or later
-  ([`AGPL-3.0-or-later`](https://github.com/ness/PKFire/blob/main/LICENSE)).
+  ([`AGPL-3.0-or-later`](https://github.com/ness/PKFire/blob/main/COPYING)).
   
   '''
 # ---
@@ -596,7 +596,7 @@
   Copyright (C) 1995 Ness and contributors
   
   Licensed under the GNU General Public License v3.0 only
-  ([`GPL-3.0-only`](LICENSE)).
+  ([`GPL-3.0-only`](COPYING)).
   
   '''
 # ---
@@ -606,7 +606,7 @@
   
   Onett Little League
   
-  [![License](https://img.shields.io/github/license/ness/PKFire)](https://github.com/ness/PKFire/blob/main/LICENSE)
+  [![License](https://img.shields.io/github/license/ness/PKFire)](https://github.com/ness/PKFire/blob/main/COPYING)
   [![PyPI](https://img.shields.io/pypi/v/PKFire)](https://pypi.org/project/PKFire/)
   [![Python](https://img.shields.io/pypi/pyversions/PKFire)](https://pypi.org/project/PKFire/)
   [![CI](https://github.com/ness/PKFire/actions/workflows/ci.yaml/badge.svg)](https://github.com/ness/PKFire/actions/workflows/ci.yaml)
@@ -625,7 +625,7 @@
   Copyright (C) 1995 Ness and contributors
   
   Licensed under the GNU General Public License v3.0 only
-  ([`GPL-3.0-only`](https://github.com/ness/PKFire/blob/main/LICENSE)).
+  ([`GPL-3.0-only`](https://github.com/ness/PKFire/blob/main/COPYING)).
   
   '''
 # ---
@@ -640,7 +640,7 @@
   Copyright (C) 1995 Ness and contributors
   
   Licensed under the GNU General Public License v3.0 or later
-  ([`GPL-3.0-or-later`](LICENSE)).
+  ([`GPL-3.0-or-later`](COPYING)).
   
   '''
 # ---
@@ -650,7 +650,7 @@
   
   Onett Little League
   
-  [![License](https://img.shields.io/github/license/ness/PKFire)](https://github.com/ness/PKFire/blob/main/LICENSE)
+  [![License](https://img.shields.io/github/license/ness/PKFire)](https://github.com/ness/PKFire/blob/main/COPYING)
   [![PyPI](https://img.shields.io/pypi/v/PKFire)](https://pypi.org/project/PKFire/)
   [![Python](https://img.shields.io/pypi/pyversions/PKFire)](https://pypi.org/project/PKFire/)
   [![CI](https://github.com/ness/PKFire/actions/workflows/ci.yaml/badge.svg)](https://github.com/ness/PKFire/actions/workflows/ci.yaml)
@@ -669,7 +669,7 @@
   Copyright (C) 1995 Ness and contributors
   
   Licensed under the GNU General Public License v3.0 or later
-  ([`GPL-3.0-or-later`](https://github.com/ness/PKFire/blob/main/LICENSE)).
+  ([`GPL-3.0-or-later`](https://github.com/ness/PKFire/blob/main/COPYING)).
   
   '''
 # ---
@@ -728,7 +728,7 @@
   Copyright (C) 1995 Ness and contributors
   
   Licensed under the GNU Lesser General Public License v3.0 only
-  ([`LGPL-3.0-only`](LICENSE)).
+  ([`LGPL-3.0-only`](COPYING.LESSER)).
   
   '''
 # ---
@@ -738,7 +738,7 @@
   
   Onett Little League
   
-  [![License](https://img.shields.io/github/license/ness/PKFire)](https://github.com/ness/PKFire/blob/main/LICENSE)
+  [![License](https://img.shields.io/github/license/ness/PKFire)](https://github.com/ness/PKFire/blob/main/COPYING.LESSER)
   [![PyPI](https://img.shields.io/pypi/v/PKFire)](https://pypi.org/project/PKFire/)
   [![Python](https://img.shields.io/pypi/pyversions/PKFire)](https://pypi.org/project/PKFire/)
   [![CI](https://github.com/ness/PKFire/actions/workflows/ci.yaml/badge.svg)](https://github.com/ness/PKFire/actions/workflows/ci.yaml)
@@ -757,7 +757,7 @@
   Copyright (C) 1995 Ness and contributors
   
   Licensed under the GNU Lesser General Public License v3.0 only
-  ([`LGPL-3.0-only`](https://github.com/ness/PKFire/blob/main/LICENSE)).
+  ([`LGPL-3.0-only`](https://github.com/ness/PKFire/blob/main/COPYING.LESSER)).
   
   '''
 # ---
@@ -772,7 +772,7 @@
   Copyright (C) 1995 Ness and contributors
   
   Licensed under the GNU Lesser General Public License v3.0 or later
-  ([`LGPL-3.0-or-later`](LICENSE)).
+  ([`LGPL-3.0-or-later`](COPYING.LESSER)).
   
   '''
 # ---
@@ -782,7 +782,7 @@
   
   Onett Little League
   
-  [![License](https://img.shields.io/github/license/ness/PKFire)](https://github.com/ness/PKFire/blob/main/LICENSE)
+  [![License](https://img.shields.io/github/license/ness/PKFire)](https://github.com/ness/PKFire/blob/main/COPYING.LESSER)
   [![PyPI](https://img.shields.io/pypi/v/PKFire)](https://pypi.org/project/PKFire/)
   [![Python](https://img.shields.io/pypi/pyversions/PKFire)](https://pypi.org/project/PKFire/)
   [![CI](https://github.com/ness/PKFire/actions/workflows/ci.yaml/badge.svg)](https://github.com/ness/PKFire/actions/workflows/ci.yaml)
@@ -801,7 +801,7 @@
   Copyright (C) 1995 Ness and contributors
   
   Licensed under the GNU Lesser General Public License v3.0 or later
-  ([`LGPL-3.0-or-later`](https://github.com/ness/PKFire/blob/main/LICENSE)).
+  ([`LGPL-3.0-or-later`](https://github.com/ness/PKFire/blob/main/COPYING.LESSER)).
   
   '''
 # ---

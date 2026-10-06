@@ -6,6 +6,8 @@ from pathlib import Path
 import pytest
 from syrupy.assertion import SnapshotAssertion
 
+from tests.utils import license_choices
+
 
 @pytest.mark.parametrize(
     "enable_pypi",
@@ -62,3 +64,15 @@ def test_docs_development_features(
         assert (
             rendered / "docs" / "development" / doc_file
         ).read_text() == snapshot
+
+
+@pytest.mark.parametrize("copyright_license", license_choices.values())
+def test_docs_license(
+    render_template: Callable[..., Path],
+    snapshot: SnapshotAssertion,
+    copyright_license: str,
+) -> None:
+    rendered = render_template(
+        enable_docs=True, copyright_license=copyright_license
+    )
+    assert (rendered / "docs" / "license.md").read_text() == snapshot

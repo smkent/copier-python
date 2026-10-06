@@ -6,6 +6,8 @@ from pathlib import Path
 import pytest
 from syrupy.assertion import SnapshotAssertion
 
+from tests.utils import license_choices
+
 
 @pytest.mark.parametrize(
     "enable_coverage",
@@ -39,12 +41,17 @@ def test_readme_features(
 
 
 @pytest.mark.parametrize("project_visibility", ["public", "private"])
+@pytest.mark.parametrize(("copyright_license"), license_choices.values())
 def test_readme_project_visibility(
     render_template: Callable[..., Path],
     snapshot: SnapshotAssertion,
     project_visibility: str,
+    copyright_license: str,
 ) -> None:
-    rendered = render_template(project_visibility=project_visibility)
+    rendered = render_template(
+        project_visibility=project_visibility,
+        copyright_license=copyright_license,
+    )
     assert (rendered / "README.md").read_text() == snapshot
 
 

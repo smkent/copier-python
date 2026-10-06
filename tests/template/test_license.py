@@ -6,22 +6,10 @@ from pathlib import Path
 import pytest
 from syrupy.assertion import SnapshotAssertion
 
+from tests.utils import license_choices
 
-@pytest.mark.parametrize(
-    "copyright_license",
-    [
-        "AGPL-3.0",
-        "Apache-2.0",
-        "BSD-3-Clause",
-        "CC-BY-4.0",
-        "CC-BY-SA-4.0",
-        "CC0-1.0",
-        "GPL-3.0",
-        "ISC",
-        "LGPL-3.0",
-        "MIT",
-    ],
-)
+
+@pytest.mark.parametrize("copyright_license", license_choices.values())
 def test_license(
     render_template: Callable[..., Path],
     snapshot: SnapshotAssertion,

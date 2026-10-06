@@ -25,3 +25,21 @@ def test_zensical_features(
         enable_docs=True,
     )
     assert (rendered / "zensical.toml").read_text() == snapshot
+
+
+@pytest.mark.parametrize(
+    ("copyright_license", "expected"),
+    [
+        ("MIT", 'copyright = "&copy; 1995 Ness and contributors"'),
+        ("CC0-1.0", 'copyright = "Written in 1995 by Ness and contributors"'),
+    ],
+)
+def test_zensical_copyright(
+    render_template: Callable[..., Path],
+    copyright_license: str,
+    expected: str,
+) -> None:
+    rendered = render_template(
+        enable_docs=True, copyright_license=copyright_license
+    )
+    assert expected in (rendered / "zensical.toml").read_text().splitlines()

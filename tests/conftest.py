@@ -27,7 +27,6 @@ DEFAULT_DATA: dict[str, Any] = {
     "user_email": "ness@onett.example.com",
     "github_user": "ness",
     "copyright_holder": "Ness",
-    "copyright_holder_email": "ness@onett.example.com",
     "copyright_year": "1995",
     "copyright_license": "MIT",
 }

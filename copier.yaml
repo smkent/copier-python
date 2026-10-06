@@ -180,6 +180,7 @@ copyright_year:
   type: str
   qmark: 📅
   help: The copyright year (e.g. 2026)
+  default: "{{ '%Y' | strftime }}"
   validator: |
     {%- if not copyright_year -%}
       Required

@@ -7,6 +7,7 @@ from typing import TYPE_CHECKING, Any
 
 import copier
 import pytest
+import yaml
 
 from copier_python.__main__ import setup_env
 
@@ -55,10 +56,24 @@ def allow_subprocess(disallow_subprocess: DisallowCallable) -> Iterator[None]:
 def render_template(
     tmp_path: Path, disallow_subprocess: DisallowCallable
 ) -> Callable[..., Path]:
-    def _render(*, vcs_ref: str = "HEAD", **kwargs: Any) -> Path:
+    def _render(
+        *,
+        vcs_ref: str = "HEAD",
+        previous_answers: dict[str, Any] | None = None,
+        **kwargs: Any,
+    ) -> Path:
         worktree = tmp_path / "project"
-        data = {**DEFAULT_DATA, **(kwargs or {})}
-        if data["project_visibility"] == "private":
+        if previous_answers is not None:
+            worktree.mkdir(parents=True, exist_ok=True)
+            (worktree / ".copier-answers.yml").write_text(
+                yaml.safe_dump(previous_answers)
+            )
+        data = {
+            k: v
+            for k, v in {**DEFAULT_DATA, **(kwargs or {})}.items()
+            if v is not None
+        }
+        if data.get("project_visibility") == "private":
             data.pop("github_user", None)
         with warnings.catch_warnings():
             warnings.filterwarnings(

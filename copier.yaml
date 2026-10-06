@@ -173,12 +173,6 @@ copyright_holder:
   help: Copyright holder's full name
   default: '{{ user_name }}'
 
-copyright_holder_email:
-  type: str
-  qmark: ✉️
-  help: Copyright holder's email address
-  default: '{{ user_email }}'
-
 copyright_year:
   type: str
   qmark: 📅

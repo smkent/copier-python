@@ -57,6 +57,13 @@ copier copy "gh:smkent/copier-python" /new/project/path
 This template was inspired by [pawamoy/copier-uv][copier-uv] and
 [ritwiktiwari/copier-astral][copier-astral] -- Thanks!
 
+## License
+
+Copyright (C) 2026 Stephen Kent and contributors
+
+Licensed under the MIT License
+([`MIT`](https://github.com/smkent/copier-python/blob/main/LICENSE)).
+
 [astral]: https://astral.sh
 [codecovio]: https://codecov.io
 [copier-astral]: https://ritwiktiwari.github.io/copier-astral/

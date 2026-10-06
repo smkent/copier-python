@@ -1,8 +1,7 @@
 # Changes here will be overwritten by Copier
-_commit: v0.16.3
+_commit: v0.17.0
 _src_path: .
 copyright_holder: Stephen Kent
-copyright_holder_email: smkent@smkent.net
 copyright_license: MIT
 copyright_year: '2026'
 enable_container: false

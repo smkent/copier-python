@@ -59,9 +59,21 @@ https://github.com/{{ github_user }}/{{ project_name }}/blob/main/{{ file }}
 
 {%- macro notice(h='') -%}
 {{h}}# License
+{%- if copyright_license == "CC0-1.0" %}
+{#- Adapted from the CC0 notice for software suggested by CC and the FSF #}
+
+Written in {{ copyright_year }} by {{ copyright_holder }} and contributors.
+
+To the extent possible under law, the author(s) have dedicated all copyright
+and related and neighboring rights to this software to the public domain
+worldwide. This software is distributed without any warranty. See the
+{{ name() }} Public Domain Dedication
+([`{{ copyright_license }}`]({{ url() }})).
+{%- else %}
 
 Copyright (C) {{ copyright_year }} {{ copyright_holder }} and contributors
 
 Licensed under the {{ name() }}
 ([`{{ copyright_license }}`]({{ url() }})).
+{%- endif %}
 {%- endmacro -%}

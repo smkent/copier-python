@@ -1,6 +1,6 @@
 BSD 3-Clause License
 
-Copyright (c) {{ copyright_year }}, {{ copyright_holder }}
+Copyright (c) {{ copyright_year }}, {{ copyright_holder }} and contributors
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without

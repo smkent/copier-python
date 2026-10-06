@@ -5,7 +5,7 @@
   site_name = "PKFire"
   site_description = "Onett Little League"
   site_author = "Ness"
-  copyright = "&copy; 1995 Ness"
+  copyright = "&copy; 1995 Ness and contributors"
   
   nav = [
     { "About" = [
@@ -131,7 +131,7 @@
   site_url = "https://ness.github.io/PKFire"
   repo_url = "https://github.com/ness/PKFire"
   repo_name = "ness/PKFire"
-  copyright = "&copy; 1995 Ness"
+  copyright = "&copy; 1995 Ness and contributors"
   
   nav = [
     { "About" = [
@@ -262,7 +262,7 @@
   site_name = "PKFire"
   site_description = "Onett Little League"
   site_author = "Ness"
-  copyright = "&copy; 1995 Ness"
+  copyright = "&copy; 1995 Ness and contributors"
   
   nav = [
     { "About" = [
@@ -388,7 +388,7 @@
   site_url = "https://ness.github.io/PKFire"
   repo_url = "https://github.com/ness/PKFire"
   repo_name = "ness/PKFire"
-  copyright = "&copy; 1995 Ness"
+  copyright = "&copy; 1995 Ness and contributors"
   
   nav = [
     { "About" = [

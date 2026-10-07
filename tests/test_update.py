@@ -281,7 +281,7 @@ def test_main_update_error(
             "",
             (f"Applied updates from template: {start_ref}...{end_ref}"),
             (
-                f"https://github.com/ness/pkfire/compare/"
+                f"https://github.com/smkent/copier-python/compare/"
                 f"{start_ref}...{end_ref}"
             ),
         )
@@ -376,7 +376,7 @@ def test_main_update_with_project(
             "",
             (f"Applied updates from template: {start_ref}...{end_ref}"),
             (
-                f"https://github.com/ness/pkfire/compare/"
+                f"https://github.com/smkent/copier-python/compare/"
                 f"{start_ref}...{end_ref}"
             ),
         )

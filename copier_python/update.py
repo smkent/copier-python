@@ -11,6 +11,8 @@ from .repo import RepoWorktree
 if TYPE_CHECKING:
     from .repo import RepoTarget
 
+TEMPLATE_REPO_URL = "https://github.com/smkent/copier-python"
+
 
 @dataclass
 class UpdateAction:
@@ -65,7 +67,7 @@ class UpdateAction:
             body = os.linesep.join(
                 (
                     f"Applied updates from template: {ref_range}",
-                    f"{repo.repo.url}/compare/{ref_range}",
+                    f"{TEMPLATE_REPO_URL}/compare/{ref_range}",
                 )
             )
         repo.run(["git", "add", "-A"])

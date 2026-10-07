@@ -20,7 +20,7 @@ import yaml
 from copier_python.__main__ import main, update
 
 if TYPE_CHECKING:
-    from collections.abc import Callable, Iterator, Sequence
+    from collections.abc import Callable, Generator, Sequence
 
     from .utils import DisallowCallable
 
@@ -109,7 +109,7 @@ def create_project(
 
 
 @pytest.fixture
-def mock_temp_dir(tmp_path: Path) -> Iterator[Path]:
+def mock_temp_dir(tmp_path: Path) -> Generator[Path]:
     with patch.object(
         tempfile.TemporaryDirectory, "__enter__", return_value=tmp_path
     ):
@@ -146,7 +146,7 @@ class ExpectRun:
         mock: bool = True,
         has_any: bool = False,
         shell_callback: Callable[[], None] | None = None,
-    ) -> Iterator[MagicMock]:
+    ) -> Generator[MagicMock]:
 
         subp_run = subprocess.run
 

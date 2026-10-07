@@ -15,7 +15,7 @@ else:
     from typing_extensions import Self
 
 if TYPE_CHECKING:
-    from collections.abc import Callable, Iterator
+    from collections.abc import Callable, Generator
 
     import pytest
 
@@ -48,7 +48,7 @@ class DisallowCallable:
         self.original = getattr(self.obj, self.attr)
 
     @contextmanager
-    def __call__(self) -> Iterator[Self]:
+    def __call__(self) -> Generator[Self]:
 
         def wrapper(*args: Any, **kwargs: Any) -> Any:
             if self.enabled:
@@ -62,7 +62,7 @@ class DisallowCallable:
             yield self
 
     @contextmanager
-    def pause(self) -> Iterator[None]:
+    def pause(self) -> Generator[None]:
         if self.mock_attr:
             with patch.object(self.obj, self.attr, self.original):
                 yield

@@ -17,6 +17,14 @@
   * **Issue tracker**: <https://github.com/ness/PKFire/issues>
     for questions or bug reports
   
+  ## Contribution terms
+  
+  By submitting a contribution to PKFire, you agree that it is
+  licensed under the project's license, the
+  [MIT License](https://github.com/ness/PKFire/blob/main/LICENSE),
+  with no additional terms,
+  and that you have the right to submit it under that license.
+  
   '''
 # ---
 # name: test_contributing_features[no_docs]
@@ -34,6 +42,14 @@
     for submitting pull requests
   * **Issue tracker**: <https://github.com/ness/PKFire/issues>
     for questions or bug reports
+  
+  ## Contribution terms
+  
+  By submitting a contribution to PKFire, you agree that it is
+  licensed under the project's license, the
+  [MIT License](https://github.com/ness/PKFire/blob/main/LICENSE),
+  with no additional terms,
+  and that you have the right to submit it under that license.
   
   ## Development documentation
   
@@ -121,6 +137,370 @@
   `git status` and `git diff`. Resolve any conflicts, and then commit the result.
   
   [copier-update]: https://copier.readthedocs.io/en/stable/updating/
+  
+  '''
+# ---
+# name: test_contributing_license[AGPL-3.0-only]
+  '''
+  # Contributing to PKFire
+  
+  **Contributions are welcome!**
+  
+  Thank you for your time and interest in improving
+  **PKFire**!
+  
+  ## Project resources
+  
+  * **Web site**: **<https://ness.github.io/PKFire>**
+    for general project information, usage, and development documentation
+  * **Repository**: <https://github.com/ness/PKFire>
+    for submitting pull requests
+  * **Issue tracker**: <https://github.com/ness/PKFire/issues>
+    for questions or bug reports
+  
+  ## Contribution terms
+  
+  By submitting a contribution to PKFire, you agree that it is
+  licensed under the project's license, the
+  [GNU Affero General Public License v3.0 only](https://github.com/ness/PKFire/blob/main/COPYING),
+  with no additional terms,
+  and that you have the right to submit it under that license.
+  
+  '''
+# ---
+# name: test_contributing_license[AGPL-3.0-or-later]
+  '''
+  # Contributing to PKFire
+  
+  **Contributions are welcome!**
+  
+  Thank you for your time and interest in improving
+  **PKFire**!
+  
+  ## Project resources
+  
+  * **Web site**: **<https://ness.github.io/PKFire>**
+    for general project information, usage, and development documentation
+  * **Repository**: <https://github.com/ness/PKFire>
+    for submitting pull requests
+  * **Issue tracker**: <https://github.com/ness/PKFire/issues>
+    for questions or bug reports
+  
+  ## Contribution terms
+  
+  By submitting a contribution to PKFire, you agree that it is
+  licensed under the project's license, the
+  [GNU Affero General Public License v3.0 or later](https://github.com/ness/PKFire/blob/main/COPYING),
+  with no additional terms,
+  and that you have the right to submit it under that license.
+  
+  '''
+# ---
+# name: test_contributing_license[Apache-2.0]
+  '''
+  # Contributing to PKFire
+  
+  **Contributions are welcome!**
+  
+  Thank you for your time and interest in improving
+  **PKFire**!
+  
+  ## Project resources
+  
+  * **Web site**: **<https://ness.github.io/PKFire>**
+    for general project information, usage, and development documentation
+  * **Repository**: <https://github.com/ness/PKFire>
+    for submitting pull requests
+  * **Issue tracker**: <https://github.com/ness/PKFire/issues>
+    for questions or bug reports
+  
+  ## Contribution terms
+  
+  By submitting a contribution to PKFire, you agree that it is
+  licensed under the project's license, the
+  [Apache License 2.0](https://github.com/ness/PKFire/blob/main/LICENSE),
+  with no additional terms,
+  and that you have the right to submit it under that license.
+  
+  '''
+# ---
+# name: test_contributing_license[BSD-3-Clause]
+  '''
+  # Contributing to PKFire
+  
+  **Contributions are welcome!**
+  
+  Thank you for your time and interest in improving
+  **PKFire**!
+  
+  ## Project resources
+  
+  * **Web site**: **<https://ness.github.io/PKFire>**
+    for general project information, usage, and development documentation
+  * **Repository**: <https://github.com/ness/PKFire>
+    for submitting pull requests
+  * **Issue tracker**: <https://github.com/ness/PKFire/issues>
+    for questions or bug reports
+  
+  ## Contribution terms
+  
+  By submitting a contribution to PKFire, you agree that it is
+  licensed under the project's license, the
+  [BSD 3-Clause "New" or "Revised" License](https://github.com/ness/PKFire/blob/main/LICENSE),
+  with no additional terms,
+  and that you have the right to submit it under that license.
+  
+  '''
+# ---
+# name: test_contributing_license[CC-BY-4.0]
+  '''
+  # Contributing to PKFire
+  
+  **Contributions are welcome!**
+  
+  Thank you for your time and interest in improving
+  **PKFire**!
+  
+  ## Project resources
+  
+  * **Web site**: **<https://ness.github.io/PKFire>**
+    for general project information, usage, and development documentation
+  * **Repository**: <https://github.com/ness/PKFire>
+    for submitting pull requests
+  * **Issue tracker**: <https://github.com/ness/PKFire/issues>
+    for questions or bug reports
+  
+  ## Contribution terms
+  
+  By submitting a contribution to PKFire, you agree that it is
+  licensed under the project's license, the
+  [Creative Commons Attribution 4.0 International](https://github.com/ness/PKFire/blob/main/LICENSE),
+  with no additional terms,
+  and that you have the right to submit it under that license.
+  
+  '''
+# ---
+# name: test_contributing_license[CC-BY-SA-4.0]
+  '''
+  # Contributing to PKFire
+  
+  **Contributions are welcome!**
+  
+  Thank you for your time and interest in improving
+  **PKFire**!
+  
+  ## Project resources
+  
+  * **Web site**: **<https://ness.github.io/PKFire>**
+    for general project information, usage, and development documentation
+  * **Repository**: <https://github.com/ness/PKFire>
+    for submitting pull requests
+  * **Issue tracker**: <https://github.com/ness/PKFire/issues>
+    for questions or bug reports
+  
+  ## Contribution terms
+  
+  By submitting a contribution to PKFire, you agree that it is
+  licensed under the project's license, the
+  [Creative Commons Attribution Share Alike 4.0 International](https://github.com/ness/PKFire/blob/main/LICENSE),
+  with no additional terms,
+  and that you have the right to submit it under that license.
+  
+  '''
+# ---
+# name: test_contributing_license[CC0-1.0]
+  '''
+  # Contributing to PKFire
+  
+  **Contributions are welcome!**
+  
+  Thank you for your time and interest in improving
+  **PKFire**!
+  
+  ## Project resources
+  
+  * **Web site**: **<https://ness.github.io/PKFire>**
+    for general project information, usage, and development documentation
+  * **Repository**: <https://github.com/ness/PKFire>
+    for submitting pull requests
+  * **Issue tracker**: <https://github.com/ness/PKFire/issues>
+    for questions or bug reports
+  
+  ## Contribution terms
+  
+  By submitting a contribution to PKFire, you agree that it is
+  dedicated to the public domain under
+  [Creative Commons Zero v1.0 Universal](https://github.com/ness/PKFire/blob/main/LICENSE),
+  with no additional terms,
+  and that you have the right to do so.
+  
+  '''
+# ---
+# name: test_contributing_license[GPL-3.0-only]
+  '''
+  # Contributing to PKFire
+  
+  **Contributions are welcome!**
+  
+  Thank you for your time and interest in improving
+  **PKFire**!
+  
+  ## Project resources
+  
+  * **Web site**: **<https://ness.github.io/PKFire>**
+    for general project information, usage, and development documentation
+  * **Repository**: <https://github.com/ness/PKFire>
+    for submitting pull requests
+  * **Issue tracker**: <https://github.com/ness/PKFire/issues>
+    for questions or bug reports
+  
+  ## Contribution terms
+  
+  By submitting a contribution to PKFire, you agree that it is
+  licensed under the project's license, the
+  [GNU General Public License v3.0 only](https://github.com/ness/PKFire/blob/main/COPYING),
+  with no additional terms,
+  and that you have the right to submit it under that license.
+  
+  '''
+# ---
+# name: test_contributing_license[GPL-3.0-or-later]
+  '''
+  # Contributing to PKFire
+  
+  **Contributions are welcome!**
+  
+  Thank you for your time and interest in improving
+  **PKFire**!
+  
+  ## Project resources
+  
+  * **Web site**: **<https://ness.github.io/PKFire>**
+    for general project information, usage, and development documentation
+  * **Repository**: <https://github.com/ness/PKFire>
+    for submitting pull requests
+  * **Issue tracker**: <https://github.com/ness/PKFire/issues>
+    for questions or bug reports
+  
+  ## Contribution terms
+  
+  By submitting a contribution to PKFire, you agree that it is
+  licensed under the project's license, the
+  [GNU General Public License v3.0 or later](https://github.com/ness/PKFire/blob/main/COPYING),
+  with no additional terms,
+  and that you have the right to submit it under that license.
+  
+  '''
+# ---
+# name: test_contributing_license[ISC]
+  '''
+  # Contributing to PKFire
+  
+  **Contributions are welcome!**
+  
+  Thank you for your time and interest in improving
+  **PKFire**!
+  
+  ## Project resources
+  
+  * **Web site**: **<https://ness.github.io/PKFire>**
+    for general project information, usage, and development documentation
+  * **Repository**: <https://github.com/ness/PKFire>
+    for submitting pull requests
+  * **Issue tracker**: <https://github.com/ness/PKFire/issues>
+    for questions or bug reports
+  
+  ## Contribution terms
+  
+  By submitting a contribution to PKFire, you agree that it is
+  licensed under the project's license, the
+  [ISC License](https://github.com/ness/PKFire/blob/main/LICENSE),
+  with no additional terms,
+  and that you have the right to submit it under that license.
+  
+  '''
+# ---
+# name: test_contributing_license[LGPL-3.0-only]
+  '''
+  # Contributing to PKFire
+  
+  **Contributions are welcome!**
+  
+  Thank you for your time and interest in improving
+  **PKFire**!
+  
+  ## Project resources
+  
+  * **Web site**: **<https://ness.github.io/PKFire>**
+    for general project information, usage, and development documentation
+  * **Repository**: <https://github.com/ness/PKFire>
+    for submitting pull requests
+  * **Issue tracker**: <https://github.com/ness/PKFire/issues>
+    for questions or bug reports
+  
+  ## Contribution terms
+  
+  By submitting a contribution to PKFire, you agree that it is
+  licensed under the project's license, the
+  [GNU Lesser General Public License v3.0 only](https://github.com/ness/PKFire/blob/main/COPYING.LESSER),
+  with no additional terms,
+  and that you have the right to submit it under that license.
+  
+  '''
+# ---
+# name: test_contributing_license[LGPL-3.0-or-later]
+  '''
+  # Contributing to PKFire
+  
+  **Contributions are welcome!**
+  
+  Thank you for your time and interest in improving
+  **PKFire**!
+  
+  ## Project resources
+  
+  * **Web site**: **<https://ness.github.io/PKFire>**
+    for general project information, usage, and development documentation
+  * **Repository**: <https://github.com/ness/PKFire>
+    for submitting pull requests
+  * **Issue tracker**: <https://github.com/ness/PKFire/issues>
+    for questions or bug reports
+  
+  ## Contribution terms
+  
+  By submitting a contribution to PKFire, you agree that it is
+  licensed under the project's license, the
+  [GNU Lesser General Public License v3.0 or later](https://github.com/ness/PKFire/blob/main/COPYING.LESSER),
+  with no additional terms,
+  and that you have the right to submit it under that license.
+  
+  '''
+# ---
+# name: test_contributing_license[MIT]
+  '''
+  # Contributing to PKFire
+  
+  **Contributions are welcome!**
+  
+  Thank you for your time and interest in improving
+  **PKFire**!
+  
+  ## Project resources
+  
+  * **Web site**: **<https://ness.github.io/PKFire>**
+    for general project information, usage, and development documentation
+  * **Repository**: <https://github.com/ness/PKFire>
+    for submitting pull requests
+  * **Issue tracker**: <https://github.com/ness/PKFire/issues>
+    for questions or bug reports
+  
+  ## Contribution terms
+  
+  By submitting a contribution to PKFire, you agree that it is
+  licensed under the project's license, the
+  [MIT License](https://github.com/ness/PKFire/blob/main/LICENSE),
+  with no additional terms,
+  and that you have the right to submit it under that license.
   
   '''
 # ---

@@ -51,6 +51,11 @@ copier copy "gh:smkent/copier-python" /new/project/path
 * [**pytest**][pytest] test framework with [**codecov.io**][codecovio] support
 * [**Zensical**][zensical] project documentation with automatic deployment to
   [**GitHub Pages**][github-pages]
+* Contribution terms including selectable LLM use policy, with commit message
+  checks by [**commit-check**][commit-check]
+
+    [![commit-check][commit-check-badge]][commit-check]
+
 
 ## Credits
 
@@ -66,6 +71,8 @@ Licensed under the MIT License
 
 [astral]: https://astral.sh
 [codecovio]: https://codecov.io
+[commit-check]: https://commit-check.com
+[commit-check-badge]: https://commit-check.com/badge.svg
 [copier-astral]: https://ritwiktiwari.github.io/copier-astral/
 [copier-badge]: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/copier-org/copier/master/img/badge/badge-grayscale-inverted-border-purple.json
 [copier-update]: https://copier.readthedocs.io/en/stable/updating/

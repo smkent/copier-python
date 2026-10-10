@@ -220,6 +220,22 @@ copyright_license:
     ISC License: ISC
     MIT License: MIT
 
+llm_contribution_policy:
+  type: str
+  qmark: 🤖
+  help: LLM contribution policy
+  default: accepted-with-disclosure
+  choices:
+    Accepted: accepted
+    Accepted with disclosure: accepted-with-disclosure
+    Not accepted: not-accepted
+
+enable_commit_check:
+  type: bool
+  qmark: 📃
+  default: "{{ llm_contribution_policy != 'accepted' }}"
+  when: false
+
 template_attribution:
   type: bool
   qmark: 🪧

@@ -1,21 +1,25 @@
-"""Snapshot tests for AGENTS.md template."""
+from __future__ import annotations
 
-from collections.abc import Callable
-from pathlib import Path
+from typing import TYPE_CHECKING
 
 import pytest
-from syrupy.assertion import SnapshotAssertion
 
 from tests.utils import choices
+
+if TYPE_CHECKING:
+    from collections.abc import Callable
+    from pathlib import Path
+
+    from syrupy.assertion import SnapshotAssertion
 
 
 @pytest.mark.parametrize(
     "llm_contribution_policy", choices["llm_contribution_policy"]
 )
-def test_agents(
+def test_pre_commit_config(
     render_template: Callable[..., Path],
     snapshot: SnapshotAssertion,
     llm_contribution_policy: str,
 ) -> None:
     rendered = render_template(llm_contribution_policy=llm_contribution_policy)
-    assert (rendered / "AGENTS.md").read_text() == snapshot
+    assert (rendered / ".pre-commit-config.yaml").read_text() == snapshot

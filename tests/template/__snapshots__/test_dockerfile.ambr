@@ -1,7 +1,7 @@
 # serializer version: 1
-# name: test_workflows_container[3.12-3.10]
+# name: test_workflows_container[3.13-3.11]
   '''
-  FROM python:3.12-slim AS builder
+  FROM python:3.13-slim AS builder
   
   COPY --from=ghcr.io/astral-sh/uv /uv /uvx /bin/
   
@@ -17,7 +17,7 @@
   RUN --mount=type=cache,target=/root/.cache/uv \
       uv sync --no-dev --no-editable
   
-  FROM python:3.12-slim
+  FROM python:3.13-slim
   
   COPY --from=builder /app/.venv /app/.venv
   
@@ -28,9 +28,9 @@
   
   '''
 # ---
-# name: test_workflows_container[3.12-3.12]
+# name: test_workflows_container[3.13-3.13]
   '''
-  FROM python:3.12-slim AS builder
+  FROM python:3.13-slim AS builder
   
   COPY --from=ghcr.io/astral-sh/uv /uv /uvx /bin/
   
@@ -46,7 +46,7 @@
   RUN --mount=type=cache,target=/root/.cache/uv \
       uv sync --no-dev --no-editable
   
-  FROM python:3.12-slim
+  FROM python:3.13-slim
   
   COPY --from=builder /app/.venv /app/.venv
   
@@ -57,7 +57,7 @@
   
   '''
 # ---
-# name: test_workflows_container[3.14-3.10]
+# name: test_workflows_container[3.14-3.11]
   '''
   FROM python:3.14-slim AS builder
   
@@ -86,7 +86,7 @@
   
   '''
 # ---
-# name: test_workflows_container[3.14-3.12]
+# name: test_workflows_container[3.14-3.13]
   '''
   FROM python:3.14-slim AS builder
   
@@ -115,7 +115,7 @@
   
   '''
 # ---
-# name: test_workflows_container[No maximum-3.10]
+# name: test_workflows_container[No maximum-3.11]
   '''
   FROM python:3.14-slim AS builder
   
@@ -144,7 +144,7 @@
   
   '''
 # ---
-# name: test_workflows_container[No maximum-3.12]
+# name: test_workflows_container[No maximum-3.13]
   '''
   FROM python:3.14-slim AS builder
   

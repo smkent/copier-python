@@ -13,13 +13,20 @@ from tests.utils import choices
     "enable_docs",
     [pytest.param(True, id="docs"), pytest.param(False, id="no_docs")],
 )
+@pytest.mark.parametrize(
+    "llm_contribution_policy", choices["llm_contribution_policy"]
+)
 def test_contributing_features(
     render_template: Callable[..., Path],
     snapshot: SnapshotAssertion,
+    llm_contribution_policy: str,
     *,
     enable_docs: bool,
 ) -> None:
-    rendered = render_template(enable_docs=enable_docs)
+    rendered = render_template(
+        enable_docs=enable_docs,
+        llm_contribution_policy=llm_contribution_policy,
+    )
     assert (rendered / "CONTRIBUTING.md").read_text() == snapshot
 
 

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import subprocess
 import warnings
+from functools import partial
 from pathlib import Path
 from typing import TYPE_CHECKING, Any
 
@@ -38,7 +39,7 @@ def ensure_env() -> None:
     setup_env()
 
 
-@pytest.fixture(autouse=True)
+@pytest.fixture(autouse=True, scope="session")
 def disallow_subprocess(
     request: pytest.FixtureRequest,
 ) -> Iterator[DisallowCallable]:
@@ -46,18 +47,19 @@ def disallow_subprocess(
         yield mock
 
 
-@pytest.fixture
+@pytest.fixture(scope="session")
 def allow_subprocess(disallow_subprocess: DisallowCallable) -> Iterator[None]:
     with disallow_subprocess.pause():
         yield
 
 
-@pytest.fixture
-def render_template(
-    tmp_path: Path, disallow_subprocess: DisallowCallable
+@pytest.fixture(scope="session")
+def session_render_template(
+    disallow_subprocess: DisallowCallable,
 ) -> Callable[..., Path]:
     def _render(
         *,
+        tmp_path: Path,
         vcs_ref: str = "HEAD",
         previous_answers: dict[str, Any] | None = None,
         **kwargs: Any,
@@ -93,3 +95,11 @@ def render_template(
         return worktree
 
     return _render
+
+
+@pytest.fixture
+def render_template(
+    session_render_template: Callable[..., Path],
+    tmp_path: Path,
+) -> Callable[..., Path]:
+    return partial(session_render_template, tmp_path=tmp_path)

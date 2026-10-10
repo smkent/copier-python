@@ -26,10 +26,10 @@ if TYPE_CHECKING:
 
 
 DEFAULT_BRANCH_NAME = "fhqwhgads"
-DEFAULT_END_REF = "v0.8.0"
+DEFAULT_END_REF = "v0.20.0"
 
 
-@pytest.fixture(params=["v0.6.0"])
+@pytest.fixture(params=["v0.16.0"])
 def start_ref(request: pytest.FixtureRequest) -> str:
     return request.param
 
@@ -240,7 +240,7 @@ def test_main_update_with_project_current(
             *["git", "remote", "set-url", "--push", "origin"],
             "git@github.com:ness/pkfire.git",
         ],
-        [*["poe", "setup"]],
+        [*["mise", "install"]],
         [*["git", "checkout", "-b", "updates"]],
     ]:
         expect_run.expect(cmd, cwd=worktree)
@@ -303,7 +303,7 @@ def test_main_update_error(
             *["git", "remote", "set-url", "--push", "origin"],
             "git@github.com:ness/pkfire.git",
         ],
-        [*["poe", "setup"]],
+        [*["mise", "install"]],
         [*["git", "checkout", "-b", "updates"]],
     ]:
         expect_run.expect(cmd, cwd=worktree)
@@ -313,6 +313,7 @@ def test_main_update_error(
         capture_output=True,
     )
     expect_run.expect(["copier", "update", "--skip-answered"], cwd=worktree)
+    expect_run.expect(["mise", "install"], cwd=worktree)
     expect_run.expect(
         ["git", "status", "--porcelain"], cwd=worktree, capture_output=True
     )
@@ -320,7 +321,7 @@ def test_main_update_error(
     expect_run.expect(
         ["git", "status", "--porcelain"], cwd=worktree, capture_output=True
     )
-    expect_run.expect(["uv", "run", "poe", "lt"], cwd=worktree)
+    expect_run.expect(["mise", "run", "lt"], cwd=worktree)
     expect_run.expect([str(mock_shell)], cwd=worktree, check=False)
     for cmd in [
         [*["git", "add", "-A"]],
@@ -390,7 +391,7 @@ def test_main_update_with_project(
             *["git", "remote", "set-url", "--push", "origin"],
             "git@github.com:ness/pkfire.git",
         ],
-        [*["poe", "setup"]],
+        [*["mise", "install"]],
         [*["git", "checkout", "-b", "updates"]],
     ]:
         expect_run.expect(cmd, cwd=worktree)
@@ -400,11 +401,12 @@ def test_main_update_with_project(
         capture_output=True,
     )
     expect_run.expect(["copier", "update", "--skip-answered"], cwd=worktree)
+    expect_run.expect(["mise", "install"], cwd=worktree)
     expect_run.expect(
         ["git", "status", "--porcelain"], cwd=worktree, capture_output=True
     )
     for cmd in [
-        [*["uv", "run", "poe", "lt"]],
+        [*["mise", "run", "lt"]],
         [*["git", "add", "-A"]],
         [*["git", "commit", "-m", commit_message]],
     ]:

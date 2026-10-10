@@ -17,7 +17,7 @@ else:
     from typing_extensions import Self
 
 if TYPE_CHECKING:
-    from collections.abc import Callable, Generator
+    from collections.abc import Callable, Generator, Sequence
 
     import pytest
 
@@ -68,6 +68,31 @@ class DisallowCallable:
             self.mock_attr.assert_not_called()
 
 
+@dataclass
+class PythonVersionsSupported:
+    minor_min: int
+    minor_max: int
+
+    @cached_property
+    def minor_mid(self) -> int:
+        return self.minor_min + round((self.minor_max - self.minor_min) / 2)
+
+    @cached_property
+    def min_param(self) -> Sequence[str]:
+        return tuple(f"3.{v}" for v in (self.minor_min, self.minor_mid))
+
+    @cached_property
+    def min_param_full_range(self) -> Sequence[str]:
+        return tuple(f"3.{v}" for v in (self.minor_min, self.minor_max))
+
+    @cached_property
+    def max_param(self) -> Sequence[str]:
+        return (
+            *(f"3.{v}" for v in (self.minor_mid, self.minor_max)),
+            "No maximum",
+        )
+
+
 class Template:
     @cached_property
     def dir(self) -> Path:
@@ -89,6 +114,16 @@ class Template:
                 and (choices := v.get("choices"))
                 and isinstance(choices, (dict, list))
             }
+        )
+
+    @cached_property
+    def python_versions(self) -> PythonVersionsSupported:
+        python_versions_supported = self.config[
+            "template_python_versions_supported"
+        ]["default"]
+        return PythonVersionsSupported(
+            minor_min=int(python_versions_supported["min_minor"]),
+            minor_max=int(python_versions_supported["max_minor"]),
         )
 
 

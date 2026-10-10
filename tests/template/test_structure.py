@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass, field
 from typing import TYPE_CHECKING, Any
 
@@ -90,7 +91,6 @@ def test_structure(
         expected_present={
             ".gitignore",
             ".pre-commit-config.yaml",
-            "LICENSE",
             "README.md",
             "pyproject.toml",
             "renovate.json",
@@ -133,5 +133,21 @@ def test_structure(
     )
     case.expect_if(
         project_type == "application" and enable_container, "compose.yaml"
+    )
+    structure_test(case)
+
+
+@pytest.mark.parametrize("copyright_license", choices["copyright_license"])
+def test_structure_license(
+    structure_test: StructureTest,
+    copyright_license: str,
+) -> None:
+    case = StructureTestCase(
+        extra_data={"copyright_license": copyright_license}
+    )
+    case.expect_if(not re.match(r"^[AL]?GPL-", copyright_license), "LICENSE")
+    case.expect_if(bool(re.match(r"^[AL]?GPL-", copyright_license)), "COPYING")
+    case.expect_if(
+        bool(re.match(r"^LGPL-", copyright_license)), "COPYING.LESSER"
     )
     structure_test(case)

@@ -22,27 +22,6 @@ def test_license(
             assert (rendered / name).read_text() == snapshot
 
 
-@pytest.mark.parametrize("copyright_license", choices["copyright_license"])
-def test_license_files(
-    render_template: Callable[..., Path], copyright_license: str
-) -> None:
-    if copyright_license.startswith("LGPL-"):
-        expected = ["COPYING", "COPYING.LESSER"]
-    elif "GPL-" in copyright_license:
-        expected = ["COPYING"]
-    else:
-        expected = ["LICENSE"]
-    rendered = render_template(copyright_license=copyright_license)
-    assert (
-        sorted(
-            p.name
-            for p in rendered.iterdir()
-            if p.name in {"LICENSE", "COPYING", "COPYING.LESSER"}
-        )
-        == expected
-    )
-
-
 @pytest.mark.parametrize("project_type", ["application", "library"])
 def test_license_default(
     render_template: Callable[..., Path], project_type: str

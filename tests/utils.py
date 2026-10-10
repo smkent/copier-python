@@ -3,7 +3,9 @@ from __future__ import annotations
 import sys
 from contextlib import contextmanager
 from dataclasses import dataclass, field
+from functools import cached_property
 from pathlib import Path
+from types import SimpleNamespace
 from typing import TYPE_CHECKING, Any
 from unittest.mock import MagicMock, patch
 
@@ -18,9 +20,6 @@ if TYPE_CHECKING:
     from collections.abc import Callable, Generator
 
     import pytest
-
-
-TEMPLATE_ROOT = Path(__file__).parent.parent
 
 
 @dataclass
@@ -69,12 +68,28 @@ class DisallowCallable:
             self.mock_attr.assert_not_called()
 
 
-choices = {
-    k: list(choices.values()) if isinstance(choices, dict) else choices
-    for k, v in yaml.safe_load(
-        (TEMPLATE_ROOT / "copier.yaml").read_text()
-    ).items()
-    if isinstance(v, dict)
-    and (choices := v.get("choices"))
-    and isinstance(choices, (dict, list))
-}
+class Template:
+    @cached_property
+    def dir(self) -> Path:
+        return Path(__file__).parent.parent
+
+    @cached_property
+    def config(self) -> dict[str, Any]:
+        return yaml.safe_load((self.dir / "copier.yaml").read_text())
+
+    @cached_property
+    def choices(self) -> SimpleNamespace:
+        return SimpleNamespace(
+            **{
+                k: list(choices.values())
+                if isinstance(choices, dict)
+                else choices
+                for k, v in self.config.items()
+                if isinstance(v, dict)
+                and (choices := v.get("choices"))
+                and isinstance(choices, (dict, list))
+            }
+        )
+
+
+template = Template()

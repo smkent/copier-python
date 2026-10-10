@@ -6,11 +6,11 @@ from pathlib import Path
 import pytest
 from syrupy.assertion import SnapshotAssertion
 
-from tests.utils import choices
+from tests.utils import template
 
 
 @pytest.mark.parametrize(
-    "llm_contribution_policy", choices["llm_contribution_policy"]
+    "llm_contribution_policy", template.choices.llm_contribution_policy
 )
 def test_agents(
     render_template: Callable[..., Path],

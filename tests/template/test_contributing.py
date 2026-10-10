@@ -6,7 +6,7 @@ from pathlib import Path
 import pytest
 from syrupy.assertion import SnapshotAssertion
 
-from tests.utils import choices
+from tests.utils import template
 
 
 @pytest.mark.parametrize(
@@ -14,7 +14,7 @@ from tests.utils import choices
     [pytest.param(True, id="docs"), pytest.param(False, id="no_docs")],
 )
 @pytest.mark.parametrize(
-    "llm_contribution_policy", choices["llm_contribution_policy"]
+    "llm_contribution_policy", template.choices.llm_contribution_policy
 )
 def test_contributing_features(
     render_template: Callable[..., Path],
@@ -30,7 +30,9 @@ def test_contributing_features(
     assert (rendered / "CONTRIBUTING.md").read_text() == snapshot
 
 
-@pytest.mark.parametrize("copyright_license", choices["copyright_license"])
+@pytest.mark.parametrize(
+    "copyright_license", template.choices.copyright_license
+)
 def test_contributing_license(
     render_template: Callable[..., Path],
     snapshot: SnapshotAssertion,

@@ -27,6 +27,7 @@
             - '3.12'
             - '3.13'
             - '3.14'
+            - '3.15'
       steps:
         - name: 💾 Check out repository
           uses: actions/checkout@v7
@@ -53,11 +54,11 @@
   
         - name: 🔍 Collect coverage results
           run: uv run coverage xml
-          if: ${{ matrix.python-version == '3.14' }}
+          if: ${{ matrix.python-version == '3.15' }}
   
         - name: 📊 Upload coverage to Codecov
           uses: codecov/codecov-action@v7
-          if: ${{ matrix.python-version == '3.14' }}
+          if: ${{ matrix.python-version == '3.15' }}
           with:
             fail_ci_if_error: true
             use_pypi: true
@@ -67,7 +68,7 @@
       name: Documentation
       runs-on: ubuntu-latest
       env:
-        UV_PYTHON: '3.14'
+        UV_PYTHON: '3.15'
       steps:
         - name: 💾 Check out repository
           uses: actions/checkout@v7
@@ -166,6 +167,7 @@
             - '3.12'
             - '3.13'
             - '3.14'
+            - '3.15'
       steps:
         - name: 💾 Check out repository
           uses: actions/checkout@v7
@@ -194,7 +196,7 @@
       name: Documentation
       runs-on: ubuntu-latest
       env:
-        UV_PYTHON: '3.14'
+        UV_PYTHON: '3.15'
       steps:
         - name: 💾 Check out repository
           uses: actions/checkout@v7
@@ -293,6 +295,7 @@
             - '3.12'
             - '3.13'
             - '3.14'
+            - '3.15'
       steps:
         - name: 💾 Check out repository
           uses: actions/checkout@v7
@@ -319,11 +322,11 @@
   
         - name: 🔍 Collect coverage results
           run: uv run coverage xml
-          if: ${{ matrix.python-version == '3.14' }}
+          if: ${{ matrix.python-version == '3.15' }}
   
         - name: 📊 Upload coverage to Codecov
           uses: codecov/codecov-action@v7
-          if: ${{ matrix.python-version == '3.14' }}
+          if: ${{ matrix.python-version == '3.15' }}
           with:
             fail_ci_if_error: true
             use_pypi: true
@@ -405,6 +408,7 @@
             - '3.12'
             - '3.13'
             - '3.14'
+            - '3.15'
       steps:
         - name: 💾 Check out repository
           uses: actions/checkout@v7
@@ -751,7 +755,7 @@
   
   '''
 # ---
-# name: test_workflows_ci_versions[3.14-3.11]
+# name: test_workflows_ci_versions[3.15-3.11]
   '''
   name: CI
   
@@ -779,6 +783,7 @@
             - '3.12'
             - '3.13'
             - '3.14'
+            - '3.15'
       steps:
         - name: 💾 Check out repository
           uses: actions/checkout@v7
@@ -805,11 +810,11 @@
   
         - name: 🔍 Collect coverage results
           run: uv run coverage xml
-          if: ${{ matrix.python-version == '3.14' }}
+          if: ${{ matrix.python-version == '3.15' }}
   
         - name: 📊 Upload coverage to Codecov
           uses: codecov/codecov-action@v7
-          if: ${{ matrix.python-version == '3.14' }}
+          if: ${{ matrix.python-version == '3.15' }}
           with:
             fail_ci_if_error: true
             use_pypi: true
@@ -819,7 +824,7 @@
       name: Documentation
       runs-on: ubuntu-latest
       env:
-        UV_PYTHON: '3.14'
+        UV_PYTHON: '3.15'
       steps:
         - name: 💾 Check out repository
           uses: actions/checkout@v7
@@ -890,7 +895,7 @@
   
   '''
 # ---
-# name: test_workflows_ci_versions[3.14-3.13]
+# name: test_workflows_ci_versions[3.15-3.13]
   '''
   name: CI
   
@@ -916,6 +921,7 @@
           python-version:
             - '3.13'
             - '3.14'
+            - '3.15'
       steps:
         - name: 💾 Check out repository
           uses: actions/checkout@v7
@@ -942,11 +948,11 @@
   
         - name: 🔍 Collect coverage results
           run: uv run coverage xml
-          if: ${{ matrix.python-version == '3.14' }}
+          if: ${{ matrix.python-version == '3.15' }}
   
         - name: 📊 Upload coverage to Codecov
           uses: codecov/codecov-action@v7
-          if: ${{ matrix.python-version == '3.14' }}
+          if: ${{ matrix.python-version == '3.15' }}
           with:
             fail_ci_if_error: true
             use_pypi: true
@@ -956,7 +962,7 @@
       name: Documentation
       runs-on: ubuntu-latest
       env:
-        UV_PYTHON: '3.14'
+        UV_PYTHON: '3.15'
       steps:
         - name: 💾 Check out repository
           uses: actions/checkout@v7
@@ -1055,6 +1061,7 @@
             - '3.12'
             - '3.13'
             - '3.14'
+            - '3.15'
       steps:
         - name: 💾 Check out repository
           uses: actions/checkout@v7
@@ -1081,11 +1088,11 @@
   
         - name: 🔍 Collect coverage results
           run: uv run coverage xml
-          if: ${{ matrix.python-version == '3.14' }}
+          if: ${{ matrix.python-version == '3.15' }}
   
         - name: 📊 Upload coverage to Codecov
           uses: codecov/codecov-action@v7
-          if: ${{ matrix.python-version == '3.14' }}
+          if: ${{ matrix.python-version == '3.15' }}
           with:
             fail_ci_if_error: true
             use_pypi: true
@@ -1095,7 +1102,7 @@
       name: Documentation
       runs-on: ubuntu-latest
       env:
-        UV_PYTHON: '3.14'
+        UV_PYTHON: '3.15'
       steps:
         - name: 💾 Check out repository
           uses: actions/checkout@v7
@@ -1192,6 +1199,7 @@
           python-version:
             - '3.13'
             - '3.14'
+            - '3.15'
       steps:
         - name: 💾 Check out repository
           uses: actions/checkout@v7
@@ -1218,11 +1226,11 @@
   
         - name: 🔍 Collect coverage results
           run: uv run coverage xml
-          if: ${{ matrix.python-version == '3.14' }}
+          if: ${{ matrix.python-version == '3.15' }}
   
         - name: 📊 Upload coverage to Codecov
           uses: codecov/codecov-action@v7
-          if: ${{ matrix.python-version == '3.14' }}
+          if: ${{ matrix.python-version == '3.15' }}
           with:
             fail_ci_if_error: true
             use_pypi: true
@@ -1232,7 +1240,7 @@
       name: Documentation
       runs-on: ubuntu-latest
       env:
-        UV_PYTHON: '3.14'
+        UV_PYTHON: '3.15'
       steps:
         - name: 💾 Check out repository
           uses: actions/checkout@v7
@@ -1317,7 +1325,7 @@
       name: Build distribution
       runs-on: ubuntu-latest
       env:
-        UV_PYTHON: '3.14'
+        UV_PYTHON: '3.15'
       steps:
         - name: 💾 Check out repository
           uses: actions/checkout@v7

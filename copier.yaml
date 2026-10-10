@@ -48,7 +48,7 @@ template_python_versions_supported:
   qmark: 🐍
   default:
     min_minor: 11
-    max_minor: 14
+    max_minor: 15
   when: false
 
 project_name:

@@ -43,6 +43,14 @@ _message_after_update: |
     mise run lint  # verify code quality
     mise run test  # verify tests pass
 
+template_python_versions_supported:
+  type: yaml
+  qmark: 🐍
+  default:
+    min_minor: 10
+    max_minor: 14
+  when: false
+
 project_name:
   type: str
   qmark: 📝
@@ -95,13 +103,11 @@ python_version_minimum:
   type: str
   qmark: 🐍
   help: Minimum Python version
-  default: '3.10'
-  choices:
-    - '3.10'
-    - '3.11'
-    - '3.12'
-    - '3.13'
-    - '3.14'
+  default: 3.{%- template_python_versions_supported.min_minor -%}
+  choices: |
+    {%- for minor in range(template_python_versions_supported.min_minor, template_python_versions_supported.max_minor + 1) %}
+    - '3.{{ minor }}'
+    {%- endfor %}
 
 python_version_maximum:
   type: str
@@ -111,7 +117,7 @@ python_version_maximum:
   choices: |
     - 'No maximum'
     {%- set min_minor = python_version_minimum.split(".")[1] | int -%}
-    {%- for minor in range(min_minor, 15) %}
+    {%- for minor in range(min_minor, template_python_versions_supported.max_minor + 1) %}
     - '3.{{ minor }}'
     {%- endfor %}
 

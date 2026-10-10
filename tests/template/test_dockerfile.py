@@ -6,10 +6,14 @@ from pathlib import Path
 import pytest
 from syrupy.assertion import SnapshotAssertion
 
+from tests.utils import template
 
-@pytest.mark.parametrize("python_version_minimum", ["3.10", "3.12"])
+
 @pytest.mark.parametrize(
-    "python_version_maximum", ["3.12", "3.14", "No maximum"]
+    "python_version_minimum", template.python_versions.min_param
+)
+@pytest.mark.parametrize(
+    "python_version_maximum", template.python_versions.max_param
 )
 def test_workflows_container(
     render_template: Callable[..., Path],

@@ -22,7 +22,7 @@ DEFAULT_DATA: dict[str, Any] = {
     "project_description": "Onett Little League",
     "project_type": "application",
     "project_visibility": "public",
-    "python_version_minimum": "3.10",
+    "python_version_minimum": f"3.{template.python_versions.minor_min}",
     "user_name": "Ness",
     "user_email": "ness@onett.example.com",
     "github_user": "ness",

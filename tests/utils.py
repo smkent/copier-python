@@ -69,10 +69,12 @@ class DisallowCallable:
             self.mock_attr.assert_not_called()
 
 
-def _load_license_choices() -> dict[str, str]:
-    return yaml.safe_load((TEMPLATE_ROOT / "copier.yaml").read_text())[
-        "copyright_license"
-    ]["choices"]
-
-
-license_choices = _load_license_choices()
+choices = {
+    k: list(choices.values()) if isinstance(choices, dict) else choices
+    for k, v in yaml.safe_load(
+        (TEMPLATE_ROOT / "copier.yaml").read_text()
+    ).items()
+    if isinstance(v, dict)
+    and (choices := v.get("choices"))
+    and isinstance(choices, (dict, list))
+}

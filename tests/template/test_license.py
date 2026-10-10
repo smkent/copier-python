@@ -7,10 +7,10 @@ import pytest
 import yaml
 from syrupy.assertion import SnapshotAssertion
 
-from tests.utils import TEMPLATE_ROOT, license_choices
+from tests.utils import TEMPLATE_ROOT, choices
 
 
-@pytest.mark.parametrize("copyright_license", license_choices.values())
+@pytest.mark.parametrize("copyright_license", choices["copyright_license"])
 def test_license(
     render_template: Callable[..., Path],
     snapshot: SnapshotAssertion,
@@ -22,7 +22,7 @@ def test_license(
             assert (rendered / name).read_text() == snapshot
 
 
-@pytest.mark.parametrize("copyright_license", license_choices.values())
+@pytest.mark.parametrize("copyright_license", choices["copyright_license"])
 def test_license_files(
     render_template: Callable[..., Path], copyright_license: str
 ) -> None:
@@ -56,7 +56,7 @@ def test_license_default(
     )
 
 
-@pytest.mark.parametrize("copyright_license", license_choices.values())
+@pytest.mark.parametrize("copyright_license", choices["copyright_license"])
 def test_license_choices_have_templates(copyright_license: str) -> None:
     assert (
         TEMPLATE_ROOT / "includes" / "licenses" / copyright_license

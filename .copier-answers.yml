@@ -19,7 +19,7 @@ project_slug: copier_python
 project_type: library
 project_visibility: public
 python_version_maximum: No maximum
-python_version_minimum: '3.10'
+python_version_minimum: '3.11'
 template_attribution: false
 user_email: smkent@smkent.net
 user_name: Stephen Kent

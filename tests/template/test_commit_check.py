@@ -4,7 +4,7 @@ from typing import TYPE_CHECKING
 
 import pytest
 
-from tests.utils import TEMPLATE_ROOT
+from tests.utils import template
 
 if TYPE_CHECKING:
     from collections.abc import Callable
@@ -25,5 +25,5 @@ def test_commit_check_config(
 ) -> None:
     rendered = render_template(project_visibility=project_visibility)
     assert (rendered / config_path).read_text() == (
-        TEMPLATE_ROOT / "includes" / "commit-check.toml"
+        template.dir / "includes" / "commit-check.toml"
     ).read_text()

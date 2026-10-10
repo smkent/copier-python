@@ -6,7 +6,7 @@ from pathlib import Path
 import pytest
 from syrupy.assertion import SnapshotAssertion
 
-from tests.utils import choices
+from tests.utils import template
 
 
 @pytest.mark.parametrize("project_visibility", ["public", "private"])
@@ -63,7 +63,9 @@ def test_pyproject_versions(
     assert (rendered / "pyproject.toml").read_text() == snapshot
 
 
-@pytest.mark.parametrize("copyright_license", choices["copyright_license"])
+@pytest.mark.parametrize(
+    "copyright_license", template.choices.copyright_license
+)
 def test_pyproject_licenses(
     render_template: Callable[..., Path],
     snapshot: SnapshotAssertion,

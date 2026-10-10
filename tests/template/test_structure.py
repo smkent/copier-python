@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING, Any
 
 import pytest
 
-from tests.utils import choices
+from tests.utils import template
 
 if TYPE_CHECKING:
     from collections.abc import Callable
@@ -48,8 +48,10 @@ def structure_test(
     return StructureTest(render_template=render_template)
 
 
-@pytest.mark.parametrize("project_type", choices["project_type"])
-@pytest.mark.parametrize("project_visibility", choices["project_visibility"])
+@pytest.mark.parametrize("project_type", template.choices.project_type)
+@pytest.mark.parametrize(
+    "project_visibility", template.choices.project_visibility
+)
 @pytest.mark.parametrize(
     "enable_coverage",
     [pytest.param(True, id="coverage"), pytest.param(False, id="no_coverage")],
@@ -140,7 +142,9 @@ def test_structure(
     structure_test(case)
 
 
-@pytest.mark.parametrize("copyright_license", choices["copyright_license"])
+@pytest.mark.parametrize(
+    "copyright_license", template.choices.copyright_license
+)
 def test_structure_license(
     structure_test: StructureTest,
     copyright_license: str,
@@ -157,9 +161,11 @@ def test_structure_license(
 
 
 @pytest.mark.parametrize(
-    "llm_contribution_policy", choices["llm_contribution_policy"]
+    "llm_contribution_policy", template.choices.llm_contribution_policy
 )
-@pytest.mark.parametrize("project_visibility", choices["project_visibility"])
+@pytest.mark.parametrize(
+    "project_visibility", template.choices.project_visibility
+)
 def test_structure_contributing(
     structure_test: StructureTest,
     project_visibility: str,

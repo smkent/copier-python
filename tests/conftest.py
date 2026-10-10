@@ -3,7 +3,6 @@ from __future__ import annotations
 import subprocess
 import warnings
 from functools import partial
-from pathlib import Path
 from typing import TYPE_CHECKING, Any
 
 import copier
@@ -12,12 +11,11 @@ import yaml
 
 from copier_python.__main__ import setup_env
 
-from .utils import DisallowCallable
+from .utils import DisallowCallable, template
 
 if TYPE_CHECKING:
     from collections.abc import Callable, Iterator
-
-TEMPLATE_ROOT = Path(__file__).parent.parent
+    from pathlib import Path
 
 DEFAULT_DATA: dict[str, Any] = {
     "project_name": "PKFire",
@@ -84,7 +82,7 @@ def session_render_template(
             )
             with disallow_subprocess.pause():
                 copier.run_copy(
-                    src_path=str(TEMPLATE_ROOT),
+                    src_path=str(template.dir),
                     dst_path=str(worktree),
                     data=data,
                     vcs_ref=vcs_ref,

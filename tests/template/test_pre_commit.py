@@ -4,7 +4,7 @@ from typing import TYPE_CHECKING
 
 import pytest
 
-from tests.utils import choices
+from tests.utils import template
 
 if TYPE_CHECKING:
     from collections.abc import Callable
@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 
 
 @pytest.mark.parametrize(
-    "llm_contribution_policy", choices["llm_contribution_policy"]
+    "llm_contribution_policy", template.choices.llm_contribution_policy
 )
 def test_pre_commit_config(
     render_template: Callable[..., Path],

@@ -54,20 +54,14 @@ def test_workflows_ci_versions(
     ).read_text() == snapshot
 
 
-@pytest.mark.parametrize(
-    "enable_pypi",
-    [pytest.param(True, id="pypi"), pytest.param(False, id="no_pypi")],
-)
 def test_workflows_release(
     render_template: Callable[..., Path],
     snapshot: SnapshotAssertion,
-    *,
-    enable_pypi: bool,
 ) -> None:
     rendered = render_template(
         project_type="application",
         project_visibility="public",
-        enable_pypi=enable_pypi,
+        enable_pypi=True,
     )
     assert (
         rendered / ".github" / "workflows" / "release.yaml"

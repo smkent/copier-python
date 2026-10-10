@@ -100,8 +100,11 @@ def test_structure(
         project_visibility == "public",
         ".github/workflows/audit.yaml",
         ".github/workflows/ci.yaml",
-        ".github/workflows/release.yaml",
         "CONTRIBUTING.md",
+    )
+    case.expect_if(
+        project_visibility == "public" and enable_pypi,
+        ".github/workflows/release.yaml",
     )
     case.expect_if(
         enable_container,

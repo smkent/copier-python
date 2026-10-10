@@ -37,6 +37,7 @@ class UpdateAction:
         if not copier_status.get("update_available", False):
             return None
         repo.run(["copier", "update", "--skip-answered"])
+        repo.run(["mise", "install"])
 
         status = repo.git_status()
         if not status:

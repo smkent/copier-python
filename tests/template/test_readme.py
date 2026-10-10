@@ -6,7 +6,7 @@ from pathlib import Path
 import pytest
 from syrupy.assertion import SnapshotAssertion
 
-from tests.utils import license_choices
+from tests.utils import choices
 
 
 @pytest.mark.parametrize(
@@ -41,7 +41,7 @@ def test_readme_features(
 
 
 @pytest.mark.parametrize("project_visibility", ["public", "private"])
-@pytest.mark.parametrize(("copyright_license"), license_choices.values())
+@pytest.mark.parametrize("copyright_license", choices["copyright_license"])
 def test_readme_project_visibility(
     render_template: Callable[..., Path],
     snapshot: SnapshotAssertion,

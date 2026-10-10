@@ -1,5 +1,5 @@
 # serializer version: 1
-# name: test_pyproject_features[no_xdist-no_syrupy-docs-3.10-private]
+# name: test_pyproject_features[no_xdist-no_syrupy-docs-3.11-private]
   '''
   [build-system]
   requires = ["hatchling", "uv-dynamic-versioning"]
@@ -12,14 +12,13 @@
   readme = "README.md"
   license = "MIT"
   license-files = ["LICENSE"]
-  requires-python = ">=3.10"
+  requires-python = ">=3.11"
   authors = [{ name = "Ness", email = "ness@onett.example.com" }]
   classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
@@ -78,7 +77,7 @@
   [tool.ruff]
   line-length = 79
   output-format = "concise"
-  target-version = "py310"
+  target-version = "py311"
   
   [tool.ruff.lint]
   select = ["ALL"]
@@ -123,7 +122,7 @@
   
   '''
 # ---
-# name: test_pyproject_features[no_xdist-no_syrupy-docs-3.10-public]
+# name: test_pyproject_features[no_xdist-no_syrupy-docs-3.11-public]
   '''
   [build-system]
   requires = ["hatchling", "uv-dynamic-versioning"]
@@ -136,14 +135,13 @@
   readme = "README.md"
   license = "MIT"
   license-files = ["LICENSE"]
-  requires-python = ">=3.10"
+  requires-python = ">=3.11"
   authors = [{ name = "Ness", email = "ness@onett.example.com" }]
   classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
@@ -208,7 +206,7 @@
   [tool.ruff]
   line-length = 79
   output-format = "concise"
-  target-version = "py310"
+  target-version = "py311"
   
   [tool.ruff.lint]
   select = ["ALL"]
@@ -499,7 +497,7 @@
   
   '''
 # ---
-# name: test_pyproject_features[no_xdist-no_syrupy-no_docs-3.10-private]
+# name: test_pyproject_features[no_xdist-no_syrupy-no_docs-3.11-private]
   '''
   [build-system]
   requires = ["hatchling", "uv-dynamic-versioning"]
@@ -512,14 +510,13 @@
   readme = "README.md"
   license = "MIT"
   license-files = ["LICENSE"]
-  requires-python = ">=3.10"
+  requires-python = ">=3.11"
   authors = [{ name = "Ness", email = "ness@onett.example.com" }]
   classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
@@ -577,7 +574,7 @@
   [tool.ruff]
   line-length = 79
   output-format = "concise"
-  target-version = "py310"
+  target-version = "py311"
   
   [tool.ruff.lint]
   select = ["ALL"]
@@ -622,7 +619,7 @@
   
   '''
 # ---
-# name: test_pyproject_features[no_xdist-no_syrupy-no_docs-3.10-public]
+# name: test_pyproject_features[no_xdist-no_syrupy-no_docs-3.11-public]
   '''
   [build-system]
   requires = ["hatchling", "uv-dynamic-versioning"]
@@ -635,14 +632,13 @@
   readme = "README.md"
   license = "MIT"
   license-files = ["LICENSE"]
-  requires-python = ">=3.10"
+  requires-python = ">=3.11"
   authors = [{ name = "Ness", email = "ness@onett.example.com" }]
   classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
@@ -706,7 +702,7 @@
   [tool.ruff]
   line-length = 79
   output-format = "concise"
-  target-version = "py310"
+  target-version = "py311"
   
   [tool.ruff.lint]
   select = ["ALL"]
@@ -995,7 +991,7 @@
   
   '''
 # ---
-# name: test_pyproject_features[no_xdist-syrupy-docs-3.10-private]
+# name: test_pyproject_features[no_xdist-syrupy-docs-3.11-private]
   '''
   [build-system]
   requires = ["hatchling", "uv-dynamic-versioning"]
@@ -1008,14 +1004,13 @@
   readme = "README.md"
   license = "MIT"
   license-files = ["LICENSE"]
-  requires-python = ">=3.10"
+  requires-python = ">=3.11"
   authors = [{ name = "Ness", email = "ness@onett.example.com" }]
   classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
@@ -1075,7 +1070,7 @@
   [tool.ruff]
   line-length = 79
   output-format = "concise"
-  target-version = "py310"
+  target-version = "py311"
   
   [tool.ruff.lint]
   select = ["ALL"]
@@ -1120,7 +1115,7 @@
   
   '''
 # ---
-# name: test_pyproject_features[no_xdist-syrupy-docs-3.10-public]
+# name: test_pyproject_features[no_xdist-syrupy-docs-3.11-public]
   '''
   [build-system]
   requires = ["hatchling", "uv-dynamic-versioning"]
@@ -1133,14 +1128,13 @@
   readme = "README.md"
   license = "MIT"
   license-files = ["LICENSE"]
-  requires-python = ">=3.10"
+  requires-python = ">=3.11"
   authors = [{ name = "Ness", email = "ness@onett.example.com" }]
   classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
@@ -1206,7 +1200,7 @@
   [tool.ruff]
   line-length = 79
   output-format = "concise"
-  target-version = "py310"
+  target-version = "py311"
   
   [tool.ruff.lint]
   select = ["ALL"]
@@ -1499,7 +1493,7 @@
   
   '''
 # ---
-# name: test_pyproject_features[no_xdist-syrupy-no_docs-3.10-private]
+# name: test_pyproject_features[no_xdist-syrupy-no_docs-3.11-private]
   '''
   [build-system]
   requires = ["hatchling", "uv-dynamic-versioning"]
@@ -1512,14 +1506,13 @@
   readme = "README.md"
   license = "MIT"
   license-files = ["LICENSE"]
-  requires-python = ">=3.10"
+  requires-python = ">=3.11"
   authors = [{ name = "Ness", email = "ness@onett.example.com" }]
   classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
@@ -1578,7 +1571,7 @@
   [tool.ruff]
   line-length = 79
   output-format = "concise"
-  target-version = "py310"
+  target-version = "py311"
   
   [tool.ruff.lint]
   select = ["ALL"]
@@ -1623,7 +1616,7 @@
   
   '''
 # ---
-# name: test_pyproject_features[no_xdist-syrupy-no_docs-3.10-public]
+# name: test_pyproject_features[no_xdist-syrupy-no_docs-3.11-public]
   '''
   [build-system]
   requires = ["hatchling", "uv-dynamic-versioning"]
@@ -1636,14 +1629,13 @@
   readme = "README.md"
   license = "MIT"
   license-files = ["LICENSE"]
-  requires-python = ">=3.10"
+  requires-python = ">=3.11"
   authors = [{ name = "Ness", email = "ness@onett.example.com" }]
   classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
@@ -1708,7 +1700,7 @@
   [tool.ruff]
   line-length = 79
   output-format = "concise"
-  target-version = "py310"
+  target-version = "py311"
   
   [tool.ruff.lint]
   select = ["ALL"]
@@ -1999,7 +1991,7 @@
   
   '''
 # ---
-# name: test_pyproject_features[xdist-no_syrupy-docs-3.10-private]
+# name: test_pyproject_features[xdist-no_syrupy-docs-3.11-private]
   '''
   [build-system]
   requires = ["hatchling", "uv-dynamic-versioning"]
@@ -2012,14 +2004,13 @@
   readme = "README.md"
   license = "MIT"
   license-files = ["LICENSE"]
-  requires-python = ">=3.10"
+  requires-python = ">=3.11"
   authors = [{ name = "Ness", email = "ness@onett.example.com" }]
   classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
@@ -2081,7 +2072,7 @@
   [tool.ruff]
   line-length = 79
   output-format = "concise"
-  target-version = "py310"
+  target-version = "py311"
   
   [tool.ruff.lint]
   select = ["ALL"]
@@ -2126,7 +2117,7 @@
   
   '''
 # ---
-# name: test_pyproject_features[xdist-no_syrupy-docs-3.10-public]
+# name: test_pyproject_features[xdist-no_syrupy-docs-3.11-public]
   '''
   [build-system]
   requires = ["hatchling", "uv-dynamic-versioning"]
@@ -2139,14 +2130,13 @@
   readme = "README.md"
   license = "MIT"
   license-files = ["LICENSE"]
-  requires-python = ">=3.10"
+  requires-python = ">=3.11"
   authors = [{ name = "Ness", email = "ness@onett.example.com" }]
   classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
@@ -2214,7 +2204,7 @@
   [tool.ruff]
   line-length = 79
   output-format = "concise"
-  target-version = "py310"
+  target-version = "py311"
   
   [tool.ruff.lint]
   select = ["ALL"]
@@ -2511,7 +2501,7 @@
   
   '''
 # ---
-# name: test_pyproject_features[xdist-no_syrupy-no_docs-3.10-private]
+# name: test_pyproject_features[xdist-no_syrupy-no_docs-3.11-private]
   '''
   [build-system]
   requires = ["hatchling", "uv-dynamic-versioning"]
@@ -2524,14 +2514,13 @@
   readme = "README.md"
   license = "MIT"
   license-files = ["LICENSE"]
-  requires-python = ">=3.10"
+  requires-python = ">=3.11"
   authors = [{ name = "Ness", email = "ness@onett.example.com" }]
   classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
@@ -2592,7 +2581,7 @@
   [tool.ruff]
   line-length = 79
   output-format = "concise"
-  target-version = "py310"
+  target-version = "py311"
   
   [tool.ruff.lint]
   select = ["ALL"]
@@ -2637,7 +2626,7 @@
   
   '''
 # ---
-# name: test_pyproject_features[xdist-no_syrupy-no_docs-3.10-public]
+# name: test_pyproject_features[xdist-no_syrupy-no_docs-3.11-public]
   '''
   [build-system]
   requires = ["hatchling", "uv-dynamic-versioning"]
@@ -2650,14 +2639,13 @@
   readme = "README.md"
   license = "MIT"
   license-files = ["LICENSE"]
-  requires-python = ">=3.10"
+  requires-python = ">=3.11"
   authors = [{ name = "Ness", email = "ness@onett.example.com" }]
   classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
@@ -2724,7 +2712,7 @@
   [tool.ruff]
   line-length = 79
   output-format = "concise"
-  target-version = "py310"
+  target-version = "py311"
   
   [tool.ruff.lint]
   select = ["ALL"]
@@ -3019,7 +3007,7 @@
   
   '''
 # ---
-# name: test_pyproject_features[xdist-syrupy-docs-3.10-private]
+# name: test_pyproject_features[xdist-syrupy-docs-3.11-private]
   '''
   [build-system]
   requires = ["hatchling", "uv-dynamic-versioning"]
@@ -3032,14 +3020,13 @@
   readme = "README.md"
   license = "MIT"
   license-files = ["LICENSE"]
-  requires-python = ">=3.10"
+  requires-python = ">=3.11"
   authors = [{ name = "Ness", email = "ness@onett.example.com" }]
   classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
@@ -3102,7 +3089,7 @@
   [tool.ruff]
   line-length = 79
   output-format = "concise"
-  target-version = "py310"
+  target-version = "py311"
   
   [tool.ruff.lint]
   select = ["ALL"]
@@ -3147,7 +3134,7 @@
   
   '''
 # ---
-# name: test_pyproject_features[xdist-syrupy-docs-3.10-public]
+# name: test_pyproject_features[xdist-syrupy-docs-3.11-public]
   '''
   [build-system]
   requires = ["hatchling", "uv-dynamic-versioning"]
@@ -3160,14 +3147,13 @@
   readme = "README.md"
   license = "MIT"
   license-files = ["LICENSE"]
-  requires-python = ">=3.10"
+  requires-python = ">=3.11"
   authors = [{ name = "Ness", email = "ness@onett.example.com" }]
   classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
@@ -3236,7 +3222,7 @@
   [tool.ruff]
   line-length = 79
   output-format = "concise"
-  target-version = "py310"
+  target-version = "py311"
   
   [tool.ruff.lint]
   select = ["ALL"]
@@ -3535,7 +3521,7 @@
   
   '''
 # ---
-# name: test_pyproject_features[xdist-syrupy-no_docs-3.10-private]
+# name: test_pyproject_features[xdist-syrupy-no_docs-3.11-private]
   '''
   [build-system]
   requires = ["hatchling", "uv-dynamic-versioning"]
@@ -3548,14 +3534,13 @@
   readme = "README.md"
   license = "MIT"
   license-files = ["LICENSE"]
-  requires-python = ">=3.10"
+  requires-python = ">=3.11"
   authors = [{ name = "Ness", email = "ness@onett.example.com" }]
   classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
@@ -3617,7 +3602,7 @@
   [tool.ruff]
   line-length = 79
   output-format = "concise"
-  target-version = "py310"
+  target-version = "py311"
   
   [tool.ruff.lint]
   select = ["ALL"]
@@ -3662,7 +3647,7 @@
   
   '''
 # ---
-# name: test_pyproject_features[xdist-syrupy-no_docs-3.10-public]
+# name: test_pyproject_features[xdist-syrupy-no_docs-3.11-public]
   '''
   [build-system]
   requires = ["hatchling", "uv-dynamic-versioning"]
@@ -3675,14 +3660,13 @@
   readme = "README.md"
   license = "MIT"
   license-files = ["LICENSE"]
-  requires-python = ">=3.10"
+  requires-python = ">=3.11"
   authors = [{ name = "Ness", email = "ness@onett.example.com" }]
   classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
@@ -3750,7 +3734,7 @@
   [tool.ruff]
   line-length = 79
   output-format = "concise"
-  target-version = "py310"
+  target-version = "py311"
   
   [tool.ruff.lint]
   select = ["ALL"]
@@ -4060,14 +4044,13 @@
   readme = "README.md"
   license = "AGPL-3.0-only"
   license-files = ["COPYING"]
-  requires-python = ">=3.10"
+  requires-python = ">=3.11"
   authors = [{ name = "Ness", email = "ness@onett.example.com" }]
   classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
@@ -4136,7 +4119,7 @@
   [tool.ruff]
   line-length = 79
   output-format = "concise"
-  target-version = "py310"
+  target-version = "py311"
   
   [tool.ruff.lint]
   select = ["ALL"]
@@ -4194,14 +4177,13 @@
   readme = "README.md"
   license = "AGPL-3.0-or-later"
   license-files = ["COPYING"]
-  requires-python = ">=3.10"
+  requires-python = ">=3.11"
   authors = [{ name = "Ness", email = "ness@onett.example.com" }]
   classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
@@ -4270,7 +4252,7 @@
   [tool.ruff]
   line-length = 79
   output-format = "concise"
-  target-version = "py310"
+  target-version = "py311"
   
   [tool.ruff.lint]
   select = ["ALL"]
@@ -4328,14 +4310,13 @@
   readme = "README.md"
   license = "Apache-2.0"
   license-files = ["LICENSE"]
-  requires-python = ">=3.10"
+  requires-python = ">=3.11"
   authors = [{ name = "Ness", email = "ness@onett.example.com" }]
   classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
@@ -4404,7 +4385,7 @@
   [tool.ruff]
   line-length = 79
   output-format = "concise"
-  target-version = "py310"
+  target-version = "py311"
   
   [tool.ruff.lint]
   select = ["ALL"]
@@ -4462,14 +4443,13 @@
   readme = "README.md"
   license = "BSD-3-Clause"
   license-files = ["LICENSE"]
-  requires-python = ">=3.10"
+  requires-python = ">=3.11"
   authors = [{ name = "Ness", email = "ness@onett.example.com" }]
   classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
@@ -4538,7 +4518,7 @@
   [tool.ruff]
   line-length = 79
   output-format = "concise"
-  target-version = "py310"
+  target-version = "py311"
   
   [tool.ruff.lint]
   select = ["ALL"]
@@ -4596,14 +4576,13 @@
   readme = "README.md"
   license = "CC-BY-4.0"
   license-files = ["LICENSE"]
-  requires-python = ">=3.10"
+  requires-python = ">=3.11"
   authors = [{ name = "Ness", email = "ness@onett.example.com" }]
   classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
@@ -4672,7 +4651,7 @@
   [tool.ruff]
   line-length = 79
   output-format = "concise"
-  target-version = "py310"
+  target-version = "py311"
   
   [tool.ruff.lint]
   select = ["ALL"]
@@ -4730,14 +4709,13 @@
   readme = "README.md"
   license = "CC-BY-SA-4.0"
   license-files = ["LICENSE"]
-  requires-python = ">=3.10"
+  requires-python = ">=3.11"
   authors = [{ name = "Ness", email = "ness@onett.example.com" }]
   classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
@@ -4806,7 +4784,7 @@
   [tool.ruff]
   line-length = 79
   output-format = "concise"
-  target-version = "py310"
+  target-version = "py311"
   
   [tool.ruff.lint]
   select = ["ALL"]
@@ -4864,14 +4842,13 @@
   readme = "README.md"
   license = "CC0-1.0"
   license-files = ["LICENSE"]
-  requires-python = ">=3.10"
+  requires-python = ">=3.11"
   authors = [{ name = "Ness", email = "ness@onett.example.com" }]
   classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
@@ -4940,7 +4917,7 @@
   [tool.ruff]
   line-length = 79
   output-format = "concise"
-  target-version = "py310"
+  target-version = "py311"
   
   [tool.ruff.lint]
   select = ["ALL"]
@@ -4998,14 +4975,13 @@
   readme = "README.md"
   license = "GPL-3.0-only"
   license-files = ["COPYING"]
-  requires-python = ">=3.10"
+  requires-python = ">=3.11"
   authors = [{ name = "Ness", email = "ness@onett.example.com" }]
   classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
@@ -5074,7 +5050,7 @@
   [tool.ruff]
   line-length = 79
   output-format = "concise"
-  target-version = "py310"
+  target-version = "py311"
   
   [tool.ruff.lint]
   select = ["ALL"]
@@ -5132,14 +5108,13 @@
   readme = "README.md"
   license = "GPL-3.0-or-later"
   license-files = ["COPYING"]
-  requires-python = ">=3.10"
+  requires-python = ">=3.11"
   authors = [{ name = "Ness", email = "ness@onett.example.com" }]
   classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
@@ -5208,7 +5183,7 @@
   [tool.ruff]
   line-length = 79
   output-format = "concise"
-  target-version = "py310"
+  target-version = "py311"
   
   [tool.ruff.lint]
   select = ["ALL"]
@@ -5266,14 +5241,13 @@
   readme = "README.md"
   license = "ISC"
   license-files = ["LICENSE"]
-  requires-python = ">=3.10"
+  requires-python = ">=3.11"
   authors = [{ name = "Ness", email = "ness@onett.example.com" }]
   classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
@@ -5342,7 +5316,7 @@
   [tool.ruff]
   line-length = 79
   output-format = "concise"
-  target-version = "py310"
+  target-version = "py311"
   
   [tool.ruff.lint]
   select = ["ALL"]
@@ -5400,14 +5374,13 @@
   readme = "README.md"
   license = "LGPL-3.0-only"
   license-files = ["COPYING", "COPYING.LESSER"]
-  requires-python = ">=3.10"
+  requires-python = ">=3.11"
   authors = [{ name = "Ness", email = "ness@onett.example.com" }]
   classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
@@ -5476,7 +5449,7 @@
   [tool.ruff]
   line-length = 79
   output-format = "concise"
-  target-version = "py310"
+  target-version = "py311"
   
   [tool.ruff.lint]
   select = ["ALL"]
@@ -5534,14 +5507,13 @@
   readme = "README.md"
   license = "LGPL-3.0-or-later"
   license-files = ["COPYING", "COPYING.LESSER"]
-  requires-python = ">=3.10"
+  requires-python = ">=3.11"
   authors = [{ name = "Ness", email = "ness@onett.example.com" }]
   classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
@@ -5610,7 +5582,7 @@
   [tool.ruff]
   line-length = 79
   output-format = "concise"
-  target-version = "py310"
+  target-version = "py311"
   
   [tool.ruff.lint]
   select = ["ALL"]
@@ -5668,14 +5640,13 @@
   readme = "README.md"
   license = "MIT"
   license-files = ["LICENSE"]
-  requires-python = ">=3.10"
+  requires-python = ">=3.11"
   authors = [{ name = "Ness", email = "ness@onett.example.com" }]
   classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
@@ -5744,7 +5715,7 @@
   [tool.ruff]
   line-length = 79
   output-format = "concise"
-  target-version = "py310"
+  target-version = "py311"
   
   [tool.ruff.lint]
   select = ["ALL"]
@@ -5789,7 +5760,7 @@
   
   '''
 # ---
-# name: test_pyproject_versions[3.12-3.10]
+# name: test_pyproject_versions[3.13-3.11]
   '''
   [build-system]
   requires = ["hatchling", "uv-dynamic-versioning"]
@@ -5802,280 +5773,16 @@
   readme = "README.md"
   license = "MIT"
   license-files = ["LICENSE"]
-  requires-python = ">=3.10,<3.13"
+  requires-python = ">=3.11,<3.14"
   authors = [{ name = "Ness", email = "ness@onett.example.com" }]
   classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: 3.12",
-    "Topic :: Documentation",
-    "Topic :: Software Development",
-    "Topic :: Utilities",
-    "Typing :: Typed",
-  ]
-  keywords = []
-  dependencies = []
-  
-  [project.urls]
-  Homepage = "https://ness.github.io/PKFire"
-  Repository = "https://github.com/ness/PKFire"
-  Issues = "https://github.com/ness/PKFire/issues"
-  
-  [dependency-groups]
-  dev = [
-    "bump-my-version>=1.3.0",
-    "commit-check>=2.18",
-    "pysentry-rs>=0.4",
-    "pytest>=9",
-    "pytest-cov>=7",
-    "pytest-sugar>=1",
-    "pytest-xdist>=3",
-    "ruff>=0.15",
-    "syrupy>=5",
-    "ty>=0.0.49",
-  ]
-  docs = ["mkdocstrings[python]>=1", "zensical>=0.0.45"]
-  
-  [tool.bumpversion]
-  commit = false
-  tag = true
-  tag_name = "v{new_version}"
-  tag_message = ""
-  push = true
-  
-  [tool.hatch.build.targets.sdist]
-  include = ["/pkfire", "/tests", "*.md", "LICENSE"]
-  
-  [tool.hatch.version]
-  source = "uv-dynamic-versioning"
-  
-  [tool.pytest]
-  addopts = [
-    "-ra",
-    "--cov=pkfire",
-    "--strict-config",
-    "--strict-markers",
-    "--numprocesses",
-    "auto",
-  ]
-  testpaths = ["tests"]
-  
-  [tool.coverage.run]
-  source = ["pkfire"]
-  branch = true
-  
-  [tool.coverage.report]
-  show_missing = true
-  skip_covered = true
-  exclude_lines = ["pragma: no cover", "if TYPE_CHECKING:", "@abstractmethod"]
-  
-  [tool.ruff]
-  line-length = 79
-  output-format = "concise"
-  target-version = "py310"
-  
-  [tool.ruff.lint]
-  select = ["ALL"]
-  ignore = [
-    "ANN401", # Dynamically typed expressions (typing.Any) are disallowed
-    "COM812", # Trailing comma missing
-    "CPY001", # Missing copyright notice at top of file
-    "D1",     # Missing docstring presence rules
-    "EM",     # flake8-errmsg
-    "G004",   # Logging statement uses f-string
-    "PLR",    # pylint Refactor
-    "S607",   # Starting a process with a partial executable path
-    "TD",     # flake8-todos
-    "TRY003", # Avoid specifying long messages outside the exception class
-  ]
-  
-  [tool.ruff.lint.isort]
-  known-first-party = ["pkfire"]
-  
-  [tool.ruff.lint.per-file-ignores]
-  "tests/**/*.py" = [
-    "ARG",  # flake8-unused-arguments
-    "S101", # Use of assert detected
-  ]
-  
-  [tool.ruff.lint.pydocstyle]
-  convention = "google"
-  
-  [tool.ty.src]
-  include = ["pkfire/", "tests/"]
-  
-  [tool.ty.terminal]
-  error-on-warning = true
-  output-format = "concise"
-  
-  [tool.uv]
-  default-groups = ["dev", "docs"]
-  
-  [tool.uv-dynamic-versioning]
-  pattern = "default-unprefixed"
-  fallback-version = "0.0.0"
-  
-  '''
-# ---
-# name: test_pyproject_versions[3.12-3.12]
-  '''
-  [build-system]
-  requires = ["hatchling", "uv-dynamic-versioning"]
-  build-backend = "hatchling.build"
-  
-  [project]
-  name = "PKFire"
-  dynamic = ["version"]
-  description = "Onett Little League"
-  readme = "README.md"
-  license = "MIT"
-  license-files = ["LICENSE"]
-  requires-python = ">=3.12,<3.13"
-  authors = [{ name = "Ness", email = "ness@onett.example.com" }]
-  classifiers = [
-    "Development Status :: 3 - Alpha",
-    "Intended Audience :: Developers",
-    "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.12",
-    "Topic :: Documentation",
-    "Topic :: Software Development",
-    "Topic :: Utilities",
-    "Typing :: Typed",
-  ]
-  keywords = []
-  dependencies = []
-  
-  [project.urls]
-  Homepage = "https://ness.github.io/PKFire"
-  Repository = "https://github.com/ness/PKFire"
-  Issues = "https://github.com/ness/PKFire/issues"
-  
-  [dependency-groups]
-  dev = [
-    "bump-my-version>=1.3.0",
-    "commit-check>=2.18",
-    "pysentry-rs>=0.4",
-    "pytest>=9",
-    "pytest-cov>=7",
-    "pytest-sugar>=1",
-    "pytest-xdist>=3",
-    "ruff>=0.15",
-    "syrupy>=5",
-    "ty>=0.0.49",
-  ]
-  docs = ["mkdocstrings[python]>=1", "zensical>=0.0.45"]
-  
-  [tool.bumpversion]
-  commit = false
-  tag = true
-  tag_name = "v{new_version}"
-  tag_message = ""
-  push = true
-  
-  [tool.hatch.build.targets.sdist]
-  include = ["/pkfire", "/tests", "*.md", "LICENSE"]
-  
-  [tool.hatch.version]
-  source = "uv-dynamic-versioning"
-  
-  [tool.pytest]
-  addopts = [
-    "-ra",
-    "--cov=pkfire",
-    "--strict-config",
-    "--strict-markers",
-    "--numprocesses",
-    "auto",
-  ]
-  testpaths = ["tests"]
-  
-  [tool.coverage.run]
-  source = ["pkfire"]
-  branch = true
-  
-  [tool.coverage.report]
-  show_missing = true
-  skip_covered = true
-  exclude_lines = ["pragma: no cover", "if TYPE_CHECKING:", "@abstractmethod"]
-  
-  [tool.ruff]
-  line-length = 79
-  output-format = "concise"
-  target-version = "py312"
-  
-  [tool.ruff.lint]
-  select = ["ALL"]
-  ignore = [
-    "ANN401", # Dynamically typed expressions (typing.Any) are disallowed
-    "COM812", # Trailing comma missing
-    "CPY001", # Missing copyright notice at top of file
-    "D1",     # Missing docstring presence rules
-    "EM",     # flake8-errmsg
-    "G004",   # Logging statement uses f-string
-    "PLR",    # pylint Refactor
-    "S607",   # Starting a process with a partial executable path
-    "TD",     # flake8-todos
-    "TRY003", # Avoid specifying long messages outside the exception class
-  ]
-  
-  [tool.ruff.lint.isort]
-  known-first-party = ["pkfire"]
-  
-  [tool.ruff.lint.per-file-ignores]
-  "tests/**/*.py" = [
-    "ARG",  # flake8-unused-arguments
-    "S101", # Use of assert detected
-  ]
-  
-  [tool.ruff.lint.pydocstyle]
-  convention = "google"
-  
-  [tool.ty.src]
-  include = ["pkfire/", "tests/"]
-  
-  [tool.ty.terminal]
-  error-on-warning = true
-  output-format = "concise"
-  
-  [tool.uv]
-  default-groups = ["dev", "docs"]
-  
-  [tool.uv-dynamic-versioning]
-  pattern = "default-unprefixed"
-  fallback-version = "0.0.0"
-  
-  '''
-# ---
-# name: test_pyproject_versions[3.14-3.10]
-  '''
-  [build-system]
-  requires = ["hatchling", "uv-dynamic-versioning"]
-  build-backend = "hatchling.build"
-  
-  [project]
-  name = "PKFire"
-  dynamic = ["version"]
-  description = "Onett Little League"
-  readme = "README.md"
-  license = "MIT"
-  license-files = ["LICENSE"]
-  requires-python = ">=3.10,<3.15"
-  authors = [{ name = "Ness", email = "ness@onett.example.com" }]
-  classifiers = [
-    "Development Status :: 3 - Alpha",
-    "Intended Audience :: Developers",
-    "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
-    "Programming Language :: Python :: 3.14",
     "Topic :: Documentation",
     "Topic :: Software Development",
     "Topic :: Utilities",
@@ -6140,7 +5847,7 @@
   [tool.ruff]
   line-length = 79
   output-format = "concise"
-  target-version = "py310"
+  target-version = "py311"
   
   [tool.ruff.lint]
   select = ["ALL"]
@@ -6185,7 +5892,7 @@
   
   '''
 # ---
-# name: test_pyproject_versions[3.14-3.12]
+# name: test_pyproject_versions[3.13-3.13]
   '''
   [build-system]
   requires = ["hatchling", "uv-dynamic-versioning"]
@@ -6198,16 +5905,14 @@
   readme = "README.md"
   license = "MIT"
   license-files = ["LICENSE"]
-  requires-python = ">=3.12,<3.15"
+  requires-python = ">=3.13,<3.14"
   authors = [{ name = "Ness", email = "ness@onett.example.com" }]
   classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
-    "Programming Language :: Python :: 3.14",
     "Topic :: Documentation",
     "Topic :: Software Development",
     "Topic :: Utilities",
@@ -6272,7 +5977,7 @@
   [tool.ruff]
   line-length = 79
   output-format = "concise"
-  target-version = "py312"
+  target-version = "py313"
   
   [tool.ruff.lint]
   select = ["ALL"]
@@ -6317,7 +6022,7 @@
   
   '''
 # ---
-# name: test_pyproject_versions[No maximum-3.10]
+# name: test_pyproject_versions[3.14-3.11]
   '''
   [build-system]
   requires = ["hatchling", "uv-dynamic-versioning"]
@@ -6330,14 +6035,13 @@
   readme = "README.md"
   license = "MIT"
   license-files = ["LICENSE"]
-  requires-python = ">=3.10"
+  requires-python = ">=3.11,<3.15"
   authors = [{ name = "Ness", email = "ness@onett.example.com" }]
   classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
@@ -6406,7 +6110,7 @@
   [tool.ruff]
   line-length = 79
   output-format = "concise"
-  target-version = "py310"
+  target-version = "py311"
   
   [tool.ruff.lint]
   select = ["ALL"]
@@ -6451,7 +6155,7 @@
   
   '''
 # ---
-# name: test_pyproject_versions[No maximum-3.12]
+# name: test_pyproject_versions[3.14-3.13]
   '''
   [build-system]
   requires = ["hatchling", "uv-dynamic-versioning"]
@@ -6464,13 +6168,145 @@
   readme = "README.md"
   license = "MIT"
   license-files = ["LICENSE"]
-  requires-python = ">=3.12"
+  requires-python = ">=3.13,<3.15"
   authors = [{ name = "Ness", email = "ness@onett.example.com" }]
   classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Documentation",
+    "Topic :: Software Development",
+    "Topic :: Utilities",
+    "Typing :: Typed",
+  ]
+  keywords = []
+  dependencies = []
+  
+  [project.urls]
+  Homepage = "https://ness.github.io/PKFire"
+  Repository = "https://github.com/ness/PKFire"
+  Issues = "https://github.com/ness/PKFire/issues"
+  
+  [dependency-groups]
+  dev = [
+    "bump-my-version>=1.3.0",
+    "commit-check>=2.18",
+    "pysentry-rs>=0.4",
+    "pytest>=9",
+    "pytest-cov>=7",
+    "pytest-sugar>=1",
+    "pytest-xdist>=3",
+    "ruff>=0.15",
+    "syrupy>=5",
+    "ty>=0.0.49",
+  ]
+  docs = ["mkdocstrings[python]>=1", "zensical>=0.0.45"]
+  
+  [tool.bumpversion]
+  commit = false
+  tag = true
+  tag_name = "v{new_version}"
+  tag_message = ""
+  push = true
+  
+  [tool.hatch.build.targets.sdist]
+  include = ["/pkfire", "/tests", "*.md", "LICENSE"]
+  
+  [tool.hatch.version]
+  source = "uv-dynamic-versioning"
+  
+  [tool.pytest]
+  addopts = [
+    "-ra",
+    "--cov=pkfire",
+    "--strict-config",
+    "--strict-markers",
+    "--numprocesses",
+    "auto",
+  ]
+  testpaths = ["tests"]
+  
+  [tool.coverage.run]
+  source = ["pkfire"]
+  branch = true
+  
+  [tool.coverage.report]
+  show_missing = true
+  skip_covered = true
+  exclude_lines = ["pragma: no cover", "if TYPE_CHECKING:", "@abstractmethod"]
+  
+  [tool.ruff]
+  line-length = 79
+  output-format = "concise"
+  target-version = "py313"
+  
+  [tool.ruff.lint]
+  select = ["ALL"]
+  ignore = [
+    "ANN401", # Dynamically typed expressions (typing.Any) are disallowed
+    "COM812", # Trailing comma missing
+    "CPY001", # Missing copyright notice at top of file
+    "D1",     # Missing docstring presence rules
+    "EM",     # flake8-errmsg
+    "G004",   # Logging statement uses f-string
+    "PLR",    # pylint Refactor
+    "S607",   # Starting a process with a partial executable path
+    "TD",     # flake8-todos
+    "TRY003", # Avoid specifying long messages outside the exception class
+  ]
+  
+  [tool.ruff.lint.isort]
+  known-first-party = ["pkfire"]
+  
+  [tool.ruff.lint.per-file-ignores]
+  "tests/**/*.py" = [
+    "ARG",  # flake8-unused-arguments
+    "S101", # Use of assert detected
+  ]
+  
+  [tool.ruff.lint.pydocstyle]
+  convention = "google"
+  
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
+  
+  [tool.ty.terminal]
+  error-on-warning = true
+  output-format = "concise"
+  
+  [tool.uv]
+  default-groups = ["dev", "docs"]
+  
+  [tool.uv-dynamic-versioning]
+  pattern = "default-unprefixed"
+  fallback-version = "0.0.0"
+  
+  '''
+# ---
+# name: test_pyproject_versions[No maximum-3.11]
+  '''
+  [build-system]
+  requires = ["hatchling", "uv-dynamic-versioning"]
+  build-backend = "hatchling.build"
+  
+  [project]
+  name = "PKFire"
+  dynamic = ["version"]
+  description = "Onett Little League"
+  readme = "README.md"
+  license = "MIT"
+  license-files = ["LICENSE"]
+  requires-python = ">=3.11"
+  authors = [{ name = "Ness", email = "ness@onett.example.com" }]
+  classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
     "Programming Language :: Python :: 3.14",
@@ -6538,7 +6374,138 @@
   [tool.ruff]
   line-length = 79
   output-format = "concise"
-  target-version = "py312"
+  target-version = "py311"
+  
+  [tool.ruff.lint]
+  select = ["ALL"]
+  ignore = [
+    "ANN401", # Dynamically typed expressions (typing.Any) are disallowed
+    "COM812", # Trailing comma missing
+    "CPY001", # Missing copyright notice at top of file
+    "D1",     # Missing docstring presence rules
+    "EM",     # flake8-errmsg
+    "G004",   # Logging statement uses f-string
+    "PLR",    # pylint Refactor
+    "S607",   # Starting a process with a partial executable path
+    "TD",     # flake8-todos
+    "TRY003", # Avoid specifying long messages outside the exception class
+  ]
+  
+  [tool.ruff.lint.isort]
+  known-first-party = ["pkfire"]
+  
+  [tool.ruff.lint.per-file-ignores]
+  "tests/**/*.py" = [
+    "ARG",  # flake8-unused-arguments
+    "S101", # Use of assert detected
+  ]
+  
+  [tool.ruff.lint.pydocstyle]
+  convention = "google"
+  
+  [tool.ty.src]
+  include = ["pkfire/", "tests/"]
+  
+  [tool.ty.terminal]
+  error-on-warning = true
+  output-format = "concise"
+  
+  [tool.uv]
+  default-groups = ["dev", "docs"]
+  
+  [tool.uv-dynamic-versioning]
+  pattern = "default-unprefixed"
+  fallback-version = "0.0.0"
+  
+  '''
+# ---
+# name: test_pyproject_versions[No maximum-3.13]
+  '''
+  [build-system]
+  requires = ["hatchling", "uv-dynamic-versioning"]
+  build-backend = "hatchling.build"
+  
+  [project]
+  name = "PKFire"
+  dynamic = ["version"]
+  description = "Onett Little League"
+  readme = "README.md"
+  license = "MIT"
+  license-files = ["LICENSE"]
+  requires-python = ">=3.13"
+  authors = [{ name = "Ness", email = "ness@onett.example.com" }]
+  classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Documentation",
+    "Topic :: Software Development",
+    "Topic :: Utilities",
+    "Typing :: Typed",
+  ]
+  keywords = []
+  dependencies = []
+  
+  [project.urls]
+  Homepage = "https://ness.github.io/PKFire"
+  Repository = "https://github.com/ness/PKFire"
+  Issues = "https://github.com/ness/PKFire/issues"
+  
+  [dependency-groups]
+  dev = [
+    "bump-my-version>=1.3.0",
+    "commit-check>=2.18",
+    "pysentry-rs>=0.4",
+    "pytest>=9",
+    "pytest-cov>=7",
+    "pytest-sugar>=1",
+    "pytest-xdist>=3",
+    "ruff>=0.15",
+    "syrupy>=5",
+    "ty>=0.0.49",
+  ]
+  docs = ["mkdocstrings[python]>=1", "zensical>=0.0.45"]
+  
+  [tool.bumpversion]
+  commit = false
+  tag = true
+  tag_name = "v{new_version}"
+  tag_message = ""
+  push = true
+  
+  [tool.hatch.build.targets.sdist]
+  include = ["/pkfire", "/tests", "*.md", "LICENSE"]
+  
+  [tool.hatch.version]
+  source = "uv-dynamic-versioning"
+  
+  [tool.pytest]
+  addopts = [
+    "-ra",
+    "--cov=pkfire",
+    "--strict-config",
+    "--strict-markers",
+    "--numprocesses",
+    "auto",
+  ]
+  testpaths = ["tests"]
+  
+  [tool.coverage.run]
+  source = ["pkfire"]
+  branch = true
+  
+  [tool.coverage.report]
+  show_missing = true
+  skip_covered = true
+  exclude_lines = ["pragma: no cover", "if TYPE_CHECKING:", "@abstractmethod"]
+  
+  [tool.ruff]
+  line-length = 79
+  output-format = "concise"
+  target-version = "py313"
   
   [tool.ruff.lint]
   select = ["ALL"]

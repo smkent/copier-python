@@ -3,23 +3,17 @@ from __future__ import annotations
 import os
 import re
 import subprocess
-import sys
 import tempfile
 from contextlib import contextmanager, suppress
 from dataclasses import InitVar, dataclass, field
 from functools import cached_property
 from pathlib import Path
-from typing import TYPE_CHECKING, Any, ClassVar
+from typing import TYPE_CHECKING, Any, ClassVar, Self
 
 import yaml
 from rich import print  # noqa: A004
 from rich.panel import Panel
 from rich.text import Text
-
-if sys.version_info >= (3, 11):
-    from typing import Self
-else:
-    from typing_extensions import Self
 
 if TYPE_CHECKING:
     from collections.abc import Generator, Sequence

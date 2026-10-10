@@ -89,7 +89,7 @@ def update(
                 )
             else:
                 results.append(UpdateResult(target, UpdateStatus.CURRENT))
-        except Exception as exc:  # noqa: BLE001, PERF203
+        except Exception as exc:  # noqa: BLE001
             console.print_exception()
             results.append(
                 UpdateResult(target, status=UpdateStatus.FAILED, exception=exc)

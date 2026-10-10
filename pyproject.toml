@@ -9,14 +9,13 @@ description = "Copier template for Python projects with modern tooling"
 readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE"]
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 authors = [{ name = "Stephen Kent", email = "smkent@smkent.net" }]
 classifiers = [
   "Development Status :: 3 - Alpha",
   "Intended Audience :: Developers",
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3 :: Only",
-  "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: 3.13",
@@ -96,7 +95,7 @@ exclude_lines = ["pragma: no cover", "if TYPE_CHECKING:", "@abstractmethod"]
 [tool.ruff]
 line-length = 79
 output-format = "concise"
-target-version = "py310"
+target-version = "py311"
 
 [tool.ruff.lint]
 select = ["ALL"]

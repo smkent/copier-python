@@ -47,7 +47,7 @@ template_python_versions_supported:
   type: yaml
   qmark: 🐍
   default:
-    min_minor: 10
+    min_minor: 11
     max_minor: 14
   when: false
 

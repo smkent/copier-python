@@ -73,6 +73,9 @@ class UpdateResult:
 def update(
     repos: Args.Repos,
     *,
+    vcs_ref: Annotated[
+        str | None, Option("--vcs-ref", "-r", help="Template ref to update to")
+    ] = None,
     dry_run: Args.DryRun = False,
     branch: Annotated[str, Option(help="Branch name to create.")] = "updates",
 ) -> None:
@@ -82,7 +85,9 @@ def update(
     repo_targets = {(target := RepoTarget(repo)).url: target for repo in repos}
     for target in repo_targets.values():
         try:
-            pr_url = UpdateAction(target, branch=branch, dry_run=dry_run)()
+            pr_url = UpdateAction(
+                target, branch=branch, vcs_ref=vcs_ref, dry_run=dry_run
+            )()
             if pr_url:
                 results.append(
                     UpdateResult(target, UpdateStatus.UPDATED, pr_url=pr_url)

@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 import os
 import subprocess
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import TYPE_CHECKING
 
 from .repo import RepoWorktree
@@ -18,7 +18,8 @@ TEMPLATE_REPO_URL = "https://github.com/smkent/copier-python"
 class UpdateAction:
     repo: RepoTarget
     branch: str
-    dry_run: bool = False
+    vcs_ref: str | None = None
+    dry_run: bool = field(default=False, kw_only=True)
 
     def __call__(self) -> str | None:
         with RepoWorktree.clone(self.repo, branch=self.branch) as worktree:
@@ -33,10 +34,10 @@ class UpdateAction:
             ).stdout.strip()
         )
         start_ref = "v" + copier_status["current_version"]
-        end_ref = "v" + copier_status["latest_version"]
+        end_ref = self.vcs_ref or ("v" + copier_status["latest_version"])
         if not copier_status.get("update_available", False):
             return None
-        repo.run(["copier", "update", "--skip-answered"])
+        repo.run(["copier", "update", "--skip-answered", "--vcs-ref", end_ref])
         repo.run(["mise", "install"])
 
         status = repo.git_status()

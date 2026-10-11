@@ -320,12 +320,12 @@ def test_main_update_error(
     expect_run.expect(
         ["git", "status", "--porcelain"], cwd=worktree, capture_output=True
     )
-    expect_run.expect([str(mock_shell)], cwd=worktree, check=False)
+    expect_run.expect([str(mock_shell)], cwd=worktree)
     expect_run.expect(
         ["git", "status", "--porcelain"], cwd=worktree, capture_output=True
     )
     expect_run.expect(["mise", "run", "lt"], cwd=worktree)
-    expect_run.expect([str(mock_shell)], cwd=worktree, check=False)
+    expect_run.expect([str(mock_shell)], cwd=worktree)
     for cmd in [
         [*["git", "add", "-A"]],
         [*["git", "commit", "-m", commit_message]],

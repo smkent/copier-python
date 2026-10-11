@@ -37,7 +37,7 @@ class UpdateAction:
         end_ref = self.vcs_ref or ("v" + copier_status["latest_version"])
         if not copier_status.get("update_available", False):
             return None
-        repo.run(["copier", "update", "--skip-answered", "-r", end_ref])
+        repo.run(["copier", "update", "--skip-answered", "--vcs-ref", end_ref])
         repo.run(["mise", "install"])
 
         status = repo.git_status()

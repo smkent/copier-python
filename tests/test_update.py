@@ -312,7 +312,10 @@ def test_main_update_error(
         cwd=worktree,
         capture_output=True,
     )
-    expect_run.expect(["copier", "update", "--skip-answered"], cwd=worktree)
+    expect_run.expect(
+        ["copier", "update", "--skip-answered", "--vcs-ref", end_ref],
+        cwd=worktree,
+    )
     expect_run.expect(["mise", "install"], cwd=worktree)
     expect_run.expect(
         ["git", "status", "--porcelain"], cwd=worktree, capture_output=True
@@ -400,7 +403,10 @@ def test_main_update_with_project(
         cwd=worktree,
         capture_output=True,
     )
-    expect_run.expect(["copier", "update", "--skip-answered"], cwd=worktree)
+    expect_run.expect(
+        ["copier", "update", "--skip-answered", "--vcs-ref", end_ref],
+        cwd=worktree,
+    )
     expect_run.expect(["mise", "install"], cwd=worktree)
     expect_run.expect(
         ["git", "status", "--porcelain"], cwd=worktree, capture_output=True

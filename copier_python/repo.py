@@ -146,7 +146,7 @@ class RepoWorktree:
         ).get("_commit")
 
     def shell(self) -> None:
-        self.run([os.environ.get("SHELL", "/bin/bash")], check=False)
+        self.run([os.environ.get("SHELL", "/bin/bash")])
 
     def open_pr(self, title: str, body: str) -> str:
         result = self.run(
